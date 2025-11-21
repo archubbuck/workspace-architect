@@ -8,6 +8,7 @@
   "scripts": {
     "start:registry": "verdaccio --config verdaccio/config.yaml",
     "test:local": "node bin/cli.js list && node bin/cli.js download instructions:basic-setup --dry-run",
+    "analyze": "node scripts/analyze-collections.js",
     "sync": "node scripts/sync.js",
     "release": "release-it",
     "publish:local": "npm run release && npm publish --registry http://localhost:4873"

@@ -4,6 +4,20 @@
     "chatmodes:microsoft_learn_contributor",
     "chatmodes:research-technical-spike",
     "instructions:markdown",
-    "prompts:create-technical-spike"
+    "prompts:create-technical-spike",
+    "prompts:readme-blueprint-generator",
+    "prompts:architecture-blueprint-generator",
+    "prompts:documentation-writer",
+    "prompts:technology-stack-blueprint-generator",
+    "chatmodes:prd",
+    "chatmodes:tech-debt-remediation-plan",
+    "prompts:create-oo-component-documentation",
+    "prompts:update-oo-component-documentation",
+    "chatmodes:tdd-red",
+    "instructions:go",
+    "prompts:code-exemplars-blueprint-generator",
+    "prompts:csharp-docs",
+    "prompts:java-docs",
+    "prompts:javascript-typescript-jest"
   ]
 }
