@@ -1,5 +1,13 @@
 
 
+## [1.4.0](https://github.com/archubbuck/workspace-architect/compare/v1.3.0...v1.4.0) (2025-11-21)
+
+
+### Features
+
+* add collection analysis script and update collections ([5b85026](https://github.com/archubbuck/workspace-architect/commit/5b850263d0078ea5683344e7031c43a513e12680))
+* enhance collection analysis with TF-IDF and cosine similarity ([5a840c0](https://github.com/archubbuck/workspace-architect/commit/5a840c0aa74ab0a60ea62e69776d5c20857dd124))
+
 ## 1.3.0 (2025-11-21)
 
 
