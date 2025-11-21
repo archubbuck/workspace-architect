@@ -1,9 +1,9 @@
 {
-  "name": "github-copilot-packed",
+  "name": "workspace-architect",
   "version": "1.2.2",
-  "description": "A collection of instructions, prompts, and chat modes for GitHub Copilot",
+  "description": "A comprehensive library of specialized AI personas and chat modes for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.",
   "bin": {
-    "github-copilot-packed": "./bin/cli.js"
+    "workspace-architect": "./bin/cli.js"
   },
   "scripts": {
     "start:registry": "verdaccio --config verdaccio/config.yaml",
@@ -14,11 +14,26 @@
   },
   "keywords": [
     "copilot",
-    "instructions",
-    "prompts",
     "chatmodes",
-    "collections"
+    "personas",
+    "prompts",
+    "ai-assistant",
+    "architecture",
+    "planning",
+    "developer-tools",
+    "workspace-architect",
+    "react",
+    "azure",
+    "agentic-workflow"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/archubbuck/workspace-architect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/archubbuck/workspace-architect/issues"
+  },
+  "homepage": "https://github.com/archubbuck/workspace-architect#readme",
   "author": "",
   "license": "ISC",
   "dependencies": {

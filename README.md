@@ -1,13 +1,13 @@
-# GitHub Copilot Packed
+# Workspace Architect
 
-A collection of instructions, prompts, and chat modes for GitHub Copilot, accessible via CLI.
+A comprehensive library of specialized AI personas and chat modes for GitHub Copilot, accessible via CLI.
 
 ## Usage
 
 You can use this tool directly with `npx` without installing it:
 
 ```bash
-npx github-copilot-packed download instructions:basic-setup
+npx workspace-architect download instructions:basic-setup
 ```
 
 ### Commands
@@ -15,20 +15,20 @@ npx github-copilot-packed download instructions:basic-setup
 #### List Available Assets
 
 ```bash
-npx github-copilot-packed list
+npx workspace-architect list
 # or list specific type
-npx github-copilot-packed list instructions
+npx workspace-architect list instructions
 ```
 
 #### Download an Asset
 
 ```bash
-npx github-copilot-packed download <type>:<name>
+npx workspace-architect download <type>:<name>
 ```
 
 Example:
 ```bash
-npx github-copilot-packed download prompts:code-review
+npx workspace-architect download prompts:code-review
 ```
 
 Options:
@@ -53,7 +53,7 @@ Options:
 3. Link the package to test `npx` behavior locally (simulated):
    ```bash
    npm link
-   npx github-copilot-packed list
+   npx workspace-architect list
    ```
 
 ## Adding New Assets
