@@ -15,3 +15,6 @@ Thumbs.db
 
 # Verdaccio
 verdaccio/storage/
+
+# Environment variables
+.env
