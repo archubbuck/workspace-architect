@@ -1,9 +1,6 @@
 {
   "description": "Resources for legacy system migration and code conversion.",
   "items": [
-    "chatmodes:aem-frontend-specialist",
-    "chatmodes:hlbpa",
-    "chatmodes:terraform-azure-implement",
     "prompts:generate-custom-instructions-from-codebase"
   ]
 }

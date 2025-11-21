@@ -1,14 +1,4 @@
 {
   "description": "C++ programming language resources.",
-  "items": [
-    "chatmodes:expert-cpp-software-engineer",
-    "instructions:rust",
-    "chatmodes:azure-logic-apps-expert",
-    "chatmodes:drupal-expert",
-    "chatmodes:expert-dotnet-software-engineer",
-    "chatmodes:laravel-expert-agent",
-    "instructions:dotnet-framework",
-    "prompts:code-exemplars-blueprint-generator",
-    "prompts:technology-stack-blueprint-generator"
-  ]
+  "items": []
 }

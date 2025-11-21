@@ -40,7 +40,6 @@
     "prompts:review-and-refactor",
     "prompts:update-implementation-plan",
     "chatmodes:task-researcher",
-    "instructions:power-bi-custom-visuals-development",
     "prompts:csharp-mcp-server-generator",
     "prompts:dotnet-best-practices",
     "prompts:power-apps-code-app-scaffold",

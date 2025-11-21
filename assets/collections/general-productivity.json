@@ -1,15 +1,4 @@
 {
   "description": "General coding utilities, debugging, refactoring, and git resources.",
-  "items": [
-    "chatmodes:accessibility",
-    "chatmodes:address-comments",
-    "chatmodes:debug",
-    "instructions:powershell",
-    "instructions:powershell-pester-5",
-    "chatmodes:terraform-azure-implement",
-    "instructions:github-actions-ci-cd-best-practices",
-    "instructions:security-and-owasp",
-    "prompts:az-cost-optimize",
-    "prompts:generate-custom-instructions-from-codebase"
-  ]
+  "items": []
 }

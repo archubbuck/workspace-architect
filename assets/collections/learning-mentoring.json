@@ -1,19 +1,9 @@
 {
   "description": "Educational resources, tutorials, and study modes.",
   "items": [
-    "chatmodes:code-tour",
-    "chatmodes:critical-thinking",
-    "chatmodes:demonstrate-understanding",
     "chatmodes:mentor",
     "chatmodes:microsoft-study-mode",
-    "chatmodes:api-architect",
-    "chatmodes:power-bi-visualization-expert",
-    "instructions:power-bi-data-modeling-best-practices",
-    "instructions:power-bi-dax-best-practices",
-    "instructions:power-bi-report-design-best-practices",
-    "chatmodes:power-bi-data-modeling-expert",
-    "prompts:az-cost-optimize",
-    "prompts:copilot-instructions-blueprint-generator",
-    "prompts:postgresql-code-review"
+    "prompts:add-educational-comments",
+    "prompts:comment-code-generate-a-tutorial"
   ]
 }
