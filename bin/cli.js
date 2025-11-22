@@ -6,12 +6,15 @@ import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
-import matter from 'gray-matter';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const ROOT_DIR = path.join(__dirname, '..');
+const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
+const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 
-const ASSETS_DIR = path.join(__dirname, '../assets');
+// Check if running in local development mode (assets folder exists)
+const IS_LOCAL = await fs.pathExists(ASSETS_DIR);
 
 program
   .name('github-copilot-packed')
@@ -52,39 +55,70 @@ program
     }
   });
 
+async function getManifest() {
+  if (await fs.pathExists(MANIFEST_PATH)) {
+    return fs.readJson(MANIFEST_PATH);
+  }
+  throw new Error('Manifest file not found. Please report this issue.');
+}
+
 async function listAssets(type) {
-  const dirPath = path.join(ASSETS_DIR, type);
-  if (!await fs.pathExists(dirPath)) {
-    console.log(chalk.yellow(`No assets found for type: ${type}`));
-    return;
-  }
-
-  const files = await fs.readdir(dirPath);
-  if (files.length === 0) {
-    console.log(chalk.yellow(`No assets found for type: ${type}`));
-    return;
-  }
-
-  console.log(chalk.blue.bold(`\nAvailable ${type}:`));
-  for (const file of files) {
-    const filePath = path.join(dirPath, file);
-    let description = '';
-
-    try {
-      if (type === 'collections') {
-        const content = await fs.readJson(filePath);
-        description = content.description || '';
-      } else {
-        const content = await fs.readFile(filePath, 'utf8');
-        const parsed = matter(content);
-        description = parsed.data.description || '';
-      }
-    } catch (e) {
-      // Ignore errors reading metadata
+  if (IS_LOCAL) {
+    // Local Development Mode
+    const matter = (await import('gray-matter')).default;
+    const dirPath = path.join(ASSETS_DIR, type);
+    
+    if (!await fs.pathExists(dirPath)) {
+      console.log(chalk.yellow(`No assets found for type: ${type}`));
+      return;
     }
 
-    const name = path.parse(file).name;
-    console.log(`  - ${name}${description ? ` - ${description}` : ''}`);
+    const files = await fs.readdir(dirPath);
+    if (files.length === 0) {
+      console.log(chalk.yellow(`No assets found for type: ${type}`));
+      return;
+    }
+
+    console.log(chalk.blue.bold(`\nAvailable ${type}:`));
+    for (const file of files) {
+      const filePath = path.join(dirPath, file);
+      let description = '';
+
+      try {
+        if (type === 'collections') {
+          const content = await fs.readJson(filePath);
+          description = content.description || '';
+        } else {
+          const content = await fs.readFile(filePath, 'utf8');
+          const parsed = matter(content);
+          description = parsed.data.description || '';
+        }
+      } catch (e) {
+        // Ignore errors reading metadata
+      }
+
+      const name = path.parse(file).name;
+      console.log(`  - ${name}${description ? ` - ${description}` : ''}`);
+    }
+  } else {
+    // Production Mode (Manifest)
+    const manifest = await getManifest();
+    const assets = Object.entries(manifest.assets)
+      .filter(([key, asset]) => asset.type === type)
+      .map(([key, asset]) => ({
+        id: key.split(':')[1],
+        ...asset
+      }));
+    
+    if (assets.length === 0) {
+      console.log(chalk.yellow(`No assets found for type: ${type}`));
+      return;
+    }
+
+    console.log(chalk.blue.bold(`\nAvailable ${type}:`));
+    for (const asset of assets) {
+      console.log(`  - ${asset.id}${asset.description ? ` - ${asset.description}` : ''}`);
+    }
   }
 }
 
@@ -100,26 +134,31 @@ async function downloadAsset(id, options) {
     throw new Error(`Invalid type: ${type}. Valid types are: ${validTypes.join(', ')}`);
   }
 
+  // Handle Collections
   if (type === 'collections') {
-    let fileName = name;
-    if (!path.extname(name)) {
-      fileName += '.json';
-    }
-    const sourcePath = path.join(ASSETS_DIR, type, fileName);
-
-    if (!await fs.pathExists(sourcePath)) {
-      throw new Error(`Collection not found: ${type}/${fileName}`);
-    }
-
-    const collectionContent = await fs.readJson(sourcePath);
     let items = [];
     
-    if (Array.isArray(collectionContent)) {
-      items = collectionContent;
-    } else if (collectionContent.items && Array.isArray(collectionContent.items)) {
-      items = collectionContent.items;
+    if (IS_LOCAL) {
+      let fileName = name;
+      if (!path.extname(name)) fileName += '.json';
+      const sourcePath = path.join(ASSETS_DIR, type, fileName);
+      
+      if (!await fs.pathExists(sourcePath)) {
+        throw new Error(`Collection not found: ${type}/${fileName}`);
+      }
+      
+      const collectionContent = await fs.readJson(sourcePath);
+      items = collectionContent.items || (Array.isArray(collectionContent) ? collectionContent : []);
     } else {
-      throw new Error(`Invalid collection format: ${fileName} must be a JSON array or object with items array.`);
+      const manifest = await getManifest();
+      const key = `${type}:${name}`;
+      const asset = manifest.assets[key];
+      
+      if (!asset) {
+        throw new Error(`Collection not found: ${id}`);
+      }
+      
+      items = asset.items || [];
     }
 
     console.log(chalk.blue(`Downloading collection: ${name}`));
@@ -133,33 +172,56 @@ async function downloadAsset(id, options) {
     return;
   }
 
-  // Try to find the file with various extensions
-  const potentialFileNames = [
-    name,
-    name + '.md'
-  ];
+  // Handle Single Asset
+  let content = '';
+  let fileName = '';
 
-  // Add type-specific extensions
-  if (type === 'chatmodes') potentialFileNames.push(name + '.chatmode.md');
-  if (type === 'prompts') potentialFileNames.push(name + '.prompt.md');
-  if (type === 'instructions') potentialFileNames.push(name + '.instructions.md');
+  if (IS_LOCAL) {
+    // Try to find the file with various extensions
+    const potentialFileNames = [
+      name,
+      name + '.md'
+    ];
+    if (type === 'chatmodes') potentialFileNames.push(name + '.chatmode.md');
+    if (type === 'prompts') potentialFileNames.push(name + '.prompt.md');
+    if (type === 'instructions') potentialFileNames.push(name + '.instructions.md');
 
-  let sourcePath = null;
-  let foundFileName = null;
-
-  for (const fname of potentialFileNames) {
-    const p = path.join(ASSETS_DIR, type, fname);
-    if (await fs.pathExists(p)) {
-      sourcePath = p;
-      foundFileName = fname;
-      break;
+    let sourcePath = null;
+    for (const fname of potentialFileNames) {
+      const p = path.join(ASSETS_DIR, type, fname);
+      if (await fs.pathExists(p)) {
+        sourcePath = p;
+        fileName = fname;
+        break;
+      }
     }
+
+    if (!sourcePath) {
+      throw new Error(`Asset not found: ${type}/${name}`);
+    }
+    
+    content = await fs.readFile(sourcePath, 'utf8');
+  } else {
+    const manifest = await getManifest();
+    const key = `${type}:${name}`;
+    const asset = manifest.assets[key];
+    
+    if (!asset) {
+      throw new Error(`Asset not found: ${id}`);
+    }
+    
+    fileName = path.basename(asset.path);
+    const url = `https://raw.githubusercontent.com/archubbuck/workspace-architect/main/${asset.path}`;
+    
+    console.log(chalk.dim(`Fetching ${url}...`));
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+    }
+    content = await response.text();
   }
 
-  if (!sourcePath) {
-    throw new Error(`Asset not found: ${type}/${name}`);
-  }
-
+  // Determine Destination
   let destDir;
   if (options.output) {
     destDir = path.resolve(process.cwd(), options.output);
@@ -167,10 +229,10 @@ async function downloadAsset(id, options) {
     destDir = path.join(process.cwd(), '.github', type);
   }
 
-  const destPath = path.join(destDir, foundFileName);
+  const destPath = path.join(destDir, fileName);
 
   if (options.dryRun) {
-    console.log(chalk.cyan(`[Dry Run] Would copy ${sourcePath} to ${destPath}`));
+    console.log(chalk.cyan(`[Dry Run] Would write to ${destPath}`));
     return;
   }
 
@@ -182,7 +244,7 @@ async function downloadAsset(id, options) {
       {
         type: 'confirm',
         name: 'overwrite',
-        message: `File ${foundFileName} already exists in ${destDir}. Overwrite?`,
+        message: `File ${fileName} already exists in ${destDir}. Overwrite?`,
         default: false
       }
     ]);
@@ -193,8 +255,8 @@ async function downloadAsset(id, options) {
     }
   }
 
-  await fs.copy(sourcePath, destPath);
-  console.log(chalk.green(`Successfully downloaded ${foundFileName} to ${destDir}`));
+  await fs.writeFile(destPath, content);
+  console.log(chalk.green(`Successfully downloaded ${fileName} to ${destDir}`));
 }
 
 program.parse();

@@ -1,0 +1,3392 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2025-11-22T00:07:38.080Z",
+  "assets": {
+    "chatmodes:4.1-Beast": {
+      "path": "assets/chatmodes/4.1-Beast.chatmode.md",
+      "description": "GPT 4.1 as a top-notch coding agent.",
+      "title": "4.1 Beast Mode v3.1",
+      "type": "chatmodes"
+    },
+    "chatmodes:Thinking-Beast-Mode": {
+      "path": "assets/chatmodes/Thinking-Beast-Mode.chatmode.md",
+      "description": "A transcendent coding agent with quantum cognitive architecture, adversarial intelligence, and unrestricted creative freedom.",
+      "title": "Thinking Beast Mode",
+      "type": "chatmodes"
+    },
+    "chatmodes:Ultimate-Transparent-Thinking-Beast-Mode": {
+      "path": "assets/chatmodes/Ultimate-Transparent-Thinking-Beast-Mode.chatmode.md",
+      "description": "Ultimate Transparent Thinking Beast Mode",
+      "title": "Ultimate Transparent Thinking Beast Mode",
+      "type": "chatmodes"
+    },
+    "chatmodes:accessibility": {
+      "path": "assets/chatmodes/accessibility.chatmode.md",
+      "description": "Expert assistant for web accessibility (WCAG 2.1/2.2), inclusive UX, and a11y testing",
+      "title": "accessibility",
+      "type": "chatmodes"
+    },
+    "chatmodes:address-comments": {
+      "path": "assets/chatmodes/address-comments.chatmode.md",
+      "description": "Address PR comments",
+      "title": "address-comments",
+      "type": "chatmodes"
+    },
+    "chatmodes:aem-frontend-specialist": {
+      "path": "assets/chatmodes/aem-frontend-specialist.chatmode.md",
+      "description": "Expert assistant for developing AEM components using HTL, Tailwind CSS, and Figma-to-code workflows with design system integration",
+      "title": "aem-frontend-specialist",
+      "type": "chatmodes"
+    },
+    "chatmodes:api-architect": {
+      "path": "assets/chatmodes/api-architect.chatmode.md",
+      "description": "Your role is that of an API architect. Help mentor the engineer by providing guidance, support, and working code.",
+      "title": "api-architect",
+      "type": "chatmodes"
+    },
+    "chatmodes:atlassian-requirements-to-jira": {
+      "path": "assets/chatmodes/atlassian-requirements-to-jira.chatmode.md",
+      "description": "Transform requirements documents into structured Jira epics and user stories with intelligent duplicate detection, change management, and user-approved creation workflow.",
+      "title": "atlassian-requirements-to-jira",
+      "type": "chatmodes"
+    },
+    "chatmodes:azure-logic-apps-expert": {
+      "path": "assets/chatmodes/azure-logic-apps-expert.chatmode.md",
+      "description": "Expert guidance for Azure Logic Apps development focusing on workflow design, integration patterns, and JSON-based Workflow Definition Language.",
+      "title": "azure-logic-apps-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:azure-principal-architect": {
+      "path": "assets/chatmodes/azure-principal-architect.chatmode.md",
+      "description": "Provide expert Azure Principal Architect guidance using Azure Well-Architected Framework principles and Microsoft best practices.",
+      "title": "azure-principal-architect",
+      "type": "chatmodes"
+    },
+    "chatmodes:azure-saas-architect": {
+      "path": "assets/chatmodes/azure-saas-architect.chatmode.md",
+      "description": "Provide expert Azure SaaS Architect guidance focusing on multitenant applications using Azure Well-Architected SaaS principles and Microsoft best practices.",
+      "title": "azure-saas-architect",
+      "type": "chatmodes"
+    },
+    "chatmodes:azure-verified-modules-bicep": {
+      "path": "assets/chatmodes/azure-verified-modules-bicep.chatmode.md",
+      "description": "Create, update, or review Azure IaC in Bicep using Azure Verified Modules (AVM).",
+      "title": "azure-verified-modules-bicep",
+      "type": "chatmodes"
+    },
+    "chatmodes:azure-verified-modules-terraform": {
+      "path": "assets/chatmodes/azure-verified-modules-terraform.chatmode.md",
+      "description": "Create, update, or review Azure IaC in Terraform using Azure Verified Modules (AVM).",
+      "title": "azure-verified-modules-terraform",
+      "type": "chatmodes"
+    },
+    "chatmodes:bicep-implement": {
+      "path": "assets/chatmodes/bicep-implement.chatmode.md",
+      "description": "Act as an Azure Bicep Infrastructure as Code coding specialist that creates Bicep templates.",
+      "title": "bicep-implement",
+      "type": "chatmodes"
+    },
+    "chatmodes:bicep-plan": {
+      "path": "assets/chatmodes/bicep-plan.chatmode.md",
+      "description": "Act as implementation planner for your Azure Bicep Infrastructure as Code task.",
+      "title": "bicep-plan",
+      "type": "chatmodes"
+    },
+    "chatmodes:blueprint-mode-codex": {
+      "path": "assets/chatmodes/blueprint-mode-codex.chatmode.md",
+      "description": "Executes structured workflows with strict correctness and maintainability. Enforces a minimal tool usage policy, never assumes facts, prioritizes reproducible solutions, self-correction, and edge-case handling.",
+      "title": "blueprint-mode-codex",
+      "type": "chatmodes"
+    },
+    "chatmodes:blueprint-mode": {
+      "path": "assets/chatmodes/blueprint-mode.chatmode.md",
+      "description": "Executes structured workflows (Debug, Express, Main, Loop) with strict correctness and maintainability. Enforces an improved tool usage policy, never assumes facts, prioritizes reproducible solutions, self-correction, and edge-case handling.",
+      "title": "blueprint-mode",
+      "type": "chatmodes"
+    },
+    "chatmodes:clojure-interactive-programming": {
+      "path": "assets/chatmodes/clojure-interactive-programming.chatmode.md",
+      "description": "Expert Clojure pair programmer with REPL-first methodology, architectural oversight, and interactive problem-solving. Enforces quality standards, prevents workarounds, and develops solutions incrementally through live REPL evaluation before file modifications.",
+      "title": "Clojure Interactive Programming with Backseat Driver",
+      "type": "chatmodes"
+    },
+    "chatmodes:code-tour": {
+      "path": "assets/chatmodes/code-tour.chatmode.md",
+      "description": "Expert agent for creating and maintaining VSCode CodeTour files with comprehensive schema support and best practices",
+      "title": "VSCode Tour Expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:critical-thinking": {
+      "path": "assets/chatmodes/critical-thinking.chatmode.md",
+      "description": "Challenge assumptions and encourage critical thinking to ensure the best possible solution and outcomes.",
+      "title": "critical-thinking",
+      "type": "chatmodes"
+    },
+    "chatmodes:csharp-dotnet-janitor": {
+      "path": "assets/chatmodes/csharp-dotnet-janitor.chatmode.md",
+      "description": "Perform janitorial tasks on C#/.NET code including cleanup, modernization, and tech debt remediation.",
+      "title": "csharp-dotnet-janitor",
+      "type": "chatmodes"
+    },
+    "chatmodes:csharp-mcp-expert": {
+      "path": "assets/chatmodes/csharp-mcp-expert.chatmode.md",
+      "description": "Expert assistant for developing Model Context Protocol (MCP) servers in C#",
+      "title": "csharp-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:debug": {
+      "path": "assets/chatmodes/debug.chatmode.md",
+      "description": "Debug your application to find and fix a bug",
+      "title": "debug",
+      "type": "chatmodes"
+    },
+    "chatmodes:declarative-agents-architect": {
+      "path": "assets/chatmodes/declarative-agents-architect.chatmode.md",
+      "description": "",
+      "title": "declarative-agents-architect",
+      "type": "chatmodes"
+    },
+    "chatmodes:demonstrate-understanding": {
+      "path": "assets/chatmodes/demonstrate-understanding.chatmode.md",
+      "description": "Validate user understanding of code, design patterns, and implementation details through guided questioning.",
+      "title": "demonstrate-understanding",
+      "type": "chatmodes"
+    },
+    "chatmodes:dotnet-upgrade": {
+      "path": "assets/chatmodes/dotnet-upgrade.chatmode.md",
+      "description": "Perform janitorial tasks on C#/.NET code including cleanup, modernization, and tech debt remediation.",
+      "title": "dotnet-upgrade",
+      "type": "chatmodes"
+    },
+    "chatmodes:drupal-expert": {
+      "path": "assets/chatmodes/drupal-expert.chatmode.md",
+      "description": "Expert assistant for Drupal development, architecture, and best practices using PHP 8.3+ and modern Drupal patterns",
+      "title": "drupal-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:electron-angular-native": {
+      "path": "assets/chatmodes/electron-angular-native.chatmode.md",
+      "description": "Code Review Mode tailored for Electron app with Node.js backend (main), Angular frontend (render), and native integration layer (e.g., AppleScript, shell, or native tooling). Services in other repos are not reviewed here.",
+      "title": "electron-angular-native",
+      "type": "chatmodes"
+    },
+    "chatmodes:expert-cpp-software-engineer": {
+      "path": "assets/chatmodes/expert-cpp-software-engineer.chatmode.md",
+      "description": "Provide expert C++ software engineering guidance using modern C++ and industry best practices.",
+      "title": "expert-cpp-software-engineer",
+      "type": "chatmodes"
+    },
+    "chatmodes:expert-dotnet-software-engineer": {
+      "path": "assets/chatmodes/expert-dotnet-software-engineer.chatmode.md",
+      "description": "Provide expert .NET software engineering guidance using modern software design patterns.",
+      "title": "expert-dotnet-software-engineer",
+      "type": "chatmodes"
+    },
+    "chatmodes:expert-nextjs-developer": {
+      "path": "assets/chatmodes/expert-nextjs-developer.chatmode.md",
+      "description": "Expert Next.js 16 developer specializing in App Router, Server Components, Cache Components, Turbopack, and modern React patterns with TypeScript",
+      "title": "expert-nextjs-developer",
+      "type": "chatmodes"
+    },
+    "chatmodes:expert-react-frontend-engineer": {
+      "path": "assets/chatmodes/expert-react-frontend-engineer.chatmode.md",
+      "description": "Expert React 19.2 frontend engineer specializing in modern hooks, Server Components, Actions, TypeScript, and performance optimization",
+      "title": "expert-react-frontend-engineer",
+      "type": "chatmodes"
+    },
+    "chatmodes:gilfoyle": {
+      "path": "assets/chatmodes/gilfoyle.chatmode.md",
+      "description": "Code review and analysis with the sardonic wit and technical elitism of Bertram Gilfoyle from Silicon Valley. Prepare for brutal honesty about your code.",
+      "title": "gilfoyle",
+      "type": "chatmodes"
+    },
+    "chatmodes:go-mcp-expert": {
+      "path": "assets/chatmodes/go-mcp-expert.chatmode.md",
+      "description": "Expert assistant for building Model Context Protocol (MCP) servers in Go using the official SDK.",
+      "title": "go-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:gpt-5-beast-mode": {
+      "path": "assets/chatmodes/gpt-5-beast-mode.chatmode.md",
+      "description": "Beast Mode 2.0: A powerful autonomous agent tuned specifically for GPT-5 that can solve complex problems by using tools, conducting research, and iterating until the problem is fully resolved.",
+      "title": "GPT 5 Beast Mode",
+      "type": "chatmodes"
+    },
+    "chatmodes:hlbpa": {
+      "path": "assets/chatmodes/hlbpa.chatmode.md",
+      "description": "Your perfect AI chat mode for high-level architectural documentation and review. Perfect for targeted updates after a story or researching that legacy system when nobody remembers what it's supposed to be doing.",
+      "title": "hlbpa",
+      "type": "chatmodes"
+    },
+    "chatmodes:implementation-plan": {
+      "path": "assets/chatmodes/implementation-plan.chatmode.md",
+      "description": "Generate an implementation plan for new features or refactoring existing code.",
+      "title": "implementation-plan",
+      "type": "chatmodes"
+    },
+    "chatmodes:janitor": {
+      "path": "assets/chatmodes/janitor.chatmode.md",
+      "description": "Perform janitorial tasks on any codebase including cleanup, simplification, and tech debt remediation.",
+      "title": "janitor",
+      "type": "chatmodes"
+    },
+    "chatmodes:java-mcp-expert": {
+      "path": "assets/chatmodes/java-mcp-expert.chatmode.md",
+      "description": "Expert assistance for building Model Context Protocol servers in Java using reactive streams, the official MCP Java SDK, and Spring Boot integration.",
+      "title": "java-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:kotlin-mcp-expert": {
+      "path": "assets/chatmodes/kotlin-mcp-expert.chatmode.md",
+      "description": "Expert assistant for building Model Context Protocol (MCP) servers in Kotlin using the official SDK.",
+      "title": "kotlin-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:kusto-assistant": {
+      "path": "assets/chatmodes/kusto-assistant.chatmode.md",
+      "description": "Expert KQL assistant for live Azure Data Explorer analysis via Azure MCP server",
+      "title": "kusto-assistant",
+      "type": "chatmodes"
+    },
+    "chatmodes:laravel-expert-agent": {
+      "path": "assets/chatmodes/laravel-expert-agent.chatmode.md",
+      "description": "Expert Laravel development assistant specializing in modern Laravel 12+ applications with Eloquent, Artisan, testing, and best practices",
+      "title": "laravel-expert-agent",
+      "type": "chatmodes"
+    },
+    "chatmodes:mentor": {
+      "path": "assets/chatmodes/mentor.chatmode.md",
+      "description": "Help mentor the engineer by providing guidance and support.",
+      "title": "mentor",
+      "type": "chatmodes"
+    },
+    "chatmodes:meta-agentic-project-scaffold": {
+      "path": "assets/chatmodes/meta-agentic-project-scaffold.chatmode.md",
+      "description": "Meta agentic project creation assistant to help users create and manage project workflows effectively.",
+      "title": "meta-agentic-project-scaffold",
+      "type": "chatmodes"
+    },
+    "chatmodes:microsoft-agent-framework-dotnet": {
+      "path": "assets/chatmodes/microsoft-agent-framework-dotnet.chatmode.md",
+      "description": "Create, update, refactor, explain or work with code using the .NET version of Microsoft Agent Framework.",
+      "title": "microsoft-agent-framework-dotnet",
+      "type": "chatmodes"
+    },
+    "chatmodes:microsoft-agent-framework-python": {
+      "path": "assets/chatmodes/microsoft-agent-framework-python.chatmode.md",
+      "description": "Create, update, refactor, explain or work with code using the Python version of Microsoft Agent Framework.",
+      "title": "microsoft-agent-framework-python",
+      "type": "chatmodes"
+    },
+    "chatmodes:microsoft-study-mode": {
+      "path": "assets/chatmodes/microsoft-study-mode.chatmode.md",
+      "description": "Activate your personal Microsoft/Azure tutor - learn through guided discovery, not just answers.",
+      "title": "microsoft-study-mode",
+      "type": "chatmodes"
+    },
+    "chatmodes:microsoft_learn_contributor": {
+      "path": "assets/chatmodes/microsoft_learn_contributor.chatmode.md",
+      "description": "Microsoft Learn Contributor chatmode for editing and writing Microsoft Learn documentation following Microsoft Writing Style Guide and authoring best practices.",
+      "title": "microsoft_learn_contributor",
+      "type": "chatmodes"
+    },
+    "chatmodes:ms-sql-dba": {
+      "path": "assets/chatmodes/ms-sql-dba.chatmode.md",
+      "description": "Work with Microsoft SQL Server databases using the MS SQL extension.",
+      "title": "ms-sql-dba",
+      "type": "chatmodes"
+    },
+    "chatmodes:php-mcp-expert": {
+      "path": "assets/chatmodes/php-mcp-expert.chatmode.md",
+      "description": "Expert assistant for PHP MCP server development using the official PHP SDK with attribute-based discovery",
+      "title": "php-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:pimcore-expert": {
+      "path": "assets/chatmodes/pimcore-expert.chatmode.md",
+      "description": "Expert Pimcore development assistant specializing in CMS, DAM, PIM, and E-Commerce solutions with Symfony integration",
+      "title": "pimcore-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:plan": {
+      "path": "assets/chatmodes/plan.chatmode.md",
+      "description": "Strategic planning and architecture assistant focused on thoughtful analysis before implementation. Helps developers understand codebases, clarify requirements, and develop comprehensive implementation strategies.",
+      "title": "plan",
+      "type": "chatmodes"
+    },
+    "chatmodes:planner": {
+      "path": "assets/chatmodes/planner.chatmode.md",
+      "description": "Generate an implementation plan for new features or refactoring existing code.",
+      "title": "planner",
+      "type": "chatmodes"
+    },
+    "chatmodes:playwright-tester": {
+      "path": "assets/chatmodes/playwright-tester.chatmode.md",
+      "description": "Testing mode for Playwright tests",
+      "title": "playwright-tester",
+      "type": "chatmodes"
+    },
+    "chatmodes:postgresql-dba": {
+      "path": "assets/chatmodes/postgresql-dba.chatmode.md",
+      "description": "Work with PostgreSQL databases using the PostgreSQL extension.",
+      "title": "postgresql-dba",
+      "type": "chatmodes"
+    },
+    "chatmodes:power-bi-data-modeling-expert": {
+      "path": "assets/chatmodes/power-bi-data-modeling-expert.chatmode.md",
+      "description": "Expert Power BI data modeling guidance using star schema principles, relationship design, and Microsoft best practices for optimal model performance and usability.",
+      "title": "power-bi-data-modeling-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:power-bi-dax-expert": {
+      "path": "assets/chatmodes/power-bi-dax-expert.chatmode.md",
+      "description": "Expert Power BI DAX guidance using Microsoft best practices for performance, readability, and maintainability of DAX formulas and calculations.",
+      "title": "power-bi-dax-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:power-bi-performance-expert": {
+      "path": "assets/chatmodes/power-bi-performance-expert.chatmode.md",
+      "description": "Expert Power BI performance optimization guidance for troubleshooting, monitoring, and improving the performance of Power BI models, reports, and queries.",
+      "title": "power-bi-performance-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:power-bi-visualization-expert": {
+      "path": "assets/chatmodes/power-bi-visualization-expert.chatmode.md",
+      "description": "Expert Power BI report design and visualization guidance using Microsoft best practices for creating effective, performant, and user-friendly reports and dashboards.",
+      "title": "power-bi-visualization-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:power-platform-expert": {
+      "path": "assets/chatmodes/power-platform-expert.chatmode.md",
+      "description": "Power Platform expert providing guidance on Code Apps, canvas apps, Dataverse, connectors, and Power Platform best practices",
+      "title": "power-platform-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:power-platform-mcp-integration-expert": {
+      "path": "assets/chatmodes/power-platform-mcp-integration-expert.chatmode.md",
+      "description": "Expert in Power Platform custom connector development with MCP integration for Copilot Studio - comprehensive knowledge of schemas, protocols, and integration patterns",
+      "title": "power-platform-mcp-integration-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:prd": {
+      "path": "assets/chatmodes/prd.chatmode.md",
+      "description": "Generate a comprehensive Product Requirements Document (PRD) in Markdown, detailing user stories, acceptance criteria, technical considerations, and metrics. Optionally create GitHub issues upon user confirmation.",
+      "title": "prd",
+      "type": "chatmodes"
+    },
+    "chatmodes:principal-software-engineer": {
+      "path": "assets/chatmodes/principal-software-engineer.chatmode.md",
+      "description": "Provide principal-level software engineering guidance with focus on engineering excellence, technical leadership, and pragmatic implementation.",
+      "title": "principal-software-engineer",
+      "type": "chatmodes"
+    },
+    "chatmodes:prompt-builder": {
+      "path": "assets/chatmodes/prompt-builder.chatmode.md",
+      "description": "Expert prompt engineering and validation system for creating high-quality prompts - Brought to you by microsoft/edge-ai",
+      "title": "prompt-builder",
+      "type": "chatmodes"
+    },
+    "chatmodes:prompt-engineer": {
+      "path": "assets/chatmodes/prompt-engineer.chatmode.md",
+      "description": "A specialized chat mode for analyzing and improving prompts. Every user input is treated as a prompt to be improved. It first provides a detailed analysis of the original prompt within a <reasoning> tag, evaluating it against a systematic framework based on OpenAI's prompt engineering best practices. Following the analysis, it generates a new, improved prompt.",
+      "title": "prompt-engineer",
+      "type": "chatmodes"
+    },
+    "chatmodes:python-mcp-expert": {
+      "path": "assets/chatmodes/python-mcp-expert.chatmode.md",
+      "description": "Expert assistant for developing Model Context Protocol (MCP) servers in Python",
+      "title": "python-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:refine-issue": {
+      "path": "assets/chatmodes/refine-issue.chatmode.md",
+      "description": "Refine the requirement or issue with Acceptance Criteria, Technical Considerations, Edge Cases, and NFRs",
+      "title": "refine-issue",
+      "type": "chatmodes"
+    },
+    "chatmodes:research-technical-spike": {
+      "path": "assets/chatmodes/research-technical-spike.chatmode.md",
+      "description": "Systematically research and validate technical spike documents through exhaustive investigation and controlled experimentation.",
+      "title": "research-technical-spike",
+      "type": "chatmodes"
+    },
+    "chatmodes:ruby-mcp-expert": {
+      "path": "assets/chatmodes/ruby-mcp-expert.chatmode.md",
+      "description": "Expert assistance for building Model Context Protocol servers in Ruby using the official MCP Ruby SDK gem with Rails integration.",
+      "title": "ruby-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:rust-gpt-4.1-beast-mode": {
+      "path": "assets/chatmodes/rust-gpt-4.1-beast-mode.chatmode.md",
+      "description": "Rust GPT-4.1 Coding Beast Mode for VS Code",
+      "title": "Rust Beast Mode",
+      "type": "chatmodes"
+    },
+    "chatmodes:rust-mcp-expert": {
+      "path": "assets/chatmodes/rust-mcp-expert.chatmode.md",
+      "description": "Expert assistant for Rust MCP server development using the rmcp SDK with tokio async runtime",
+      "title": "rust-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:search-ai-optimization-expert": {
+      "path": "assets/chatmodes/search-ai-optimization-expert.chatmode.md",
+      "description": "Expert guidance for modern search optimization: SEO, Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO) with AI-ready content strategies",
+      "title": "search-ai-optimization-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:semantic-kernel-dotnet": {
+      "path": "assets/chatmodes/semantic-kernel-dotnet.chatmode.md",
+      "description": "Create, update, refactor, explain or work with code using the .NET version of Semantic Kernel.",
+      "title": "semantic-kernel-dotnet",
+      "type": "chatmodes"
+    },
+    "chatmodes:semantic-kernel-python": {
+      "path": "assets/chatmodes/semantic-kernel-python.chatmode.md",
+      "description": "Create, update, refactor, explain or work with code using the Python version of Semantic Kernel.",
+      "title": "semantic-kernel-python",
+      "type": "chatmodes"
+    },
+    "chatmodes:shopify-expert": {
+      "path": "assets/chatmodes/shopify-expert.chatmode.md",
+      "description": "Expert Shopify development assistant specializing in theme development, Liquid templating, app development, and Shopify APIs",
+      "title": "shopify-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:simple-app-idea-generator": {
+      "path": "assets/chatmodes/simple-app-idea-generator.chatmode.md",
+      "description": "Brainstorm and develop new application ideas through fun, interactive questioning until ready for specification creation.",
+      "title": "simple-app-idea-generator",
+      "type": "chatmodes"
+    },
+    "chatmodes:software-engineer-agent-v1": {
+      "path": "assets/chatmodes/software-engineer-agent-v1.chatmode.md",
+      "description": "Expert-level software engineering agent. Deliver production-ready, maintainable code. Execute systematically and specification-driven. Document comprehensively. Operate autonomously and adaptively.",
+      "title": "software-engineer-agent-v1",
+      "type": "chatmodes"
+    },
+    "chatmodes:specification": {
+      "path": "assets/chatmodes/specification.chatmode.md",
+      "description": "Generate or update specification documents for new or existing functionality.",
+      "title": "specification",
+      "type": "chatmodes"
+    },
+    "chatmodes:swift-mcp-expert": {
+      "path": "assets/chatmodes/swift-mcp-expert.chatmode.md",
+      "description": "Expert assistance for building Model Context Protocol servers in Swift using modern concurrency features and the official MCP Swift SDK.",
+      "title": "swift-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:task-planner": {
+      "path": "assets/chatmodes/task-planner.chatmode.md",
+      "description": "Task planner for creating actionable implementation plans - Brought to you by microsoft/edge-ai",
+      "title": "task-planner",
+      "type": "chatmodes"
+    },
+    "chatmodes:task-researcher": {
+      "path": "assets/chatmodes/task-researcher.chatmode.md",
+      "description": "Task research specialist for comprehensive project analysis - Brought to you by microsoft/edge-ai",
+      "title": "task-researcher",
+      "type": "chatmodes"
+    },
+    "chatmodes:tdd-green": {
+      "path": "assets/chatmodes/tdd-green.chatmode.md",
+      "description": "Implement minimal code to satisfy GitHub issue requirements and make failing tests pass without over-engineering.",
+      "title": "tdd-green",
+      "type": "chatmodes"
+    },
+    "chatmodes:tdd-red": {
+      "path": "assets/chatmodes/tdd-red.chatmode.md",
+      "description": "Guide test-first development by writing failing tests that describe desired behaviour from GitHub issue context before implementation exists.",
+      "title": "tdd-red",
+      "type": "chatmodes"
+    },
+    "chatmodes:tdd-refactor": {
+      "path": "assets/chatmodes/tdd-refactor.chatmode.md",
+      "description": "Improve code quality, apply security best practices, and enhance design whilst maintaining green tests and GitHub issue compliance.",
+      "title": "tdd-refactor",
+      "type": "chatmodes"
+    },
+    "chatmodes:tech-debt-remediation-plan": {
+      "path": "assets/chatmodes/tech-debt-remediation-plan.chatmode.md",
+      "description": "Generate technical debt remediation plans for code, tests, and documentation.",
+      "title": "tech-debt-remediation-plan",
+      "type": "chatmodes"
+    },
+    "chatmodes:terraform-azure-implement": {
+      "path": "assets/chatmodes/terraform-azure-implement.chatmode.md",
+      "description": "Act as an Azure Terraform Infrastructure as Code coding specialist that creates and reviews Terraform for Azure resources.",
+      "title": "terraform-azure-implement",
+      "type": "chatmodes"
+    },
+    "chatmodes:terraform-azure-planning": {
+      "path": "assets/chatmodes/terraform-azure-planning.chatmode.md",
+      "description": "Act as implementation planner for your Azure Terraform Infrastructure as Code task.",
+      "title": "terraform-azure-planning",
+      "type": "chatmodes"
+    },
+    "chatmodes:typescript-mcp-expert": {
+      "path": "assets/chatmodes/typescript-mcp-expert.chatmode.md",
+      "description": "Expert assistant for developing Model Context Protocol (MCP) servers in TypeScript",
+      "title": "typescript-mcp-expert",
+      "type": "chatmodes"
+    },
+    "chatmodes:voidbeast-gpt41enhanced": {
+      "path": "assets/chatmodes/voidbeast-gpt41enhanced.chatmode.md",
+      "description": "4.1 voidBeast_GPT41Enhanced 1.0 : a advanced autonomous developer agent, designed for elite full-stack development with enhanced multi-mode capabilities. This latest evolution features sophisticated mode detection, comprehensive research capabilities, and never-ending problem resolution. Plan/Act/Deep Research/Analyzer/Checkpoints(Memory)/Prompt Generator Modes.",
+      "title": "voidbeast-gpt41enhanced",
+      "type": "chatmodes"
+    },
+    "chatmodes:wg-code-alchemist": {
+      "path": "assets/chatmodes/wg-code-alchemist.chatmode.md",
+      "description": "Ask WG Code Alchemist to transform your code with Clean Code principles and SOLID design",
+      "title": "wg-code-alchemist",
+      "type": "chatmodes"
+    },
+    "chatmodes:wg-code-sentinel": {
+      "path": "assets/chatmodes/wg-code-sentinel.chatmode.md",
+      "description": "Ask WG Code Sentinel to review your code for security issues.",
+      "title": "wg-code-sentinel",
+      "type": "chatmodes"
+    },
+    "instructions:a11y": {
+      "path": "assets/instructions/a11y.instructions.md",
+      "description": "Guidance for creating more accessible code",
+      "title": "a11y",
+      "type": "instructions"
+    },
+    "instructions:ai-prompt-engineering-safety-best-practices": {
+      "path": "assets/instructions/ai-prompt-engineering-safety-best-practices.instructions.md",
+      "description": "Comprehensive best practices for AI prompt engineering, safety frameworks, bias mitigation, and responsible AI usage for Copilot and LLMs.",
+      "title": "ai-prompt-engineering-safety-best-practices",
+      "type": "instructions"
+    },
+    "instructions:angular": {
+      "path": "assets/instructions/angular.instructions.md",
+      "description": "Angular-specific coding standards and best practices",
+      "title": "angular",
+      "type": "instructions"
+    },
+    "instructions:ansible": {
+      "path": "assets/instructions/ansible.instructions.md",
+      "description": "Ansible conventions and best practices",
+      "title": "ansible",
+      "type": "instructions"
+    },
+    "instructions:aspnet-rest-apis": {
+      "path": "assets/instructions/aspnet-rest-apis.instructions.md",
+      "description": "Guidelines for building REST APIs with ASP.NET",
+      "title": "aspnet-rest-apis",
+      "type": "instructions"
+    },
+    "instructions:astro": {
+      "path": "assets/instructions/astro.instructions.md",
+      "description": "Astro development standards and best practices for content-driven websites",
+      "title": "astro",
+      "type": "instructions"
+    },
+    "instructions:azure-devops-pipelines": {
+      "path": "assets/instructions/azure-devops-pipelines.instructions.md",
+      "description": "Best practices for Azure DevOps Pipeline YAML files",
+      "title": "azure-devops-pipelines",
+      "type": "instructions"
+    },
+    "instructions:azure-functions-typescript": {
+      "path": "assets/instructions/azure-functions-typescript.instructions.md",
+      "description": "TypeScript patterns for Azure Functions",
+      "title": "azure-functions-typescript",
+      "type": "instructions"
+    },
+    "instructions:azure-logic-apps-power-automate": {
+      "path": "assets/instructions/azure-logic-apps-power-automate.instructions.md",
+      "description": "Guidelines for developing Azure Logic Apps and Power Automate workflows with best practices for Workflow Definition Language (WDL), integration patterns, and enterprise automation",
+      "title": "azure-logic-apps-power-automate",
+      "type": "instructions"
+    },
+    "instructions:azure-verified-modules-terraform": {
+      "path": "assets/instructions/azure-verified-modules-terraform.instructions.md",
+      "description": " Azure Verified Modules (AVM) and Terraform",
+      "title": "azure-verified-modules-terraform",
+      "type": "instructions"
+    },
+    "instructions:bicep-code-best-practices": {
+      "path": "assets/instructions/bicep-code-best-practices.instructions.md",
+      "description": "Infrastructure as Code with Bicep",
+      "title": "bicep-code-best-practices",
+      "type": "instructions"
+    },
+    "instructions:blazor": {
+      "path": "assets/instructions/blazor.instructions.md",
+      "description": "Blazor component and application patterns",
+      "title": "blazor",
+      "type": "instructions"
+    },
+    "instructions:clojure": {
+      "path": "assets/instructions/clojure.instructions.md",
+      "description": "Clojure-specific coding patterns, inline def usage, code block templates, and namespace handling for Clojure development.",
+      "title": "clojure",
+      "type": "instructions"
+    },
+    "instructions:cmake-vcpkg": {
+      "path": "assets/instructions/cmake-vcpkg.instructions.md",
+      "description": "C++ project configuration and package management",
+      "title": "cmake-vcpkg",
+      "type": "instructions"
+    },
+    "instructions:codexer": {
+      "path": "assets/instructions/codexer.instructions.md",
+      "description": "Advanced Python research assistant with Context 7 MCP integration, focusing on speed, reliability, and 10+ years of software development expertise",
+      "title": "codexer",
+      "type": "instructions"
+    },
+    "instructions:coldfusion-cfc": {
+      "path": "assets/instructions/coldfusion-cfc.instructions.md",
+      "description": "ColdFusion Coding Standards for CFC component and application patterns",
+      "title": "coldfusion-cfc",
+      "type": "instructions"
+    },
+    "instructions:coldfusion-cfm": {
+      "path": "assets/instructions/coldfusion-cfm.instructions.md",
+      "description": "ColdFusion cfm files and application patterns",
+      "title": "coldfusion-cfm",
+      "type": "instructions"
+    },
+    "instructions:collections": {
+      "path": "assets/instructions/collections.instructions.md",
+      "description": "Guidelines for creating and managing awesome-copilot collections",
+      "title": "collections",
+      "type": "instructions"
+    },
+    "instructions:containerization-docker-best-practices": {
+      "path": "assets/instructions/containerization-docker-best-practices.instructions.md",
+      "description": "Comprehensive best practices for creating optimized, secure, and efficient Docker images and managing containers. Covers multi-stage builds, image layer optimization, security scanning, and runtime best practices.",
+      "title": "containerization-docker-best-practices",
+      "type": "instructions"
+    },
+    "instructions:convert-jpa-to-spring-data-cosmos": {
+      "path": "assets/instructions/convert-jpa-to-spring-data-cosmos.instructions.md",
+      "description": "Step-by-step guide for converting Spring Boot JPA applications to use Azure Cosmos DB with Spring Data Cosmos",
+      "title": "convert-jpa-to-spring-data-cosmos",
+      "type": "instructions"
+    },
+    "instructions:copilot-thought-logging": {
+      "path": "assets/instructions/copilot-thought-logging.instructions.md",
+      "description": "See process Copilot is following where you can edit this to reshape the interaction or save when follow up may be needed",
+      "title": "copilot-thought-logging",
+      "type": "instructions"
+    },
+    "instructions:csharp-ja": {
+      "path": "assets/instructions/csharp-ja.instructions.md",
+      "description": "C# アプリケーション構築指針 by @tsubakimoto",
+      "title": "csharp-ja",
+      "type": "instructions"
+    },
+    "instructions:csharp-ko": {
+      "path": "assets/instructions/csharp-ko.instructions.md",
+      "description": "C# 애플리케이션 개발을 위한 코드 작성 규칙 by @jgkim999",
+      "title": "csharp-ko",
+      "type": "instructions"
+    },
+    "instructions:csharp-mcp-server": {
+      "path": "assets/instructions/csharp-mcp-server.instructions.md",
+      "description": "Instructions for building Model Context Protocol (MCP) servers using the C# SDK",
+      "title": "csharp-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:csharp": {
+      "path": "assets/instructions/csharp.instructions.md",
+      "description": "Guidelines for building C# applications",
+      "title": "csharp",
+      "type": "instructions"
+    },
+    "instructions:dart-n-flutter": {
+      "path": "assets/instructions/dart-n-flutter.instructions.md",
+      "description": "Instructions for writing Dart and Flutter code following the official recommendations.",
+      "title": "dart-n-flutter",
+      "type": "instructions"
+    },
+    "instructions:declarative-agents-microsoft365": {
+      "path": "assets/instructions/declarative-agents-microsoft365.instructions.md",
+      "description": "Comprehensive development guidelines for Microsoft 365 Copilot declarative agents with schema v1.5, TypeSpec integration, and Microsoft 365 Agents Toolkit workflows",
+      "title": "declarative-agents-microsoft365",
+      "type": "instructions"
+    },
+    "instructions:devbox-image-definition": {
+      "path": "assets/instructions/devbox-image-definition.instructions.md",
+      "description": "Authoring recommendations for creating YAML based image definition files for use with Microsoft Dev Box Team Customizations",
+      "title": "devbox-image-definition",
+      "type": "instructions"
+    },
+    "instructions:devops-core-principles": {
+      "path": "assets/instructions/devops-core-principles.instructions.md",
+      "description": "Foundational instructions covering core DevOps principles, culture (CALMS), and key metrics (DORA) to guide GitHub Copilot in understanding and promoting effective software delivery.",
+      "title": "devops-core-principles",
+      "type": "instructions"
+    },
+    "instructions:dotnet-architecture-good-practices": {
+      "path": "assets/instructions/dotnet-architecture-good-practices.instructions.md",
+      "description": "DDD and .NET architecture guidelines",
+      "title": "dotnet-architecture-good-practices",
+      "type": "instructions"
+    },
+    "instructions:dotnet-framework": {
+      "path": "assets/instructions/dotnet-framework.instructions.md",
+      "description": "Guidance for working with .NET Framework projects. Includes project structure, C# language version, NuGet management, and best practices.",
+      "title": "dotnet-framework",
+      "type": "instructions"
+    },
+    "instructions:dotnet-maui-9-to-dotnet-maui-10-upgrade": {
+      "path": "assets/instructions/dotnet-maui-9-to-dotnet-maui-10-upgrade.instructions.md",
+      "description": "Instructions for upgrading .NET MAUI applications from version 9 to version 10, including breaking changes, deprecated APIs, and migration strategies for ListView to CollectionView.",
+      "title": "dotnet-maui-9-to-dotnet-maui-10-upgrade",
+      "type": "instructions"
+    },
+    "instructions:dotnet-maui": {
+      "path": "assets/instructions/dotnet-maui.instructions.md",
+      "description": ".NET MAUI component and application patterns",
+      "title": "dotnet-maui",
+      "type": "instructions"
+    },
+    "instructions:dotnet-upgrade": {
+      "path": "assets/instructions/dotnet-upgrade.instructions.md",
+      "description": "Specialized agent for comprehensive .NET framework upgrades with progressive tracking and validation",
+      "title": "dotnet-upgrade",
+      "type": "instructions"
+    },
+    "instructions:dotnet-wpf": {
+      "path": "assets/instructions/dotnet-wpf.instructions.md",
+      "description": ".NET WPF component and application patterns",
+      "title": "dotnet-wpf",
+      "type": "instructions"
+    },
+    "instructions:genaiscript": {
+      "path": "assets/instructions/genaiscript.instructions.md",
+      "description": "AI-powered script generation guidelines",
+      "title": "genaiscript",
+      "type": "instructions"
+    },
+    "instructions:generate-modern-terraform-code-for-azure": {
+      "path": "assets/instructions/generate-modern-terraform-code-for-azure.instructions.md",
+      "description": "Guidelines for generating modern Terraform code for Azure",
+      "title": "generate-modern-terraform-code-for-azure",
+      "type": "instructions"
+    },
+    "instructions:gilfoyle-code-review": {
+      "path": "assets/instructions/gilfoyle-code-review.instructions.md",
+      "description": "Gilfoyle-style code review instructions that channel the sardonic technical supremacy of Silicon Valley's most arrogant systems architect.",
+      "title": "gilfoyle-code-review",
+      "type": "instructions"
+    },
+    "instructions:github-actions-ci-cd-best-practices": {
+      "path": "assets/instructions/github-actions-ci-cd-best-practices.instructions.md",
+      "description": "Comprehensive guide for building robust, secure, and efficient CI/CD pipelines using GitHub Actions. Covers workflow structure, jobs, steps, environment variables, secret management, caching, matrix strategies, testing, and deployment strategies.",
+      "title": "github-actions-ci-cd-best-practices",
+      "type": "instructions"
+    },
+    "instructions:go-mcp-server": {
+      "path": "assets/instructions/go-mcp-server.instructions.md",
+      "description": "Best practices and patterns for building Model Context Protocol (MCP) servers in Go using the official github.com/modelcontextprotocol/go-sdk package.",
+      "title": "go-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:go": {
+      "path": "assets/instructions/go.instructions.md",
+      "description": "Instructions for writing Go code following idiomatic Go practices and community standards",
+      "title": "go",
+      "type": "instructions"
+    },
+    "instructions:instructions": {
+      "path": "assets/instructions/instructions.instructions.md",
+      "description": "Guidelines for creating high-quality custom instruction files for GitHub Copilot",
+      "title": "instructions",
+      "type": "instructions"
+    },
+    "instructions:java-11-to-java-17-upgrade": {
+      "path": "assets/instructions/java-11-to-java-17-upgrade.instructions.md",
+      "description": "Comprehensive best practices for adopting new Java 17 features since the release of Java 11.",
+      "title": "java-11-to-java-17-upgrade",
+      "type": "instructions"
+    },
+    "instructions:java-17-to-java-21-upgrade": {
+      "path": "assets/instructions/java-17-to-java-21-upgrade.instructions.md",
+      "description": "Comprehensive best practices for adopting new Java 21 features since the release of Java 17.",
+      "title": "java-17-to-java-21-upgrade",
+      "type": "instructions"
+    },
+    "instructions:java-21-to-java-25-upgrade": {
+      "path": "assets/instructions/java-21-to-java-25-upgrade.instructions.md",
+      "description": "Comprehensive best practices for adopting new Java 25 features since the release of Java 21.",
+      "title": "java-21-to-java-25-upgrade",
+      "type": "instructions"
+    },
+    "instructions:java-mcp-server": {
+      "path": "assets/instructions/java-mcp-server.instructions.md",
+      "description": "Best practices and patterns for building Model Context Protocol (MCP) servers in Java using the official MCP Java SDK with reactive streams and Spring integration.",
+      "title": "java-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:java": {
+      "path": "assets/instructions/java.instructions.md",
+      "description": "Guidelines for building Java base applications",
+      "title": "java",
+      "type": "instructions"
+    },
+    "instructions:joyride-user-project": {
+      "path": "assets/instructions/joyride-user-project.instructions.md",
+      "description": "Expert assistance for Joyride User Script projects - REPL-driven ClojureScript and user space automation of VS Code",
+      "title": "joyride-user-project",
+      "type": "instructions"
+    },
+    "instructions:joyride-workspace-automation": {
+      "path": "assets/instructions/joyride-workspace-automation.instructions.md",
+      "description": "Expert assistance for Joyride Workspace automation - REPL-driven and user space ClojureScript automation within specific VS Code workspaces",
+      "title": "joyride-workspace-automation",
+      "type": "instructions"
+    },
+    "instructions:kotlin-mcp-server": {
+      "path": "assets/instructions/kotlin-mcp-server.instructions.md",
+      "description": "Best practices and patterns for building Model Context Protocol (MCP) servers in Kotlin using the official io.modelcontextprotocol:kotlin-sdk library.",
+      "title": "kotlin-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:kubernetes-deployment-best-practices": {
+      "path": "assets/instructions/kubernetes-deployment-best-practices.instructions.md",
+      "description": "Comprehensive best practices for deploying and managing applications on Kubernetes. Covers Pods, Deployments, Services, Ingress, ConfigMaps, Secrets, health checks, resource limits, scaling, and security contexts.",
+      "title": "kubernetes-deployment-best-practices",
+      "type": "instructions"
+    },
+    "instructions:langchain-python": {
+      "path": "assets/instructions/langchain-python.instructions.md",
+      "description": "Instructions for using LangChain with Python",
+      "title": "langchain-python",
+      "type": "instructions"
+    },
+    "instructions:localization": {
+      "path": "assets/instructions/localization.instructions.md",
+      "description": "Guidelines for localizing markdown documents",
+      "title": "localization",
+      "type": "instructions"
+    },
+    "instructions:makefile": {
+      "path": "assets/instructions/makefile.instructions.md",
+      "description": "Best practices for authoring GNU Make Makefiles",
+      "title": "makefile",
+      "type": "instructions"
+    },
+    "instructions:markdown": {
+      "path": "assets/instructions/markdown.instructions.md",
+      "description": "Documentation and content creation standards",
+      "title": "markdown",
+      "type": "instructions"
+    },
+    "instructions:memory-bank": {
+      "path": "assets/instructions/memory-bank.instructions.md",
+      "description": "",
+      "title": "memory-bank",
+      "type": "instructions"
+    },
+    "instructions:mongo-dba": {
+      "path": "assets/instructions/mongo-dba.instructions.md",
+      "description": "Instructions for customizing GitHub Copilot behavior for MONGODB DBA chat mode.",
+      "title": "mongo-dba",
+      "type": "instructions"
+    },
+    "instructions:ms-sql-dba": {
+      "path": "assets/instructions/ms-sql-dba.instructions.md",
+      "description": "Instructions for customizing GitHub Copilot behavior for MS-SQL DBA chat mode.",
+      "title": "ms-sql-dba",
+      "type": "instructions"
+    },
+    "instructions:nestjs": {
+      "path": "assets/instructions/nestjs.instructions.md",
+      "description": "NestJS development standards and best practices for building scalable Node.js server-side applications",
+      "title": "nestjs",
+      "type": "instructions"
+    },
+    "instructions:nextjs-tailwind": {
+      "path": "assets/instructions/nextjs-tailwind.instructions.md",
+      "description": "Next.js + Tailwind development standards and instructions",
+      "title": "nextjs-tailwind",
+      "type": "instructions"
+    },
+    "instructions:nextjs": {
+      "path": "assets/instructions/nextjs.instructions.md",
+      "description": "",
+      "title": "nextjs",
+      "type": "instructions"
+    },
+    "instructions:nodejs-javascript-vitest": {
+      "path": "assets/instructions/nodejs-javascript-vitest.instructions.md",
+      "description": "Guidelines for writing Node.js and JavaScript code with Vitest testing",
+      "title": "nodejs-javascript-vitest",
+      "type": "instructions"
+    },
+    "instructions:object-calisthenics": {
+      "path": "assets/instructions/object-calisthenics.instructions.md",
+      "description": "Enforces Object Calisthenics principles for business domain code to ensure clean, maintainable, and robust code",
+      "title": "object-calisthenics",
+      "type": "instructions"
+    },
+    "instructions:oqtane": {
+      "path": "assets/instructions/oqtane.instructions.md",
+      "description": "Oqtane Module patterns",
+      "title": "oqtane",
+      "type": "instructions"
+    },
+    "instructions:performance-optimization": {
+      "path": "assets/instructions/performance-optimization.instructions.md",
+      "description": "The most comprehensive, practical, and engineer-authored performance optimization instructions for all languages, frameworks, and stacks. Covers frontend, backend, and database best practices with actionable guidance, scenario-based checklists, troubleshooting, and pro tips.",
+      "title": "performance-optimization",
+      "type": "instructions"
+    },
+    "instructions:php-mcp-server": {
+      "path": "assets/instructions/php-mcp-server.instructions.md",
+      "description": "Best practices for building Model Context Protocol servers in PHP using the official PHP SDK with attribute-based discovery and multiple transport options",
+      "title": "php-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:playwright-dotnet": {
+      "path": "assets/instructions/playwright-dotnet.instructions.md",
+      "description": "Playwright .NET test generation instructions",
+      "title": "playwright-dotnet",
+      "type": "instructions"
+    },
+    "instructions:playwright-python": {
+      "path": "assets/instructions/playwright-python.instructions.md",
+      "description": "Playwright Python AI test generation instructions based on official documentation.",
+      "title": "playwright-python",
+      "type": "instructions"
+    },
+    "instructions:playwright-typescript": {
+      "path": "assets/instructions/playwright-typescript.instructions.md",
+      "description": "Playwright test generation instructions",
+      "title": "playwright-typescript",
+      "type": "instructions"
+    },
+    "instructions:power-apps-canvas-yaml": {
+      "path": "assets/instructions/power-apps-canvas-yaml.instructions.md",
+      "description": "Comprehensive guide for working with Power Apps Canvas Apps YAML structure based on Microsoft Power Apps YAML schema v3.0. Covers Power Fx formulas, control structures, data types, and source control best practices.",
+      "title": "power-apps-canvas-yaml",
+      "type": "instructions"
+    },
+    "instructions:power-apps-code-apps": {
+      "path": "assets/instructions/power-apps-code-apps.instructions.md",
+      "description": "Power Apps Code Apps development standards and best practices for TypeScript, React, and Power Platform integration",
+      "title": "power-apps-code-apps",
+      "type": "instructions"
+    },
+    "instructions:power-bi-custom-visuals-development": {
+      "path": "assets/instructions/power-bi-custom-visuals-development.instructions.md",
+      "description": "Comprehensive Power BI custom visuals development guide covering React, D3.js integration, TypeScript patterns, testing frameworks, and advanced visualization techniques.",
+      "title": "power-bi-custom-visuals-development",
+      "type": "instructions"
+    },
+    "instructions:power-bi-data-modeling-best-practices": {
+      "path": "assets/instructions/power-bi-data-modeling-best-practices.instructions.md",
+      "description": "Comprehensive Power BI data modeling best practices based on Microsoft guidance for creating efficient, scalable, and maintainable semantic models using star schema principles.",
+      "title": "power-bi-data-modeling-best-practices",
+      "type": "instructions"
+    },
+    "instructions:power-bi-dax-best-practices": {
+      "path": "assets/instructions/power-bi-dax-best-practices.instructions.md",
+      "description": "Comprehensive Power BI DAX best practices and patterns based on Microsoft guidance for creating efficient, maintainable, and performant DAX formulas.",
+      "title": "power-bi-dax-best-practices",
+      "type": "instructions"
+    },
+    "instructions:power-bi-devops-alm-best-practices": {
+      "path": "assets/instructions/power-bi-devops-alm-best-practices.instructions.md",
+      "description": "Comprehensive guide for Power BI DevOps, Application Lifecycle Management (ALM), CI/CD pipelines, deployment automation, and version control best practices.",
+      "title": "power-bi-devops-alm-best-practices",
+      "type": "instructions"
+    },
+    "instructions:power-bi-report-design-best-practices": {
+      "path": "assets/instructions/power-bi-report-design-best-practices.instructions.md",
+      "description": "Comprehensive Power BI report design and visualization best practices based on Microsoft guidance for creating effective, accessible, and performant reports and dashboards.",
+      "title": "power-bi-report-design-best-practices",
+      "type": "instructions"
+    },
+    "instructions:power-bi-security-rls-best-practices": {
+      "path": "assets/instructions/power-bi-security-rls-best-practices.instructions.md",
+      "description": "Comprehensive Power BI Row-Level Security (RLS) and advanced security patterns implementation guide with dynamic security, best practices, and governance strategies.",
+      "title": "power-bi-security-rls-best-practices",
+      "type": "instructions"
+    },
+    "instructions:power-platform-connector": {
+      "path": "assets/instructions/power-platform-connector.instructions.md",
+      "description": "Comprehensive development guidelines for Power Platform Custom Connectors using JSON Schema definitions. Covers API definitions (Swagger 2.0), API properties, and settings configuration with Microsoft extensions.",
+      "title": "Power Platform Connectors Schema Development Instructions",
+      "type": "instructions"
+    },
+    "instructions:power-platform-mcp-development": {
+      "path": "assets/instructions/power-platform-mcp-development.instructions.md",
+      "description": "Instructions for developing Power Platform custom connectors with Model Context Protocol (MCP) integration for Microsoft Copilot Studio",
+      "title": "power-platform-mcp-development",
+      "type": "instructions"
+    },
+    "instructions:powershell-pester-5": {
+      "path": "assets/instructions/powershell-pester-5.instructions.md",
+      "description": "PowerShell Pester testing best practices based on Pester v5 conventions",
+      "title": "powershell-pester-5",
+      "type": "instructions"
+    },
+    "instructions:powershell": {
+      "path": "assets/instructions/powershell.instructions.md",
+      "description": "PowerShell cmdlet and scripting best practices based on Microsoft guidelines",
+      "title": "powershell",
+      "type": "instructions"
+    },
+    "instructions:prompt": {
+      "path": "assets/instructions/prompt.instructions.md",
+      "description": "Guidelines for creating high-quality prompt files for GitHub Copilot",
+      "title": "prompt",
+      "type": "instructions"
+    },
+    "instructions:python-mcp-server": {
+      "path": "assets/instructions/python-mcp-server.instructions.md",
+      "description": "Instructions for building Model Context Protocol (MCP) servers using the Python SDK",
+      "title": "python-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:python": {
+      "path": "assets/instructions/python.instructions.md",
+      "description": "Python coding conventions and guidelines",
+      "title": "python",
+      "type": "instructions"
+    },
+    "instructions:quarkus-mcp-server-sse": {
+      "path": "assets/instructions/quarkus-mcp-server-sse.instructions.md",
+      "description": "Quarkus and MCP Server with HTTP SSE transport development standards and instructions",
+      "title": "quarkus-mcp-server-sse",
+      "type": "instructions"
+    },
+    "instructions:quarkus": {
+      "path": "assets/instructions/quarkus.instructions.md",
+      "description": "Quarkus development standards and instructions",
+      "title": "quarkus",
+      "type": "instructions"
+    },
+    "instructions:r": {
+      "path": "assets/instructions/r.instructions.md",
+      "description": "R language and document formats (R, Rmd, Quarto): coding standards and Copilot guidance for idiomatic, safe, and consistent code generation.",
+      "title": "r",
+      "type": "instructions"
+    },
+    "instructions:reactjs": {
+      "path": "assets/instructions/reactjs.instructions.md",
+      "description": "ReactJS development standards and best practices",
+      "title": "reactjs",
+      "type": "instructions"
+    },
+    "instructions:ruby-mcp-server": {
+      "path": "assets/instructions/ruby-mcp-server.instructions.md",
+      "description": "Best practices and patterns for building Model Context Protocol (MCP) servers in Ruby using the official MCP Ruby SDK gem.",
+      "title": "ruby-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:ruby-on-rails": {
+      "path": "assets/instructions/ruby-on-rails.instructions.md",
+      "description": "Ruby on Rails coding conventions and guidelines",
+      "title": "ruby-on-rails",
+      "type": "instructions"
+    },
+    "instructions:rust-mcp-server": {
+      "path": "assets/instructions/rust-mcp-server.instructions.md",
+      "description": "Best practices for building Model Context Protocol servers in Rust using the official rmcp SDK with async/await patterns",
+      "title": "rust-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:rust": {
+      "path": "assets/instructions/rust.instructions.md",
+      "description": "Rust programming language coding conventions and best practices",
+      "title": "rust",
+      "type": "instructions"
+    },
+    "instructions:security-and-owasp": {
+      "path": "assets/instructions/security-and-owasp.instructions.md",
+      "description": "Comprehensive secure coding instructions for all languages and frameworks, based on OWASP Top 10 and industry best practices.",
+      "title": "security-and-owasp",
+      "type": "instructions"
+    },
+    "instructions:self-explanatory-code-commenting": {
+      "path": "assets/instructions/self-explanatory-code-commenting.instructions.md",
+      "description": "Guidelines for GitHub Copilot to write comments to achieve self-explanatory code with less comments. Examples are in JavaScript but it should work on any language that has comments.",
+      "title": "self-explanatory-code-commenting",
+      "type": "instructions"
+    },
+    "instructions:shell": {
+      "path": "assets/instructions/shell.instructions.md",
+      "description": "Shell scripting best practices and conventions for bash, sh, zsh, and other shells",
+      "title": "shell",
+      "type": "instructions"
+    },
+    "instructions:spec-driven-workflow-v1": {
+      "path": "assets/instructions/spec-driven-workflow-v1.instructions.md",
+      "description": "Specification-Driven Workflow v1 provides a structured approach to software development, ensuring that requirements are clearly defined, designs are meticulously planned, and implementations are thoroughly documented and validated.",
+      "title": "spec-driven-workflow-v1",
+      "type": "instructions"
+    },
+    "instructions:springboot": {
+      "path": "assets/instructions/springboot.instructions.md",
+      "description": "Guidelines for building Spring Boot base applications",
+      "title": "springboot",
+      "type": "instructions"
+    },
+    "instructions:sql-sp-generation": {
+      "path": "assets/instructions/sql-sp-generation.instructions.md",
+      "description": "Guidelines for generating SQL statements and stored procedures",
+      "title": "sql-sp-generation",
+      "type": "instructions"
+    },
+    "instructions:svelte": {
+      "path": "assets/instructions/svelte.instructions.md",
+      "description": "Svelte 5 and SvelteKit development standards and best practices for component-based user interfaces and full-stack applications",
+      "title": "svelte",
+      "type": "instructions"
+    },
+    "instructions:swift-mcp-server": {
+      "path": "assets/instructions/swift-mcp-server.instructions.md",
+      "description": "Best practices and patterns for building Model Context Protocol (MCP) servers in Swift using the official MCP Swift SDK package.",
+      "title": "swift-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:taming-copilot": {
+      "path": "assets/instructions/taming-copilot.instructions.md",
+      "description": "Prevent Copilot from wreaking havoc across your codebase, keeping it under control.",
+      "title": "taming-copilot",
+      "type": "instructions"
+    },
+    "instructions:tanstack-start-shadcn-tailwind": {
+      "path": "assets/instructions/tanstack-start-shadcn-tailwind.instructions.md",
+      "description": "Guidelines for building TanStack Start applications",
+      "title": "tanstack-start-shadcn-tailwind",
+      "type": "instructions"
+    },
+    "instructions:task-implementation": {
+      "path": "assets/instructions/task-implementation.instructions.md",
+      "description": "Instructions for implementing task plans with progressive tracking and change record - Brought to you by microsoft/edge-ai",
+      "title": "task-implementation",
+      "type": "instructions"
+    },
+    "instructions:tasksync": {
+      "path": "assets/instructions/tasksync.instructions.md",
+      "description": "TaskSync V4 - Allows you to give the agent new instructions or feedback after completing a task using terminal while agent is running.",
+      "title": "tasksync",
+      "type": "instructions"
+    },
+    "instructions:terraform-azure": {
+      "path": "assets/instructions/terraform-azure.instructions.md",
+      "description": "Create or modify solutions built using Terraform on Azure.",
+      "title": "terraform-azure",
+      "type": "instructions"
+    },
+    "instructions:terraform-sap-btp": {
+      "path": "assets/instructions/terraform-sap-btp.instructions.md",
+      "description": "Terraform conventions and guidelines for SAP Business Technology Platform (SAP BTP).",
+      "title": "terraform-sap-btp",
+      "type": "instructions"
+    },
+    "instructions:terraform": {
+      "path": "assets/instructions/terraform.instructions.md",
+      "description": "Terraform Conventions and Guidelines",
+      "title": "terraform",
+      "type": "instructions"
+    },
+    "instructions:typescript-5-es2022": {
+      "path": "assets/instructions/typescript-5-es2022.instructions.md",
+      "description": "Guidelines for TypeScript Development targeting TypeScript 5.x and ES2022 output",
+      "title": "typescript-5-es2022",
+      "type": "instructions"
+    },
+    "instructions:typescript-mcp-server": {
+      "path": "assets/instructions/typescript-mcp-server.instructions.md",
+      "description": "Instructions for building Model Context Protocol (MCP) servers using the TypeScript SDK",
+      "title": "typescript-mcp-server",
+      "type": "instructions"
+    },
+    "instructions:update-code-from-shorthand": {
+      "path": "assets/instructions/update-code-from-shorthand.instructions.md",
+      "description": "Shorthand code will be in the file provided from the prompt or raw data in the prompt, and will be used to update the code file when the prompt has the text `UPDATE CODE FROM SHORTHAND`.",
+      "title": "update-code-from-shorthand",
+      "type": "instructions"
+    },
+    "instructions:vuejs3": {
+      "path": "assets/instructions/vuejs3.instructions.md",
+      "description": "VueJS 3 development standards and best practices with Composition API and TypeScript",
+      "title": "vuejs3",
+      "type": "instructions"
+    },
+    "instructions:wordpress": {
+      "path": "assets/instructions/wordpress.instructions.md",
+      "description": "Coding, security, and testing rules for WordPress plugins and themes",
+      "title": "wordpress",
+      "type": "instructions"
+    },
+    "prompts:add-educational-comments": {
+      "path": "assets/prompts/add-educational-comments.prompt.md",
+      "description": "Add educational comments to the file specified, or prompt asking for file to comment if one is not provided.",
+      "title": "add-educational-comments",
+      "type": "prompts"
+    },
+    "prompts:ai-prompt-engineering-safety-review": {
+      "path": "assets/prompts/ai-prompt-engineering-safety-review.prompt.md",
+      "description": "Comprehensive AI prompt engineering safety review and improvement prompt. Analyzes prompts for safety, bias, security vulnerabilities, and effectiveness while providing detailed improvement recommendations with extensive frameworks, testing methodologies, and educational content.",
+      "title": "ai-prompt-engineering-safety-review",
+      "type": "prompts"
+    },
+    "prompts:architecture-blueprint-generator": {
+      "path": "assets/prompts/architecture-blueprint-generator.prompt.md",
+      "description": "Comprehensive project architecture blueprint generator that analyzes codebases to create detailed architectural documentation. Automatically detects technology stacks and architectural patterns, generates visual diagrams, documents implementation patterns, and provides extensible blueprints for maintaining architectural consistency and guiding new development.",
+      "title": "architecture-blueprint-generator",
+      "type": "prompts"
+    },
+    "prompts:aspnet-minimal-api-openapi": {
+      "path": "assets/prompts/aspnet-minimal-api-openapi.prompt.md",
+      "description": "Create ASP.NET Minimal API endpoints with proper OpenAPI documentation",
+      "title": "aspnet-minimal-api-openapi",
+      "type": "prompts"
+    },
+    "prompts:az-cost-optimize": {
+      "path": "assets/prompts/az-cost-optimize.prompt.md",
+      "description": "Analyze Azure resources used in the app (IaC files and/or resources in a target rg) and optimize costs - creating GitHub issues for identified optimizations.",
+      "title": "az-cost-optimize",
+      "type": "prompts"
+    },
+    "prompts:azure-resource-health-diagnose": {
+      "path": "assets/prompts/azure-resource-health-diagnose.prompt.md",
+      "description": "Analyze Azure resource health, diagnose issues from logs and telemetry, and create a remediation plan for identified problems.",
+      "title": "azure-resource-health-diagnose",
+      "type": "prompts"
+    },
+    "prompts:boost-prompt": {
+      "path": "assets/prompts/boost-prompt.prompt.md",
+      "description": "Interactive prompt refinement workflow: interrogates scope, deliverables, constraints; copies final markdown to clipboard; never writes code. Requires the Joyride extension.",
+      "title": "boost-prompt",
+      "type": "prompts"
+    },
+    "prompts:breakdown-epic-arch": {
+      "path": "assets/prompts/breakdown-epic-arch.prompt.md",
+      "description": "Prompt for creating the high-level technical architecture for an Epic, based on a Product Requirements Document.",
+      "title": "breakdown-epic-arch",
+      "type": "prompts"
+    },
+    "prompts:breakdown-epic-pm": {
+      "path": "assets/prompts/breakdown-epic-pm.prompt.md",
+      "description": "Prompt for creating an Epic Product Requirements Document (PRD) for a new epic. This PRD will be used as input for generating a technical architecture specification.",
+      "title": "breakdown-epic-pm",
+      "type": "prompts"
+    },
+    "prompts:breakdown-feature-implementation": {
+      "path": "assets/prompts/breakdown-feature-implementation.prompt.md",
+      "description": "Prompt for creating detailed feature implementation plans, following Epoch monorepo structure.",
+      "title": "breakdown-feature-implementation",
+      "type": "prompts"
+    },
+    "prompts:breakdown-feature-prd": {
+      "path": "assets/prompts/breakdown-feature-prd.prompt.md",
+      "description": "Prompt for creating Product Requirements Documents (PRDs) for new features, based on an Epic.",
+      "title": "breakdown-feature-prd",
+      "type": "prompts"
+    },
+    "prompts:breakdown-plan": {
+      "path": "assets/prompts/breakdown-plan.prompt.md",
+      "description": "Issue Planning and Automation prompt that generates comprehensive project plans with Epic > Feature > Story/Enabler > Test hierarchy, dependencies, priorities, and automated tracking.",
+      "title": "breakdown-plan",
+      "type": "prompts"
+    },
+    "prompts:breakdown-test": {
+      "path": "assets/prompts/breakdown-test.prompt.md",
+      "description": "Test Planning and Quality Assurance prompt that generates comprehensive test strategies, task breakdowns, and quality validation plans for GitHub projects.",
+      "title": "breakdown-test",
+      "type": "prompts"
+    },
+    "prompts:code-exemplars-blueprint-generator": {
+      "path": "assets/prompts/code-exemplars-blueprint-generator.prompt.md",
+      "description": "Technology-agnostic prompt generator that creates customizable AI prompts for scanning codebases and identifying high-quality code exemplars. Supports multiple programming languages (.NET, Java, JavaScript, TypeScript, React, Angular, Python) with configurable analysis depth, categorization methods, and documentation formats to establish coding standards and maintain consistency across development teams.",
+      "title": "code-exemplars-blueprint-generator",
+      "type": "prompts"
+    },
+    "prompts:comment-code-generate-a-tutorial": {
+      "path": "assets/prompts/comment-code-generate-a-tutorial.prompt.md",
+      "description": "Transform this Python script into a polished, beginner-friendly project by refactoring the code, adding clear instructional comments, and generating a complete markdown tutorial.",
+      "title": "comment-code-generate-a-tutorial",
+      "type": "prompts"
+    },
+    "prompts:containerize-aspnet-framework": {
+      "path": "assets/prompts/containerize-aspnet-framework.prompt.md",
+      "description": "Containerize an ASP.NET .NET Framework project by creating Dockerfile and .dockerfile files customized for the project.",
+      "title": "containerize-aspnet-framework",
+      "type": "prompts"
+    },
+    "prompts:containerize-aspnetcore": {
+      "path": "assets/prompts/containerize-aspnetcore.prompt.md",
+      "description": "Containerize an ASP.NET Core project by creating Dockerfile and .dockerfile files customized for the project.",
+      "title": "containerize-aspnetcore",
+      "type": "prompts"
+    },
+    "prompts:conventional-commit": {
+      "path": "assets/prompts/conventional-commit.prompt.md",
+      "description": "Prompt and workflow for generating conventional commit messages using a structured XML format. Guides users to create standardized, descriptive commit messages in line with the Conventional Commits specification, including instructions, examples, and validation.",
+      "title": "conventional-commit",
+      "type": "prompts"
+    },
+    "prompts:copilot-instructions-blueprint-generator": {
+      "path": "assets/prompts/copilot-instructions-blueprint-generator.prompt.md",
+      "description": "Technology-agnostic blueprint generator for creating comprehensive copilot-instructions.md files that guide GitHub Copilot to produce code consistent with project standards, architecture patterns, and exact technology versions by analyzing existing codebase patterns and avoiding assumptions.",
+      "title": "copilot-instructions-blueprint-generator",
+      "type": "prompts"
+    },
+    "prompts:cosmosdb-datamodeling": {
+      "path": "assets/prompts/cosmosdb-datamodeling.prompt.md",
+      "description": "Step-by-step guide for capturing key application requirements for NoSQL use-case and produce Azure Cosmos DB Data NoSQL Model design using best practices and common patterns, artifacts_produced: \"cosmosdb_requirements.md\" file and \"cosmosdb_data_model.md\" file",
+      "title": "cosmosdb-datamodeling",
+      "type": "prompts"
+    },
+    "prompts:create-agentsmd": {
+      "path": "assets/prompts/create-agentsmd.prompt.md",
+      "description": "Prompt for generating an AGENTS.md file for a repository",
+      "title": "create-agentsmd",
+      "type": "prompts"
+    },
+    "prompts:create-architectural-decision-record": {
+      "path": "assets/prompts/create-architectural-decision-record.prompt.md",
+      "description": "Create an Architectural Decision Record (ADR) document for AI-optimized decision documentation.",
+      "title": "create-architectural-decision-record",
+      "type": "prompts"
+    },
+    "prompts:create-github-action-workflow-specification": {
+      "path": "assets/prompts/create-github-action-workflow-specification.prompt.md",
+      "description": "Create a formal specification for an existing GitHub Actions CI/CD workflow, optimized for AI consumption and workflow maintenance.",
+      "title": "create-github-action-workflow-specification",
+      "type": "prompts"
+    },
+    "prompts:create-github-issue-feature-from-specification": {
+      "path": "assets/prompts/create-github-issue-feature-from-specification.prompt.md",
+      "description": "Create GitHub Issue for feature request from specification file using feature_request.yml template.",
+      "title": "create-github-issue-feature-from-specification",
+      "type": "prompts"
+    },
+    "prompts:create-github-issues-feature-from-implementation-plan": {
+      "path": "assets/prompts/create-github-issues-feature-from-implementation-plan.prompt.md",
+      "description": "Create GitHub Issues from implementation plan phases using feature_request.yml or chore_request.yml templates.",
+      "title": "create-github-issues-feature-from-implementation-plan",
+      "type": "prompts"
+    },
+    "prompts:create-github-issues-for-unmet-specification-requirements": {
+      "path": "assets/prompts/create-github-issues-for-unmet-specification-requirements.prompt.md",
+      "description": "Create GitHub Issues for unimplemented requirements from specification files using feature_request.yml template.",
+      "title": "create-github-issues-for-unmet-specification-requirements",
+      "type": "prompts"
+    },
+    "prompts:create-github-pull-request-from-specification": {
+      "path": "assets/prompts/create-github-pull-request-from-specification.prompt.md",
+      "description": "Create GitHub Pull Request for feature request from specification file using pull_request_template.md template.",
+      "title": "create-github-pull-request-from-specification",
+      "type": "prompts"
+    },
+    "prompts:create-implementation-plan": {
+      "path": "assets/prompts/create-implementation-plan.prompt.md",
+      "description": "Create a new implementation plan file for new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.",
+      "title": "create-implementation-plan",
+      "type": "prompts"
+    },
+    "prompts:create-llms": {
+      "path": "assets/prompts/create-llms.prompt.md",
+      "description": "Create an llms.txt file from scratch based on repository structure following the llms.txt specification at https://llmstxt.org/",
+      "title": "create-llms",
+      "type": "prompts"
+    },
+    "prompts:create-oo-component-documentation": {
+      "path": "assets/prompts/create-oo-component-documentation.prompt.md",
+      "description": "Create comprehensive, standardized documentation for object-oriented components following industry best practices and architectural documentation standards.",
+      "title": "create-oo-component-documentation",
+      "type": "prompts"
+    },
+    "prompts:create-readme": {
+      "path": "assets/prompts/create-readme.prompt.md",
+      "description": "Create a README.md file for the project",
+      "title": "create-readme",
+      "type": "prompts"
+    },
+    "prompts:create-specification": {
+      "path": "assets/prompts/create-specification.prompt.md",
+      "description": "Create a new specification file for the solution, optimized for Generative AI consumption.",
+      "title": "create-specification",
+      "type": "prompts"
+    },
+    "prompts:create-spring-boot-java-project": {
+      "path": "assets/prompts/create-spring-boot-java-project.prompt.md",
+      "description": "Create Spring Boot Java Project Skeleton",
+      "title": "create-spring-boot-java-project",
+      "type": "prompts"
+    },
+    "prompts:create-spring-boot-kotlin-project": {
+      "path": "assets/prompts/create-spring-boot-kotlin-project.prompt.md",
+      "description": "Create Spring Boot Kotlin Project Skeleton",
+      "title": "create-spring-boot-kotlin-project",
+      "type": "prompts"
+    },
+    "prompts:create-technical-spike": {
+      "path": "assets/prompts/create-technical-spike.prompt.md",
+      "description": "Create time-boxed technical spike documents for researching and resolving critical development decisions before implementation.",
+      "title": "create-technical-spike",
+      "type": "prompts"
+    },
+    "prompts:csharp-async": {
+      "path": "assets/prompts/csharp-async.prompt.md",
+      "description": "Get best practices for C# async programming",
+      "title": "csharp-async",
+      "type": "prompts"
+    },
+    "prompts:csharp-docs": {
+      "path": "assets/prompts/csharp-docs.prompt.md",
+      "description": "Ensure that C# types are documented with XML comments and follow best practices for documentation.",
+      "title": "csharp-docs",
+      "type": "prompts"
+    },
+    "prompts:csharp-mcp-server-generator": {
+      "path": "assets/prompts/csharp-mcp-server-generator.prompt.md",
+      "description": "Generate a complete MCP server project in C# with tools, prompts, and proper configuration",
+      "title": "csharp-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:csharp-mstest": {
+      "path": "assets/prompts/csharp-mstest.prompt.md",
+      "description": "Get best practices for MSTest unit testing, including data-driven tests",
+      "title": "csharp-mstest",
+      "type": "prompts"
+    },
+    "prompts:csharp-nunit": {
+      "path": "assets/prompts/csharp-nunit.prompt.md",
+      "description": "Get best practices for NUnit unit testing, including data-driven tests",
+      "title": "csharp-nunit",
+      "type": "prompts"
+    },
+    "prompts:csharp-tunit": {
+      "path": "assets/prompts/csharp-tunit.prompt.md",
+      "description": "Get best practices for TUnit unit testing, including data-driven tests",
+      "title": "csharp-tunit",
+      "type": "prompts"
+    },
+    "prompts:csharp-xunit": {
+      "path": "assets/prompts/csharp-xunit.prompt.md",
+      "description": "Get best practices for XUnit unit testing, including data-driven tests",
+      "title": "csharp-xunit",
+      "type": "prompts"
+    },
+    "prompts:declarative-agents": {
+      "path": "assets/prompts/declarative-agents.prompt.md",
+      "description": "Complete development kit for Microsoft 365 Copilot declarative agents with three comprehensive workflows (basic, advanced, validation), TypeSpec support, and Microsoft 365 Agents Toolkit integration",
+      "title": "declarative-agents",
+      "type": "prompts"
+    },
+    "prompts:documentation-writer": {
+      "path": "assets/prompts/documentation-writer.prompt.md",
+      "description": "Diátaxis Documentation Expert. An expert technical writer specializing in creating high-quality software documentation, guided by the principles and structure of the Diátaxis technical documentation authoring framework.",
+      "title": "documentation-writer",
+      "type": "prompts"
+    },
+    "prompts:dotnet-best-practices": {
+      "path": "assets/prompts/dotnet-best-practices.prompt.md",
+      "description": "Ensure .NET/C# code meets best practices for the solution/project.",
+      "title": "dotnet-best-practices",
+      "type": "prompts"
+    },
+    "prompts:dotnet-design-pattern-review": {
+      "path": "assets/prompts/dotnet-design-pattern-review.prompt.md",
+      "description": "Review the C#/.NET code for design pattern implementation and suggest improvements.",
+      "title": "dotnet-design-pattern-review",
+      "type": "prompts"
+    },
+    "prompts:dotnet-upgrade": {
+      "path": "assets/prompts/dotnet-upgrade.prompt.md",
+      "description": "Ready-to-use prompts for comprehensive .NET framework upgrade analysis and execution",
+      "title": "dotnet-upgrade",
+      "type": "prompts"
+    },
+    "prompts:editorconfig": {
+      "path": "assets/prompts/editorconfig.prompt.md",
+      "description": "Generates a comprehensive and best-practice-oriented .editorconfig file based on project analysis and user preferences.",
+      "title": "EditorConfig Expert",
+      "type": "prompts"
+    },
+    "prompts:ef-core": {
+      "path": "assets/prompts/ef-core.prompt.md",
+      "description": "Get best practices for Entity Framework Core",
+      "title": "ef-core",
+      "type": "prompts"
+    },
+    "prompts:finalize-agent-prompt": {
+      "path": "assets/prompts/finalize-agent-prompt.prompt.md",
+      "description": "Finalize prompt file using the role of an AI agent to polish the prompt for the end user.",
+      "title": "finalize-agent-prompt",
+      "type": "prompts"
+    },
+    "prompts:first-ask": {
+      "path": "assets/prompts/first-ask.prompt.md",
+      "description": "Interactive, input-tool powered, task refinement workflow: interrogates scope, deliverables, constraints before carrying out the task; Requires the Joyride extension.",
+      "title": "first-ask",
+      "type": "prompts"
+    },
+    "prompts:folder-structure-blueprint-generator": {
+      "path": "assets/prompts/folder-structure-blueprint-generator.prompt.md",
+      "description": "Comprehensive technology-agnostic prompt for analyzing and documenting project folder structures. Auto-detects project types (.NET, Java, React, Angular, Python, Node.js, Flutter), generates detailed blueprints with visualization options, naming conventions, file placement patterns, and extension templates for maintaining consistent code organization across diverse technology stacks.",
+      "title": "folder-structure-blueprint-generator",
+      "type": "prompts"
+    },
+    "prompts:gen-specs-as-issues": {
+      "path": "assets/prompts/gen-specs-as-issues.prompt.md",
+      "description": "This workflow guides you through a systematic approach to identify missing features, prioritize them, and create detailed specifications for implementation.",
+      "title": "gen-specs-as-issues",
+      "type": "prompts"
+    },
+    "prompts:generate-custom-instructions-from-codebase": {
+      "path": "assets/prompts/generate-custom-instructions-from-codebase.prompt.md",
+      "description": "Migration and code evolution instructions generator for GitHub Copilot. Analyzes differences between two project versions (branches, commits, or releases) to create precise instructions allowing Copilot to maintain consistency during technology migrations, major refactoring, or framework version upgrades.",
+      "title": "generate-custom-instructions-from-codebase",
+      "type": "prompts"
+    },
+    "prompts:git-flow-branch-creator": {
+      "path": "assets/prompts/git-flow-branch-creator.prompt.md",
+      "description": "Intelligent Git Flow branch creator that analyzes git status/diff and creates appropriate branches following the nvie Git Flow branching model.",
+      "title": "git-flow-branch-creator",
+      "type": "prompts"
+    },
+    "prompts:github-copilot-starter": {
+      "path": "assets/prompts/github-copilot-starter.prompt.md",
+      "description": "Set up complete GitHub Copilot configuration for a new project based on technology stack",
+      "title": "github-copilot-starter",
+      "type": "prompts"
+    },
+    "prompts:go-mcp-server-generator": {
+      "path": "assets/prompts/go-mcp-server-generator.prompt.md",
+      "description": "Generate a complete Go MCP server project with proper structure, dependencies, and implementation using the official github.com/modelcontextprotocol/go-sdk.",
+      "title": "go-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:java-docs": {
+      "path": "assets/prompts/java-docs.prompt.md",
+      "description": "Ensure that Java types are documented with Javadoc comments and follow best practices for documentation.",
+      "title": "java-docs",
+      "type": "prompts"
+    },
+    "prompts:java-junit": {
+      "path": "assets/prompts/java-junit.prompt.md",
+      "description": "Get best practices for JUnit 5 unit testing, including data-driven tests",
+      "title": "java-junit",
+      "type": "prompts"
+    },
+    "prompts:java-mcp-server-generator": {
+      "path": "assets/prompts/java-mcp-server-generator.prompt.md",
+      "description": "Generate a complete Model Context Protocol server project in Java using the official MCP Java SDK with reactive streams and optional Spring Boot integration.",
+      "title": "java-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:java-refactoring-extract-method": {
+      "path": "assets/prompts/java-refactoring-extract-method.prompt.md",
+      "description": "Refactoring using Extract Methods in Java Language",
+      "title": "Refactoring Java Methods with Extract Method",
+      "type": "prompts"
+    },
+    "prompts:java-refactoring-remove-parameter": {
+      "path": "assets/prompts/java-refactoring-remove-parameter.prompt.md",
+      "description": "Refactoring using Remove Parameter in Java Language",
+      "title": "Refactoring Java Methods with Remove Parameter",
+      "type": "prompts"
+    },
+    "prompts:java-springboot": {
+      "path": "assets/prompts/java-springboot.prompt.md",
+      "description": "Get best practices for developing applications with Spring Boot.",
+      "title": "java-springboot",
+      "type": "prompts"
+    },
+    "prompts:javascript-typescript-jest": {
+      "path": "assets/prompts/javascript-typescript-jest.prompt.md",
+      "description": "Best practices for writing JavaScript/TypeScript tests using Jest, including mocking strategies, test structure, and common patterns.",
+      "title": "javascript-typescript-jest",
+      "type": "prompts"
+    },
+    "prompts:kotlin-mcp-server-generator": {
+      "path": "assets/prompts/kotlin-mcp-server-generator.prompt.md",
+      "description": "Generate a complete Kotlin MCP server project with proper structure, dependencies, and implementation using the official io.modelcontextprotocol:kotlin-sdk library.",
+      "title": "kotlin-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:kotlin-springboot": {
+      "path": "assets/prompts/kotlin-springboot.prompt.md",
+      "description": "Get best practices for developing applications with Spring Boot and Kotlin.",
+      "title": "kotlin-springboot",
+      "type": "prompts"
+    },
+    "prompts:mcp-copilot-studio-server-generator": {
+      "path": "assets/prompts/mcp-copilot-studio-server-generator.prompt.md",
+      "description": "Generate a complete MCP server implementation optimized for Copilot Studio integration with proper schema constraints and streamable HTTP support",
+      "title": "mcp-copilot-studio-server-generator",
+      "type": "prompts"
+    },
+    "prompts:memory-merger": {
+      "path": "assets/prompts/memory-merger.prompt.md",
+      "description": "Merges mature lessons from a domain memory file into its instruction file. Syntax: `/memory-merger >domain [scope]` where scope is `global` (default), `user`, `workspace`, or `ws`.",
+      "title": "memory-merger",
+      "type": "prompts"
+    },
+    "prompts:mkdocs-translations": {
+      "path": "assets/prompts/mkdocs-translations.prompt.md",
+      "description": "Generate a language translation for a mkdocs documentation stack.",
+      "title": "mkdocs-translations",
+      "type": "prompts"
+    },
+    "prompts:model-recommendation": {
+      "path": "assets/prompts/model-recommendation.prompt.md",
+      "description": "Analyze chatmode or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency",
+      "title": "model-recommendation",
+      "type": "prompts"
+    },
+    "prompts:multi-stage-dockerfile": {
+      "path": "assets/prompts/multi-stage-dockerfile.prompt.md",
+      "description": "Create optimized multi-stage Dockerfiles for any language or framework",
+      "title": "multi-stage-dockerfile",
+      "type": "prompts"
+    },
+    "prompts:my-issues": {
+      "path": "assets/prompts/my-issues.prompt.md",
+      "description": "List my issues in the current repository",
+      "title": "my-issues",
+      "type": "prompts"
+    },
+    "prompts:my-pull-requests": {
+      "path": "assets/prompts/my-pull-requests.prompt.md",
+      "description": "List my pull requests in the current repository",
+      "title": "my-pull-requests",
+      "type": "prompts"
+    },
+    "prompts:next-intl-add-language": {
+      "path": "assets/prompts/next-intl-add-language.prompt.md",
+      "description": "Add new language to a Next.js + next-intl application",
+      "title": "next-intl-add-language",
+      "type": "prompts"
+    },
+    "prompts:php-mcp-server-generator": {
+      "path": "assets/prompts/php-mcp-server-generator.prompt.md",
+      "description": "Generate a complete PHP Model Context Protocol server project with tools, resources, prompts, and tests using the official PHP SDK",
+      "title": "php-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:playwright-automation-fill-in-form": {
+      "path": "assets/prompts/playwright-automation-fill-in-form.prompt.md",
+      "description": "Automate filling in a form using Playwright MCP",
+      "title": "playwright-automation-fill-in-form",
+      "type": "prompts"
+    },
+    "prompts:playwright-explore-website": {
+      "path": "assets/prompts/playwright-explore-website.prompt.md",
+      "description": "Website exploration for testing using Playwright MCP",
+      "title": "playwright-explore-website",
+      "type": "prompts"
+    },
+    "prompts:playwright-generate-test": {
+      "path": "assets/prompts/playwright-generate-test.prompt.md",
+      "description": "Generate a Playwright test based on a scenario using Playwright MCP",
+      "title": "playwright-generate-test",
+      "type": "prompts"
+    },
+    "prompts:postgresql-code-review": {
+      "path": "assets/prompts/postgresql-code-review.prompt.md",
+      "description": "PostgreSQL-specific code review assistant focusing on PostgreSQL best practices, anti-patterns, and unique quality standards. Covers JSONB operations, array usage, custom types, schema design, function optimization, and PostgreSQL-exclusive security features like Row Level Security (RLS).",
+      "title": "postgresql-code-review",
+      "type": "prompts"
+    },
+    "prompts:postgresql-optimization": {
+      "path": "assets/prompts/postgresql-optimization.prompt.md",
+      "description": "PostgreSQL-specific development assistant focusing on unique PostgreSQL features, advanced data types, and PostgreSQL-exclusive capabilities. Covers JSONB operations, array types, custom types, range/geometric types, full-text search, window functions, and PostgreSQL extensions ecosystem.",
+      "title": "postgresql-optimization",
+      "type": "prompts"
+    },
+    "prompts:power-apps-code-app-scaffold": {
+      "path": "assets/prompts/power-apps-code-app-scaffold.prompt.md",
+      "description": "Scaffold a complete Power Apps Code App project with PAC CLI setup, SDK integration, and connector configuration",
+      "title": "power-apps-code-app-scaffold",
+      "type": "prompts"
+    },
+    "prompts:power-bi-dax-optimization": {
+      "path": "assets/prompts/power-bi-dax-optimization.prompt.md",
+      "description": "Comprehensive Power BI DAX formula optimization prompt for improving performance, readability, and maintainability of DAX calculations.",
+      "title": "power-bi-dax-optimization",
+      "type": "prompts"
+    },
+    "prompts:power-bi-model-design-review": {
+      "path": "assets/prompts/power-bi-model-design-review.prompt.md",
+      "description": "Comprehensive Power BI data model design review prompt for evaluating model architecture, relationships, and optimization opportunities.",
+      "title": "power-bi-model-design-review",
+      "type": "prompts"
+    },
+    "prompts:power-bi-performance-troubleshooting": {
+      "path": "assets/prompts/power-bi-performance-troubleshooting.prompt.md",
+      "description": "Systematic Power BI performance troubleshooting prompt for identifying, diagnosing, and resolving performance issues in Power BI models, reports, and queries.",
+      "title": "power-bi-performance-troubleshooting",
+      "type": "prompts"
+    },
+    "prompts:power-bi-report-design-consultation": {
+      "path": "assets/prompts/power-bi-report-design-consultation.prompt.md",
+      "description": "Power BI report visualization design prompt for creating effective, user-friendly, and accessible reports with optimal chart selection and layout design.",
+      "title": "power-bi-report-design-consultation",
+      "type": "prompts"
+    },
+    "prompts:power-platform-mcp-connector-suite": {
+      "path": "assets/prompts/power-platform-mcp-connector-suite.prompt.md",
+      "description": "Generate complete Power Platform custom connector with MCP integration for Copilot Studio - includes schema generation, troubleshooting, and validation",
+      "title": "power-platform-mcp-connector-suite",
+      "type": "prompts"
+    },
+    "prompts:project-workflow-analysis-blueprint-generator": {
+      "path": "assets/prompts/project-workflow-analysis-blueprint-generator.prompt.md",
+      "description": "Comprehensive technology-agnostic prompt generator for documenting end-to-end application workflows. Automatically detects project architecture patterns, technology stacks, and data flow patterns to generate detailed implementation blueprints covering entry points, service layers, data access, error handling, and testing approaches across multiple technologies including .NET, Java/Spring, React, and microservices architectures.",
+      "title": "project-workflow-analysis-blueprint-generator",
+      "type": "prompts"
+    },
+    "prompts:prompt-builder": {
+      "path": "assets/prompts/prompt-builder.prompt.md",
+      "description": "Guide users through creating high-quality GitHub Copilot prompts with proper structure, tools, and best practices.",
+      "title": "prompt-builder",
+      "type": "prompts"
+    },
+    "prompts:pytest-coverage": {
+      "path": "assets/prompts/pytest-coverage.prompt.md",
+      "description": "Run pytest tests with coverage, discover lines missing coverage, and increase coverage to 100%.",
+      "title": "pytest-coverage",
+      "type": "prompts"
+    },
+    "prompts:python-mcp-server-generator": {
+      "path": "assets/prompts/python-mcp-server-generator.prompt.md",
+      "description": "Generate a complete MCP server project in Python with tools, resources, and proper configuration",
+      "title": "python-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:readme-blueprint-generator": {
+      "path": "assets/prompts/readme-blueprint-generator.prompt.md",
+      "description": "Intelligent README.md generation prompt that analyzes project documentation structure and creates comprehensive repository documentation. Scans .github/copilot directory files and copilot-instructions.md to extract project information, technology stack, architecture, development workflow, coding standards, and testing approaches while generating well-structured markdown documentation with proper formatting, cross-references, and developer-focused content.",
+      "title": "readme-blueprint-generator",
+      "type": "prompts"
+    },
+    "prompts:remember-interactive-programming": {
+      "path": "assets/prompts/remember-interactive-programming.prompt.md",
+      "description": "A micro-prompt that reminds the agent that it is an interactive programmer. Works great in Clojure when Copilot has access to the REPL (probably via Backseat Driver). Will work with any system that has a live REPL that the agent can use. Adapt the prompt with any specific reminders in your workflow and/or workspace.",
+      "title": "Interactive Programming Nudge",
+      "type": "prompts"
+    },
+    "prompts:remember": {
+      "path": "assets/prompts/remember.prompt.md",
+      "description": "Transforms lessons learned into domain-organized memory instructions (global or workspace). Syntax: `/remember [>domain [scope]] lesson clue` where scope is `global` (default), `user`, `workspace`, or `ws`.",
+      "title": "remember",
+      "type": "prompts"
+    },
+    "prompts:repo-story-time": {
+      "path": "assets/prompts/repo-story-time.prompt.md",
+      "description": "Generate a comprehensive repository summary and narrative story from commit history",
+      "title": "repo-story-time",
+      "type": "prompts"
+    },
+    "prompts:review-and-refactor": {
+      "path": "assets/prompts/review-and-refactor.prompt.md",
+      "description": "Review and refactor code in your project according to defined instructions",
+      "title": "review-and-refactor",
+      "type": "prompts"
+    },
+    "prompts:ruby-mcp-server-generator": {
+      "path": "assets/prompts/ruby-mcp-server-generator.prompt.md",
+      "description": "Generate a complete Model Context Protocol server project in Ruby using the official MCP Ruby SDK gem.",
+      "title": "ruby-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:rust-mcp-server-generator": {
+      "path": "assets/prompts/rust-mcp-server-generator.prompt.md",
+      "description": "Generate a complete Rust Model Context Protocol server project with tools, prompts, resources, and tests using the official rmcp SDK",
+      "title": "rust-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:shuffle-json-data": {
+      "path": "assets/prompts/shuffle-json-data.prompt.md",
+      "description": "Shuffle repetitive JSON objects safely by validating schema consistency before randomising entries.",
+      "title": "shuffle-json-data",
+      "type": "prompts"
+    },
+    "prompts:sql-code-review": {
+      "path": "assets/prompts/sql-code-review.prompt.md",
+      "description": "Universal SQL code review assistant that performs comprehensive security, maintainability, and code quality analysis across all SQL databases (MySQL, PostgreSQL, SQL Server, Oracle). Focuses on SQL injection prevention, access control, code standards, and anti-pattern detection. Complements SQL optimization prompt for complete development coverage.",
+      "title": "sql-code-review",
+      "type": "prompts"
+    },
+    "prompts:sql-optimization": {
+      "path": "assets/prompts/sql-optimization.prompt.md",
+      "description": "Universal SQL performance optimization assistant for comprehensive query tuning, indexing strategies, and database performance analysis across all SQL databases (MySQL, PostgreSQL, SQL Server, Oracle). Provides execution plan analysis, pagination optimization, batch operations, and performance monitoring guidance.",
+      "title": "sql-optimization",
+      "type": "prompts"
+    },
+    "prompts:suggest-awesome-github-copilot-agents": {
+      "path": "assets/prompts/suggest-awesome-github-copilot-agents.prompt.md",
+      "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository.",
+      "title": "suggest-awesome-github-copilot-agents",
+      "type": "prompts"
+    },
+    "prompts:suggest-awesome-github-copilot-chatmodes": {
+      "path": "assets/prompts/suggest-awesome-github-copilot-chatmodes.prompt.md",
+      "description": "Suggest relevant GitHub Copilot Custom Chat Modes files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom chat modes in this repository.",
+      "title": "suggest-awesome-github-copilot-chatmodes",
+      "type": "prompts"
+    },
+    "prompts:suggest-awesome-github-copilot-collections": {
+      "path": "assets/prompts/suggest-awesome-github-copilot-collections.prompt.md",
+      "description": "Suggest relevant GitHub Copilot collections from the awesome-copilot repository based on current repository context and chat history, providing automatic download and installation of collection assets.",
+      "title": "suggest-awesome-github-copilot-collections",
+      "type": "prompts"
+    },
+    "prompts:suggest-awesome-github-copilot-instructions": {
+      "path": "assets/prompts/suggest-awesome-github-copilot-instructions.prompt.md",
+      "description": "Suggest relevant GitHub Copilot instruction files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing instructions in this repository.",
+      "title": "suggest-awesome-github-copilot-instructions",
+      "type": "prompts"
+    },
+    "prompts:suggest-awesome-github-copilot-prompts": {
+      "path": "assets/prompts/suggest-awesome-github-copilot-prompts.prompt.md",
+      "description": "Suggest relevant GitHub Copilot prompt files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing prompts in this repository.",
+      "title": "suggest-awesome-github-copilot-prompts",
+      "type": "prompts"
+    },
+    "prompts:swift-mcp-server-generator": {
+      "path": "assets/prompts/swift-mcp-server-generator.prompt.md",
+      "description": "Generate a complete Model Context Protocol server project in Swift using the official MCP Swift SDK package.",
+      "title": "swift-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:technology-stack-blueprint-generator": {
+      "path": "assets/prompts/technology-stack-blueprint-generator.prompt.md",
+      "description": "Comprehensive technology stack blueprint generator that analyzes codebases to create detailed architectural documentation. Automatically detects technology stacks, programming languages, and implementation patterns across multiple platforms (.NET, Java, JavaScript, React, Python). Generates configurable blueprints with version information, licensing details, usage patterns, coding conventions, and visual diagrams. Provides implementation-ready templates and maintains architectural consistency for guided development.",
+      "title": "technology-stack-blueprint-generator",
+      "type": "prompts"
+    },
+    "prompts:typescript-mcp-server-generator": {
+      "path": "assets/prompts/typescript-mcp-server-generator.prompt.md",
+      "description": "Generate a complete MCP server project in TypeScript with tools, resources, and proper configuration",
+      "title": "typescript-mcp-server-generator",
+      "type": "prompts"
+    },
+    "prompts:update-avm-modules-in-bicep": {
+      "path": "assets/prompts/update-avm-modules-in-bicep.prompt.md",
+      "description": "Update Azure Verified Modules (AVM) to latest versions in Bicep files.",
+      "title": "update-avm-modules-in-bicep",
+      "type": "prompts"
+    },
+    "prompts:update-implementation-plan": {
+      "path": "assets/prompts/update-implementation-plan.prompt.md",
+      "description": "Update an existing implementation plan file with new or update requirements to provide new features, refactoring existing code or upgrading packages, design, architecture or infrastructure.",
+      "title": "update-implementation-plan",
+      "type": "prompts"
+    },
+    "prompts:update-llms": {
+      "path": "assets/prompts/update-llms.prompt.md",
+      "description": "Update the llms.txt file in the root folder to reflect changes in documentation or specifications following the llms.txt specification at https://llmstxt.org/",
+      "title": "update-llms",
+      "type": "prompts"
+    },
+    "prompts:update-markdown-file-index": {
+      "path": "assets/prompts/update-markdown-file-index.prompt.md",
+      "description": "Update a markdown file section with an index/table of files from a specified folder.",
+      "title": "update-markdown-file-index",
+      "type": "prompts"
+    },
+    "prompts:update-oo-component-documentation": {
+      "path": "assets/prompts/update-oo-component-documentation.prompt.md",
+      "description": "Update existing object-oriented component documentation following industry best practices and architectural documentation standards.",
+      "title": "update-oo-component-documentation",
+      "type": "prompts"
+    },
+    "prompts:update-specification": {
+      "path": "assets/prompts/update-specification.prompt.md",
+      "description": "Update an existing specification file for the solution, optimized for Generative AI consumption based on new requirements or updates to any existing code.",
+      "title": "update-specification",
+      "type": "prompts"
+    },
+    "prompts:write-coding-standards-from-file": {
+      "path": "assets/prompts/write-coding-standards-from-file.prompt.md",
+      "description": "Write a coding standards document for a project using the coding styles from the file(s) and/or folder(s) passed as arguments in the prompt.",
+      "title": "write-coding-standards-from-file",
+      "type": "prompts"
+    },
+    "collections:ai-prompt-engineering": {
+      "path": "assets/collections/ai-prompt-engineering.json",
+      "description": "Resources for LLM prompts, Copilot instructions, and AI agent development.",
+      "title": "ai-prompt-engineering",
+      "type": "collections",
+      "items": [
+        "chatmodes:4.1-Beast",
+        "chatmodes:declarative-agents-architect",
+        "chatmodes:gilfoyle",
+        "chatmodes:gpt-5-beast-mode",
+        "chatmodes:prompt-builder",
+        "chatmodes:prompt-engineer",
+        "instructions:ai-prompt-engineering-safety-best-practices",
+        "instructions:prompt",
+        "prompts:ai-prompt-engineering-safety-review",
+        "prompts:boost-prompt",
+        "prompts:finalize-agent-prompt",
+        "prompts:prompt-builder",
+        "prompts:suggest-awesome-github-copilot-prompts",
+        "prompts:readme-blueprint-generator",
+        "prompts:suggest-awesome-github-copilot-instructions",
+        "prompts:suggest-awesome-github-copilot-agents",
+        "prompts:suggest-awesome-github-copilot-chatmodes",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:suggest-awesome-github-copilot-collections",
+        "instructions:instructions",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "prompts:remember-interactive-programming",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:power-platform-mcp-development",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:declarative-agents",
+        "prompts:first-ask",
+        "prompts:generate-custom-instructions-from-codebase",
+        "instructions:gilfoyle-code-review",
+        "instructions:security-and-owasp",
+        "chatmodes:code-tour",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:software-engineer-agent-v1",
+        "instructions:tasksync",
+        "prompts:technology-stack-blueprint-generator",
+        "instructions:devops-core-principles",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:mongo-dba",
+        "instructions:ms-sql-dba",
+        "instructions:performance-optimization",
+        "instructions:power-platform-connector",
+        "prompts:architecture-blueprint-generator",
+        "prompts:github-copilot-starter",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "prompts:sql-code-review",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "instructions:dotnet-upgrade",
+        "instructions:self-explanatory-code-commenting",
+        "chatmodes:expert-cpp-software-engineer",
+        "chatmodes:microsoft-agent-framework-dotnet",
+        "chatmodes:microsoft-agent-framework-python",
+        "chatmodes:task-researcher",
+        "chatmodes:tdd-green",
+        "chatmodes:tdd-red",
+        "chatmodes:tdd-refactor",
+        "instructions:collections",
+        "instructions:copilot-thought-logging",
+        "instructions:svelte",
+        "instructions:task-implementation",
+        "prompts:az-cost-optimize",
+        "prompts:dotnet-upgrade",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:postgresql-code-review",
+        "chatmodes:Thinking-Beast-Mode",
+        "chatmodes:api-architect",
+        "chatmodes:prd",
+        "chatmodes:principal-software-engineer",
+        "instructions:astro",
+        "instructions:clojure",
+        "instructions:dart-n-flutter",
+        "instructions:go",
+        "instructions:nextjs-tailwind",
+        "instructions:power-apps-canvas-yaml",
+        "instructions:power-apps-code-apps",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:power-bi-data-modeling-best-practices",
+        "instructions:power-bi-dax-best-practices",
+        "instructions:power-bi-report-design-best-practices",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:quarkus",
+        "instructions:r",
+        "prompts:breakdown-test",
+        "prompts:conventional-commit",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:documentation-writer",
+        "prompts:editorconfig",
+        "prompts:mcp-copilot-studio-server-generator",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:review-and-refactor"
+      ]
+    },
+    "collections:angular-development": {
+      "path": "assets/collections/angular-development.json",
+      "description": "A collection of assets for Angular development",
+      "title": "angular-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:electron-angular-native",
+        "instructions:angular",
+        "prompts:code-exemplars-blueprint-generator",
+        "instructions:power-apps-code-apps",
+        "instructions:nestjs",
+        "instructions:vuejs3",
+        "instructions:astro",
+        "instructions:clojure",
+        "instructions:reactjs",
+        "instructions:svelte",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:postgresql-code-review",
+        "prompts:sql-code-review",
+        "prompts:suggest-awesome-github-copilot-collections"
+      ]
+    },
+    "collections:azure-cloud-architect": {
+      "path": "assets/collections/azure-cloud-architect.json",
+      "description": "A comprehensive suite for Azure architecture, Bicep/Terraform implementation, and DevOps practices.",
+      "title": "azure-cloud-architect",
+      "type": "collections",
+      "items": [
+        "chatmodes:api-architect",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:azure-principal-architect",
+        "chatmodes:azure-saas-architect",
+        "chatmodes:azure-verified-modules-bicep",
+        "chatmodes:azure-verified-modules-terraform",
+        "chatmodes:bicep-implement",
+        "chatmodes:bicep-plan",
+        "chatmodes:declarative-agents-architect",
+        "chatmodes:terraform-azure-implement",
+        "chatmodes:terraform-azure-planning",
+        "instructions:azure-devops-pipelines",
+        "instructions:azure-functions-typescript",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:azure-verified-modules-terraform",
+        "instructions:bicep-code-best-practices",
+        "instructions:dotnet-architecture-good-practices",
+        "instructions:generate-modern-terraform-code-for-azure",
+        "instructions:terraform-azure",
+        "prompts:architecture-blueprint-generator",
+        "prompts:az-cost-optimize",
+        "prompts:azure-resource-health-diagnose",
+        "prompts:create-architectural-decision-record",
+        "prompts:create-github-action-workflow-specification",
+        "prompts:technology-stack-blueprint-generator",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:readme-blueprint-generator",
+        "instructions:power-bi-devops-alm-best-practices",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:update-implementation-plan",
+        "chatmodes:plan",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:power-apps-canvas-yaml",
+        "instructions:power-bi-data-modeling-best-practices",
+        "instructions:power-bi-dax-best-practices",
+        "instructions:power-bi-report-design-best-practices",
+        "instructions:power-bi-security-rls-best-practices",
+        "chatmodes:code-tour",
+        "prompts:create-implementation-plan",
+        "instructions:performance-optimization",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:update-avm-modules-in-bicep",
+        "chatmodes:drupal-expert",
+        "chatmodes:prompt-engineer",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:devops-core-principles",
+        "instructions:dotnet-framework",
+        "instructions:kubernetes-deployment-best-practices",
+        "instructions:power-apps-code-apps",
+        "prompts:declarative-agents",
+        "instructions:containerization-docker-best-practices",
+        "instructions:security-and-owasp",
+        "prompts:cosmosdb-datamodeling",
+        "prompts:create-oo-component-documentation",
+        "prompts:power-bi-model-design-review",
+        "chatmodes:planner",
+        "chatmodes:power-bi-data-modeling-expert",
+        "chatmodes:power-bi-visualization-expert",
+        "chatmodes:power-platform-expert",
+        "chatmodes:tdd-refactor",
+        "instructions:devbox-image-definition",
+        "instructions:java-11-to-java-17-upgrade",
+        "instructions:java-17-to-java-21-upgrade",
+        "instructions:java-21-to-java-25-upgrade",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:power-platform-connector",
+        "prompts:breakdown-epic-pm",
+        "prompts:create-github-issues-feature-from-implementation-plan",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:postgresql-code-review",
+        "chatmodes:expert-cpp-software-engineer",
+        "chatmodes:implementation-plan",
+        "chatmodes:prd",
+        "instructions:ai-prompt-engineering-safety-best-practices",
+        "instructions:powershell",
+        "instructions:vuejs3",
+        "prompts:breakdown-plan",
+        "prompts:breakdown-test",
+        "prompts:dotnet-best-practices",
+        "prompts:dotnet-design-pattern-review",
+        "prompts:javascript-typescript-jest",
+        "prompts:mcp-copilot-studio-server-generator",
+        "prompts:update-oo-component-documentation",
+        "chatmodes:expert-dotnet-software-engineer",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:power-bi-dax-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "chatmodes:principal-software-engineer",
+        "chatmodes:task-planner",
+        "chatmodes:task-researcher",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:svelte",
+        "prompts:ai-prompt-engineering-safety-review",
+        "prompts:editorconfig",
+        "prompts:go-mcp-server-generator",
+        "prompts:prompt-builder",
+        "prompts:update-specification",
+        "chatmodes:demonstrate-understanding",
+        "chatmodes:microsoft_learn_contributor",
+        "chatmodes:tdd-red",
+        "instructions:dotnet-upgrade",
+        "instructions:go-mcp-server",
+        "instructions:java-mcp-server",
+        "instructions:nestjs",
+        "instructions:powershell-pester-5",
+        "instructions:rust",
+        "instructions:task-implementation",
+        "prompts:breakdown-epic-arch",
+        "prompts:dotnet-upgrade",
+        "prompts:gen-specs-as-issues",
+        "prompts:github-copilot-starter",
+        "prompts:java-springboot",
+        "prompts:kotlin-mcp-server-generator",
+        "prompts:kotlin-springboot",
+        "prompts:sql-code-review",
+        "prompts:sql-optimization",
+        "prompts:suggest-awesome-github-copilot-agents",
+        "prompts:typescript-mcp-server-generator",
+        "chatmodes:aem-frontend-specialist",
+        "chatmodes:microsoft-agent-framework-dotnet",
+        "chatmodes:microsoft-study-mode",
+        "chatmodes:specification",
+        "instructions:angular",
+        "instructions:astro",
+        "instructions:gilfoyle-code-review",
+        "instructions:kotlin-mcp-server",
+        "instructions:php-mcp-server",
+        "instructions:reactjs",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:self-explanatory-code-commenting",
+        "instructions:swift-mcp-server",
+        "instructions:terraform-sap-btp",
+        "prompts:breakdown-feature-implementation",
+        "prompts:create-github-issues-for-unmet-specification-requirements",
+        "prompts:create-technical-spike",
+        "prompts:csharp-docs",
+        "prompts:ef-core",
+        "prompts:java-docs",
+        "prompts:power-apps-code-app-scaffold",
+        "prompts:power-platform-mcp-connector-suite",
+        "prompts:suggest-awesome-github-copilot-chatmodes",
+        "prompts:suggest-awesome-github-copilot-instructions",
+        "prompts:suggest-awesome-github-copilot-prompts"
+      ]
+    },
+    "collections:cpp-development": {
+      "path": "assets/collections/cpp-development.json",
+      "description": "C++ programming language resources.",
+      "title": "cpp-development",
+      "type": "collections",
+      "items": []
+    },
+    "collections:database-administration": {
+      "path": "assets/collections/database-administration.json",
+      "description": "Database administration and development resources for SQL and NoSQL databases.",
+      "title": "database-administration",
+      "type": "collections",
+      "items": [
+        "chatmodes:ms-sql-dba",
+        "chatmodes:postgresql-dba",
+        "prompts:sql-code-review",
+        "prompts:sql-optimization",
+        "prompts:postgresql-optimization",
+        "prompts:postgresql-code-review",
+        "instructions:ms-sql-dba",
+        "instructions:sql-sp-generation"
+      ]
+    },
+    "collections:devops-sre": {
+      "path": "assets/collections/devops-sre.json",
+      "description": "DevOps and Site Reliability Engineering resources including Docker, Kubernetes, and CI/CD.",
+      "title": "devops-sre",
+      "type": "collections",
+      "items": [
+        "chatmodes:janitor",
+        "instructions:ansible",
+        "instructions:azure-devops-pipelines",
+        "instructions:devops-core-principles",
+        "instructions:power-bi-devops-alm-best-practices",
+        "instructions:terraform",
+        "chatmodes:csharp-dotnet-janitor",
+        "chatmodes:dotnet-upgrade",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:ai-prompt-engineering-safety-best-practices",
+        "instructions:kubernetes-deployment-best-practices",
+        "prompts:az-cost-optimize",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "chatmodes:expert-cpp-software-engineer",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:containerization-docker-best-practices",
+        "instructions:devbox-image-definition",
+        "instructions:dotnet-maui-9-to-dotnet-maui-10-upgrade",
+        "instructions:instructions",
+        "instructions:power-apps-canvas-yaml",
+        "prompts:csharp-mstest",
+        "prompts:csharp-nunit",
+        "prompts:csharp-tunit",
+        "prompts:csharp-xunit",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:java-junit",
+        "prompts:javascript-typescript-jest"
+      ]
+    },
+    "collections:dotnet-development": {
+      "path": "assets/collections/dotnet-development.json",
+      "description": "Comprehensive resources for .NET development including C#, ASP.NET Core, Blazor, and MAUI.",
+      "title": "dotnet-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:csharp-dotnet-janitor",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:dotnet-upgrade",
+        "chatmodes:expert-dotnet-software-engineer",
+        "chatmodes:microsoft-agent-framework-dotnet",
+        "chatmodes:semantic-kernel-dotnet",
+        "instructions:blazor",
+        "instructions:dotnet-architecture-good-practices",
+        "instructions:dotnet-framework",
+        "instructions:dotnet-maui",
+        "instructions:dotnet-maui-9-to-dotnet-maui-10-upgrade",
+        "instructions:dotnet-upgrade",
+        "instructions:dotnet-wpf",
+        "instructions:playwright-dotnet",
+        "prompts:dotnet-best-practices",
+        "prompts:dotnet-design-pattern-review",
+        "prompts:dotnet-upgrade",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:janitor",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:readme-blueprint-generator",
+        "prompts:sql-code-review",
+        "prompts:architecture-blueprint-generator",
+        "prompts:containerize-aspnetcore",
+        "instructions:power-platform-connector",
+        "instructions:power-platform-mcp-development",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:javascript-typescript-jest",
+        "chatmodes:drupal-expert",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:microsoft-agent-framework-python",
+        "chatmodes:plan",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "instructions:aspnet-rest-apis",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:performance-optimization",
+        "instructions:power-apps-canvas-yaml",
+        "instructions:power-bi-data-modeling-best-practices",
+        "instructions:power-bi-dax-best-practices",
+        "instructions:power-bi-devops-alm-best-practices",
+        "instructions:power-bi-report-design-best-practices",
+        "instructions:power-bi-security-rls-best-practices",
+        "prompts:containerize-aspnet-framework",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:declarative-agents",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "prompts:sql-optimization",
+        "chatmodes:code-tour",
+        "chatmodes:expert-cpp-software-engineer",
+        "chatmodes:prompt-engineer",
+        "chatmodes:semantic-kernel-python",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:go-mcp-server",
+        "instructions:java-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "prompts:breakdown-test",
+        "prompts:csharp-mstest",
+        "prompts:csharp-nunit",
+        "prompts:csharp-tunit",
+        "prompts:csharp-xunit",
+        "prompts:power-bi-model-design-review",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:task-researcher",
+        "chatmodes:typescript-mcp-expert",
+        "instructions:ai-prompt-engineering-safety-best-practices",
+        "instructions:codexer",
+        "instructions:csharp-mcp-server",
+        "instructions:java-11-to-java-17-upgrade",
+        "instructions:java-17-to-java-21-upgrade",
+        "instructions:java-21-to-java-25-upgrade",
+        "instructions:kubernetes-deployment-best-practices",
+        "instructions:php-mcp-server",
+        "instructions:security-and-owasp",
+        "instructions:svelte",
+        "prompts:ai-prompt-engineering-safety-review",
+        "prompts:aspnet-minimal-api-openapi",
+        "prompts:breakdown-plan",
+        "prompts:create-oo-component-documentation",
+        "prompts:editorconfig",
+        "prompts:ef-core",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:java-junit",
+        "prompts:postgresql-code-review",
+        "prompts:update-implementation-plan",
+        "chatmodes:azure-principal-architect",
+        "chatmodes:azure-saas-architect",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:kotlin-mcp-expert",
+        "chatmodes:power-bi-data-modeling-expert",
+        "chatmodes:principal-software-engineer",
+        "chatmodes:software-engineer-agent-v1",
+        "chatmodes:swift-mcp-expert",
+        "chatmodes:tdd-red",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:containerization-docker-best-practices",
+        "instructions:nestjs",
+        "instructions:power-apps-code-apps",
+        "instructions:python-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:conventional-commit",
+        "prompts:cosmosdb-datamodeling"
+      ]
+    },
+    "collections:general-productivity": {
+      "path": "assets/collections/general-productivity.json",
+      "description": "General coding utilities, debugging, refactoring, and git resources.",
+      "title": "general-productivity",
+      "type": "collections",
+      "items": []
+    },
+    "collections:go-development": {
+      "path": "assets/collections/go-development.json",
+      "description": "Go programming language resources and frameworks.",
+      "title": "go-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:go-mcp-expert",
+        "instructions:go",
+        "chatmodes:kotlin-mcp-expert",
+        "instructions:go-mcp-server",
+        "instructions:java-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:php-mcp-server",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "chatmodes:java-mcp-expert",
+        "chatmodes:ruby-mcp-expert",
+        "chatmodes:swift-mcp-expert",
+        "instructions:csharp-mcp-server",
+        "instructions:power-platform-mcp-development",
+        "instructions:python-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:code-exemplars-blueprint-generator",
+        "chatmodes:php-mcp-expert",
+        "instructions:rust",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:rust-mcp-expert",
+        "chatmodes:typescript-mcp-expert",
+        "instructions:codexer",
+        "instructions:nestjs",
+        "instructions:power-apps-code-apps",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:r",
+        "prompts:java-mcp-server-generator",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:sql-code-review",
+        "prompts:swift-mcp-server-generator",
+        "prompts:technology-stack-blueprint-generator"
+      ]
+    },
+    "collections:java-spring-developer": {
+      "path": "assets/collections/java-spring-developer.json",
+      "description": "Resources for modern Java development, Spring Boot projects, and migration tasks.",
+      "title": "java-spring-developer",
+      "type": "collections",
+      "items": [
+        "chatmodes:expert-nextjs-developer",
+        "chatmodes:java-mcp-expert",
+        "instructions:convert-jpa-to-spring-data-cosmos",
+        "instructions:java",
+        "instructions:java-11-to-java-17-upgrade",
+        "instructions:java-17-to-java-21-upgrade",
+        "instructions:java-21-to-java-25-upgrade",
+        "instructions:java-mcp-server",
+        "instructions:nodejs-javascript-vitest",
+        "instructions:quarkus",
+        "instructions:springboot",
+        "prompts:create-spring-boot-java-project",
+        "prompts:create-spring-boot-kotlin-project",
+        "prompts:java-docs",
+        "prompts:java-junit",
+        "prompts:java-mcp-server-generator",
+        "prompts:java-refactoring-extract-method",
+        "prompts:java-refactoring-remove-parameter",
+        "prompts:java-springboot",
+        "prompts:javascript-typescript-jest",
+        "prompts:kotlin-springboot",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:readme-blueprint-generator",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "chatmodes:swift-mcp-expert",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:laravel-expert-agent",
+        "instructions:kotlin-mcp-server",
+        "prompts:folder-structure-blueprint-generator",
+        "instructions:go-mcp-server",
+        "instructions:power-apps-code-apps",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:typescript-mcp-server-generator",
+        "chatmodes:drupal-expert",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:nestjs",
+        "instructions:php-mcp-server",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:power-platform-mcp-development",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:swift-mcp-server-generator",
+        "chatmodes:expert-react-frontend-engineer",
+        "chatmodes:ruby-mcp-expert",
+        "prompts:architecture-blueprint-generator",
+        "prompts:kotlin-mcp-server-generator",
+        "chatmodes:kotlin-mcp-expert",
+        "chatmodes:typescript-mcp-expert",
+        "instructions:csharp-mcp-server",
+        "instructions:dotnet-framework",
+        "instructions:python-mcp-server",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:self-explanatory-code-commenting",
+        "instructions:vuejs3",
+        "prompts:cosmosdb-datamodeling",
+        "prompts:csharp-docs",
+        "prompts:csharp-mstest",
+        "prompts:csharp-nunit",
+        "prompts:csharp-tunit",
+        "prompts:csharp-xunit",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:go-mcp-server-generator",
+        "prompts:python-mcp-server-generator",
+        "prompts:sql-code-review",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:php-mcp-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "chatmodes:tdd-red",
+        "instructions:astro",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:dotnet-maui-9-to-dotnet-maui-10-upgrade",
+        "instructions:generate-modern-terraform-code-for-azure",
+        "instructions:joyride-user-project",
+        "instructions:nextjs-tailwind",
+        "instructions:reactjs",
+        "instructions:svelte",
+        "instructions:typescript-5-es2022",
+        "prompts:declarative-agents",
+        "chatmodes:rust-mcp-expert",
+        "instructions:codexer",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:power-platform-connector",
+        "prompts:comment-code-generate-a-tutorial",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:postgresql-code-review",
+        "prompts:postgresql-optimization",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:dotnet-upgrade",
+        "chatmodes:expert-cpp-software-engineer",
+        "chatmodes:pimcore-expert",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:shopify-expert",
+        "instructions:clojure",
+        "instructions:power-apps-canvas-yaml",
+        "instructions:spec-driven-workflow-v1",
+        "prompts:breakdown-test",
+        "prompts:create-oo-component-documentation",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:mcp-copilot-studio-server-generator",
+        "prompts:power-apps-code-app-scaffold"
+      ]
+    },
+    "collections:learning-mentoring": {
+      "path": "assets/collections/learning-mentoring.json",
+      "description": "Educational resources, tutorials, and study modes.",
+      "title": "learning-mentoring",
+      "type": "collections",
+      "items": [
+        "chatmodes:mentor",
+        "chatmodes:microsoft-study-mode",
+        "prompts:add-educational-comments",
+        "prompts:comment-code-generate-a-tutorial"
+      ]
+    },
+    "collections:legacy-migration": {
+      "path": "assets/collections/legacy-migration.json",
+      "description": "Resources for legacy system migration and code conversion.",
+      "title": "legacy-migration",
+      "type": "collections",
+      "items": [
+        "prompts:generate-custom-instructions-from-codebase"
+      ]
+    },
+    "collections:mcp-specialist": {
+      "path": "assets/collections/mcp-specialist.json",
+      "description": "Resources for developing and using Model Context Protocol (MCP) servers and clients.",
+      "title": "mcp-specialist",
+      "type": "collections",
+      "items": [
+        "chatmodes:aem-frontend-specialist",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:java-mcp-expert",
+        "chatmodes:kotlin-mcp-expert",
+        "chatmodes:php-mcp-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:ruby-mcp-expert",
+        "chatmodes:rust-mcp-expert",
+        "chatmodes:swift-mcp-expert",
+        "chatmodes:typescript-mcp-expert",
+        "instructions:csharp-mcp-server",
+        "instructions:go-mcp-server",
+        "instructions:java-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:php-mcp-server",
+        "instructions:power-platform-mcp-development",
+        "instructions:python-mcp-server",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:go-mcp-server-generator",
+        "prompts:java-mcp-server-generator",
+        "prompts:kotlin-mcp-server-generator",
+        "prompts:mcp-copilot-studio-server-generator",
+        "prompts:php-mcp-server-generator",
+        "prompts:power-platform-mcp-connector-suite",
+        "prompts:python-mcp-server-generator",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "prompts:swift-mcp-server-generator",
+        "prompts:typescript-mcp-server-generator",
+        "instructions:codexer",
+        "instructions:power-platform-connector",
+        "prompts:readme-blueprint-generator",
+        "chatmodes:power-bi-data-modeling-expert",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:power-apps-code-apps",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:declarative-agents",
+        "prompts:postgresql-code-review",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "chatmodes:terraform-azure-implement",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:java-springboot",
+        "prompts:javascript-typescript-jest",
+        "prompts:kotlin-springboot",
+        "prompts:technology-stack-blueprint-generator",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:power-apps-canvas-yaml",
+        "instructions:power-bi-custom-visuals-development",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:cosmosdb-datamodeling",
+        "prompts:power-apps-code-app-scaffold",
+        "prompts:suggest-awesome-github-copilot-agents",
+        "prompts:suggest-awesome-github-copilot-chatmodes",
+        "prompts:suggest-awesome-github-copilot-instructions",
+        "prompts:suggest-awesome-github-copilot-prompts",
+        "chatmodes:drupal-expert",
+        "chatmodes:task-researcher",
+        "chatmodes:tdd-red",
+        "instructions:performance-optimization",
+        "instructions:power-bi-data-modeling-best-practices",
+        "instructions:power-bi-dax-best-practices",
+        "instructions:power-bi-report-design-best-practices",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:power-bi-model-design-review",
+        "prompts:prompt-builder",
+        "prompts:sql-code-review",
+        "prompts:suggest-awesome-github-copilot-collections",
+        "chatmodes:code-tour",
+        "chatmodes:expert-nextjs-developer",
+        "chatmodes:expert-react-frontend-engineer",
+        "chatmodes:kusto-assistant",
+        "chatmodes:power-platform-expert",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:nestjs",
+        "instructions:power-bi-security-rls-best-practices",
+        "instructions:vuejs3",
+        "prompts:architecture-blueprint-generator",
+        "prompts:comment-code-generate-a-tutorial",
+        "prompts:github-copilot-starter",
+        "prompts:playwright-generate-test"
+      ]
+    },
+    "collections:mobile-development": {
+      "path": "assets/collections/mobile-development.json",
+      "description": "Mobile application development resources for Flutter, React Native, Android, and iOS.",
+      "title": "mobile-development",
+      "type": "collections",
+      "items": [
+        "instructions:power-apps-code-apps",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:reactjs",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:technology-stack-blueprint-generator"
+      ]
+    },
+    "collections:php-cms-development": {
+      "path": "assets/collections/php-cms-development.json",
+      "description": "PHP development resources including Laravel, Symfony, Drupal, WordPress, and Pimcore.",
+      "title": "php-cms-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:drupal-expert",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:php-mcp-expert",
+        "chatmodes:pimcore-expert",
+        "instructions:php-mcp-server",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "instructions:java-mcp-server",
+        "instructions:go-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "prompts:java-mcp-server-generator",
+        "prompts:python-mcp-server-generator",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:swift-mcp-server-generator",
+        "prompts:typescript-mcp-server-generator",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:java-mcp-expert",
+        "chatmodes:kotlin-mcp-expert",
+        "chatmodes:ruby-mcp-expert",
+        "chatmodes:swift-mcp-expert",
+        "instructions:nestjs",
+        "instructions:power-platform-mcp-development",
+        "chatmodes:rust-mcp-expert",
+        "instructions:codexer",
+        "instructions:csharp-mcp-server",
+        "instructions:python-mcp-server",
+        "instructions:svelte",
+        "instructions:typescript-mcp-server",
+        "prompts:architecture-blueprint-generator",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:go-mcp-server-generator",
+        "prompts:kotlin-mcp-server-generator",
+        "prompts:readme-blueprint-generator",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "instructions:power-apps-code-apps",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:wordpress",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:csharp-mstest",
+        "prompts:csharp-nunit",
+        "prompts:csharp-tunit",
+        "prompts:csharp-xunit",
+        "prompts:java-junit",
+        "prompts:javascript-typescript-jest",
+        "prompts:sql-code-review",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:shopify-expert",
+        "chatmodes:tdd-red",
+        "chatmodes:typescript-mcp-expert",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:astro",
+        "instructions:reactjs",
+        "instructions:vuejs3",
+        "prompts:declarative-agents",
+        "prompts:mcp-copilot-studio-server-generator"
+      ]
+    },
+    "collections:power-platform-specialist": {
+      "path": "assets/collections/power-platform-specialist.json",
+      "description": "Tools for Power BI data modeling, DAX optimization, and Power Apps development.",
+      "title": "power-platform-specialist",
+      "type": "collections",
+      "items": [
+        "chatmodes:aem-frontend-specialist",
+        "chatmodes:power-bi-data-modeling-expert",
+        "chatmodes:power-bi-dax-expert",
+        "chatmodes:power-bi-performance-expert",
+        "chatmodes:power-bi-visualization-expert",
+        "chatmodes:power-platform-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:power-apps-canvas-yaml",
+        "instructions:power-apps-code-apps",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:power-bi-data-modeling-best-practices",
+        "instructions:power-bi-dax-best-practices",
+        "instructions:power-bi-devops-alm-best-practices",
+        "instructions:power-bi-report-design-best-practices",
+        "instructions:power-bi-security-rls-best-practices",
+        "instructions:power-platform-connector",
+        "instructions:power-platform-mcp-development",
+        "instructions:powershell",
+        "instructions:powershell-pester-5",
+        "prompts:power-apps-code-app-scaffold",
+        "prompts:power-bi-dax-optimization",
+        "prompts:power-bi-model-design-review",
+        "prompts:power-bi-performance-troubleshooting",
+        "prompts:power-bi-report-design-consultation",
+        "prompts:power-platform-mcp-connector-suite",
+        "prompts:postgresql-code-review",
+        "chatmodes:azure-logic-apps-expert",
+        "prompts:postgresql-optimization",
+        "prompts:sql-code-review",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "instructions:performance-optimization",
+        "prompts:readme-blueprint-generator",
+        "prompts:declarative-agents",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:containerization-docker-best-practices",
+        "prompts:cosmosdb-datamodeling",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:expert-react-frontend-engineer",
+        "instructions:dotnet-framework",
+        "instructions:vuejs3",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:sql-optimization",
+        "prompts:typescript-mcp-server-generator",
+        "chatmodes:drupal-expert",
+        "instructions:codexer",
+        "instructions:java-mcp-server",
+        "instructions:svelte",
+        "prompts:architecture-blueprint-generator",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:java-mcp-server-generator",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:php-mcp-expert",
+        "chatmodes:typescript-mcp-expert",
+        "instructions:azure-devops-pipelines",
+        "instructions:devops-core-principles",
+        "instructions:go-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:nestjs",
+        "instructions:php-mcp-server",
+        "instructions:reactjs",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:mcp-copilot-studio-server-generator",
+        "prompts:prompt-builder",
+        "prompts:python-mcp-server-generator",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:swift-mcp-server-generator",
+        "chatmodes:electron-angular-native",
+        "chatmodes:kusto-assistant",
+        "chatmodes:prompt-engineer",
+        "chatmodes:rust-mcp-expert",
+        "chatmodes:task-researcher",
+        "instructions:astro",
+        "instructions:nextjs-tailwind",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:security-and-owasp",
+        "instructions:typescript-5-es2022",
+        "prompts:csharp-mstest",
+        "prompts:csharp-nunit",
+        "prompts:csharp-tunit",
+        "prompts:csharp-xunit",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:go-mcp-server-generator",
+        "prompts:java-junit",
+        "prompts:javascript-typescript-jest",
+        "prompts:kotlin-mcp-server-generator",
+        "chatmodes:azure-principal-architect",
+        "chatmodes:azure-saas-architect",
+        "chatmodes:bicep-implement",
+        "chatmodes:code-tour",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:expert-nextjs-developer",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:java-mcp-expert",
+        "chatmodes:kotlin-mcp-expert",
+        "chatmodes:pimcore-expert",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:ruby-mcp-expert",
+        "chatmodes:search-ai-optimization-expert",
+        "chatmodes:shopify-expert",
+        "chatmodes:tdd-red",
+        "chatmodes:terraform-azure-implement",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:clojure",
+        "instructions:csharp-mcp-server",
+        "instructions:devbox-image-definition",
+        "instructions:kubernetes-deployment-best-practices",
+        "instructions:python-mcp-server",
+        "instructions:quarkus",
+        "instructions:r",
+        "instructions:terraform-sap-btp",
+        "prompts:ai-prompt-engineering-safety-review",
+        "prompts:comment-code-generate-a-tutorial",
+        "prompts:create-technical-spike",
+        "prompts:shuffle-json-data"
+      ]
+    },
+    "collections:project-management": {
+      "path": "assets/collections/project-management.json",
+      "description": "Project management resources for Agile, Jira, and requirements gathering.",
+      "title": "project-management",
+      "type": "collections",
+      "items": [
+        "chatmodes:atlassian-requirements-to-jira",
+        "chatmodes:hlbpa",
+        "chatmodes:meta-agentic-project-scaffold",
+        "instructions:joyride-user-project",
+        "prompts:create-spring-boot-java-project",
+        "prompts:create-spring-boot-kotlin-project",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:architecture-blueprint-generator",
+        "prompts:technology-stack-blueprint-generator",
+        "prompts:readme-blueprint-generator",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:copilot-instructions-blueprint-generator",
+        "instructions:dotnet-framework",
+        "instructions:joyride-workspace-automation",
+        "prompts:typescript-mcp-server-generator",
+        "chatmodes:plan",
+        "prompts:comment-code-generate-a-tutorial",
+        "prompts:java-mcp-server-generator",
+        "prompts:php-mcp-server-generator",
+        "prompts:python-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "chatmodes:prd",
+        "instructions:cmake-vcpkg",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:kotlin-mcp-server-generator",
+        "prompts:sql-code-review",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:power-bi-devops-alm-best-practices",
+        "instructions:spec-driven-workflow-v1",
+        "prompts:breakdown-epic-arch",
+        "prompts:breakdown-plan",
+        "prompts:cosmosdb-datamodeling",
+        "prompts:editorconfig",
+        "prompts:go-mcp-server-generator",
+        "prompts:remember-interactive-programming",
+        "prompts:review-and-refactor",
+        "prompts:update-implementation-plan",
+        "chatmodes:task-researcher",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:dotnet-best-practices",
+        "prompts:power-apps-code-app-scaffold",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:swift-mcp-server-generator",
+        "prompts:update-specification"
+      ]
+    },
+    "collections:python-development": {
+      "path": "assets/collections/python-development.json",
+      "description": "Resources for Python development including Django, Flask, FastAPI, and Data Science libraries.",
+      "title": "python-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:microsoft-agent-framework-python",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:semantic-kernel-python",
+        "instructions:langchain-python",
+        "instructions:playwright-python",
+        "instructions:python",
+        "instructions:python-mcp-server",
+        "prompts:python-mcp-server-generator",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "prompts:typescript-mcp-server-generator",
+        "prompts:technology-stack-blueprint-generator",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:java-mcp-server-generator",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:swift-mcp-server-generator",
+        "instructions:codexer",
+        "instructions:php-mcp-server",
+        "instructions:power-platform-connector",
+        "instructions:power-platform-mcp-development",
+        "prompts:readme-blueprint-generator",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:kotlin-mcp-expert",
+        "chatmodes:microsoft-agent-framework-dotnet",
+        "chatmodes:php-mcp-expert",
+        "instructions:csharp-mcp-server",
+        "instructions:go-mcp-server",
+        "instructions:java-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:go-mcp-server-generator",
+        "prompts:kotlin-mcp-server-generator",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "chatmodes:java-mcp-expert",
+        "chatmodes:ruby-mcp-expert",
+        "chatmodes:semantic-kernel-dotnet",
+        "chatmodes:swift-mcp-expert",
+        "prompts:comment-code-generate-a-tutorial",
+        "prompts:folder-structure-blueprint-generator",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:rust-mcp-expert",
+        "chatmodes:typescript-mcp-expert",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:postgresql-optimization",
+        "prompts:sql-code-review",
+        "chatmodes:kusto-assistant",
+        "chatmodes:terraform-azure-implement",
+        "instructions:power-bi-data-modeling-best-practices",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:vuejs3",
+        "prompts:architecture-blueprint-generator",
+        "prompts:csharp-mstest",
+        "prompts:csharp-nunit",
+        "prompts:csharp-tunit",
+        "prompts:csharp-xunit",
+        "prompts:java-junit",
+        "prompts:mcp-copilot-studio-server-generator"
+      ]
+    },
+    "collections:quality-assurance": {
+      "path": "assets/collections/quality-assurance.json",
+      "description": "A collection for test automation, TDD workflows, and unit testing.",
+      "title": "quality-assurance",
+      "type": "collections",
+      "items": [
+        "chatmodes:playwright-tester",
+        "chatmodes:tdd-green",
+        "chatmodes:tdd-red",
+        "instructions:nodejs-javascript-vitest",
+        "instructions:playwright-typescript",
+        "prompts:breakdown-test",
+        "prompts:javascript-typescript-jest",
+        "prompts:playwright-generate-test",
+        "chatmodes:tdd-refactor",
+        "prompts:breakdown-plan",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:java-junit",
+        "instructions:github-actions-ci-cd-best-practices",
+        "prompts:csharp-mstest",
+        "prompts:csharp-nunit",
+        "prompts:csharp-tunit",
+        "prompts:csharp-xunit",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:power-bi-custom-visuals-development",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:prompt-builder",
+        "prompts:readme-blueprint-generator",
+        "instructions:instructions",
+        "instructions:playwright-python",
+        "prompts:postgresql-code-review",
+        "chatmodes:laravel-expert-agent",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:playwright-dotnet",
+        "instructions:powershell-pester-5",
+        "instructions:prompt",
+        "prompts:declarative-agents",
+        "prompts:folder-structure-blueprint-generator",
+        "prompts:sql-code-review",
+        "prompts:suggest-awesome-github-copilot-collections",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:clojure-interactive-programming",
+        "chatmodes:plan",
+        "chatmodes:prompt-builder",
+        "chatmodes:prompt-engineer",
+        "instructions:dotnet-maui-9-to-dotnet-maui-10-upgrade",
+        "instructions:java-mcp-server",
+        "instructions:joyride-user-project",
+        "instructions:performance-optimization",
+        "instructions:power-apps-code-apps",
+        "instructions:power-bi-devops-alm-best-practices",
+        "instructions:power-bi-security-rls-best-practices",
+        "instructions:self-explanatory-code-commenting",
+        "instructions:typescript-mcp-server",
+        "prompts:ai-prompt-engineering-safety-review",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:playwright-explore-website"
+      ]
+    },
+    "collections:ruby-development": {
+      "path": "assets/collections/ruby-development.json",
+      "description": "Ruby and Ruby on Rails development resources.",
+      "title": "ruby-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:ruby-mcp-expert",
+        "instructions:ruby-mcp-server",
+        "instructions:ruby-on-rails",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:php-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "instructions:java-mcp-server",
+        "instructions:go-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:swift-mcp-server",
+        "prompts:java-mcp-server-generator",
+        "instructions:php-mcp-server",
+        "prompts:swift-mcp-server-generator",
+        "chatmodes:java-mcp-expert",
+        "chatmodes:swift-mcp-expert",
+        "prompts:python-mcp-server-generator",
+        "prompts:typescript-mcp-server-generator",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:kotlin-mcp-expert",
+        "instructions:csharp-mcp-server",
+        "instructions:power-platform-mcp-development",
+        "instructions:python-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:go-mcp-server-generator",
+        "prompts:kotlin-mcp-server-generator",
+        "chatmodes:php-mcp-expert",
+        "instructions:nestjs",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:drupal-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "chatmodes:rust-mcp-expert",
+        "instructions:codexer",
+        "instructions:power-apps-code-apps",
+        "prompts:architecture-blueprint-generator",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:mcp-copilot-studio-server-generator",
+        "prompts:readme-blueprint-generator"
+      ]
+    },
+    "collections:rust-development": {
+      "path": "assets/collections/rust-development.json",
+      "description": "Rust programming language resources and crates.",
+      "title": "rust-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:rust-gpt-4.1-beast-mode",
+        "chatmodes:rust-mcp-expert",
+        "instructions:rust",
+        "instructions:rust-mcp-server",
+        "prompts:rust-mcp-server-generator",
+        "prompts:php-mcp-server-generator",
+        "instructions:go-mcp-server",
+        "instructions:java-mcp-server",
+        "instructions:kotlin-mcp-server",
+        "instructions:ruby-mcp-server",
+        "instructions:swift-mcp-server",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:technology-stack-blueprint-generator",
+        "instructions:php-mcp-server",
+        "prompts:java-mcp-server-generator",
+        "prompts:python-mcp-server-generator",
+        "prompts:ruby-mcp-server-generator",
+        "prompts:swift-mcp-server-generator",
+        "prompts:typescript-mcp-server-generator",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:go-mcp-expert",
+        "chatmodes:kotlin-mcp-expert",
+        "chatmodes:php-mcp-expert",
+        "chatmodes:drupal-expert",
+        "chatmodes:java-mcp-expert",
+        "chatmodes:ruby-mcp-expert",
+        "chatmodes:swift-mcp-expert",
+        "instructions:csharp-mcp-server",
+        "instructions:nestjs",
+        "instructions:power-platform-mcp-development",
+        "instructions:python-mcp-server",
+        "instructions:typescript-mcp-server",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:go-mcp-server-generator",
+        "prompts:kotlin-mcp-server-generator",
+        "prompts:sql-code-review",
+        "chatmodes:laravel-expert-agent",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:clojure",
+        "instructions:codexer",
+        "instructions:dotnet-framework",
+        "instructions:power-apps-code-apps",
+        "prompts:architecture-blueprint-generator",
+        "prompts:csharp-async",
+        "prompts:readme-blueprint-generator",
+        "chatmodes:csharp-mcp-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "chatmodes:python-mcp-expert",
+        "chatmodes:tdd-red",
+        "chatmodes:terraform-azure-implement",
+        "chatmodes:typescript-mcp-expert",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:astro",
+        "instructions:quarkus-mcp-server-sse",
+        "instructions:r",
+        "instructions:reactjs",
+        "instructions:svelte",
+        "instructions:vuejs3"
+      ]
+    },
+    "collections:security-specialist": {
+      "path": "assets/collections/security-specialist.json",
+      "description": "Security auditing, threat modeling, and secure coding practices.",
+      "title": "security-specialist",
+      "type": "collections",
+      "items": [
+        "chatmodes:aem-frontend-specialist",
+        "instructions:power-bi-security-rls-best-practices",
+        "instructions:security-and-owasp",
+        "prompts:postgresql-code-review",
+        "instructions:containerization-docker-best-practices",
+        "instructions:performance-optimization",
+        "chatmodes:tdd-refactor",
+        "instructions:github-actions-ci-cd-best-practices",
+        "instructions:power-bi-data-modeling-best-practices",
+        "chatmodes:power-bi-data-modeling-expert",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:kubernetes-deployment-best-practices",
+        "chatmodes:bicep-implement",
+        "chatmodes:terraform-azure-implement",
+        "instructions:angular",
+        "instructions:power-bi-dax-best-practices",
+        "instructions:power-bi-report-design-best-practices",
+        "instructions:rust",
+        "instructions:power-apps-canvas-yaml",
+        "instructions:power-apps-code-apps",
+        "instructions:wordpress",
+        "prompts:create-oo-component-documentation",
+        "prompts:sql-code-review",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:code-tour",
+        "chatmodes:drupal-expert",
+        "chatmodes:power-bi-visualization-expert",
+        "chatmodes:power-platform-expert",
+        "instructions:ai-prompt-engineering-safety-best-practices",
+        "instructions:java-mcp-server",
+        "instructions:power-bi-devops-alm-best-practices",
+        "instructions:powershell-pester-5",
+        "instructions:powershell",
+        "prompts:cosmosdb-datamodeling",
+        "prompts:javascript-typescript-jest",
+        "chatmodes:expert-cpp-software-engineer",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:power-bi-dax-expert",
+        "chatmodes:prompt-engineer",
+        "instructions:bicep-code-best-practices",
+        "instructions:clojure",
+        "instructions:go-mcp-server",
+        "instructions:go",
+        "instructions:java-11-to-java-17-upgrade",
+        "instructions:java-17-to-java-21-upgrade",
+        "instructions:java-21-to-java-25-upgrade",
+        "instructions:kotlin-mcp-server",
+        "instructions:php-mcp-server",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:ruby-mcp-server",
+        "instructions:rust-mcp-server",
+        "instructions:svelte",
+        "instructions:swift-mcp-server",
+        "prompts:ai-prompt-engineering-safety-review",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:dotnet-best-practices",
+        "prompts:java-springboot",
+        "prompts:kotlin-springboot",
+        "prompts:readme-blueprint-generator",
+        "prompts:update-oo-component-documentation"
+      ]
+    },
+    "collections:software-architect": {
+      "path": "assets/collections/software-architect.json",
+      "description": "High-level tools for planning, specification writing, and architectural decision making.",
+      "title": "software-architect",
+      "type": "collections",
+      "items": [
+        "chatmodes:api-architect",
+        "chatmodes:azure-principal-architect",
+        "chatmodes:azure-saas-architect",
+        "chatmodes:blueprint-mode",
+        "chatmodes:blueprint-mode-codex",
+        "chatmodes:declarative-agents-architect",
+        "chatmodes:expert-cpp-software-engineer",
+        "chatmodes:expert-dotnet-software-engineer",
+        "chatmodes:implementation-plan",
+        "chatmodes:meta-agentic-project-scaffold",
+        "chatmodes:plan",
+        "chatmodes:planner",
+        "chatmodes:principal-software-engineer",
+        "chatmodes:software-engineer-agent-v1",
+        "chatmodes:specification",
+        "instructions:dotnet-architecture-good-practices",
+        "instructions:spec-driven-workflow-v1",
+        "prompts:architecture-blueprint-generator",
+        "prompts:create-architectural-decision-record",
+        "prompts:create-specification",
+        "prompts:technology-stack-blueprint-generator",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:folder-structure-blueprint-generator",
+        "chatmodes:hlbpa",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:postgresql-code-review",
+        "prompts:readme-blueprint-generator",
+        "prompts:update-specification",
+        "prompts:update-implementation-plan",
+        "chatmodes:prompt-engineer",
+        "prompts:breakdown-epic-arch",
+        "prompts:documentation-writer",
+        "instructions:power-bi-security-rls-best-practices",
+        "prompts:update-oo-component-documentation",
+        "chatmodes:simple-app-idea-generator",
+        "chatmodes:terraform-azure-planning",
+        "prompts:breakdown-epic-pm",
+        "prompts:copilot-instructions-blueprint-generator",
+        "prompts:create-implementation-plan",
+        "prompts:create-oo-component-documentation",
+        "prompts:generate-custom-instructions-from-codebase",
+        "prompts:prompt-builder",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:dotnet-framework",
+        "prompts:breakdown-plan",
+        "prompts:create-github-action-workflow-specification",
+        "prompts:declarative-agents",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:clojure-interactive-programming",
+        "chatmodes:code-tour",
+        "chatmodes:drupal-expert",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:microsoft-agent-framework-dotnet",
+        "chatmodes:microsoft_learn_contributor",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:codexer",
+        "instructions:power-bi-data-modeling-best-practices",
+        "instructions:power-bi-dax-best-practices",
+        "prompts:breakdown-test",
+        "prompts:conventional-commit",
+        "prompts:cosmosdb-datamodeling",
+        "prompts:dotnet-best-practices",
+        "prompts:javascript-typescript-jest",
+        "prompts:sql-optimization",
+        "chatmodes:bicep-plan",
+        "chatmodes:power-bi-data-modeling-expert",
+        "chatmodes:prompt-builder",
+        "chatmodes:tdd-red",
+        "instructions:gilfoyle-code-review",
+        "instructions:performance-optimization",
+        "instructions:power-bi-report-design-best-practices",
+        "prompts:csharp-mcp-server-generator",
+        "prompts:dotnet-upgrade",
+        "prompts:php-mcp-server-generator",
+        "prompts:python-mcp-server-generator",
+        "prompts:rust-mcp-server-generator",
+        "prompts:sql-code-review",
+        "prompts:typescript-mcp-server-generator",
+        "prompts:update-llms"
+      ]
+    },
+    "collections:technical-writing": {
+      "path": "assets/collections/technical-writing.json",
+      "description": "Resources for technical documentation, Markdown, and diagrams.",
+      "title": "technical-writing",
+      "type": "collections",
+      "items": [
+        "chatmodes:microsoft_learn_contributor",
+        "chatmodes:research-technical-spike",
+        "instructions:markdown",
+        "prompts:create-technical-spike",
+        "prompts:readme-blueprint-generator",
+        "prompts:architecture-blueprint-generator",
+        "prompts:documentation-writer",
+        "prompts:technology-stack-blueprint-generator",
+        "chatmodes:prd",
+        "chatmodes:tech-debt-remediation-plan",
+        "prompts:create-oo-component-documentation",
+        "prompts:update-oo-component-documentation",
+        "chatmodes:tdd-red",
+        "instructions:go",
+        "prompts:code-exemplars-blueprint-generator",
+        "prompts:csharp-docs",
+        "prompts:java-docs",
+        "prompts:javascript-typescript-jest"
+      ]
+    },
+    "collections:web-frontend-development": {
+      "path": "assets/collections/web-frontend-development.json",
+      "description": "Modern web frontend development resources covering React, Angular, Vue, Next.js, and more.",
+      "title": "web-frontend-development",
+      "type": "collections",
+      "items": [
+        "chatmodes:aem-frontend-specialist",
+        "chatmodes:electron-angular-native",
+        "chatmodes:expert-nextjs-developer",
+        "chatmodes:expert-react-frontend-engineer",
+        "instructions:angular",
+        "instructions:astro",
+        "instructions:nextjs",
+        "instructions:svelte",
+        "prompts:playwright-explore-website",
+        "prompts:code-exemplars-blueprint-generator",
+        "instructions:power-bi-custom-visuals-development",
+        "instructions:power-apps-code-apps",
+        "chatmodes:laravel-expert-agent",
+        "chatmodes:drupal-expert",
+        "instructions:vuejs3",
+        "prompts:technology-stack-blueprint-generator",
+        "instructions:nextjs-tailwind",
+        "instructions:performance-optimization",
+        "instructions:reactjs",
+        "prompts:folder-structure-blueprint-generator",
+        "instructions:nestjs",
+        "prompts:postgresql-code-review",
+        "prompts:project-workflow-analysis-blueprint-generator",
+        "prompts:readme-blueprint-generator",
+        "prompts:sql-code-review",
+        "chatmodes:azure-logic-apps-expert",
+        "chatmodes:php-mcp-expert",
+        "instructions:clojure",
+        "prompts:declarative-agents",
+        "prompts:postgresql-optimization",
+        "chatmodes:expert-cpp-software-engineer",
+        "chatmodes:expert-dotnet-software-engineer",
+        "chatmodes:pimcore-expert",
+        "chatmodes:power-platform-mcp-integration-expert",
+        "chatmodes:rust-mcp-expert",
+        "chatmodes:shopify-expert",
+        "chatmodes:voidbeast-gpt41enhanced",
+        "instructions:codexer",
+        "instructions:declarative-agents-microsoft365",
+        "instructions:power-platform-mcp-development",
+        "instructions:quarkus-mcp-server-sse",
+        "prompts:typescript-mcp-server-generator",
+        "chatmodes:search-ai-optimization-expert",
+        "chatmodes:terraform-azure-implement",
+        "instructions:azure-logic-apps-power-automate",
+        "instructions:java-mcp-server",
+        "instructions:typescript-5-es2022"
+      ]
+    }
+  }
+}
