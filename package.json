@@ -11,7 +11,7 @@
     "analyze": "node scripts/analyze-collections.js",
     "generate-manifest": "node scripts/generate-manifest.js",
     "prepublishOnly": "npm run generate-manifest",
-    "sync": "node scripts/sync.js",
+    "fetch-upstream": "node scripts/fetch-upstream-assets.js",
     "release": "release-it",
     "publish:local": "npm run release && npm publish --registry http://localhost:4873"
   },

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -62,24 +63,24 @@ async function downloadFile(downloadUrl, localPath) {
     fs.mkdirSync(dir, { recursive: true });
   }
   fs.writeFileSync(localPath, content);
-  console.log(`Downloaded: ${localPath}`);
+  console.log(`${chalk.green('Downloaded:')} ${localPath}`);
 }
 
 async function sync() {
-  console.log('Starting sync...');
+  console.log(chalk.blue('Starting sync...'));
   
   // Delete legacy files
   for (const file of FILES_TO_DELETE) {
     const filePath = path.join(__dirname, '..', file);
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
-      console.log(`Deleted: ${file}`);
+      console.log(`${chalk.red('Deleted:')} ${file}`);
     }
   }
 
   // Sync folders
   for (const mapping of MAPPINGS) {
-    console.log(`Syncing ${mapping.remote} to ${mapping.local}...`);
+    console.log(chalk.yellow(`Syncing ${mapping.remote} to ${mapping.local}...`));
     try {
       const items = await fetchGitHubContent(mapping.remote);
       
@@ -90,10 +91,10 @@ async function sync() {
         }
       }
     } catch (error) {
-      console.error(`Error syncing ${mapping.remote}:`, error.message);
+      console.error(chalk.red(`Error syncing ${mapping.remote}:`), error.message);
     }
   }
-  console.log('Sync complete!');
+  console.log(chalk.blue('Sync complete!'));
 }
 
 sync();
