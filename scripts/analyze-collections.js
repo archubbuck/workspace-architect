@@ -261,15 +261,15 @@ async function main() {
   program
     .name('analyze-collections')
     .description('Analyze collections and suggest missing assets using TF-IDF and Cosine Similarity')
-    .option('-f, --fix', 'Automatically add high-confidence matches to collections')
-    .option('-p, --prune', 'Automatically remove low-confidence items from collections')
-    .option('-t, --threshold <number>', 'Similarity threshold for adding (0.0 to 1.0)', '0.2')
-    .option('--prune-threshold <number>', 'Similarity threshold for pruning (0.0 to 1.0)', '0.05')
+    .option('-a, --add', 'Automatically add high-confidence matches to collections')
+    .option('-r, --remove', 'Automatically remove low-confidence items from collections')
+    .option('--add-threshold <number>', 'Similarity threshold for adding (0.0 to 1.0)', '0.2')
+    .option('--remove-threshold <number>', 'Similarity threshold for removing (0.0 to 1.0)', '0.05')
     .parse(process.argv);
 
   const options = program.opts();
-  const threshold = parseFloat(options.threshold);
-  const pruneThreshold = parseFloat(options.pruneThreshold);
+  const addThreshold = parseFloat(options.addThreshold);
+  const removeThreshold = parseFloat(options.removeThreshold);
 
   console.log(chalk.blue('Loading assets...'));
 
@@ -318,23 +318,23 @@ async function main() {
       const profileMinusItem = subtractVector(profileVector, assetVector);
       const score = cosineSimilarity(profileMinusItem, assetVector);
 
-      if (score < pruneThreshold) {
+      if (score < removeThreshold) {
         outliers.push({ key: itemKey, score });
       }
     }
 
     if (outliers.length > 0) {
       outliers.sort((a, b) => a.score - b.score);
-      console.log(chalk.yellow(`  Outliers (Low Similarity < ${pruneThreshold}):`));
+      console.log(chalk.yellow(`  Outliers (Low Similarity < ${removeThreshold}):`));
       
       for (const { key, score } of outliers) {
         console.log(`    [${score.toFixed(3)}] ${chalk.red(key)}`);
       }
 
-      if (options.prune) {
+      if (options.remove) {
         const keysToRemove = new Set(outliers.map(o => o.key));
         collection.data.items = collection.data.items.filter(k => !keysToRemove.has(k));
-        console.log(chalk.red(`    -> Pruned ${outliers.length} items`));
+        console.log(chalk.red(`    -> Removed ${outliers.length} items`));
         isModified = true;
       }
     }
@@ -349,7 +349,7 @@ async function main() {
       const assetVector = assetVectors.get(asset.key);
       const score = cosineSimilarity(profileVector, assetVector);
       
-      if (score >= threshold) {
+      if (score >= addThreshold) {
         suggestions.push({ asset, score });
       }
     }
@@ -365,7 +365,7 @@ async function main() {
         newItems.push(asset.key);
       }
 
-      if (options.fix) {
+      if (options.add) {
         if (!collection.data.items) collection.data.items = [];
         collection.data.items.push(...newItems);
         collection.data.items = [...new Set(collection.data.items)]; // Dedupe
