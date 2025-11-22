@@ -1,6 +1,6 @@
 {
   "name": "workspace-architect",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "A comprehensive library of specialized AI personas and chat modes for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.",
   "bin": {
     "workspace-architect": "./bin/cli.js"

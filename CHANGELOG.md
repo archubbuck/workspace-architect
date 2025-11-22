@@ -1,5 +1,12 @@
 
 
+## [1.5.0](https://github.com/archubbuck/workspace-architect/compare/v1.4.1...v1.5.0) (2025-11-22)
+
+
+### Features
+
+* reduce package size by loading assets remotely ([ddded75](https://github.com/archubbuck/workspace-architect/commit/ddded75cab5cb4294809c12572975696edc33fac))
+
 ## [1.4.1](https://github.com/archubbuck/workspace-architect/compare/v1.4.0...v1.4.1) (2025-11-21)
 
 ## [1.4.0](https://github.com/archubbuck/workspace-architect/compare/v1.3.0...v1.4.0) (2025-11-21)
