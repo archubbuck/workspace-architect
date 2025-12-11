@@ -33,4 +33,4 @@ jobs:
       - name: Release and Publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release -- --ci --npm.publish --npm.publishArgs="--provenance --access public" --git.push
+        run: npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
