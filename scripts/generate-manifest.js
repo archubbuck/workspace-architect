@@ -11,7 +11,7 @@ const ROOT_DIR = path.join(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
 const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 
-const TYPES = ['chatmodes', 'instructions', 'prompts', 'collections'];
+const TYPES = ['agents', 'instructions', 'prompts', 'collections'];
 
 async function generateManifest() {
   console.log(chalk.blue('Generating assets manifest...'));
@@ -39,7 +39,7 @@ async function generateManifest() {
       let items = []; // For collections
       
       // Remove extensions for ID
-      if (type === 'chatmodes') id = file.replace('.chatmode.md', '');
+      if (type === 'agents') id = file.replace('.chatmode.md', '');
       else if (type === 'instructions') id = file.replace('.instructions.md', '');
       else if (type === 'prompts') id = file.replace('.prompt.md', '');
       else if (type === 'collections') id = file.replace('.json', '');

@@ -23,13 +23,13 @@ program
 
 program
   .command('list [type]')
-  .description('List available assets (instructions, prompts, chatmodes, collections)')
+  .description('List available assets (instructions, prompts, agents, collections)')
   .action(async (type) => {
     try {
       if (type) {
         await listAssets(type);
       } else {
-        const types = ['instructions', 'prompts', 'chatmodes', 'collections'];
+        const types = ['instructions', 'prompts', 'agents', 'collections'];
         for (const t of types) {
           await listAssets(t);
         }
@@ -129,7 +129,7 @@ async function downloadAsset(id, options) {
     throw new Error('Invalid ID format. Use type:name (e.g., instructions:basic-setup)');
   }
 
-  const validTypes = ['instructions', 'prompts', 'chatmodes', 'collections'];
+  const validTypes = ['instructions', 'prompts', 'agents', 'collections'];
   if (!validTypes.includes(type)) {
     throw new Error(`Invalid type: ${type}. Valid types are: ${validTypes.join(', ')}`);
   }
@@ -182,7 +182,7 @@ async function downloadAsset(id, options) {
       name,
       name + '.md'
     ];
-    if (type === 'chatmodes') potentialFileNames.push(name + '.chatmode.md');
+    if (type === 'agents') potentialFileNames.push(name + '.chatmode.md');
     if (type === 'prompts') potentialFileNames.push(name + '.prompt.md');
     if (type === 'instructions') potentialFileNames.push(name + '.instructions.md');
 

@@ -24,9 +24,10 @@ const REPO_NAME = 'awesome-copilot';
 const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
 
 const MAPPINGS = [
-  { remote: 'chatmodes', local: 'assets/chatmodes' },
+  { remote: 'agents', local: 'assets/agents' },
   { remote: 'instructions', local: 'assets/instructions' },
-  { remote: 'prompts', local: 'assets/prompts' }
+  { remote: 'prompts', local: 'assets/prompts' },
+  { remote: 'collections', local: 'assets/collections' }
 ];
 
 const FILES_TO_DELETE = [
