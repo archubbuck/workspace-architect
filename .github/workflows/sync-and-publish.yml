@@ -55,4 +55,11 @@ jobs:
         if: steps.git-check.outputs.changes == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Ensure an npm automation token (NPM_TOKEN) has been stored in repo secrets.
+          # Write a minimal .npmrc so npm and release-it can authenticate non-interactively.
+          printf "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}\n" > ~/.npmrc
+
+          # Run release-it. release-it will pick up NODE_AUTH_TOKEN automatically as well.
+          npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
