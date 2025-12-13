@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2025-12-13T21:33:38.578Z",
+  "generatedAt": "2025-12-13T22:06:12.137Z",
   "assets": {
     "agents:4.1-Beast": {
       "path": ".github/agents/4.1-Beast.agent.md",
@@ -2092,7 +2092,7 @@
     },
     "prompts:model-recommendation": {
       "path": "assets/prompts/model-recommendation.prompt.md",
-      "description": "Analyze agent or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency",
+      "description": "Analyze chatmode or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency",
       "title": "model-recommendation",
       "type": "prompts"
     },
@@ -2296,8 +2296,14 @@
     },
     "prompts:suggest-awesome-github-copilot-agents": {
       "path": "assets/prompts/suggest-awesome-github-copilot-agents.prompt.md",
-      "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom chat modes in this repository.",
+      "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository.",
       "title": "suggest-awesome-github-copilot-agents",
+      "type": "prompts"
+    },
+    "prompts:suggest-awesome-github-copilot-chatmodes": {
+      "path": "assets/prompts/suggest-awesome-github-copilot-chatmodes.prompt.md",
+      "description": "Suggest relevant GitHub Copilot Custom Chat Modes files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom chat modes in this repository.",
+      "title": "suggest-awesome-github-copilot-chatmodes",
       "type": "prompts"
     },
     "prompts:suggest-awesome-github-copilot-collections": {
