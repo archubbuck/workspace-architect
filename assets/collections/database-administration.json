@@ -1,8 +1,8 @@
 {
   "description": "Database administration and development resources for SQL and NoSQL databases.",
   "items": [
-    "chatmodes:ms-sql-dba",
-    "chatmodes:postgresql-dba",
+    "agents:ms-sql-dba",
+    "agents:postgresql-dba",
     "prompts:sql-code-review",
     "prompts:sql-optimization",
     "prompts:postgresql-optimization",

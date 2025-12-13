@@ -1,6 +1,6 @@
 # Workspace Architect
 
-A comprehensive library of specialized AI personas and chat modes for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.
+A comprehensive library of specialized AI agents and personas for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.
 
 ## Overview
 
@@ -8,7 +8,7 @@ Workspace Architect is a CLI tool and library designed to enhance your experienc
 
 *   **Instructions**: Detailed guidelines to set the context for Copilot.
 *   **Prompts**: Reusable prompts for specific tasks like code review or refactoring.
-*   **Chat Modes**: Specialized personas (e.g., "Azure Architect", "React Expert") to guide the conversation.
+*   **Agents**: Specialized personas (e.g., "Azure Architect", "React Expert") to guide the conversation.
 *   **Collections**: Grouped assets for specific domains (e.g., "Web Development", "DevOps").
 
 ## Why Workspace Architect?
@@ -33,7 +33,7 @@ npx workspace-architect list
 
 *   **Instructions (`instructions`)**: These are system-level instructions or "custom instructions" you can add to your `.github/copilot-instructions.md` or use to prime a session.
 *   **Prompts (`prompts`)**: Specific queries or templates to ask Copilot to perform a task.
-*   **Chat Modes (`chatmodes`)**: Specialized persona definitions that define how Copilot should behave, reason, and respond.
+*   **Agents (`agents`)**: Specialized agent definitions (`.agent.md` files) that define how Copilot should behave, reason, and respond. These are stored in `.github/agents/`.
 *   **Collections (`collections`)**: Bundles of the above assets tailored for specific roles or workflows.
 
 ### CLI Reference
@@ -83,8 +83,8 @@ We welcome contributions! Whether you want to add a new persona, improve existin
 
 ### Project Structure
 
-*   `assets/`: Contains the source markdown and JSON files for all assets.
-    *   `chatmodes/`: Persona definitions.
+*   `.github/agents/`: Contains agent definitions (`.agent.md` files) - specialized personas.
+*   `assets/`: Contains the source markdown and JSON files for other assets.
     *   `collections/`: JSON files defining groups of assets.
     *   `instructions/`: Contextual guidelines.
     *   `prompts/`: Reusable prompt templates.
@@ -136,10 +136,11 @@ We welcome contributions! Whether you want to add a new persona, improve existin
 
 ### Adding New Assets
 
-1.  Create a new markdown file in the appropriate folder (`assets/instructions`, `assets/prompts`, or `assets/chatmodes`).
+1.  Create a new markdown file in the appropriate folder (`.github/agents/`, `assets/instructions`, or `assets/prompts`).
 2.  **Naming Convention**: The filename becomes the ID.
     *   Example: `assets/instructions/my-guide.md` becomes `instructions:my-guide`.
-    *   Extensions like `.chatmode.md` or `.prompt.md` are stripped from the ID but help with organization.
+    *   Example: `.github/agents/my-agent.agent.md` becomes `agents:my-agent`.
+    *   Extensions like `.agent.md`, `.instructions.md`, or `.prompt.md` are stripped from the ID but help with organization.
 3.  **Metadata**: You can optionally add YAML frontmatter to your markdown files to provide a description and title.
 
     ```markdown
@@ -163,7 +164,7 @@ Collections are JSON files located in `assets/collections/`. They group multiple
   "items": [
     "instructions:reactjs",
     "prompts:code-review",
-    "chatmodes:expert-architect"
+    "agents:expert-architect"
   ]
 }
 ```
@@ -175,3 +176,18 @@ Collections are JSON files located in `assets/collections/`. They group multiple
     *   Use `npm run analyze -- --add` to automatically add high-confidence matches.
     *   Use `npm run analyze -- --remove` to remove low-confidence items.
 *   **`npm run fetch-upstream`**: Syncs assets from the upstream `github/awesome-copilot` repository (requires configuration).
+
+### Migration from `.chatmode.md` to `.agent.md`
+
+This project has migrated from the legacy `.chatmode.md` extension to the new `.agent.md` convention, with agents now stored in `.github/agents/` instead of `assets/agents/`.
+
+**For existing users:**
+
+If you have existing `.chatmode.md` files in your projects, you can migrate them using this command:
+
+```bash
+mkdir -p .github/agents
+find . -name '*.chatmode.md' -exec bash -c 'mv "$1" ".github/agents/$(basename \"$1\" .chatmode.md).agent.md"' -- {} \;
+```
+
+**Note:** VS Code continues to recognize `.chatmode.md` files for backward compatibility, but `.agent.md` in `.github/agents/` is now the preferred convention for GitHub Copilot.

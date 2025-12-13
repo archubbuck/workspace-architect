@@ -1,8 +1,8 @@
 {
   "description": "Educational resources, tutorials, and study modes.",
   "items": [
-    "chatmodes:mentor",
-    "chatmodes:microsoft-study-mode",
+    "agents:mentor",
+    "agents:microsoft-study-mode",
     "prompts:add-educational-comments",
     "prompts:comment-code-generate-a-tutorial"
   ]

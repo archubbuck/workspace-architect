@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.join(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
+const GITHUB_AGENTS_DIR = path.join(ROOT_DIR, '.github', 'agents');
 const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 
 const TYPES = ['agents', 'instructions', 'prompts', 'collections'];
@@ -22,7 +23,8 @@ async function generateManifest() {
   };
 
   for (const type of TYPES) {
-    const dirPath = path.join(ASSETS_DIR, type);
+    // Use .github/agents for agents, assets/<type> for others
+    const dirPath = type === 'agents' ? GITHUB_AGENTS_DIR : path.join(ASSETS_DIR, type);
     if (!await fs.pathExists(dirPath)) continue;
 
     const files = await fs.readdir(dirPath);
@@ -34,7 +36,7 @@ async function generateManifest() {
       if (stat.isDirectory()) continue;
       
       // Skip files that don't match expected patterns
-      if (type === 'agents' && !file.endsWith('.chatmode.md') && !file.endsWith('.agent.md')) {
+      if (type === 'agents' && !file.endsWith('.agent.md')) {
         console.warn(chalk.yellow(`Skipping unexpected file in agents: ${file}`));
         continue;
       }
@@ -58,11 +60,7 @@ async function generateManifest() {
       
       // Remove extensions for ID
       if (type === 'agents') {
-        if (file.endsWith('.chatmode.md')) {
-          id = file.replace('.chatmode.md', '');
-        } else if (file.endsWith('.agent.md')) {
-          id = file.replace('.agent.md', '');
-        }
+        id = file.replace('.agent.md', '');
       } else if (type === 'instructions') {
         id = file.replace('.instructions.md', '');
       } else if (type === 'prompts') {
@@ -92,7 +90,7 @@ async function generateManifest() {
       }
 
       manifest.assets[key] = {
-        path: `assets/${type}/${file}`,
+        path: type === 'agents' ? `.github/agents/${file}` : `assets/${type}/${file}`,
         description,
         title,
         type,

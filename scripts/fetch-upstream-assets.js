@@ -24,7 +24,7 @@ const REPO_NAME = 'awesome-copilot';
 const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
 
 const MAPPINGS = [
-  { remote: 'agents', local: 'assets/agents' },
+  { remote: 'agents', local: '.github/agents' },
   { remote: 'instructions', local: 'assets/instructions' },
   { remote: 'prompts', local: 'assets/prompts' },
   { remote: 'collections', local: 'assets/collections' }
@@ -89,7 +89,7 @@ async function sync() {
         if (item.type === 'file') {
           // Filter files based on expected extensions
           const shouldDownload = 
-            (mapping.remote === 'agents' && (item.name.endsWith('.chatmode.md') || item.name.endsWith('.agent.md'))) ||
+            (mapping.remote === 'agents' && item.name.endsWith('.agent.md')) ||
             (mapping.remote === 'instructions' && item.name.endsWith('.instructions.md')) ||
             (mapping.remote === 'prompts' && item.name.endsWith('.prompt.md')) ||
             (mapping.remote === 'collections' && item.name.endsWith('.json'));

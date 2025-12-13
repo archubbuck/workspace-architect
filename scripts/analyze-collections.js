@@ -11,9 +11,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.join(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
 
+const GITHUB_AGENTS_DIR = path.join(ROOT_DIR, '.github', 'agents');
+
 const DIRS = {
   collections: path.join(ASSETS_DIR, 'collections'),
-  chatmodes: path.join(ASSETS_DIR, 'chatmodes'),
+  agents: GITHUB_AGENTS_DIR,
   instructions: path.join(ASSETS_DIR, 'instructions'),
   prompts: path.join(ASSETS_DIR, 'prompts'),
 };
@@ -139,7 +141,7 @@ async function loadAssets(type) {
     const filePath = path.join(dir, file);
     const content = await fs.readFile(filePath, 'utf8');
     const parsed = matter(content);
-    const id = file.replace(/\.(chatmode|instructions|prompt)\.md$/, '');
+    const id = file.replace(/\.(agent|instructions|prompt)\.md$/, '');
     
     // Boosted content (headers, bold) is repeated to increase term frequency
     const boosted = extractBoostedContent(parsed.content);
@@ -273,13 +275,13 @@ async function main() {
 
   console.log(chalk.blue('Loading assets...'));
 
-  const [chatmodes, instructions, prompts] = await Promise.all([
-    loadAssets('chatmodes'),
+  const [agents, instructions, prompts] = await Promise.all([
+    loadAssets('agents'),
     loadAssets('instructions'),
     loadAssets('prompts')
   ]);
 
-  const allAssets = [...chatmodes, ...instructions, ...prompts];
+  const allAssets = [...agents, ...instructions, ...prompts];
   const allAssetsMap = new Map(allAssets.map(a => [a.key, a]));
 
   console.log(chalk.blue(`Loaded ${allAssets.length} assets.`));
