@@ -51,7 +51,7 @@ jobs:
       - name: Commit Changes
         if: steps.git-check.outputs.changes == 'true'
         run: |
-          git add assets/ .github/agents/
+          git add assets/
           git commit -m "chore: sync content from awesome-copilot"
 
       - name: Release and Publish

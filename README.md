@@ -33,7 +33,7 @@ npx workspace-architect list
 
 *   **Instructions (`instructions`)**: These are system-level instructions or "custom instructions" you can add to your `.github/copilot-instructions.md` or use to prime a session.
 *   **Prompts (`prompts`)**: Specific queries or templates to ask Copilot to perform a task.
-*   **Agents (`agents`)**: Specialized agent definitions (`.agent.md` files) that define how Copilot should behave, reason, and respond. These are stored in `.github/agents/`.
+*   **Agents (`agents`)**: Specialized agent definitions (`.agent.md` files) that define how Copilot should behave, reason, and respond. These are stored in `assets/agents/`.
 *   **Collections (`collections`)**: Bundles of the above assets tailored for specific roles or workflows.
 
 ### CLI Reference
@@ -83,7 +83,7 @@ We welcome contributions! Whether you want to add a new persona, improve existin
 
 ### Project Structure
 
-*   `.github/agents/`: Contains agent definitions (`.agent.md` files) - specialized personas.
+*   `assets/agents/`: Contains agent definitions (`.agent.md` files) - specialized personas.
 *   `assets/`: Contains the source markdown and JSON files for other assets.
     *   `collections/`: JSON files defining groups of assets.
     *   `instructions/`: Contextual guidelines.
@@ -136,10 +136,10 @@ We welcome contributions! Whether you want to add a new persona, improve existin
 
 ### Adding New Assets
 
-1.  Create a new markdown file in the appropriate folder (`.github/agents/`, `assets/instructions`, or `assets/prompts`).
+1.  Create a new markdown file in the appropriate folder (`assets/agents/`, `assets/instructions`, or `assets/prompts`).
 2.  **Naming Convention**: The filename becomes the ID.
     *   Example: `assets/instructions/my-guide.md` becomes `instructions:my-guide`.
-    *   Example: `.github/agents/my-agent.agent.md` becomes `agents:my-agent`.
+    *   Example: `assets/agents/my-agent.agent.md` becomes `agents:my-agent`.
     *   Extensions like `.agent.md`, `.instructions.md`, or `.prompt.md` are stripped from the ID but help with organization.
 3.  **Metadata**: You can optionally add YAML frontmatter to your markdown files to provide a description and title.
 
@@ -179,15 +179,15 @@ Collections are JSON files located in `assets/collections/`. They group multiple
 
 ### Migration from `.chatmode.md` to `.agent.md`
 
-This project has migrated from the legacy `.chatmode.md` extension to the new `.agent.md` convention, with agents now stored in `.github/agents/` instead of `assets/agents/`.
+This project has migrated from the legacy `.chatmode.md` extension to the new `.agent.md` convention, with agents now stored in `assets/agents/`.
 
 **For existing users:**
 
 If you have existing `.chatmode.md` files in your projects, you can migrate them using this command:
 
 ```bash
-mkdir -p .github/agents
-find . -name '*.chatmode.md' -exec bash -c 'mv "$1" ".github/agents/$(basename \"$1\" .chatmode.md).agent.md"' -- {} \;
+mkdir -p assets/agents
+find . -name '*.chatmode.md' -exec bash -c 'mv "$1" "assets/agents/$(basename \"$1\" .chatmode.md).agent.md"' -- {} \;
 ```
 
-**Note:** VS Code continues to recognize `.chatmode.md` files for backward compatibility, but `.agent.md` in `.github/agents/` is now the preferred convention for GitHub Copilot.
+**Note:** VS Code continues to recognize `.chatmode.md` files for backward compatibility, but `.agent.md` in `assets/agents/` is now the preferred convention for GitHub Copilot.

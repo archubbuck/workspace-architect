@@ -9,7 +9,6 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.join(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
-const GITHUB_AGENTS_DIR = path.join(ROOT_DIR, '.github', 'agents');
 const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 
 const TYPES = ['agents', 'instructions', 'prompts', 'collections'];
@@ -23,8 +22,8 @@ async function generateManifest() {
   };
 
   for (const type of TYPES) {
-    // Use .github/agents for agents, assets/<type> for others
-    const dirPath = type === 'agents' ? GITHUB_AGENTS_DIR : path.join(ASSETS_DIR, type);
+    // All types use assets/<type> directory
+    const dirPath = path.join(ASSETS_DIR, type);
     if (!await fs.pathExists(dirPath)) continue;
 
     const files = await fs.readdir(dirPath);
@@ -90,7 +89,7 @@ async function generateManifest() {
       }
 
       manifest.assets[key] = {
-        path: type === 'agents' ? `.github/agents/${file}` : `assets/${type}/${file}`,
+        path: `assets/${type}/${file}`,
         description,
         title,
         type,

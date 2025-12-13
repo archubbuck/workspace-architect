@@ -11,7 +11,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.join(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
-const GITHUB_AGENTS_DIR = path.join(ROOT_DIR, '.github', 'agents');
 const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 
 // Check if running in local development mode (assets folder exists)
@@ -67,8 +66,8 @@ async function listAssets(type) {
   if (IS_LOCAL) {
     // Local Development Mode
     const matter = (await import('gray-matter')).default;
-    // Use .github/agents for agents, assets/<type> for others
-    const dirPath = type === 'agents' ? GITHUB_AGENTS_DIR : path.join(ASSETS_DIR, type);
+    // All types use assets/<type> directory
+    const dirPath = path.join(ASSETS_DIR, type);
     
     if (!await fs.pathExists(dirPath)) {
       console.log(chalk.yellow(`No assets found for type: ${type}`));
@@ -188,8 +187,8 @@ async function downloadAsset(id, options) {
     if (type === 'prompts') potentialFileNames.push(name + '.prompt.md');
     if (type === 'instructions') potentialFileNames.push(name + '.instructions.md');
 
-    // Use .github/agents for agents, assets/<type> for others
-    const baseDir = type === 'agents' ? GITHUB_AGENTS_DIR : path.join(ASSETS_DIR, type);
+    // All types use assets/<type> directory
+    const baseDir = path.join(ASSETS_DIR, type);
     
     let sourcePath = null;
     for (const fname of potentialFileNames) {
