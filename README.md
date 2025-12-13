@@ -33,7 +33,7 @@ npx workspace-architect list
 
 *   **Instructions (`instructions`)**: These are system-level instructions or "custom instructions" you can add to your `.github/copilot-instructions.md` or use to prime a session.
 *   **Prompts (`prompts`)**: Specific queries or templates to ask Copilot to perform a task.
-*   **Agents (`agents`)**: Specialized agent definitions (`.agent.md` files) that define how Copilot should behave, reason, and respond. These are stored in `assets/agents/`.
+*   **Agents (`agents`)**: Specialized agent definitions (`.agent.md` files) that define how Copilot should behave, reason, and respond. These are stored in `assets/agents/` in this repository and downloaded to `.github/agents/` in your project by default.
 *   **Collections (`collections`)**: Bundles of the above assets tailored for specific roles or workflows.
 
 ### CLI Reference
@@ -190,4 +190,4 @@ mkdir -p assets/agents
 find . -name '*.chatmode.md' -exec bash -c 'mv "$1" "assets/agents/$(basename \"$1\" .chatmode.md).agent.md"' -- {} \;
 ```
 
-**Note:** VS Code continues to recognize `.chatmode.md` files for backward compatibility, but `.agent.md` in `assets/agents/` is now the preferred convention for GitHub Copilot.
+**Note:** VS Code continues to recognize `.chatmode.md` files for backward compatibility, but `.agent.md` in `.github/agents/` is now the preferred convention for GitHub Copilot. This repository stores agents in `assets/agents/` for distribution, and the CLI downloads them to `.github/agents/` in your project by default.
