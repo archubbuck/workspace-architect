@@ -54,7 +54,15 @@ async function fetchGitHubContent(path) {
 }
 
 async function downloadFile(downloadUrl, localPath) {
-  const response = await fetch(downloadUrl);
+  const headers = {
+    'User-Agent': 'node.js'
+  };
+  
+  if (GITHUB_TOKEN) {
+    headers['Authorization'] = `token ${GITHUB_TOKEN}`;
+  }
+  
+  const response = await fetch(downloadUrl, { headers });
   if (!response.ok) {
     throw new Error(`Failed to download ${downloadUrl}: ${response.statusText}`);
   }
@@ -79,6 +87,8 @@ async function sync() {
     }
   }
 
+  const errors = [];
+  
   // Sync folders
   for (const mapping of MAPPINGS) {
     console.log(chalk.yellow(`Syncing ${mapping.remote} to ${mapping.local}...`));
@@ -104,9 +114,22 @@ async function sync() {
       }
     } catch (error) {
       console.error(chalk.red(`Error syncing ${mapping.remote}:`), error.message);
+      errors.push({ mapping: mapping.remote, error: error.message });
     }
   }
-  console.log(chalk.blue('Sync complete!'));
+  
+  if (errors.length > 0) {
+    console.error(chalk.red(`\n❌ Sync failed with ${errors.length} error(s):`));
+    errors.forEach(({ mapping, error }) => {
+      console.error(chalk.red(`  - ${mapping}: ${error}`));
+    });
+    process.exit(1);
+  }
+  
+  console.log(chalk.blue('✅ Sync complete!'));
 }
 
-sync();
+sync().catch(error => {
+  console.error(chalk.red('Fatal error during sync:'), error);
+  process.exit(1);
+});
