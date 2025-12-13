@@ -42,7 +42,7 @@ Create reusable prompt files:
 - `generate-docs.prompt.md` - Documentation generation
 - `debug-issue.prompt.md` - Debugging assistance
 
-### 4. `assets/agents/` Directory
+### 4. `.github/agents/` Directory
 Create specialized chat modes:
 - `architect.agent.md` - Architecture planning mode
 - `reviewer.agent.md` - Code review mode
