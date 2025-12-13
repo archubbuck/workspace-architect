@@ -43,7 +43,7 @@ async function fetchGitHubContent(path) {
   };
   
   if (GITHUB_TOKEN) {
-    headers['Authorization'] = `token ${GITHUB_TOKEN}`;
+    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
   }
 
   const response = await fetch(url, { headers });
@@ -59,7 +59,7 @@ async function downloadFile(downloadUrl, localPath) {
   };
   
   if (GITHUB_TOKEN) {
-    headers['Authorization'] = `token ${GITHUB_TOKEN}`;
+    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
   }
   
   const response = await fetch(downloadUrl, { headers });
