@@ -33,17 +33,41 @@ async function generateManifest() {
       
       if (stat.isDirectory()) continue;
       
+      // Skip files that don't match expected patterns
+      if (type === 'agents' && !file.endsWith('.chatmode.md') && !file.endsWith('.agent.md')) {
+        console.warn(chalk.yellow(`Skipping unexpected file in agents: ${file}`));
+        continue;
+      }
+      if (type === 'instructions' && !file.endsWith('.instructions.md')) {
+        console.warn(chalk.yellow(`Skipping unexpected file in instructions: ${file}`));
+        continue;
+      }
+      if (type === 'prompts' && !file.endsWith('.prompt.md')) {
+        console.warn(chalk.yellow(`Skipping unexpected file in prompts: ${file}`));
+        continue;
+      }
+      if (type === 'collections' && !file.endsWith('.json')) {
+        console.warn(chalk.yellow(`Skipping unexpected file in collections: ${file}`));
+        continue;
+      }
+      
       let id = file;
       let description = '';
       let title = '';
       let items = []; // For collections
       
       // Remove extensions for ID
-      if (type === 'agents') id = file.replace('.chatmode.md', '');
-      else if (type === 'instructions') id = file.replace('.instructions.md', '');
-      else if (type === 'prompts') id = file.replace('.prompt.md', '');
-      else if (type === 'collections') id = file.replace('.json', '');
-      else id = path.parse(file).name;
+      if (type === 'agents') {
+        id = file.replace('.chatmode.md', '').replace('.agent.md', '');
+      } else if (type === 'instructions') {
+        id = file.replace('.instructions.md', '');
+      } else if (type === 'prompts') {
+        id = file.replace('.prompt.md', '');
+      } else if (type === 'collections') {
+        id = file.replace('.json', '');
+      } else {
+        id = path.parse(file).name;
+      }
 
       const key = `${type}:${id}`;
 
