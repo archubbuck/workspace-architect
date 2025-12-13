@@ -48,7 +48,7 @@ Create specialized chat modes:
 - `reviewer.agent.md` - Code review mode
 - `debugger.agent.md` - Debugging mode
 
-**Chat Mode Attribution**: When using content from awesome-copilot chatmodes, add attribution comments:
+**Agent Attribution**: When using content from awesome-copilot agents, add attribution comments:
 ```markdown
 <!-- Based on/Inspired by: https://github.com/github/awesome-copilot/blob/main/agents/[filename].agent.md -->
 ```
@@ -130,7 +130,7 @@ description: "Java Spring Boot development standards"
 **Research Strategy with fetch tool:**
 1. **Check awesome-copilot first** - Always start here for ALL file types
 2. **Look for exact tech stack matches** (e.g., React, Node.js, Spring Boot)
-3. **Look for general matches** (e.g., frontend chatmodes, testing prompts, review modes)
+3. **Look for general matches** (e.g., frontend agents, testing prompts, review modes)
 4. **Check awesome-copilot collections** for curated sets of related files
 5. **Adapt community examples** to project needs
 6. **Only create custom content** if nothing relevant exists
@@ -138,7 +138,7 @@ description: "Java Spring Boot development standards"
 **Fetch these awesome-copilot directories:**
 - **Instructions**: https://github.com/github/awesome-copilot/tree/main/instructions
 - **Prompts**: https://github.com/github/awesome-copilot/tree/main/prompts  
-- **Chat Modes**: https://github.com/github/awesome-copilot/tree/main/chatmodes
+- **Agents**: https://github.com/github/awesome-copilot/tree/main/agents
 - **Collections**: https://github.com/github/awesome-copilot/blob/main/docs/README.collections.md
 
 **Awesome-Copilot Collections to Check:**
@@ -233,7 +233,7 @@ Requirements for the form:
 
 ```
 
-**Chat Modes (.agent.md):**
+**Agents (.agent.md):**
 ```yaml
 ---
 description: Generate an implementation plan for new features or refactoring existing code.

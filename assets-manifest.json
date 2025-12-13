@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generatedAt": "2025-12-13T21:29:44.677Z",
+  "generatedAt": "2025-12-13T21:32:55.192Z",
   "assets": {
     "agents:4.1-Beast": {
       "path": ".github/agents/4.1-Beast.agent.md",
@@ -2092,7 +2092,7 @@
     },
     "prompts:model-recommendation": {
       "path": "assets/prompts/model-recommendation.prompt.md",
-      "description": "Analyze chatmode or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency",
+      "description": "Analyze agent or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency",
       "title": "model-recommendation",
       "type": "prompts"
     },
@@ -2296,14 +2296,8 @@
     },
     "prompts:suggest-awesome-github-copilot-agents": {
       "path": "assets/prompts/suggest-awesome-github-copilot-agents.prompt.md",
-      "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository.",
+      "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom chat modes in this repository.",
       "title": "suggest-awesome-github-copilot-agents",
-      "type": "prompts"
-    },
-    "prompts:suggest-awesome-github-copilot-chatmodes": {
-      "path": "assets/prompts/suggest-awesome-github-copilot-chatmodes.prompt.md",
-      "description": "Suggest relevant GitHub Copilot Custom Chat Modes files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom chat modes in this repository.",
-      "title": "suggest-awesome-github-copilot-chatmodes",
       "type": "prompts"
     },
     "prompts:suggest-awesome-github-copilot-collections": {
@@ -2412,7 +2406,7 @@
         "prompts:readme-blueprint-generator",
         "prompts:suggest-awesome-github-copilot-instructions",
         "prompts:suggest-awesome-github-copilot-agents",
-        "prompts:suggest-awesome-github-copilot-chatmodes",
+        "prompts:suggest-awesome-github-copilot-agents",
         "prompts:copilot-instructions-blueprint-generator",
         "prompts:suggest-awesome-github-copilot-collections",
         "instructions:instructions",
@@ -2658,7 +2652,7 @@
         "prompts:java-docs",
         "prompts:power-apps-code-app-scaffold",
         "prompts:power-platform-mcp-connector-suite",
-        "prompts:suggest-awesome-github-copilot-chatmodes",
+        "prompts:suggest-awesome-github-copilot-agents",
         "prompts:suggest-awesome-github-copilot-instructions",
         "prompts:suggest-awesome-github-copilot-prompts"
       ]
@@ -3091,7 +3085,7 @@
         "prompts:cosmosdb-datamodeling",
         "prompts:power-apps-code-app-scaffold",
         "prompts:suggest-awesome-github-copilot-agents",
-        "prompts:suggest-awesome-github-copilot-chatmodes",
+        "prompts:suggest-awesome-github-copilot-agents",
         "prompts:suggest-awesome-github-copilot-instructions",
         "prompts:suggest-awesome-github-copilot-prompts",
         "agents:drupal-expert",

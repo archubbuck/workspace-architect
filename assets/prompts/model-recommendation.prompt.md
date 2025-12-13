@@ -1,5 +1,5 @@
 ---
-description: "Analyze chatmode or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency"
+description: "Analyze agent or prompt files and recommend optimal AI models based on task complexity, required capabilities, and cost-efficiency"
 agent: "agent"
 tools:
   - "search/codebase"
@@ -8,7 +8,7 @@ tools:
 model: Auto (copilot)
 ---
 
-# AI Model Recommendation for Copilot Chat Modes and Prompts
+# AI Model Recommendation for Copilot Agents and Prompts
 
 ## Mission
 
@@ -298,7 +298,7 @@ Generate a structured markdown report with the following sections:
 # AI Model Recommendation Report
 
 **File Analyzed**: `[file path]`
-**File Type**: [chatmode | prompt]
+**File Type**: [agent | prompt]
 **Analysis Date**: [YYYY-MM-DD]
 **Subscription Tier**: [Free | Pro | Pro+]
 

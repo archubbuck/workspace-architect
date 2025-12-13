@@ -143,7 +143,7 @@
     "prompts:java-docs",
     "prompts:power-apps-code-app-scaffold",
     "prompts:power-platform-mcp-connector-suite",
-    "prompts:suggest-awesome-github-copilot-chatmodes",
+    "prompts:suggest-awesome-github-copilot-agents",
     "prompts:suggest-awesome-github-copilot-instructions",
     "prompts:suggest-awesome-github-copilot-prompts"
   ]
