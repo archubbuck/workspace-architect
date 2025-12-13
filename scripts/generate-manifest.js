@@ -58,7 +58,11 @@ async function generateManifest() {
       
       // Remove extensions for ID
       if (type === 'agents') {
-        id = file.replace('.chatmode.md', '').replace('.agent.md', '');
+        if (file.endsWith('.chatmode.md')) {
+          id = file.replace('.chatmode.md', '');
+        } else if (file.endsWith('.agent.md')) {
+          id = file.replace('.agent.md', '');
+        }
       } else if (type === 'instructions') {
         id = file.replace('.instructions.md', '');
       } else if (type === 'prompts') {
