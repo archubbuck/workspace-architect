@@ -87,8 +87,19 @@ async function sync() {
       
       for (const item of items) {
         if (item.type === 'file') {
-          const localFilePath = path.join(__dirname, '..', mapping.local, item.name);
-          await downloadFile(item.download_url, localFilePath);
+          // Filter files based on expected extensions
+          const shouldDownload = 
+            (mapping.remote === 'agents' && (item.name.endsWith('.chatmode.md') || item.name.endsWith('.agent.md'))) ||
+            (mapping.remote === 'instructions' && item.name.endsWith('.instructions.md')) ||
+            (mapping.remote === 'prompts' && item.name.endsWith('.prompt.md')) ||
+            (mapping.remote === 'collections' && item.name.endsWith('.json'));
+          
+          if (shouldDownload) {
+            const localFilePath = path.join(__dirname, '..', mapping.local, item.name);
+            await downloadFile(item.download_url, localFilePath);
+          } else {
+            console.log(`${chalk.gray('Skipped:')} ${item.name} (unexpected file type)`);
+          }
         }
       }
     } catch (error) {
