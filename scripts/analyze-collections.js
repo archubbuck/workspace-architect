@@ -11,11 +11,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.join(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
 
-const GITHUB_AGENTS_DIR = path.join(ROOT_DIR, '.github', 'agents');
-
 const DIRS = {
   collections: path.join(ASSETS_DIR, 'collections'),
-  agents: GITHUB_AGENTS_DIR,
+  agents: path.join(ASSETS_DIR, 'agents'),
   instructions: path.join(ASSETS_DIR, 'instructions'),
   prompts: path.join(ASSETS_DIR, 'prompts'),
 };
