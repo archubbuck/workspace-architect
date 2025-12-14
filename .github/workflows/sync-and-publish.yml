@@ -43,7 +43,6 @@ jobs:
           fi
 
       - name: Configure Git
-        if: steps.git-check.outputs.changes == 'true'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -52,10 +51,9 @@ jobs:
         if: steps.git-check.outputs.changes == 'true'
         run: |
           git add assets/
-          git commit -m "chore: sync content from awesome-copilot"
+          git commit -m "fix: sync content from awesome-copilot"
 
       - name: Release and Publish
-        if: steps.git-check.outputs.changes == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
