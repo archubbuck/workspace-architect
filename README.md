@@ -1,44 +1,58 @@
 # Workspace Architect
 
-A comprehensive library of specialized AI agents and personas for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.
+[![npm version](https://img.shields.io/npm/v/workspace-architect.svg)](https://www.npmjs.com/package/workspace-architect)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-## Overview
+> A comprehensive library of specialized AI agents and personas for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.
 
-Workspace Architect is a CLI tool and library designed to enhance your experience with GitHub Copilot. It provides a curated collection of:
+Workspace Architect is a zero-friction CLI tool that provides curated collections of specialized agents, instructions, and prompts to supercharge your GitHub Copilot experience.
 
-*   **Instructions**: Detailed guidelines to set the context for Copilot.
-*   **Prompts**: Reusable prompts for specific tasks like code review or refactoring.
-*   **Agents**: Specialized personas (e.g., "Azure Architect", "React Expert") to guide the conversation.
-*   **Collections**: Grouped assets for specific domains (e.g., "Web Development", "DevOps").
+## Features
 
-## Why Workspace Architect?
+- 🎯 **Specialized Agents**: Pre-built personas like "Azure Architect", "React Expert", and more
+- 📦 **Curated Collections**: Download complete suites for domains like Web Development, DevOps, or AI Engineering
+- ⚡ **Zero Installation**: Use directly with `npx` - no global installation needed
+- 🪶 **Lightweight**: Simple Markdown files, no heavy dependencies or complex servers
+- 🔄 **Algorithmic Curation**: TF-IDF/Cosine Similarity engine ensures collections stay relevant
+- 🌍 **Universal**: Works with any project structure
 
-*   **Curated Collections**: Don't waste time hunting for individual prompts. Download a complete "Web Development" or "DevOps" suite in one command.
-*   **Zero Friction**: No installation required. Just run `npx workspace-architect` in any folder.
-*   **Universal Portability**: Works with any project structure. Assets are simple Markdown files that live in your repo.
-*   **Lightweight**: No complex MCP servers or heavy dependencies. Just pure context for Copilot.
-*   **Algorithmic Curation**: Our collections are continuously monitored by an intelligent TF-IDF/Cosine Similarity engine to ensure they always include the most relevant assets and exclude outdated ones with zero regression.
+## Installation
 
-## For Consumers
-
-### Usage
-
-You can use this tool directly with `npx` without installing it globally:
+No installation required! Use directly with `npx`:
 
 ```bash
 npx workspace-architect list
 ```
 
-### Asset Types
+Or install globally if you prefer:
 
-*   **Instructions (`instructions`)**: These are system-level instructions or "custom instructions" you can add to your `.github/copilot-instructions.md` or use to prime a session.
-*   **Prompts (`prompts`)**: Specific queries or templates to ask Copilot to perform a task.
-*   **Agents (`agents`)**: Specialized agent definitions (`.agent.md` files) that define how Copilot should behave, reason, and respond. These are stored in `assets/agents/` in this repository and downloaded to `.github/agents/` in your project by default.
-*   **Collections (`collections`)**: Bundles of the above assets tailored for specific roles or workflows.
+```bash
+npm install -g workspace-architect
+```
 
-### CLI Reference
+## Quick Start
 
-#### List Available Assets
+List all available assets:
+
+```bash
+npx workspace-architect list
+```
+
+Download a collection for web development:
+
+```bash
+npx workspace-architect download collections:web-frontend-development
+```
+
+Download a specific agent:
+
+```bash
+npx workspace-architect download agents:azure-architect
+```
+
+## Usage
+
+### Listing Assets
 
 View all available assets or filter by type:
 
@@ -46,16 +60,16 @@ View all available assets or filter by type:
 # List all assets
 npx workspace-architect list
 
-# List only instructions
+# List specific types
 npx workspace-architect list instructions
-
-# List only collections
+npx workspace-architect list agents
+npx workspace-architect list prompts
 npx workspace-architect list collections
 ```
 
-#### Download an Asset
+### Downloading Assets
 
-Download a specific asset to your project. By default, assets are downloaded to `.github/<type>/`.
+Download assets to your project (default location: `.github/<type>/`):
 
 ```bash
 npx workspace-architect download <type>:<name>
@@ -64,98 +78,78 @@ npx workspace-architect download <type>:<name>
 **Examples:**
 
 ```bash
-# Download a specific instruction file
+# Download an instruction
 npx workspace-architect download instructions:reactjs
 
-# Download a collection of assets
-npx workspace-architect download collections:web-frontend-development
+# Download an agent
+npx workspace-architect download agents:planner
+
+# Download a complete collection
+npx workspace-architect download collections:devops-essentials
 ```
 
-**Options:**
+### CLI Options
 
-*   `-d, --dry-run`: Simulate the download without writing files. Useful to see where files will be placed.
-*   `-f, --force`: Overwrite existing files without asking for confirmation.
-*   `-o, --output <path>`: Specify a custom output directory.
+- `-d, --dry-run` - Preview what will be downloaded without writing files
+- `-f, --force` - Overwrite existing files without confirmation
+- `-o, --output <path>` - Specify custom output directory
 
-## For Contributors
+## Asset Types
 
-We welcome contributions! Whether you want to add a new persona, improve existing prompts, or curate a collection, here is how you can help.
+Workspace Architect provides four types of assets:
 
-### Project Structure
+| Type | Description | Location |
+|------|-------------|----------|
+| **Instructions** | System-level guidelines for Copilot context | `.github/copilot-instructions.md` |
+| **Prompts** | Reusable templates for specific tasks | `.github/prompts/` |
+| **Agents** | Specialized personas defining Copilot behavior | `.github/agents/` |
+| **Collections** | Bundled assets for specific domains or workflows | Multiple locations |
 
-*   `assets/agents/`: Contains agent definitions (`.agent.md` files) - specialized personas.
-*   `assets/`: Contains the source markdown and JSON files for other assets.
-    *   `collections/`: JSON files defining groups of assets.
-    *   `instructions/`: Contextual guidelines.
-    *   `prompts/`: Reusable prompt templates.
-*   `bin/`: Contains the CLI entry point (`cli.js`).
-*   `scripts/`: Utility scripts for maintenance and analysis.
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for our development timeline, upcoming features, and current capabilities.
+
+## Contributing
+
+We welcome contributions! Whether you want to add a new agent, improve existing prompts, or curate a collection, here's how you can help.
 
 ### Development Setup
 
-1.  **Clone the repository**:
-    ```bash
-    git clone https://github.com/archubbuck/workspace-architect.git
-    cd workspace-architect
-    ```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/archubbuck/workspace-architect.git
+   cd workspace-architect
+   ```
 
-2.  **Install dependencies**:
-    ```bash
-    npm install
-    ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-3.  **Run the CLI locally**:
-    You can test your changes by running the CLI script directly:
-    ```bash
-    node bin/cli.js list
-    ```
-
-4.  **Test with Local Registry (Verdaccio)**:
-    For a more accurate simulation of the end-user experience, we use Verdaccio as a local npm registry.
-
-    *   **Start the registry**:
-        ```bash
-        npm run start:registry
-        ```
-    *   **Publish to local registry**:
-        In a new terminal:
-        ```bash
-        npm run publish:local
-        ```
-    *   **Run with `npx`**:
-        ```bash
-        npx --registry http://localhost:4873 workspace-architect list
-        ```
-
-5.  **Quick Local Link (Alternative)**:
-    For rapid iteration without publishing, you can link the package:
-    ```bash
-    npm link
-    npx workspace-architect list
-    ```
+3. Test your changes:
+   ```bash
+   node bin/cli.js list
+   ```
 
 ### Adding New Assets
 
-1.  Create a new markdown file in the appropriate folder (`assets/agents/`, `assets/instructions`, or `assets/prompts`).
-2.  **Naming Convention**: The filename becomes the ID.
-    *   Example: `assets/instructions/my-guide.md` becomes `instructions:my-guide`.
-    *   Example: `assets/agents/my-agent.agent.md` becomes `agents:my-agent`.
-    *   Extensions like `.agent.md`, `.instructions.md`, or `.prompt.md` are stripped from the ID but help with organization.
-3.  **Metadata**: You can optionally add YAML frontmatter to your markdown files to provide a description and title.
+Create a markdown file in the appropriate directory with optional YAML frontmatter:
 
-    ```markdown
-    ---
-    title: My Custom Guide
-    description: A guide for setting up X.
-    ---
-    # Content starts here...
-    ```
+```markdown
+---
+title: My Custom Guide
+description: A guide for setting up X.
+---
+# Content starts here...
+```
+
+**Naming Convention**: Filenames become IDs (extensions are stripped)
+- `assets/instructions/my-guide.md` → `instructions:my-guide`
+- `assets/agents/my-agent.agent.md` → `agents:my-agent`
 
 ### Creating Collections
 
-Collections are JSON files located in `assets/collections/`. They group multiple assets together.
-
-**Format:**
+Create a JSON file in `assets/collections/`:
 
 ```json
 {
@@ -169,25 +163,57 @@ Collections are JSON files located in `assets/collections/`. They group multiple
 }
 ```
 
-### Scripts
+### Useful Scripts
 
-*   **`npm run generate-manifest`**: Generates `assets-manifest.json`. This file is used by the CLI in production to know what assets are available without scanning the file system. **Run this before submitting a PR.**
-*   **`npm run analyze`**: Runs `scripts/analyze-collections.js`. This is an intelligent analysis tool that uses TF-IDF and Cosine Similarity to continuously monitor and regenerate collection profiles. It ensures collections always point to the most relevant assets with zero regression.
-    *   Use `npm run analyze -- --add` to automatically add high-confidence matches.
-    *   Use `npm run analyze -- --remove` to remove low-confidence items.
-*   **`npm run fetch-upstream`**: Syncs assets from the upstream `github/awesome-copilot` repository (requires configuration).
+- `npm run generate-manifest` - Generate `assets-manifest.json` (required before PRs)
+- `npm run analyze` - Analyze collections with TF-IDF/Cosine Similarity
+  - `npm run analyze -- --add` - Auto-add high-confidence matches
+  - `npm run analyze -- --remove` - Remove low-confidence items
+- `npm run fetch-upstream` - Sync from upstream repository
 
-### Migration from `.chatmode.md` to `.agent.md`
+### Local Testing
 
-This project has migrated from the legacy `.chatmode.md` extension to the new `.agent.md` convention, with agents now stored in `assets/agents/`.
+Use Verdaccio for end-to-end testing:
 
-**For existing users:**
+```bash
+# Terminal 1: Start local registry
+npm run start:registry
 
-If you have existing `.chatmode.md` files in your projects, you can migrate them using this command:
+# Terminal 2: Publish and test
+npm run publish:local
+npx --registry http://localhost:4873 workspace-architect list
+```
+
+## Project Structure
+
+```
+workspace-architect/
+├── assets/
+│   ├── agents/          # Agent definitions (.agent.md)
+│   ├── collections/     # Collection definitions (.json)
+│   ├── instructions/    # Copilot instructions (.md)
+│   └── prompts/         # Reusable prompts (.md)
+├── bin/
+│   └── cli.js          # CLI entry point
+└── scripts/            # Maintenance utilities
+```
+
+## Migration Guide
+
+Migrating from `.chatmode.md` to `.agent.md`? Run:
 
 ```bash
 mkdir -p assets/agents
 find . -name '*.chatmode.md' -exec bash -c 'mv "$1" "assets/agents/$(basename \"$1\" .chatmode.md).agent.md"' -- {} \;
 ```
 
-**Note:** VS Code continues to recognize `.chatmode.md` files for backward compatibility, but `.agent.md` in `.github/agents/` is now the preferred convention for GitHub Copilot. This repository stores agents in `assets/agents/` for distribution, and the CLI downloads them to `.github/agents/` in your project by default.
+## License
+
+ISC
+
+## Links
+
+- [npm Package](https://www.npmjs.com/package/workspace-architect)
+- [GitHub Repository](https://github.com/archubbuck/workspace-architect)
+- [Issue Tracker](https://github.com/archubbuck/workspace-architect/issues)
+- [Roadmap](ROADMAP.md)
