@@ -1,5 +1,13 @@
 
 
+## [1.5.15](https://github.com/archubbuck/workspace-architect/compare/v1.5.14...v1.5.15) (2025-12-14)
+
+
+### Bug Fixes
+
+* update sync workflow to always attempt release and use fix: prefix ([300cce8](https://github.com/archubbuck/workspace-architect/commit/300cce8a12374f266ee134e67b494649795b53da))
+* update sync workflow to always attempt release and use fix: prefix ([e14618d](https://github.com/archubbuck/workspace-architect/commit/e14618d7a7f1004f30b67397c9207a77d844d2fe))
+
 ## [1.5.14](https://github.com/archubbuck/workspace-architect/compare/v1.5.13...v1.5.14) (2025-12-13)
 
 
