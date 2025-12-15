@@ -54,6 +54,7 @@ jobs:
           git commit -m "fix: sync content from awesome-copilot"
 
       - name: Release and Publish
+        if: steps.git-check.outputs.changes == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
