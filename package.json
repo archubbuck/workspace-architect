@@ -1,6 +1,6 @@
 {
   "name": "workspace-architect",
-  "version": "1.5.27",
+  "version": "1.5.28",
   "description": "A comprehensive library of specialized AI agents and personas for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.",
   "bin": {
     "workspace-architect": "./bin/cli.js"
