@@ -126,7 +126,7 @@ npx workspace-architect download skills:example-planner
 npx workspace-architect list skills
 ```
 
-For more information, see [docs/claude-skills-research.md](docs/claude-skills-research.md).
+For more information, see [Skills User Guide](docs/skills-guide.md) and [Skills vs Agents](docs/skills-vs-agents.md).
 
 ## Roadmap
 
