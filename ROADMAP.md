@@ -42,6 +42,16 @@ This document outlines the current capabilities, upcoming features, and developm
 
 ## Near-Term Roadmap (Q1 2026)
 
+### 🎯 Claude Skills Support (v1.6.0)
+
+- **Skills Discovery**: List and search Claude Skills compatible with open Agent Skills standard
+- **Skills Download**: Download Skills with folder structure (SKILL.md + templates/scripts/resources)
+- **Upstream Sync**: Automatic synchronization from `anthropics/skills` repository
+- **Multi-File Assets**: Support for folder-based assets with multiple files
+- **Skills Collections**: Curated collections featuring Skills
+- **Skills Validation**: Format checking for SKILL.md files
+- **Documentation**: Comprehensive guides for using and creating Skills
+
 ### 🎯 Enhanced Discovery
 
 - **Search Functionality**: Search assets by keywords, tags, or descriptions

@@ -96,14 +96,37 @@ npx workspace-architect download collections:devops-essentials
 
 ## Asset Types
 
-Workspace Architect provides four types of assets:
+Workspace Architect provides five types of assets:
 
 | Type | Description | Location |
 |------|-------------|----------|
 | **Instructions** | System-level guidelines for Copilot context | `.github/copilot-instructions.md` |
 | **Prompts** | Reusable templates for specific tasks | `.github/prompts/` |
 | **Agents** | Specialized personas defining Copilot behavior | `.github/agents/` |
+| **Skills** | Claude Skills with templates, scripts, and resources | `.github/skills/` |
 | **Collections** | Bundled assets for specific domains or workflows | Multiple locations |
+
+### What are Skills?
+
+**Skills** are an emerging standard for packaging AI agent capabilities. Compatible with Claude, GitHub Copilot, and other AI platforms, Skills are folder-based assets containing:
+
+- **SKILL.md**: Main instructions with metadata
+- **Templates**: Document or code templates
+- **Scripts**: Automation scripts (downloaded but not executed)
+- **Resources**: Reference materials and examples
+
+Skills follow the [open Agent Skills specification](https://agentskills.io/) and work across multiple AI platforms.
+
+**Example:**
+```bash
+# Download a Skill
+npx workspace-architect download skills:example-planner
+
+# List all Skills
+npx workspace-architect list skills
+```
+
+For more information, see [docs/claude-skills-research.md](docs/claude-skills-research.md).
 
 ## Roadmap
 
