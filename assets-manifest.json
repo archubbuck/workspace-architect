@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "generatedAt": "2025-12-14T17:22:40.364Z",
+  "version": "1.1.0",
+  "generatedAt": "2025-12-30T20:32:13.294Z",
   "assets": {
     "agents:4.1-Beast": {
       "path": "assets/agents/4.1-Beast.agent.md",
@@ -218,6 +218,12 @@
       "title": "diffblue-cover",
       "type": "agents"
     },
+    "agents:dotnet-maui": {
+      "path": "assets/agents/dotnet-maui.agent.md",
+      "description": "Support development of .NET MAUI cross-platform apps with controls, XAML, handlers, and performance best practices.",
+      "title": "dotnet-maui",
+      "type": "agents"
+    },
     "agents:dotnet-upgrade": {
       "path": "assets/agents/dotnet-upgrade.agent.md",
       "description": "Perform janitorial tasks on C#/.NET code including cleanup, modernization, and tech debt remediation.",
@@ -390,6 +396,12 @@
       "path": "assets/agents/microsoft_learn_contributor.agent.md",
       "description": "Microsoft Learn Contributor chatmode for editing and writing Microsoft Learn documentation following Microsoft Writing Style Guide and authoring best practices.",
       "title": "microsoft_learn_contributor",
+      "type": "agents"
+    },
+    "agents:modernization": {
+      "path": "assets/agents/modernization.agent.md",
+      "description": "Human-in-the-loop modernization assistant for analyzing, documenting, and planning complete project modernization with architectural recommendations.",
+      "title": "modernization",
       "type": "agents"
     },
     "agents:monday-bug-fixer": {
@@ -774,6 +786,12 @@
       "path": "assets/instructions/ansible.instructions.md",
       "description": "Ansible conventions and best practices",
       "title": "ansible",
+      "type": "instructions"
+    },
+    "instructions:apex": {
+      "path": "assets/instructions/apex.instructions.md",
+      "description": "Guidelines and best practices for Apex development on the Salesforce Platform",
+      "title": "apex",
       "type": "instructions"
     },
     "instructions:aspnet-rest-apis": {
@@ -1620,6 +1638,12 @@
       "path": "assets/instructions/update-code-from-shorthand.instructions.md",
       "description": "Shorthand code will be in the file provided from the prompt or raw data in the prompt, and will be used to update the code file when the prompt has the text `UPDATE CODE FROM SHORTHAND`.",
       "title": "update-code-from-shorthand",
+      "type": "instructions"
+    },
+    "instructions:update-docs-on-code-change": {
+      "path": "assets/instructions/update-docs-on-code-change.instructions.md",
+      "description": "Automatically update README.md and documentation files when application code changes require documentation updates",
+      "title": "update-docs-on-code-change",
       "type": "instructions"
     },
     "instructions:vuejs3": {
@@ -3867,6 +3891,21 @@
         "instructions:java-mcp-server",
         "instructions:typescript-5-es2022"
       ]
+    },
+    "skills:example-planner": {
+      "path": "assets/skills/example-planner",
+      "description": "Create detailed implementation plans for software features and refactoring tasks. Use this skill when planning new features, architectural changes, or major refactoring efforts.",
+      "title": "example-planner",
+      "type": "skills",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {
+        "license": "MIT",
+        "version": "1.0.0",
+        "maintainer": "workspace-architect",
+        "category": "planning"
+      }
     }
   }
 }

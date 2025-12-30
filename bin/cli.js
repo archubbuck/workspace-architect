@@ -23,13 +23,13 @@ program
 
 program
   .command('list [type]')
-  .description('List available assets (instructions, prompts, agents, collections)')
+  .description('List available assets (instructions, prompts, agents, skills, collections)')
   .action(async (type) => {
     try {
       if (type) {
         await listAssets(type);
       } else {
-        const types = ['instructions', 'prompts', 'agents', 'collections'];
+        const types = ['instructions', 'prompts', 'agents', 'skills', 'collections'];
         for (const t of types) {
           await listAssets(t);
         }
@@ -83,13 +83,22 @@ async function listAssets(type) {
     console.log(chalk.blue.bold(`\nAvailable ${type}:`));
     for (const file of files) {
       const filePath = path.join(dirPath, file);
+      const stat = await fs.stat(filePath);
       let description = '';
 
       try {
-        if (type === 'collections') {
+        if (type === 'skills' && stat.isDirectory()) {
+          // For Skills, read SKILL.md from directory
+          const skillMdPath = path.join(filePath, 'SKILL.md');
+          if (await fs.pathExists(skillMdPath)) {
+            const content = await fs.readFile(skillMdPath, 'utf8');
+            const parsed = matter(content);
+            description = parsed.data.description || '';
+          }
+        } else if (type === 'collections') {
           const content = await fs.readJson(filePath);
           description = content.description || '';
-        } else {
+        } else if (!stat.isDirectory()) {
           const content = await fs.readFile(filePath, 'utf8');
           const parsed = matter(content);
           description = parsed.data.description || '';
@@ -98,7 +107,7 @@ async function listAssets(type) {
         // Ignore errors reading metadata
       }
 
-      const name = path.parse(file).name;
+      const name = type === 'skills' && stat.isDirectory() ? file : path.parse(file).name;
       console.log(`  - ${name}${description ? ` - ${description}` : ''}`);
     }
   } else {
@@ -118,7 +127,8 @@ async function listAssets(type) {
 
     console.log(chalk.blue.bold(`\nAvailable ${type}:`));
     for (const asset of assets) {
-      console.log(`  - ${asset.id}${asset.description ? ` - ${asset.description}` : ''}`);
+      const versionInfo = asset.metadata?.version ? ` (v${asset.metadata.version})` : '';
+      console.log(`  - ${asset.id}${versionInfo}${asset.description ? ` - ${asset.description}` : ''}`);
     }
   }
 }
@@ -130,7 +140,7 @@ async function downloadAsset(id, options) {
     throw new Error('Invalid ID format. Use type:name (e.g., instructions:basic-setup)');
   }
 
-  const validTypes = ['instructions', 'prompts', 'agents', 'collections'];
+  const validTypes = ['instructions', 'prompts', 'agents', 'skills', 'collections'];
   if (!validTypes.includes(type)) {
     throw new Error(`Invalid type: ${type}. Valid types are: ${validTypes.join(', ')}`);
   }
@@ -170,6 +180,12 @@ async function downloadAsset(id, options) {
         console.error(chalk.red(`Failed to download ${assetId} from collection:`), error.message);
       }
     }
+    return;
+  }
+
+  // Handle Skills (multi-file folder-based assets)
+  if (type === 'skills') {
+    await downloadSkill(name, options);
     return;
   }
 
@@ -261,6 +277,119 @@ async function downloadAsset(id, options) {
 
   await fs.writeFile(destPath, content);
   console.log(chalk.green(`Successfully downloaded ${fileName} to ${destDir}`));
+}
+
+async function downloadSkill(name, options) {
+  const skillName = name;
+  let skillFiles = [];
+  let skillPath = '';
+
+  if (IS_LOCAL) {
+    // Local mode: copy from assets/skills
+    skillPath = path.join(ASSETS_DIR, 'skills', skillName);
+    
+    if (!await fs.pathExists(skillPath)) {
+      throw new Error(`Skill not found: skills/${skillName}`);
+    }
+    
+    // Get all files in the skill directory
+    const getAllFiles = async (dir, baseDir = dir) => {
+      const files = [];
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+      
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          const subFiles = await getAllFiles(fullPath, baseDir);
+          files.push(...subFiles);
+        } else {
+          const relativePath = path.relative(baseDir, fullPath);
+          files.push({ relative: relativePath, full: fullPath });
+        }
+      }
+      return files;
+    };
+    
+    skillFiles = await getAllFiles(skillPath);
+  } else {
+    // Production mode: fetch from manifest and download from GitHub
+    const manifest = await getManifest();
+    const key = `skills:${skillName}`;
+    const asset = manifest.assets[key];
+    
+    if (!asset) {
+      throw new Error(`Skill not found: ${key}`);
+    }
+    
+    skillPath = asset.path;
+    skillFiles = asset.files.map(file => ({
+      relative: file,
+      url: `https://raw.githubusercontent.com/archubbuck/workspace-architect/main/${asset.path}/${file}`
+    }));
+  }
+
+  // Determine destination
+  let destDir;
+  if (options.output) {
+    destDir = path.resolve(process.cwd(), options.output);
+  } else {
+    destDir = path.join(process.cwd(), '.github', 'skills', skillName);
+  }
+
+  if (options.dryRun) {
+    console.log(chalk.cyan(`[Dry Run] Would create skill directory at ${destDir}`));
+    for (const file of skillFiles) {
+      console.log(chalk.cyan(`  Would copy: ${file.relative}`));
+    }
+    return;
+  }
+
+  // Check if skill already exists
+  if (await fs.pathExists(destDir) && !options.force) {
+    const { overwrite } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'overwrite',
+        message: `Skill ${skillName} already exists in ${destDir}. Overwrite?`,
+        default: false
+      }
+    ]);
+
+    if (!overwrite) {
+      console.log(chalk.yellow('Operation cancelled.'));
+      return;
+    }
+  }
+
+  console.log(chalk.blue(`Downloading skill: ${skillName}`));
+  
+  // Create skill directory
+  await fs.ensureDir(destDir);
+
+  // Download/copy all files
+  for (const file of skillFiles) {
+    const destPath = path.join(destDir, file.relative);
+    const destFileDir = path.dirname(destPath);
+    await fs.ensureDir(destFileDir);
+
+    if (IS_LOCAL) {
+      // Copy from local assets
+      await fs.copyFile(file.full, destPath);
+    } else {
+      // Download from GitHub
+      const response = await fetch(file.url);
+      if (!response.ok) {
+        console.warn(chalk.yellow(`Warning: Failed to download ${file.relative}`));
+        continue;
+      }
+      const content = await response.text();
+      await fs.writeFile(destPath, content);
+    }
+    
+    console.log(chalk.dim(`  Downloaded: ${file.relative}`));
+  }
+
+  console.log(chalk.green(`Successfully downloaded skill ${skillName} to ${destDir} (${skillFiles.length} files)`));
 }
 
 program.parse();
