@@ -133,8 +133,8 @@ async function syncSkill(skillName) {
 }
 
 async function getSkillFiles(skillName, subPath) {
-  const relativePath = subPath ? `${skillName}/${subPath}` : skillName;
-  const fullPath = `skills/${relativePath}`;
+  const relativePath = subPath ? path.join(skillName, subPath) : skillName;
+  const fullPath = path.join('skills', relativePath);
   const contents = await fetchGitHubContent(fullPath);
   
   let files = [];
@@ -142,11 +142,11 @@ async function getSkillFiles(skillName, subPath) {
   for (const item of contents) {
     if (item.type === 'file') {
       files.push({
-        path: subPath ? `${subPath}/${item.name}` : item.name,
+        path: subPath ? path.join(subPath, item.name) : item.name,
         download_url: item.download_url
       });
     } else if (item.type === 'dir') {
-      const newSubPath = subPath ? `${subPath}/${item.name}` : item.name;
+      const newSubPath = subPath ? path.join(subPath, item.name) : item.name;
       const subFiles = await getSkillFiles(skillName, newSubPath);
       files.push(...subFiles);
     }
@@ -167,7 +167,7 @@ async function syncSkills() {
   
   // Determine which skills to sync
   let skillsToSync;
-  if (SKILLS_TO_SYNC === null) {
+  if (SKILLS_TO_SYNC === null || !Array.isArray(SKILLS_TO_SYNC)) {
     // Sync all available skills
     skillsToSync = availableSkills;
     console.log(chalk.blue(`Syncing all ${skillsToSync.length} skills...\n`));
