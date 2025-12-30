@@ -151,9 +151,9 @@ async function processSkill(skillName, skillPath, manifest) {
       type: 'skills',
       files: files,
       metadata: {
+        ...(parsed.data.metadata || {}),
         license: parsed.data.license,
-        version: parsed.data.metadata?.version,
-        ...(parsed.data.metadata || {})
+        version: parsed.data.metadata?.version
       }
     };
     

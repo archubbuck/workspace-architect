@@ -16,8 +16,8 @@ function validateSkillMetadata(parsed, skillName) {
   // Required fields
   if (!parsed.data.name) {
     errors.push('Missing required field: name');
-  } else if (!/^[a-z0-9-]+$/.test(parsed.data.name)) {
-    errors.push('Skill name must be lowercase with hyphens only');
+  } else if (!/^[A-Za-z0-9_-]+$/.test(parsed.data.name)) {
+    errors.push('Skill name may contain letters, numbers, hyphens, and underscores only');
   }
   
   if (!parsed.data.description) {
@@ -70,7 +70,10 @@ async function validateSkill(skillName) {
     
     console.log(chalk.green(`  ✓ Valid skill`));
     console.log(chalk.dim(`    Files: ${files.length}`));
-    console.log(chalk.dim(`    Description: ${parsed.data.description.substring(0, 60)}...`));
+    const truncatedDesc = parsed.data.description.length > 60 
+      ? parsed.data.description.substring(0, 60) + '...' 
+      : parsed.data.description;
+    console.log(chalk.dim(`    Description: ${truncatedDesc}`));
     
     return true;
   } catch (error) {
@@ -81,15 +84,25 @@ async function validateSkill(skillName) {
 
 async function getFilesRecursive(dir, baseDir = dir) {
   const files = [];
-  const entries = await fs.readdir(dir, { withFileTypes: true });
-  
+  let entries;
+
+  try {
+    entries = await fs.readdir(dir, { withFileTypes: true });
+  } catch (error) {
+    throw new Error(`Failed to read directory "${dir}": ${error.message}`);
+  }
+
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      const subFiles = await getFilesRecursive(fullPath, baseDir);
-      files.push(...subFiles);
-    } else {
-      files.push(path.relative(baseDir, fullPath));
+    try {
+      if (entry.isDirectory()) {
+        const subFiles = await getFilesRecursive(fullPath, baseDir);
+        files.push(...subFiles);
+      } else {
+        files.push(path.relative(baseDir, fullPath));
+      }
+    } catch (error) {
+      throw new Error(`Failed to process path "${fullPath}": ${error.message}`);
     }
   }
   
