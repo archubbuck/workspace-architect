@@ -22,6 +22,8 @@ No installation required! Use directly with `npx`:
 
 ```bash
 npx workspace-architect list
+# or use the shorter alias
+npx wsa list
 ```
 
 Or install globally if you prefer:
@@ -36,18 +38,24 @@ List all available assets:
 
 ```bash
 npx workspace-architect list
+# or use the shorter alias
+npx wsa list
 ```
 
 Download a collection for web development:
 
 ```bash
 npx workspace-architect download collections:web-frontend-development
+# or
+npx wsa download collections:web-frontend-development
 ```
 
 Download a specific agent:
 
 ```bash
 npx workspace-architect download agents:azure-architect
+# or
+npx wsa download agents:azure-architect
 ```
 
 ## Usage
@@ -59,12 +67,14 @@ View all available assets or filter by type:
 ```bash
 # List all assets
 npx workspace-architect list
+# or
+npx wsa list
 
 # List specific types
 npx workspace-architect list instructions
-npx workspace-architect list agents
-npx workspace-architect list prompts
-npx workspace-architect list collections
+npx wsa list agents
+npx wsa list prompts
+npx wsa list collections
 ```
 
 ### Downloading Assets
@@ -73,19 +83,21 @@ Download assets to your project (default location: `.github/<type>/`):
 
 ```bash
 npx workspace-architect download <type>:<name>
+# or
+npx wsa download <type>:<name>
 ```
 
 **Examples:**
 
 ```bash
 # Download an instruction
-npx workspace-architect download instructions:reactjs
+npx wsa download instructions:reactjs
 
 # Download an agent
-npx workspace-architect download agents:planner
+npx wsa download agents:planner
 
 # Download a complete collection
-npx workspace-architect download collections:devops-essentials
+npx wsa download collections:devops-essentials
 ```
 
 ### CLI Options
@@ -182,6 +194,7 @@ npm run start:registry
 # Terminal 2: Publish and test
 npm run publish:local
 npx --registry http://localhost:4873 workspace-architect list
+npx --registry http://localhost:4873 wsa list
 ```
 
 ## Project Structure
