@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "generatedAt": "2025-12-30T20:32:13.294Z",
+  "generatedAt": "2025-12-30T20:36:32.812Z",
   "assets": {
     "agents:4.1-Beast": {
       "path": "assets/agents/4.1-Beast.agent.md",
@@ -2685,6 +2685,15 @@
         "prompts:suggest-awesome-github-copilot-agents",
         "prompts:suggest-awesome-github-copilot-instructions",
         "prompts:suggest-awesome-github-copilot-prompts"
+      ]
+    },
+    "collections:claude-skills-starter": {
+      "path": "assets/collections/claude-skills-starter.json",
+      "description": "Essential Claude Skills for software development, planning, and automation workflows.",
+      "title": "Claude Skills Starter Pack",
+      "type": "collections",
+      "items": [
+        "skills:example-planner"
       ]
     },
     "collections:cpp-development": {
