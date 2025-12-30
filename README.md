@@ -204,7 +204,9 @@ Create a JSON file in `assets/collections/`:
 - `npm run analyze` - Analyze collections with TF-IDF/Cosine Similarity
   - `npm run analyze -- --add` - Auto-add high-confidence matches
   - `npm run analyze -- --remove` - Remove low-confidence items
-- `npm run fetch-upstream` - Sync from upstream repository
+- `npm run fetch-upstream` - Sync agents, instructions, prompts, and collections from upstream repository
+- `npm run sync-skills` - Sync skills from anthropics/skills repository
+- `npm run validate-skills` - Validate all synced skills
 
 ### Local Testing
 
