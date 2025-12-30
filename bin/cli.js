@@ -17,8 +17,8 @@ const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 const IS_LOCAL = await fs.pathExists(ASSETS_DIR);
 
 program
-  .name('github-copilot-packed')
-  .description('CLI to download GitHub Copilot instructions, prompts, and chat modes')
+  .name('workspace-architect')
+  .description('CLI to download GitHub Copilot instructions, prompts, and agents (alias: wsa)')
   .version('1.0.0');
 
 program

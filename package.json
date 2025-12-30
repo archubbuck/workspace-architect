@@ -3,7 +3,8 @@
   "version": "1.5.45",
   "description": "A comprehensive library of specialized AI agents and personas for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.",
   "bin": {
-    "workspace-architect": "./bin/cli.js"
+    "workspace-architect": "./bin/cli.js",
+    "wsa": "./bin/cli.js"
   },
   "scripts": {
     "start:registry": "verdaccio --config verdaccio/config.yaml",
