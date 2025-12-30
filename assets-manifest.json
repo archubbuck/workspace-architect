@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "generatedAt": "2025-12-30T21:10:30.100Z",
+  "generatedAt": "2025-12-30T21:31:38.505Z",
   "assets": {
     "agents:4.1-Beast": {
       "path": "assets/agents/4.1-Beast.agent.md",
@@ -3901,6 +3901,208 @@
         "instructions:typescript-5-es2022"
       ]
     },
+    "skills:algorithmic-art": {
+      "path": "assets/skills/algorithmic-art",
+      "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+      "title": "algorithmic-art",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "templates/generator_template.js",
+        "templates/viewer.html"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:brand-guidelines": {
+      "path": "assets/skills/brand-guidelines",
+      "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+      "title": "brand-guidelines",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:canvas-design": {
+      "path": "assets/skills/canvas-design",
+      "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "title": "canvas-design",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "canvas-fonts/ArsenalSC-OFL.txt",
+        "canvas-fonts/ArsenalSC-Regular.ttf",
+        "canvas-fonts/BigShoulders-Bold.ttf",
+        "canvas-fonts/BigShoulders-OFL.txt",
+        "canvas-fonts/BigShoulders-Regular.ttf",
+        "canvas-fonts/Boldonse-OFL.txt",
+        "canvas-fonts/Boldonse-Regular.ttf",
+        "canvas-fonts/BricolageGrotesque-Bold.ttf",
+        "canvas-fonts/BricolageGrotesque-OFL.txt",
+        "canvas-fonts/BricolageGrotesque-Regular.ttf",
+        "canvas-fonts/CrimsonPro-Bold.ttf",
+        "canvas-fonts/CrimsonPro-Italic.ttf",
+        "canvas-fonts/CrimsonPro-OFL.txt",
+        "canvas-fonts/CrimsonPro-Regular.ttf",
+        "canvas-fonts/DMMono-OFL.txt",
+        "canvas-fonts/DMMono-Regular.ttf",
+        "canvas-fonts/EricaOne-OFL.txt",
+        "canvas-fonts/EricaOne-Regular.ttf",
+        "canvas-fonts/GeistMono-Bold.ttf",
+        "canvas-fonts/GeistMono-OFL.txt",
+        "canvas-fonts/GeistMono-Regular.ttf",
+        "canvas-fonts/Gloock-OFL.txt",
+        "canvas-fonts/Gloock-Regular.ttf",
+        "canvas-fonts/IBMPlexMono-Bold.ttf",
+        "canvas-fonts/IBMPlexMono-OFL.txt",
+        "canvas-fonts/IBMPlexMono-Regular.ttf",
+        "canvas-fonts/IBMPlexSerif-Bold.ttf",
+        "canvas-fonts/IBMPlexSerif-BoldItalic.ttf",
+        "canvas-fonts/IBMPlexSerif-Italic.ttf",
+        "canvas-fonts/IBMPlexSerif-Regular.ttf",
+        "canvas-fonts/InstrumentSans-Bold.ttf",
+        "canvas-fonts/InstrumentSans-BoldItalic.ttf",
+        "canvas-fonts/InstrumentSans-Italic.ttf",
+        "canvas-fonts/InstrumentSans-OFL.txt",
+        "canvas-fonts/InstrumentSans-Regular.ttf",
+        "canvas-fonts/InstrumentSerif-Italic.ttf",
+        "canvas-fonts/InstrumentSerif-Regular.ttf",
+        "canvas-fonts/Italiana-OFL.txt",
+        "canvas-fonts/Italiana-Regular.ttf",
+        "canvas-fonts/JetBrainsMono-Bold.ttf",
+        "canvas-fonts/JetBrainsMono-OFL.txt",
+        "canvas-fonts/JetBrainsMono-Regular.ttf",
+        "canvas-fonts/Jura-Light.ttf",
+        "canvas-fonts/Jura-Medium.ttf",
+        "canvas-fonts/Jura-OFL.txt",
+        "canvas-fonts/LibreBaskerville-OFL.txt",
+        "canvas-fonts/LibreBaskerville-Regular.ttf",
+        "canvas-fonts/Lora-Bold.ttf",
+        "canvas-fonts/Lora-BoldItalic.ttf",
+        "canvas-fonts/Lora-Italic.ttf",
+        "canvas-fonts/Lora-OFL.txt",
+        "canvas-fonts/Lora-Regular.ttf",
+        "canvas-fonts/NationalPark-Bold.ttf",
+        "canvas-fonts/NationalPark-OFL.txt",
+        "canvas-fonts/NationalPark-Regular.ttf",
+        "canvas-fonts/NothingYouCouldDo-OFL.txt",
+        "canvas-fonts/NothingYouCouldDo-Regular.ttf",
+        "canvas-fonts/Outfit-Bold.ttf",
+        "canvas-fonts/Outfit-OFL.txt",
+        "canvas-fonts/Outfit-Regular.ttf",
+        "canvas-fonts/PixelifySans-Medium.ttf",
+        "canvas-fonts/PixelifySans-OFL.txt",
+        "canvas-fonts/PoiretOne-OFL.txt",
+        "canvas-fonts/PoiretOne-Regular.ttf",
+        "canvas-fonts/RedHatMono-Bold.ttf",
+        "canvas-fonts/RedHatMono-OFL.txt",
+        "canvas-fonts/RedHatMono-Regular.ttf",
+        "canvas-fonts/Silkscreen-OFL.txt",
+        "canvas-fonts/Silkscreen-Regular.ttf",
+        "canvas-fonts/SmoochSans-Medium.ttf",
+        "canvas-fonts/SmoochSans-OFL.txt",
+        "canvas-fonts/Tektur-Medium.ttf",
+        "canvas-fonts/Tektur-OFL.txt",
+        "canvas-fonts/Tektur-Regular.ttf",
+        "canvas-fonts/WorkSans-Bold.ttf",
+        "canvas-fonts/WorkSans-BoldItalic.ttf",
+        "canvas-fonts/WorkSans-Italic.ttf",
+        "canvas-fonts/WorkSans-OFL.txt",
+        "canvas-fonts/WorkSans-Regular.ttf",
+        "canvas-fonts/YoungSerif-OFL.txt",
+        "canvas-fonts/YoungSerif-Regular.ttf"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:doc-coauthoring": {
+      "path": "assets/skills/doc-coauthoring",
+      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "title": "doc-coauthoring",
+      "type": "skills",
+      "files": [
+        "SKILL.md"
+      ],
+      "metadata": {}
+    },
+    "skills:docx": {
+      "path": "assets/skills/docx",
+      "description": "Comprehensive document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. When Claude needs to work with professional documents (.docx files) for: (1) Creating new documents, (2) Modifying or editing content, (3) Working with tracked changes, (4) Adding comments, or any other document tasks",
+      "title": "docx",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "docx-js.md",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/pml.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/sml.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/wml.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/xml.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-digSig.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-relationships.xsd",
+        "ooxml/schemas/mce/mc.xsd",
+        "ooxml/schemas/microsoft/wml-2010.xsd",
+        "ooxml/schemas/microsoft/wml-2012.xsd",
+        "ooxml/schemas/microsoft/wml-2018.xsd",
+        "ooxml/schemas/microsoft/wml-cex-2018.xsd",
+        "ooxml/schemas/microsoft/wml-cid-2016.xsd",
+        "ooxml/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+        "ooxml/schemas/microsoft/wml-symex-2015.xsd",
+        "ooxml/scripts/pack.py",
+        "ooxml/scripts/unpack.py",
+        "ooxml/scripts/validate.py",
+        "ooxml/scripts/validation/__init__.py",
+        "ooxml/scripts/validation/base.py",
+        "ooxml/scripts/validation/docx.py",
+        "ooxml/scripts/validation/pptx.py",
+        "ooxml/scripts/validation/redlining.py",
+        "ooxml.md",
+        "scripts/__init__.py",
+        "scripts/document.py",
+        "scripts/templates/comments.xml",
+        "scripts/templates/commentsExtended.xml",
+        "scripts/templates/commentsExtensible.xml",
+        "scripts/templates/commentsIds.xml",
+        "scripts/templates/people.xml",
+        "scripts/utilities.py"
+      ],
+      "metadata": {
+        "license": "Proprietary. LICENSE.txt has complete terms"
+      }
+    },
     "skills:example-planner": {
       "path": "assets/skills/example-planner",
       "description": "Create detailed implementation plans for software features and refactoring tasks. Use this skill when planning new features, architectural changes, or major refactoring efforts.",
@@ -3914,6 +4116,223 @@
         "maintainer": "workspace-architect",
         "category": "planning",
         "license": "MIT"
+      }
+    },
+    "skills:frontend-design": {
+      "path": "assets/skills/frontend-design",
+      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+      "title": "frontend-design",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:internal-comms": {
+      "path": "assets/skills/internal-comms",
+      "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "title": "internal-comms",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "examples/3p-updates.md",
+        "examples/company-newsletter.md",
+        "examples/faq-answers.md",
+        "examples/general-comms.md"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:mcp-builder": {
+      "path": "assets/skills/mcp-builder",
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "title": "mcp-builder",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "reference/evaluation.md",
+        "reference/mcp_best_practices.md",
+        "reference/node_mcp_server.md",
+        "reference/python_mcp_server.md",
+        "scripts/connections.py",
+        "scripts/evaluation.py",
+        "scripts/example_evaluation.xml",
+        "scripts/requirements.txt"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:pdf": {
+      "path": "assets/skills/pdf",
+      "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. When Claude needs to fill in a PDF form or programmatically process, generate, or analyze PDF documents at scale.",
+      "title": "pdf",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "forms.md",
+        "reference.md",
+        "scripts/check_bounding_boxes.py",
+        "scripts/check_bounding_boxes_test.py",
+        "scripts/check_fillable_fields.py",
+        "scripts/convert_pdf_to_images.py",
+        "scripts/create_validation_image.py",
+        "scripts/extract_form_field_info.py",
+        "scripts/fill_fillable_fields.py",
+        "scripts/fill_pdf_form_with_annotations.py"
+      ],
+      "metadata": {
+        "license": "Proprietary. LICENSE.txt has complete terms"
+      }
+    },
+    "skills:pptx": {
+      "path": "assets/skills/pptx",
+      "description": "Presentation creation, editing, and analysis. When Claude needs to work with presentations (.pptx files) for: (1) Creating new presentations, (2) Modifying or editing content, (3) Working with layouts, (4) Adding comments or speaker notes, or any other presentation tasks",
+      "title": "pptx",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "html2pptx.md",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-chart.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-chartDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-diagram.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-lockedCanvas.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-main.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-picture.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-spreadsheetDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/dml-wordprocessingDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/pml.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-additionalCharacteristics.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-bibliography.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-commonSimpleTypes.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-customXmlDataProperties.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-customXmlSchemaProperties.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesCustom.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesExtended.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-documentPropertiesVariantTypes.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-math.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/shared-relationshipReference.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/sml.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-main.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-officeDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-presentationDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-spreadsheetDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/vml-wordprocessingDrawing.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/wml.xsd",
+        "ooxml/schemas/ISO-IEC29500-4_2016/xml.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-contentTypes.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-coreProperties.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-digSig.xsd",
+        "ooxml/schemas/ecma/fouth-edition/opc-relationships.xsd",
+        "ooxml/schemas/mce/mc.xsd",
+        "ooxml/schemas/microsoft/wml-2010.xsd",
+        "ooxml/schemas/microsoft/wml-2012.xsd",
+        "ooxml/schemas/microsoft/wml-2018.xsd",
+        "ooxml/schemas/microsoft/wml-cex-2018.xsd",
+        "ooxml/schemas/microsoft/wml-cid-2016.xsd",
+        "ooxml/schemas/microsoft/wml-sdtdatahash-2020.xsd",
+        "ooxml/schemas/microsoft/wml-symex-2015.xsd",
+        "ooxml/scripts/pack.py",
+        "ooxml/scripts/unpack.py",
+        "ooxml/scripts/validate.py",
+        "ooxml/scripts/validation/__init__.py",
+        "ooxml/scripts/validation/base.py",
+        "ooxml/scripts/validation/docx.py",
+        "ooxml/scripts/validation/pptx.py",
+        "ooxml/scripts/validation/redlining.py",
+        "ooxml.md",
+        "scripts/html2pptx.js",
+        "scripts/inventory.py",
+        "scripts/rearrange.py",
+        "scripts/replace.py",
+        "scripts/thumbnail.py"
+      ],
+      "metadata": {
+        "license": "Proprietary. LICENSE.txt has complete terms"
+      }
+    },
+    "skills:skill-creator": {
+      "path": "assets/skills/skill-creator",
+      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "title": "skill-creator",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "references/output-patterns.md",
+        "references/workflows.md",
+        "scripts/init_skill.py",
+        "scripts/package_skill.py",
+        "scripts/quick_validate.py"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:slack-gif-creator": {
+      "path": "assets/skills/slack-gif-creator",
+      "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
+      "title": "slack-gif-creator",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "core/easing.py",
+        "core/frame_composer.py",
+        "core/gif_builder.py",
+        "core/validators.py",
+        "requirements.txt"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:theme-factory": {
+      "path": "assets/skills/theme-factory",
+      "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+      "title": "theme-factory",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "theme-showcase.pdf",
+        "themes/arctic-frost.md",
+        "themes/botanical-garden.md",
+        "themes/desert-rose.md",
+        "themes/forest-canopy.md",
+        "themes/golden-hour.md",
+        "themes/midnight-galaxy.md",
+        "themes/modern-minimalist.md",
+        "themes/ocean-depths.md",
+        "themes/sunset-boulevard.md",
+        "themes/tech-innovation.md"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:web-artifacts-builder": {
+      "path": "assets/skills/web-artifacts-builder",
+      "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+      "title": "web-artifacts-builder",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "scripts/bundle-artifact.sh",
+        "scripts/init-artifact.sh",
+        "scripts/shadcn-components.tar.gz"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
       }
     }
   }

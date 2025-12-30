@@ -44,19 +44,9 @@ const REPO_NAME = 'skills';
 const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
 const LOCAL_SKILLS_DIR = path.join(__dirname, '../assets/skills');
 
-// Curated list of skills to sync (top valuable ones)
-const SKILLS_TO_SYNC = [
-  'playwright-tester',
-  'code-reviewer',
-  'document-processor',
-  'data-analyzer',
-  'api-integration',
-  'security-auditor',
-  'performance-optimizer',
-  'test-generator',
-  'documentation-writer',
-  'refactoring-assistant'
-];
+// Sync all available skills from the repository
+// Set to null to sync all skills, or provide an array to filter specific skills
+const SKILLS_TO_SYNC = null; // null means sync all available skills
 
 async function fetchGitHubContent(path) {
   const url = `${BASE_API_URL}/${path}`;
@@ -98,7 +88,7 @@ async function downloadFile(url, destPath) {
 async function getAvailableSkills() {
   try {
     console.log(chalk.blue('Fetching available skills from anthropics/skills...'));
-    const contents = await fetchGitHubContent('');
+    const contents = await fetchGitHubContent('skills');
     
     // Filter to directories only (skills are directories)
     const skillDirs = contents.filter(item => item.type === 'dir');
@@ -143,7 +133,8 @@ async function syncSkill(skillName) {
 }
 
 async function getSkillFiles(skillName, subPath) {
-  const fullPath = subPath ? `${skillName}/${subPath}` : skillName;
+  const relativePath = subPath ? `${skillName}/${subPath}` : skillName;
+  const fullPath = `skills/${relativePath}`;
   const contents = await fetchGitHubContent(fullPath);
   
   let files = [];
@@ -155,8 +146,8 @@ async function getSkillFiles(skillName, subPath) {
         download_url: item.download_url
       });
     } else if (item.type === 'dir') {
-      const relativePath = subPath ? `${subPath}/${item.name}` : item.name;
-      const subFiles = await getSkillFiles(skillName, relativePath);
+      const newSubPath = subPath ? `${subPath}/${item.name}` : item.name;
+      const subFiles = await getSkillFiles(skillName, newSubPath);
       files.push(...subFiles);
     }
   }
@@ -174,15 +165,23 @@ async function syncSkills() {
   const availableSkills = await getAvailableSkills();
   console.log(chalk.blue(`Found ${availableSkills.length} skills in repository\n`));
   
-  // Filter to curated list
-  const skillsToSync = SKILLS_TO_SYNC.filter(skill => availableSkills.includes(skill));
-  
-  if (skillsToSync.length === 0) {
-    console.log(chalk.yellow('No skills from curated list found in repository'));
-    return;
+  // Determine which skills to sync
+  let skillsToSync;
+  if (SKILLS_TO_SYNC === null) {
+    // Sync all available skills
+    skillsToSync = availableSkills;
+    console.log(chalk.blue(`Syncing all ${skillsToSync.length} skills...\n`));
+  } else {
+    // Filter to curated list
+    skillsToSync = SKILLS_TO_SYNC.filter(skill => availableSkills.includes(skill));
+    
+    if (skillsToSync.length === 0) {
+      console.log(chalk.yellow('No skills from curated list found in repository'));
+      return;
+    }
+    
+    console.log(chalk.blue(`Syncing ${skillsToSync.length} curated skills...\n`));
   }
-  
-  console.log(chalk.blue(`Syncing ${skillsToSync.length} curated skills...\n`));
   
   let successCount = 0;
   let failCount = 0;
