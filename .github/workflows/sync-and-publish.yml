@@ -40,6 +40,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run sync-skills
 
+      - name: Validate Skills
+        run: npm run validate-skills
+
       - name: Check for changes
         id: git-check
         run: |
