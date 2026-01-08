@@ -1,7 +1,10 @@
 # Workspace Architect
 
 [![npm version](https://img.shields.io/npm/v/workspace-architect.svg)](https://www.npmjs.com/package/workspace-architect)
+[![npm downloads](https://img.shields.io/npm/dm/workspace-architect.svg)](https://www.npmjs.com/package/workspace-architect)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![GitHub stars](https://img.shields.io/github/stars/archubbuck/workspace-architect.svg)](https://github.com/archubbuck/workspace-architect/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/archubbuck/workspace-architect.svg)](https://github.com/archubbuck/workspace-architect/issues)
 
 > A comprehensive library of specialized AI agents and personas for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.
 
