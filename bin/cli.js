@@ -52,8 +52,13 @@ program
       if (!name && type.includes(':')) {
         // Legacy format: type:name - warn user to use new format
         const [assetType, assetName] = type.split(':');
+        
+        // Detect which command was used (workspace-architect or wsa)
+        const scriptPath = process.argv[1] || '';
+        const commandName = scriptPath.includes('/wsa') || scriptPath.endsWith('wsa') ? 'wsa' : 'workspace-architect';
+        
         console.log(chalk.yellow(`⚠️  Deprecation Warning: The format '${type}' is deprecated.`));
-        console.log(chalk.yellow(`   Please use: download ${assetType} ${assetName}`));
+        console.log(chalk.yellow(`   Please use: npx ${commandName} download ${assetType} ${assetName}`));
         console.log('');
         await downloadAsset(type, options);
       } else if (name) {
