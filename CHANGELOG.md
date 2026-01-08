@@ -1,5 +1,30 @@
 
 
+## 2.0.0 (2026-01-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* The CLI command pattern has changed from colon-separated
+format (type:name) to space-separated format (type name).
+
+The old format `download <type>:<name>` is deprecated in favor of the new
+format `download <type> <name>`. The old format still works but shows a
+deprecation warning.
+
+Users should update their scripts:
+- Old: npx workspace-architect download agents:azure-architect
+- New: npx workspace-architect download agents azure-architect
+
+This change improves consistency with standard CLI patterns and makes
+commands more intuitive.
+
+Co-authored-by: archubbuck <3529902+archubbuck@users.noreply.github.com>
+
+### Features
+
+* Update CLI to use space-separated arguments ([6b99581](https://github.com/archubbuck/workspace-architect/commit/6b995811c597bddb4172ce25826c5827fee71e77))
+
 ## [1.8.0](https://github.com/archubbuck/workspace-architect/compare/v1.7.0...v1.8.0) (2026-01-08)
 
 
