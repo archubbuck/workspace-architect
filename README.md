@@ -10,6 +10,16 @@
 
 Workspace Architect is a zero-friction CLI tool that provides curated collections of specialized agents, instructions, and prompts to supercharge your GitHub Copilot experience.
 
+## Why Workspace Architect?
+
+**Maximize GitHub Copilot's Potential** - GitHub Copilot is powerful, but it's even better with context. Workspace Architect provides 400+ expert-crafted agents, instructions, and prompts that give Copilot the specialized knowledge it needs for your specific tech stack and domain.
+
+**Save Time, Start Faster** - Instead of crafting custom instructions from scratch, instantly download battle-tested configurations for React, Azure, DevOps, AI Engineering, and dozens of other domains. Get productive in seconds with `npx workspace-architect`.
+
+**Stay Current** - Our collections are automatically synced from trusted upstream sources like GitHub's [awesome-copilot](https://github.com/github/awesome-copilot) and Anthropic's [skills repository](https://github.com/anthropics/skills), ensuring you always have access to the latest and greatest community contributions.
+
+**Universal Compatibility** - Works with GitHub Copilot, Claude, and other AI assistants. Simple markdown files mean no vendor lock-in, no complex setup, and compatibility across your entire development workflow.
+
 ## Features
 
 - 🎯 **Specialized Agents**: Pre-built personas like "Azure Architect", "React Expert", and more
