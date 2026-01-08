@@ -44,7 +44,8 @@ const REPO_NAME = 'awesome-copilot';
 const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
 const REMOTE_DIR = 'collections';
 const LOCAL_DIR = path.join(__dirname, '../assets/collections');
-const FILE_EXTENSION = '.json';
+// Accepted file extensions for collections
+const ACCEPTED_EXTENSIONS = ['.json', '.yml', '.yaml'];
 
 async function fetchGitHubContent(path) {
   const url = `${BASE_API_URL}/${path}`;
@@ -97,7 +98,7 @@ async function syncCollections() {
     const items = await fetchGitHubContent(REMOTE_DIR);
     
     const collectionFiles = items.filter(item => 
-      item.type === 'file' && item.name.endsWith(FILE_EXTENSION)
+      item.type === 'file' && ACCEPTED_EXTENSIONS.some(ext => item.name.endsWith(ext))
     );
     
     console.log(chalk.blue(`Found ${collectionFiles.length} collection files\n`));

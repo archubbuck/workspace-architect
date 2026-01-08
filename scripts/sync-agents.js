@@ -44,7 +44,8 @@ const REPO_NAME = 'awesome-copilot';
 const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
 const REMOTE_DIR = 'agents';
 const LOCAL_DIR = path.join(__dirname, '../assets/agents');
-const FILE_EXTENSION = '.agent.md';
+// Accepted file extensions for agents
+const ACCEPTED_EXTENSIONS = ['.agent.md', '.md'];
 
 async function fetchGitHubContent(path) {
   const url = `${BASE_API_URL}/${path}`;
@@ -97,7 +98,7 @@ async function syncAgents() {
     const items = await fetchGitHubContent(REMOTE_DIR);
     
     const agentFiles = items.filter(item => 
-      item.type === 'file' && item.name.endsWith(FILE_EXTENSION)
+      item.type === 'file' && ACCEPTED_EXTENSIONS.some(ext => item.name.endsWith(ext))
     );
     
     console.log(chalk.blue(`Found ${agentFiles.length} agent files\n`));

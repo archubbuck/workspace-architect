@@ -44,7 +44,8 @@ const REPO_NAME = 'awesome-copilot';
 const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
 const REMOTE_DIR = 'prompts';
 const LOCAL_DIR = path.join(__dirname, '../assets/prompts');
-const FILE_EXTENSION = '.prompt.md';
+// Accepted file extensions for prompts
+const ACCEPTED_EXTENSIONS = ['.prompt.md', '.md'];
 
 async function fetchGitHubContent(path) {
   const url = `${BASE_API_URL}/${path}`;
@@ -97,7 +98,7 @@ async function syncPrompts() {
     const items = await fetchGitHubContent(REMOTE_DIR);
     
     const promptFiles = items.filter(item => 
-      item.type === 'file' && item.name.endsWith(FILE_EXTENSION)
+      item.type === 'file' && ACCEPTED_EXTENSIONS.some(ext => item.name.endsWith(ext))
     );
     
     console.log(chalk.blue(`Found ${promptFiles.length} prompt files\n`));
