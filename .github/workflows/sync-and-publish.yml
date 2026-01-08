@@ -30,10 +30,25 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Sync
+      - name: Sync Agents
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run fetch-upstream
+        run: npm run sync-agents
+
+      - name: Sync Instructions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync-instructions
+
+      - name: Sync Prompts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync-prompts
+
+      - name: Sync Collections
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run sync-collections
 
       - name: Sync Skills
         env:
@@ -59,7 +74,7 @@ jobs:
         if: steps.git-check.outputs.changes == 'true'
         run: |
           git add assets/
-          git commit -m "fix: sync content from awesome-copilot and anthropics/skills"
+          git commit -m "fix: sync content from upstream resources"
 
       - name: Release and Publish
         if: steps.git-check.outputs.changes == 'true'
