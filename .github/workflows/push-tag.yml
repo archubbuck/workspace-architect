@@ -1,0 +1,33 @@
+name: Push Tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to push (e.g., v2.0.0)'
+        required: true
+        type: string
+
+jobs:
+  push-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Push tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin ${{ inputs.tag }}
+          echo "✅ Tag ${{ inputs.tag }} pushed successfully"
