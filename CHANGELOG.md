@@ -1,5 +1,20 @@
 
 
+## [1.6.0](https://github.com/archubbuck/workspace-architect/compare/v1.5.45...v1.6.0) (2026-01-08)
+
+
+### Features
+
+* Add 'wsa' CLI alias for workspace-architect ([8cf0823](https://github.com/archubbuck/workspace-architect/commit/8cf0823ac79fdb43972b27f0ec7e76c70db47b7c))
+* Add Skills validation, collection support, and sync infrastructure ([ed98b2e](https://github.com/archubbuck/workspace-architect/commit/ed98b2ecc6a98e3cde71f6923177fc87ff989347))
+* Implement Skills discovery and download support ([7620894](https://github.com/archubbuck/workspace-architect/commit/76208949f8a7afd1d6bcd3e313d363b11a83c5fe))
+
+
+### Bug Fixes
+
+* Address code review feedback - improve validation, error handling, and metadata ([2470dc0](https://github.com/archubbuck/workspace-architect/commit/2470dc055cb83d4ee124f2d808e93a85dfbbeadb))
+* sync content from awesome-copilot ([895f2d2](https://github.com/archubbuck/workspace-architect/commit/895f2d2c30ed05a464fa2b5b007fe06b33d9d5ce))
+
 ## [1.5.45](https://github.com/archubbuck/workspace-architect/compare/v1.5.44...v1.5.45) (2025-12-18)
 
 
