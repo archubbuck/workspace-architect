@@ -1,135 +1,76 @@
-import fs from 'fs';
-import path from 'path';
+/**
+ * @deprecated This script is deprecated in favor of individual sync scripts.
+ * Use the following scripts instead:
+ * - npm run sync-agents
+ * - npm run sync-instructions
+ * - npm run sync-prompts
+ * - npm run sync-collections
+ * 
+ * This wrapper is kept for backward compatibility and convenience.
+ */
+
+import { spawn } from 'child_process';
 import chalk from 'chalk';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const SYNC_SCRIPTS = [
+  'sync-agents',
+  'sync-instructions',
+  'sync-prompts',
+  'sync-collections'
+];
 
-// Load .env manually
-const envPath = path.join(__dirname, '../.env');
-if (fs.existsSync(envPath)) {
-  const envConfig = fs.readFileSync(envPath, 'utf8');
-  envConfig.split('\n').forEach(line => {
-    const [key, value] = line.split('=');
-    if (key && value) {
-      process.env[key.trim()] = value.trim();
-    }
+async function runScript(scriptName) {
+  return new Promise((resolve, reject) => {
+    console.log(chalk.blue(`\nRunning ${scriptName}...\n`));
+    
+    const child = spawn('npm', ['run', scriptName], {
+      stdio: 'inherit',
+      env: process.env
+    });
+    
+    child.on('close', (code) => {
+      if (code !== 0) {
+        reject(new Error(`${scriptName} exited with code ${code}`));
+      } else {
+        resolve();
+      }
+    });
+    
+    child.on('error', (error) => {
+      reject(error);
+    });
   });
 }
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const REPO_OWNER = 'github';
-const REPO_NAME = 'awesome-copilot';
-const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
-
-const MAPPINGS = [
-  { remote: 'agents', local: 'assets/agents' },
-  { remote: 'instructions', local: 'assets/instructions' },
-  { remote: 'prompts', local: 'assets/prompts' },
-  { remote: 'collections', local: 'assets/collections' }
-];
-
-const FILES_TO_DELETE = [
-  'basic-setup.md',
-  'assets/instructions/basic-setup.md'
-];
-
-async function fetchGitHubContent(path) {
-  const url = `${BASE_API_URL}/${path}`;
-  const headers = {
-    'User-Agent': 'node.js',
-    'Accept': 'application/vnd.github.v3+json'
-  };
+async function runAllSyncs() {
+  console.log(chalk.yellow.bold('\n⚠️  This script is deprecated. Consider using individual sync scripts.\n'));
+  console.log(chalk.blue.bold('=== Running All Sync Scripts ===\n'));
   
-  if (GITHUB_TOKEN) {
-    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
-  }
-
-  const response = await fetch(url, { headers });
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
-  }
-  return response.json();
-}
-
-async function downloadFile(downloadUrl, localPath) {
-  const headers = {
-    'User-Agent': 'node.js'
-  };
-  
-  if (GITHUB_TOKEN) {
-    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
-  }
-  
-  const response = await fetch(downloadUrl, { headers });
-  if (!response.ok) {
-    throw new Error(`Failed to download ${downloadUrl}: ${response.statusText}`);
-  }
-  const content = await response.text();
-  const dir = path.dirname(localPath);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-  fs.writeFileSync(localPath, content);
-  console.log(`${chalk.green('Downloaded:')} ${localPath}`);
-}
-
-async function sync() {
-  console.log(chalk.blue('Starting sync...'));
-  
-  // Delete legacy files
-  for (const file of FILES_TO_DELETE) {
-    const filePath = path.join(__dirname, '..', file);
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-      console.log(`${chalk.red('Deleted:')} ${file}`);
-    }
-  }
-
   const errors = [];
   
-  // Sync folders
-  for (const mapping of MAPPINGS) {
-    console.log(chalk.yellow(`Syncing ${mapping.remote} to ${mapping.local}...`));
+  for (const script of SYNC_SCRIPTS) {
     try {
-      const items = await fetchGitHubContent(mapping.remote);
-      
-      for (const item of items) {
-        if (item.type === 'file') {
-          // Filter files based on expected extensions
-          const shouldDownload = 
-            (mapping.remote === 'agents' && item.name.endsWith('.agent.md')) ||
-            (mapping.remote === 'instructions' && item.name.endsWith('.instructions.md')) ||
-            (mapping.remote === 'prompts' && item.name.endsWith('.prompt.md')) ||
-            (mapping.remote === 'collections' && item.name.endsWith('.json'));
-          
-          if (shouldDownload) {
-            const localFilePath = path.join(__dirname, '..', mapping.local, item.name);
-            await downloadFile(item.download_url, localFilePath);
-          } else {
-            console.log(`${chalk.gray('Skipped:')} ${item.name} (unexpected file type)`);
-          }
-        }
-      }
+      await runScript(script);
     } catch (error) {
-      console.error(chalk.red(`Error syncing ${mapping.remote}:`), error.message);
-      errors.push({ mapping: mapping.remote, error: error.message });
+      console.error(chalk.red(`\n✗ Failed: ${script}`), error.message);
+      errors.push({ script, error: error.message });
     }
   }
   
+  console.log(chalk.blue.bold('\n=== All Syncs Complete ==='));
+  
   if (errors.length > 0) {
-    console.error(chalk.red(`\n❌ Sync failed with ${errors.length} error(s):`));
-    errors.forEach(({ mapping, error }) => {
-      console.error(chalk.red(`  - ${mapping}: ${error}`));
+    console.error(chalk.red(`\n❌ ${errors.length} script(s) failed:`));
+    errors.forEach(({ script, error }) => {
+      console.error(chalk.red(`  - ${script}: ${error}`));
     });
     process.exit(1);
   }
   
-  console.log(chalk.blue('✅ Sync complete!'));
+  console.log(chalk.green('✅ All syncs completed successfully!'));
 }
 
-sync().catch(error => {
-  console.error(chalk.red('Fatal error during sync:'), error);
+runAllSyncs().catch(error => {
+  console.error(chalk.red('Fatal error:'), error);
   process.exit(1);
 });
