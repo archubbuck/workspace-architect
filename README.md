@@ -58,17 +58,17 @@ npx wsa list
 Download a collection for web development:
 
 ```bash
-npx workspace-architect download collections:web-frontend-development
+npx workspace-architect download collections web-frontend-development
 # or
-npx wsa download collections:web-frontend-development
+npx wsa download collections web-frontend-development
 ```
 
 Download a specific agent:
 
 ```bash
-npx workspace-architect download agents:azure-architect
+npx workspace-architect download agents azure-architect
 # or
-npx wsa download agents:azure-architect
+npx wsa download agents azure-architect
 ```
 
 ## Usage
@@ -95,22 +95,22 @@ npx wsa list collections
 Download assets to your project (default location: `.github/<type>/`):
 
 ```bash
-npx workspace-architect download <type>:<name>
+npx workspace-architect download <type> <name>
 # or
-npx wsa download <type>:<name>
+npx wsa download <type> <name>
 ```
 
 **Examples:**
 
 ```bash
 # Download an instruction
-npx wsa download instructions:reactjs
+npx wsa download instructions reactjs
 
 # Download an agent
-npx wsa download agents:planner
+npx wsa download agents planner
 
 # Download a complete collection
-npx wsa download collections:devops-essentials
+npx wsa download collections devops-essentials
 ```
 
 ### CLI Options
@@ -145,7 +145,7 @@ Skills follow the [open Agent Skills specification](https://agentskills.io/) and
 **Example:**
 ```bash
 # Download a Skill
-npx workspace-architect download skills:example-planner
+npx workspace-architect download skills example-planner
 
 # List all Skills
 npx workspace-architect list skills

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start:registry": "verdaccio --config verdaccio/config.yaml",
-    "test:local": "node bin/cli.js list && node bin/cli.js download instructions:basic-setup --dry-run",
+    "test:local": "node bin/cli.js list && node bin/cli.js download instructions a11y --dry-run",
     "analyze": "node scripts/analyze-collections.js",
     "generate-manifest": "node scripts/generate-manifest.js",
     "prepublishOnly": "npm run generate-manifest",

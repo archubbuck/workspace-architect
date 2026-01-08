@@ -101,22 +101,22 @@ Add support for folder-based assets:
 npx workspace-architect list skills
 
 # Download a Skill
-npx workspace-architect download skills:document-processor
+npx workspace-architect download skills document-processor
 
 # Download Skill to custom location
-npx workspace-architect download skills:code-reviewer -o ./custom-skills
+npx workspace-architect download skills code-reviewer -o ./custom-skills
 ```
 
 **Enhanced Options:**
 ```bash
 # Preview Skill structure (dry-run)
-npx workspace-architect download skills:name --dry-run
+npx workspace-architect download skills name --dry-run
 
 # Force overwrite existing Skill
-npx workspace-architect download skills:name --force
+npx workspace-architect download skills name --force
 
 # Validate Skill format
-npx workspace-architect download skills:name --validate
+npx workspace-architect download skills name --validate
 ```
 
 ---

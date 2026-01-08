@@ -41,14 +41,24 @@ program
   });
 
 program
-  .command('download <id>')
-  .description('Download an asset (format: type:name)')
+  .command('download <type> [name]')
+  .description('Download an asset by type and name')
   .option('-d, --dry-run', 'Simulate the download without writing files')
   .option('-f, --force', 'Overwrite existing files without asking')
   .option('-o, --output <path>', 'Specify the output path')
-  .action(async (id, options) => {
+  .action(async (type, name, options) => {
     try {
-      await downloadAsset(id, options);
+      // Support both new format (type name) and legacy format (type:name)
+      if (!name && type.includes(':')) {
+        // Legacy format: type:name
+        await downloadAsset(type, options);
+      } else if (name) {
+        // New format: type name
+        const id = `${type}:${name}`;
+        await downloadAsset(id, options);
+      } else {
+        throw new Error('Invalid format. Use: download <type> <name>');
+      }
     } catch (error) {
       console.error(chalk.red('Error downloading asset:'), error.message);
       process.exit(1);

@@ -273,7 +273,7 @@ tools: ["codebase", "fetch", "githubRepo"]
 - Display Skills with metadata (version, license)
 
 **Download Command:**
-- Support `npx workspace-architect download skills:name`
+- Support `npx workspace-architect download skills name`
 - Create folder structure: `.github/skills/name/`
 - Download all files in Skill package
 - Preserve relative paths

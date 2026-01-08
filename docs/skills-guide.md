@@ -35,7 +35,7 @@ Available skills:
 ### Download a Skill
 
 ```bash
-npx workspace-architect download skills:example-planner
+npx workspace-architect download skills example-planner
 ```
 
 This creates `.github/skills/example-planner/` with all the Skill files.
@@ -43,13 +43,13 @@ This creates `.github/skills/example-planner/` with all the Skill files.
 ### Download to Custom Location
 
 ```bash
-npx workspace-architect download skills:example-planner -o ./my-skills
+npx workspace-architect download skills example-planner -o ./my-skills
 ```
 
 ### Download Skills Collection
 
 ```bash
-npx workspace-architect download collections:claude-skills-starter
+npx workspace-architect download collections claude-skills-starter
 ```
 
 ---
@@ -170,7 +170,7 @@ npm run generate-manifest
 ### 6. Test It
 
 ```bash
-npx workspace-architect download skills:my-skill --dry-run
+npx workspace-architect download skills my-skill --dry-run
 ```
 
 ---
@@ -216,7 +216,7 @@ See [Skills vs Agents Guide](./skills-vs-agents.md) for more details.
 
 **Download:**
 ```bash
-npx workspace-architect download skills:example-planner
+npx workspace-architect download skills example-planner
 ```
 
 ---
@@ -232,7 +232,7 @@ Essential Skills for software development and planning.
 
 **Download:**
 ```bash
-npx workspace-architect download collections:claude-skills-starter
+npx workspace-architect download collections claude-skills-starter
 ```
 
 ---
@@ -258,7 +258,7 @@ npx workspace-architect list collections        # List collections
 ### Download Command
 
 ```bash
-npx workspace-architect download <type>:<name> [options]
+npx workspace-architect download <type> <name> [options]
 ```
 
 **Options:**
@@ -269,13 +269,13 @@ npx workspace-architect download <type>:<name> [options]
 **Examples:**
 ```bash
 # Download with preview
-npx workspace-architect download skills:example-planner --dry-run
+npx workspace-architect download skills example-planner --dry-run
 
 # Download and overwrite if exists
-npx workspace-architect download skills:example-planner --force
+npx workspace-architect download skills example-planner --force
 
 # Download to custom location
-npx workspace-architect download skills:example-planner -o ./my-skills
+npx workspace-architect download skills example-planner -o ./my-skills
 ```
 
 ---
