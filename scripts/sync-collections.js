@@ -1,0 +1,155 @@
+import fs from 'fs-extra';
+import path from 'path';
+import chalk from 'chalk';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load .env manually with improved parsing
+const envPath = path.join(__dirname, '../.env');
+if (fs.existsSync(envPath)) {
+  const envConfig = fs.readFileSync(envPath, 'utf8');
+  envConfig.split('\n').forEach(line => {
+    // Skip empty lines and comments
+    const trimmedLine = line.trim();
+    if (!trimmedLine || trimmedLine.startsWith('#')) {
+      return;
+    }
+    
+    // Split only on the first '=' to handle values with '=' in them
+    const equalIndex = trimmedLine.indexOf('=');
+    if (equalIndex === -1) {
+      return;
+    }
+    
+    const key = trimmedLine.substring(0, equalIndex).trim();
+    let value = trimmedLine.substring(equalIndex + 1).trim();
+    
+    // Remove surrounding quotes if present
+    if ((value.startsWith('"') && value.endsWith('"')) || 
+        (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    
+    if (key) {
+      process.env[key] = value;
+    }
+  });
+}
+
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+const REPO_OWNER = 'github';
+const REPO_NAME = 'awesome-copilot';
+const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
+const REMOTE_DIR = 'collections';
+const LOCAL_DIR = path.join(__dirname, '../assets/collections');
+// Accepted file extensions for collections
+const ACCEPTED_EXTENSIONS = ['.json', '.yml', '.yaml'];
+
+async function fetchGitHubContent(path) {
+  const url = `${BASE_API_URL}/${path}`;
+  const headers = {
+    'User-Agent': 'node.js',
+    'Accept': 'application/vnd.github.v3+json'
+  };
+  
+  if (GITHUB_TOKEN) {
+    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
+  }
+
+  const response = await fetch(url, { headers });
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+  }
+  return response.json();
+}
+
+async function downloadFile(url, destPath) {
+  const headers = {
+    'User-Agent': 'node.js'
+  };
+  
+  if (GITHUB_TOKEN) {
+    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
+  }
+
+  const response = await fetch(url, { headers });
+  if (!response.ok) {
+    throw new Error(`Failed to download ${url}: ${response.statusText}`);
+  }
+  
+  const content = await response.text();
+  await fs.ensureDir(path.dirname(destPath));
+  await fs.writeFile(destPath, content);
+}
+
+async function getFilesRecursively(remotePath, subPath = '') {
+  const fullPath = subPath ? path.join(remotePath, subPath) : remotePath;
+  const contents = await fetchGitHubContent(fullPath);
+  
+  let files = [];
+  
+  for (const item of contents) {
+    if (item.type === 'file') {
+      // Check if file matches accepted extensions
+      if (ACCEPTED_EXTENSIONS.some(ext => item.name.endsWith(ext))) {
+        files.push({
+          path: subPath ? path.join(subPath, item.name) : item.name,
+          download_url: item.download_url
+        });
+      }
+    } else if (item.type === 'dir') {
+      // Recursively get files from subdirectories
+      const newSubPath = subPath ? path.join(subPath, item.name) : item.name;
+      const subFiles = await getFilesRecursively(remotePath, newSubPath);
+      files.push(...subFiles);
+    }
+  }
+  
+  return files;
+}
+
+async function syncCollections() {
+  console.log(chalk.blue.bold(`\n=== Syncing Collections from ${REPO_OWNER}/${REPO_NAME} ===\n`));
+  
+  // Ensure local directory exists
+  await fs.ensureDir(LOCAL_DIR);
+  
+  let successCount = 0;
+  let failCount = 0;
+  
+  try {
+    console.log(chalk.blue(`Fetching collections from ${REMOTE_DIR}...`));
+    const files = await getFilesRecursively(REMOTE_DIR);
+    
+    console.log(chalk.blue(`Found ${files.length} collection file(s)\n`));
+    
+    for (const file of files) {
+      try {
+        const destPath = path.join(LOCAL_DIR, file.path);
+        await downloadFile(file.download_url, destPath);
+        console.log(chalk.dim(`  Downloaded: ${file.path}`));
+        successCount++;
+      } catch (error) {
+        console.error(chalk.red(`  ✗ Failed to download ${file.path}:`), error.message);
+        failCount++;
+      }
+    }
+  } catch (error) {
+    console.error(chalk.red('Error fetching collections:'), error.message);
+    failCount++;
+  }
+  
+  console.log(chalk.blue.bold('\n=== Sync Complete ==='));
+  console.log(chalk.green(`✓ Successfully synced: ${successCount} collections`));
+  if (failCount > 0) {
+    console.log(chalk.red(`✗ Failed to sync: ${failCount} collections`));
+    process.exit(1);
+  }
+}
+
+syncCollections().catch(error => {
+  console.error(chalk.red('Fatal error:'), error);
+  process.exit(1);
+});

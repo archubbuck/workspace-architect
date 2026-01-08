@@ -1,5 +1,19 @@
 
 
+## [1.8.0](https://github.com/archubbuck/workspace-architect/compare/v1.7.0...v1.8.0) (2026-01-08)
+
+
+### Features
+
+* add individual sync scripts for agents, instructions, prompts, and collections ([dbdb3ba](https://github.com/archubbuck/workspace-architect/commit/dbdb3ba477f75c100c6fd72717574fe88f2267e1))
+* add recursive directory traversal to sync scripts ([51be623](https://github.com/archubbuck/workspace-architect/commit/51be623f8e7736f09c68f9432bc5b4dd78e142d6))
+* make file extensions configurable as arrays in sync scripts ([024ba5f](https://github.com/archubbuck/workspace-architect/commit/024ba5ffd1ece6a3cd3b4d103daa9dbb47e54575))
+
+
+### Bug Fixes
+
+* sync content from upstream resources ([dd3c1cc](https://github.com/archubbuck/workspace-architect/commit/dd3c1ccc23b337c63b74bb1372c82cd2daadd36c))
+
 ## [1.7.0](https://github.com/archubbuck/workspace-architect/compare/v1.6.0...v1.7.0) (2026-01-08)
 
 

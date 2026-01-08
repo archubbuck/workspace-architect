@@ -1,7 +1,7 @@
 {
   "name": "workspace-architect",
-  "version": "1.7.0",
-  "description": "Curated library of 400+ specialized AI agents, prompts, and skills for GitHub Copilot. Zero-friction CLI tool (npx workspace-architect) for downloading expert personas, instructions, and collections for web development, DevOps, AI engineering, and more.",
+  "version": "1.8.0",
+  "description": "A comprehensive library of specialized AI agents and personas for GitHub Copilot, ranging from architectural planning and specific tech stacks to advanced cognitive reasoning models.",
   "bin": {
     "workspace-architect": "./bin/cli.js",
     "wsa": "./bin/cli.js"
@@ -13,6 +13,10 @@
     "generate-manifest": "node scripts/generate-manifest.js",
     "prepublishOnly": "npm run generate-manifest",
     "fetch-upstream": "node scripts/fetch-upstream-assets.js",
+    "sync-agents": "node scripts/sync-agents.js",
+    "sync-instructions": "node scripts/sync-instructions.js",
+    "sync-prompts": "node scripts/sync-prompts.js",
+    "sync-collections": "node scripts/sync-collections.js",
     "sync-skills": "node scripts/sync-anthropic-skills.js",
     "validate-skills": "node scripts/validate-skills.js",
     "release": "release-it",
