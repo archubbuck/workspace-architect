@@ -50,7 +50,11 @@ program
     try {
       // Support both new format (type name) and legacy format (type:name)
       if (!name && type.includes(':')) {
-        // Legacy format: type:name
+        // Legacy format: type:name - warn user to use new format
+        const [assetType, assetName] = type.split(':');
+        console.log(chalk.yellow(`⚠️  Deprecation Warning: The format '${type}' is deprecated.`));
+        console.log(chalk.yellow(`   Please use: download ${assetType} ${assetName}`));
+        console.log('');
         await downloadAsset(type, options);
       } else if (name) {
         // New format: type name
