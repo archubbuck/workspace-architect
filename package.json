@@ -59,7 +59,7 @@
     "url": "https://github.com/archubbuck/workspace-architect/issues"
   },
   "homepage": "https://github.com/archubbuck/workspace-architect#readme",
-  "author": "Adam Hubbuck <adam.chubbuck@gmail.com> (https://github.com/archubbuck)",
+  "author": "Adam Chubbuck <adam.chubbuck@gmail.com> (https://github.com/archubbuck)",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.3.0",

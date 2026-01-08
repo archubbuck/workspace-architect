@@ -538,7 +538,7 @@ Consider offering:
 
 ## Appendix C: Contact & Resources
 
-**Maintainer**: Adam Hubbuck
+**Maintainer**: Adam Chubbuck
 - Email: adam.chubbuck@gmail.com
 - GitHub: @archubbuck
 
