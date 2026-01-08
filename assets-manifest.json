@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "generatedAt": "2025-12-30T21:31:38.505Z",
+  "generatedAt": "2026-01-08T19:07:25.235Z",
   "assets": {
     "agents:4.1-Beast": {
       "path": "assets/agents/4.1-Beast.agent.md",
@@ -768,6 +768,12 @@
       "path": "assets/instructions/a11y.instructions.md",
       "description": "Guidance for creating more accessible code",
       "title": "a11y",
+      "type": "instructions"
+    },
+    "instructions:agents": {
+      "path": "assets/instructions/agents.instructions.md",
+      "description": "Guidelines for creating custom agent files for GitHub Copilot",
+      "title": "agents",
       "type": "instructions"
     },
     "instructions:ai-prompt-engineering-safety-best-practices": {
@@ -4333,6 +4339,37 @@
       ],
       "metadata": {
         "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:webapp-testing": {
+      "path": "assets/skills/webapp-testing",
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "title": "webapp-testing",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "examples/console_logging.py",
+        "examples/element_discovery.py",
+        "examples/static_html_automation.py",
+        "scripts/with_server.py"
+      ],
+      "metadata": {
+        "license": "Complete terms in LICENSE.txt"
+      }
+    },
+    "skills:xlsx": {
+      "path": "assets/skills/xlsx",
+      "description": "Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization. When Claude needs to work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for: (1) Creating new spreadsheets with formulas and formatting, (2) Reading or analyzing data, (3) Modify existing spreadsheets while preserving formulas, (4) Data analysis and visualization in spreadsheets, or (5) Recalculating formulas",
+      "title": "xlsx",
+      "type": "skills",
+      "files": [
+        "LICENSE.txt",
+        "SKILL.md",
+        "recalc.py"
+      ],
+      "metadata": {
+        "license": "Proprietary. LICENSE.txt has complete terms"
       }
     }
   }
