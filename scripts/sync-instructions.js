@@ -84,6 +84,32 @@ async function downloadFile(url, destPath) {
   await fs.writeFile(destPath, content);
 }
 
+async function getFilesRecursively(remotePath, subPath = '') {
+  const fullPath = subPath ? path.join(remotePath, subPath) : remotePath;
+  const contents = await fetchGitHubContent(fullPath);
+  
+  let files = [];
+  
+  for (const item of contents) {
+    if (item.type === 'file') {
+      // Check if file matches accepted extensions
+      if (ACCEPTED_EXTENSIONS.some(ext => item.name.endsWith(ext))) {
+        files.push({
+          path: subPath ? path.join(subPath, item.name) : item.name,
+          download_url: item.download_url
+        });
+      }
+    } else if (item.type === 'dir') {
+      // Recursively get files from subdirectories
+      const newSubPath = subPath ? path.join(subPath, item.name) : item.name;
+      const subFiles = await getFilesRecursively(remotePath, newSubPath);
+      files.push(...subFiles);
+    }
+  }
+  
+  return files;
+}
+
 async function syncInstructions() {
   console.log(chalk.blue.bold(`\n=== Syncing Instructions from ${REPO_OWNER}/${REPO_NAME} ===\n`));
   
@@ -95,22 +121,18 @@ async function syncInstructions() {
   
   try {
     console.log(chalk.blue(`Fetching instructions from ${REMOTE_DIR}...`));
-    const items = await fetchGitHubContent(REMOTE_DIR);
+    const files = await getFilesRecursively(REMOTE_DIR);
     
-    const instructionFiles = items.filter(item => 
-      item.type === 'file' && ACCEPTED_EXTENSIONS.some(ext => item.name.endsWith(ext))
-    );
+    console.log(chalk.blue(`Found ${files.length} instruction file(s)\n`));
     
-    console.log(chalk.blue(`Found ${instructionFiles.length} instruction files\n`));
-    
-    for (const item of instructionFiles) {
+    for (const file of files) {
       try {
-        const destPath = path.join(LOCAL_DIR, item.name);
-        await downloadFile(item.download_url, destPath);
-        console.log(chalk.dim(`  Downloaded: ${item.name}`));
+        const destPath = path.join(LOCAL_DIR, file.path);
+        await downloadFile(file.download_url, destPath);
+        console.log(chalk.dim(`  Downloaded: ${file.path}`));
         successCount++;
       } catch (error) {
-        console.error(chalk.red(`  ✗ Failed to download ${item.name}:`), error.message);
+        console.error(chalk.red(`  ✗ Failed to download ${file.path}:`), error.message);
         failCount++;
       }
     }
