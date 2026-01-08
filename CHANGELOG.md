@@ -1,5 +1,18 @@
 
 
+## [1.7.0](https://github.com/archubbuck/workspace-architect/compare/v1.6.0...v1.7.0) (2026-01-08)
+
+
+### Features
+
+* add skills sync to pipeline and update sync script for all skills ([1f68b53](https://github.com/archubbuck/workspace-architect/commit/1f68b53bc9d591f268b6df18e1e03fb49e23017a))
+* add validation step after skills sync to ensure data integrity ([f7920ab](https://github.com/archubbuck/workspace-architect/commit/f7920abce2a4be2df43c96ff64bd2f85115d1d4c))
+
+
+### Bug Fixes
+
+* sync content from awesome-copilot and anthropics/skills ([227172e](https://github.com/archubbuck/workspace-architect/commit/227172e716f3223a72f497f3bfb14c9bdde29fa5))
+
 ## [1.6.0](https://github.com/archubbuck/workspace-architect/compare/v1.5.45...v1.6.0) (2026-01-08)
 
 
