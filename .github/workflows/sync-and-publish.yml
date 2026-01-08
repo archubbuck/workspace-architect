@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '0 * * * *' # Runs every hour
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force release even if no changes detected (emergency use only)'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   sync-and-publish:
@@ -63,6 +69,9 @@ jobs:
         run: |
           if [[ -n $(git status --porcelain) ]]; then
             echo "changes=true" >> $GITHUB_OUTPUT
+          elif [ "${{ inputs.force }}" = "true" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "force=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Configure Git
@@ -71,7 +80,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Commit Changes
-        if: steps.git-check.outputs.changes == 'true'
+        if: steps.git-check.outputs.changes == 'true' && steps.git-check.outputs.force != 'true'
         run: |
           git add assets/
           git commit -m "fix: sync content from upstream resources"
@@ -80,4 +89,10 @@ jobs:
         if: steps.git-check.outputs.changes == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
+        run: |
+          if [ "${{ steps.git-check.outputs.force }}" = "true" ]; then
+            echo "🚨 Force mode enabled - bypassing change detection"
+            npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push --no-increment
+          else
+            npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
+          fi
