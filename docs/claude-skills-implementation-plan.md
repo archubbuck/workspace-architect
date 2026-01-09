@@ -206,7 +206,7 @@ async function processSkills() {
 
 **Acceptance Criteria:**
 - ✅ `npx workspace-architect list skills` shows Skills
-- ✅ `npx workspace-architect download skills:example` downloads SKILL.md
+- ✅ `npx workspace-architect download skills example` downloads SKILL.md
 - ✅ Manifest includes Skills with correct schema
 - ✅ Documentation updated
 
