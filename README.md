@@ -256,7 +256,11 @@ workspace-architect/
 
 ## Migration Guide
 
-Migrating from `.chatmode.md` to `.agent.md`? Run:
+### Migrating from `.chatmode.md` to `.agent.md`
+
+**Note:** This guide is for users migrating from the deprecated `.chatmode.md` format to the current `.agent.md` format.
+
+If you have legacy `.chatmode.md` files, run:
 
 ```bash
 mkdir -p assets/agents

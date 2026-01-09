@@ -85,6 +85,8 @@ github-copilot, copilot-agents, ai-agents, copilot-instructions, copilot-chat, d
 - **claude-skills**: Emerging standard we support
 - **llm**: Large language model ecosystem
 - **agentic-workflow**: Trending AI development pattern
+- **ai-personas**: Specialized AI personalities and roles
+- **chatmodes**: Legacy term for discoverability (deprecated in favor of "agents")
 
 ### Platform Topics
 - **vscode**: Primary IDE integration

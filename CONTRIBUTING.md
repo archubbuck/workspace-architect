@@ -38,7 +38,7 @@ There are many ways to contribute to Workspace Architect:
 3. **Test Your Setup**
    ```bash
    node bin/cli.js list
-   node bin/cli.js download instructions:basic-setup --dry-run
+   node bin/cli.js download instructions a11y --dry-run
    ```
 
 4. **Create a Branch**
@@ -84,7 +84,7 @@ Agents are specialized AI personas that define GitHub Copilot's behavior for spe
 4. Test your agent:
    ```bash
    node bin/cli.js list agents
-   node bin/cli.js download agents:my-agent --dry-run
+   node bin/cli.js download agents my-agent --dry-run
    ```
 
 ### Adding a New Instruction
@@ -192,7 +192,7 @@ Before submitting a PR:
 1. **Test locally:**
    ```bash
    node bin/cli.js list
-   node bin/cli.js download <type>:<name> --dry-run
+   node bin/cli.js download <type> <name> --dry-run
    ```
 
 2. **Generate manifest:**
