@@ -192,8 +192,10 @@ description: A guide for setting up X.
 ```
 
 **Naming Convention**: Filenames become IDs (extensions are stripped)
-- `assets/instructions/my-guide.md` → `instructions:my-guide`
-- `assets/agents/my-agent.agent.md` → `agents:my-agent`
+- `assets/instructions/my-guide.md` → ID: `instructions:my-guide`
+- `assets/agents/my-agent.agent.md` → ID: `agents:my-agent`
+
+**Note**: The colon format (`type:name`) is used for internal IDs in collections and manifests. When using the CLI, use the space-separated format: `npx wsa download instructions my-guide`
 
 ### Creating Collections
 

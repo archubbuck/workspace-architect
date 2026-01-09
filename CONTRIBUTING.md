@@ -292,11 +292,14 @@ npm run analyze -- --remove
 
 ## Upstream Synchronization
 
-We sync content from upstream repositories:
+We sync content from upstream repositories to keep our assets current:
 
 ```bash
-# Sync from github/awesome-copilot
-npm run fetch-upstream
+# Sync from github/awesome-copilot (run individual scripts as needed)
+npm run sync-agents          # Sync agents
+npm run sync-instructions    # Sync instructions
+npm run sync-prompts         # Sync prompts
+npm run sync-collections     # Sync collections
 
 # Sync skills from anthropics/skills
 npm run sync-skills

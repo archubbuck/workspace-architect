@@ -1,5 +1,7 @@
 # Claude Skills Support - Summary & Next Actions
 
+> **Note:** This document contains research findings and recommendations for Claude Skills support in workspace-architect. For general project documentation, see [../README.md](../README.md).
+
 **Date:** December 30, 2025  
 **Status:** ✅ Research Complete - Ready for Implementation Decision
 

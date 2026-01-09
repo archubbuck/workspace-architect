@@ -2,15 +2,17 @@
 
 This document outlines the current capabilities, upcoming features, and development timeline for Workspace Architect.
 
-## Current Capabilities (v1.5.x)
+## Current Capabilities (v2.0.x)
 
 ### ✅ Core Features
 
 - **CLI Tool**: Zero-friction command-line interface using `npx`
-- **Asset Management**: Download and manage four types of assets:
+- **Modern Command Syntax**: Space-separated commands (e.g., `npx wsa download agents planner`)
+- **Asset Management**: Download and manage five types of assets:
   - Instructions (system-level Copilot context)
   - Prompts (reusable task templates)
   - Agents (specialized AI personas)
+  - Skills (Claude Skills with templates and resources)
   - Collections (bundled asset suites)
 - **Curated Collections**: Pre-built collections for common domains
   - Web Frontend Development
@@ -42,15 +44,12 @@ This document outlines the current capabilities, upcoming features, and developm
 
 ## Near-Term Roadmap (Q1 2026)
 
-### 🎯 Claude Skills Support (v1.6.0)
+### 🎯 Enhanced Skills Support (v2.1.0)
 
-- **Skills Discovery**: List and search Claude Skills compatible with open Agent Skills standard
-- **Skills Download**: Download Skills with folder structure (SKILL.md + templates/scripts/resources)
-- **Upstream Sync**: Automatic synchronization from `anthropics/skills` repository
-- **Multi-File Assets**: Support for folder-based assets with multiple files
-- **Skills Collections**: Curated collections featuring Skills
-- **Skills Validation**: Format checking for SKILL.md files
-- **Documentation**: Comprehensive guides for using and creating Skills
+- **Expanded Skills Library**: Additional Skills from `anthropics/skills` repository
+- **Skills Documentation**: Enhanced guides for creating and using Skills
+- **Skills Collections**: More curated collections featuring Skills
+- **Skills Validation**: Enhanced format checking and best practice enforcement
 
 ### 🎯 Enhanced Discovery
 
@@ -130,9 +129,9 @@ We value community input! Here's how you can contribute to our roadmap:
 
 ## Release Schedule
 
-- **Patch Releases** (1.5.x): Weekly or as needed for bug fixes
-- **Minor Releases** (1.x.0): Monthly for new features
-- **Major Releases** (x.0.0): Quarterly for breaking changes or major features
+- **Patch Releases** (2.0.x): Weekly or as needed for bug fixes
+- **Minor Releases** (2.x.0): Monthly for new features
+- **Major Releases** (x.0.0): As needed for breaking changes or major features
 
 ## Deprecation Policy
 
@@ -150,4 +149,4 @@ When features are deprecated, we will:
 
 ---
 
-*This roadmap is subject to change based on community feedback, technical constraints, and strategic priorities. Last updated: December 2025*
+*This roadmap is subject to change based on community feedback, technical constraints, and strategic priorities. Last updated: January 2026*
