@@ -35,9 +35,15 @@ async function getFilesRecursive(dir, baseDir = dir) {
 async function generateManifest() {
   console.log(chalk.blue('Generating assets manifest...'));
   const manifest = {
-    version: '1.1.0', // Bump version to indicate Skills support
+    version: '2.0.0', // Bump version to indicate nested structure
     generatedAt: new Date().toISOString(),
-    assets: {}
+    assets: {
+      agents: {},
+      instructions: {},
+      prompts: {},
+      collections: {},
+      skills: {}
+    }
   };
 
   for (const type of TYPES) {
@@ -95,8 +101,6 @@ async function generateManifest() {
         id = path.parse(file).name;
       }
 
-      const key = `${type}:${id}`;
-
       try {
         if (type === 'collections') {
           const content = await fs.readJson(filePath);
@@ -113,7 +117,8 @@ async function generateManifest() {
         console.warn(chalk.yellow(`Warning: Could not parse ${filePath}: ${e.message}`));
       }
 
-      manifest.assets[key] = {
+      // Store in nested structure
+      manifest.assets[type][id] = {
         path: `assets/${type}/${file}`,
         description,
         title,
@@ -123,8 +128,10 @@ async function generateManifest() {
     }
   }
 
+  // Count total assets
+  const totalAssets = Object.values(manifest.assets).reduce((sum, typeAssets) => sum + Object.keys(typeAssets).length, 0);
   await fs.writeJson(MANIFEST_PATH, manifest, { spaces: 2 });
-  console.log(chalk.blue(`Manifest generated at ${MANIFEST_PATH} with ${chalk.green(Object.keys(manifest.assets).length)} assets.`));
+  console.log(chalk.blue(`Manifest generated at ${MANIFEST_PATH} with ${chalk.green(totalAssets)} assets.`));
 }
 
 // Process a Skill directory
@@ -143,8 +150,8 @@ async function processSkill(skillName, skillPath, manifest) {
     // Get all files in the Skill directory
     const files = await getFilesRecursive(skillPath);
     
-    const key = `skills:${skillName}`;
-    manifest.assets[key] = {
+    // Store in nested structure
+    manifest.assets.skills[skillName] = {
       path: `assets/skills/${skillName}`,
       description: parsed.data.description || '',
       title: parsed.data.name || skillName,

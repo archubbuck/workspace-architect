@@ -132,10 +132,10 @@ async function listAssets(type) {
   } else {
     // Production Mode (Manifest)
     const manifest = await getManifest();
-    const assets = Object.entries(manifest.assets)
-      .filter(([key, asset]) => asset.type === type)
-      .map(([key, asset]) => ({
-        id: key.split(':')[1],
+    const typeAssets = manifest.assets[type] || {};
+    const assets = Object.entries(typeAssets)
+      .map(([id, asset]) => ({
+        id,
         ...asset
       }));
     
@@ -181,8 +181,7 @@ async function downloadAsset(id, options) {
       items = collectionContent.items || (Array.isArray(collectionContent) ? collectionContent : []);
     } else {
       const manifest = await getManifest();
-      const key = `${type}:${name}`;
-      const asset = manifest.assets[key];
+      const asset = manifest.assets[type]?.[name];
       
       if (!asset) {
         throw new Error(`Collection not found: ${id}`);
@@ -242,8 +241,7 @@ async function downloadAsset(id, options) {
     content = await fs.readFile(sourcePath, 'utf8');
   } else {
     const manifest = await getManifest();
-    const key = `${type}:${name}`;
-    const asset = manifest.assets[key];
+    const asset = manifest.assets[type]?.[name];
     
     if (!asset) {
       throw new Error(`Asset not found: ${id}`);
@@ -333,11 +331,10 @@ async function downloadSkill(name, options) {
   } else {
     // Production mode: fetch from manifest and download from GitHub
     const manifest = await getManifest();
-    const key = `skills:${skillName}`;
-    const asset = manifest.assets[key];
+    const asset = manifest.assets.skills?.[skillName];
     
     if (!asset) {
-      throw new Error(`Skill not found: ${key}`);
+      throw new Error(`Skill not found: ${skillName}`);
     }
     
     skillPath = asset.path;
