@@ -133,11 +133,11 @@ Collections bundle related assets for specific domains or workflows.
    {
      "name": "My Collection",
      "description": "A collection for XYZ development",
-     "items": [
-       "instructions:my-guide",
-       "agents:my-agent",
-       "prompts:my-prompt"
-     ]
+     "items": {
+       "instructions": ["my-guide"],
+       "agents": ["my-agent"],
+       "prompts": ["my-prompt"]
+     }
    }
    ```
 

@@ -205,11 +205,11 @@ Create a JSON file in `assets/collections/`:
 {
   "name": "My Collection",
   "description": "A collection for X development.",
-  "items": [
-    "instructions:reactjs",
-    "prompts:code-review",
-    "agents:expert-architect"
-  ]
+  "items": {
+    "instructions": ["reactjs"],
+    "prompts": ["code-review"],
+    "agents": ["expert-architect"]
+  }
 }
 ```
 

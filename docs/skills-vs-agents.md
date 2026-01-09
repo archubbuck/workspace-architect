@@ -112,13 +112,11 @@ You are a test engineer. When generating tests:
 ```json
 {
   "name": "Full-Stack Development",
-  "items": [
-    "agents:react-expert",
-    "agents:nodejs-expert",
-    "skills:api-integration",
-    "skills:test-generator",
-    "instructions:coding-standards"
-  ]
+  "items": {
+    "agents": ["react-expert", "nodejs-expert"],
+    "skills": ["api-integration", "test-generator"],
+    "instructions": ["coding-standards"]
+  }
 }
 ```
 
