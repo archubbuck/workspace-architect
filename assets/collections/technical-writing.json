@@ -1,23 +1,29 @@
 {
   "description": "Resources for technical documentation, Markdown, and diagrams.",
-  "items": [
-    "agents:microsoft_learn_contributor",
-    "agents:research-technical-spike",
-    "instructions:markdown",
-    "prompts:create-technical-spike",
-    "prompts:readme-blueprint-generator",
-    "prompts:architecture-blueprint-generator",
-    "prompts:documentation-writer",
-    "prompts:technology-stack-blueprint-generator",
-    "agents:prd",
-    "agents:tech-debt-remediation-plan",
-    "prompts:create-oo-component-documentation",
-    "prompts:update-oo-component-documentation",
-    "agents:tdd-red",
-    "instructions:go",
-    "prompts:code-exemplars-blueprint-generator",
-    "prompts:csharp-docs",
-    "prompts:java-docs",
-    "prompts:javascript-typescript-jest"
-  ]
+  "items": {
+    "agents": [
+      "microsoft_learn_contributor",
+      "research-technical-spike",
+      "prd",
+      "tech-debt-remediation-plan",
+      "tdd-red"
+    ],
+    "instructions": [
+      "markdown",
+      "go"
+    ],
+    "prompts": [
+      "create-technical-spike",
+      "readme-blueprint-generator",
+      "architecture-blueprint-generator",
+      "documentation-writer",
+      "technology-stack-blueprint-generator",
+      "create-oo-component-documentation",
+      "update-oo-component-documentation",
+      "code-exemplars-blueprint-generator",
+      "csharp-docs",
+      "java-docs",
+      "javascript-typescript-jest"
+    ]
+  }
 }

@@ -1,13 +1,19 @@
 {
   "description": "Database administration and development resources for SQL and NoSQL databases.",
-  "items": [
-    "agents:ms-sql-dba",
-    "agents:postgresql-dba",
-    "prompts:sql-code-review",
-    "prompts:sql-optimization",
-    "prompts:postgresql-optimization",
-    "prompts:postgresql-code-review",
-    "instructions:ms-sql-dba",
-    "instructions:sql-sp-generation"
-  ]
+  "items": {
+    "agents": [
+      "ms-sql-dba",
+      "postgresql-dba"
+    ],
+    "prompts": [
+      "sql-code-review",
+      "sql-optimization",
+      "postgresql-optimization",
+      "postgresql-code-review"
+    ],
+    "instructions": [
+      "ms-sql-dba",
+      "sql-sp-generation"
+    ]
+  }
 }

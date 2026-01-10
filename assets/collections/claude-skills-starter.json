@@ -1,7 +1,9 @@
 {
   "name": "Claude Skills Starter Pack",
   "description": "Essential Claude Skills for software development, planning, and automation workflows.",
-  "items": [
-    "skills:example-planner"
-  ]
+  "items": {
+    "skills": [
+      "example-planner"
+    ]
+  }
 }

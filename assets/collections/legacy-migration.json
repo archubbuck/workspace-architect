@@ -1,6 +1,8 @@
 {
   "description": "Resources for legacy system migration and code conversion.",
-  "items": [
-    "prompts:generate-custom-instructions-from-codebase"
-  ]
+  "items": {
+    "prompts": [
+      "generate-custom-instructions-from-codebase"
+    ]
+  }
 }

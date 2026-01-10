@@ -13,6 +13,37 @@ const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 
 const TYPES = ['agents', 'instructions', 'prompts', 'collections', 'skills'];
 
+/**
+ * Normalize collection items to flat array format for manifest storage.
+ * Supports both old flat array format and new nested object format.
+ * 
+ * @param {Array|Object} items - Collection items in either format
+ * @returns {Array} Flat array of items in "type:name" format
+ */
+function normalizeCollectionItems(items) {
+  if (!items) return [];
+  
+  // If it's already an array (old format), return as-is
+  if (Array.isArray(items)) {
+    return items;
+  }
+  
+  // If it's an object (new format), convert to flat array
+  if (typeof items === 'object') {
+    const flatItems = [];
+    for (const [type, names] of Object.entries(items)) {
+      if (Array.isArray(names)) {
+        for (const name of names) {
+          flatItems.push(`${type}:${name}`);
+        }
+      }
+    }
+    return flatItems;
+  }
+  
+  return [];
+}
+
 // Helper function to recursively get all files in a directory
 async function getFilesRecursive(dir, baseDir = dir) {
   const files = [];
@@ -106,7 +137,8 @@ async function generateManifest() {
           const content = await fs.readJson(filePath);
           description = content.description || '';
           title = content.name || id;
-          items = content.items || [];
+          // Normalize items to flat array format for manifest
+          items = normalizeCollectionItems(content.items || []);
         } else if (file.endsWith('.md')) {
           const content = await fs.readFile(filePath, 'utf8');
           const parsed = matter(content);
