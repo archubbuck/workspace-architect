@@ -1,12 +1,16 @@
 {
   "description": "Mobile application development resources for Flutter, React Native, Android, and iOS.",
-  "items": [
-    "instructions:power-apps-code-apps",
-    "instructions:power-bi-custom-visuals-development",
-    "instructions:reactjs",
-    "prompts:code-exemplars-blueprint-generator",
-    "prompts:folder-structure-blueprint-generator",
-    "prompts:project-workflow-analysis-blueprint-generator",
-    "prompts:technology-stack-blueprint-generator"
-  ]
+  "items": {
+    "instructions": [
+      "power-apps-code-apps",
+      "power-bi-custom-visuals-development",
+      "reactjs"
+    ],
+    "prompts": [
+      "code-exemplars-blueprint-generator",
+      "folder-structure-blueprint-generator",
+      "project-workflow-analysis-blueprint-generator",
+      "technology-stack-blueprint-generator"
+    ]
+  }
 }

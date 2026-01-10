@@ -1,19 +1,25 @@
 {
   "description": "A collection of assets for Angular development",
-  "items": [
-    "agents:electron-angular-native",
-    "instructions:angular",
-    "prompts:code-exemplars-blueprint-generator",
-    "instructions:power-apps-code-apps",
-    "instructions:nestjs",
-    "instructions:vuejs3",
-    "instructions:astro",
-    "instructions:clojure",
-    "instructions:reactjs",
-    "instructions:svelte",
-    "prompts:folder-structure-blueprint-generator",
-    "prompts:postgresql-code-review",
-    "prompts:sql-code-review",
-    "prompts:suggest-awesome-github-copilot-collections"
-  ]
+  "items": {
+    "agents": [
+      "electron-angular-native"
+    ],
+    "instructions": [
+      "angular",
+      "power-apps-code-apps",
+      "nestjs",
+      "vuejs3",
+      "astro",
+      "clojure",
+      "reactjs",
+      "svelte"
+    ],
+    "prompts": [
+      "code-exemplars-blueprint-generator",
+      "folder-structure-blueprint-generator",
+      "postgresql-code-review",
+      "sql-code-review",
+      "suggest-awesome-github-copilot-collections"
+    ]
+  }
 }

@@ -11,6 +11,7 @@
     "test:local": "node bin/cli.js list && node bin/cli.js download instructions a11y --dry-run",
     "analyze": "node scripts/analyze-collections.js",
     "generate-manifest": "node scripts/generate-manifest.js",
+    "migrate-collections": "node scripts/migrate-collections-format.js",
     "prepublishOnly": "npm run generate-manifest",
     "fetch-upstream": "node scripts/fetch-upstream-assets.js",
     "sync-agents": "node scripts/sync-agents.js",

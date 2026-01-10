@@ -16,6 +16,40 @@ const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 // Check if running in local development mode (assets folder exists)
 const IS_LOCAL = await fs.pathExists(ASSETS_DIR);
 
+/**
+ * Normalize collection items to flat array format for processing.
+ * Supports both old flat array format and new nested object format.
+ * 
+ * Old format: ["instructions:reactjs", "prompts:code-review"]
+ * New format: { "instructions": ["reactjs"], "prompts": ["code-review"] }
+ * 
+ * @param {Array|Object} items - Collection items in either format
+ * @returns {Array} Flat array of items in "type:name" format
+ */
+function normalizeCollectionItems(items) {
+  if (!items) return [];
+  
+  // If it's already an array (old format), return as-is
+  if (Array.isArray(items)) {
+    return items;
+  }
+  
+  // If it's an object (new format), convert to flat array
+  if (typeof items === 'object') {
+    const flatItems = [];
+    for (const [type, names] of Object.entries(items)) {
+      if (Array.isArray(names)) {
+        for (const name of names) {
+          flatItems.push(`${type}:${name}`);
+        }
+      }
+    }
+    return flatItems;
+  }
+  
+  return [];
+}
+
 program
   .name('workspace-architect')
   .description('CLI to download GitHub Copilot instructions, prompts, and agents (alias: wsa)')
@@ -178,7 +212,8 @@ async function downloadAsset(id, options) {
       }
       
       const collectionContent = await fs.readJson(sourcePath);
-      items = collectionContent.items || (Array.isArray(collectionContent) ? collectionContent : []);
+      const rawItems = collectionContent.items || (Array.isArray(collectionContent) ? collectionContent : []);
+      items = normalizeCollectionItems(rawItems);
     } else {
       const manifest = await getManifest();
       const asset = manifest.assets[type]?.[name];
@@ -187,7 +222,7 @@ async function downloadAsset(id, options) {
         throw new Error(`Collection not found: ${id}`);
       }
       
-      items = asset.items || [];
+      items = normalizeCollectionItems(asset.items || []);
     }
 
     console.log(chalk.blue(`Downloading collection: ${name}`));

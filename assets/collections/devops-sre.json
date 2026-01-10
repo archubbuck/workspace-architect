@@ -1,33 +1,39 @@
 {
   "description": "DevOps and Site Reliability Engineering resources including Docker, Kubernetes, and CI/CD.",
-  "items": [
-    "agents:janitor",
-    "instructions:ansible",
-    "instructions:azure-devops-pipelines",
-    "instructions:devops-core-principles",
-    "instructions:power-bi-devops-alm-best-practices",
-    "instructions:terraform",
-    "agents:csharp-dotnet-janitor",
-    "agents:dotnet-upgrade",
-    "instructions:github-actions-ci-cd-best-practices",
-    "instructions:ai-prompt-engineering-safety-best-practices",
-    "instructions:kubernetes-deployment-best-practices",
-    "prompts:az-cost-optimize",
-    "prompts:copilot-instructions-blueprint-generator",
-    "prompts:project-workflow-analysis-blueprint-generator",
-    "agents:expert-cpp-software-engineer",
-    "instructions:azure-logic-apps-power-automate",
-    "instructions:containerization-docker-best-practices",
-    "instructions:devbox-image-definition",
-    "instructions:dotnet-maui-9-to-dotnet-maui-10-upgrade",
-    "instructions:instructions",
-    "instructions:power-apps-canvas-yaml",
-    "prompts:csharp-mstest",
-    "prompts:csharp-nunit",
-    "prompts:csharp-tunit",
-    "prompts:csharp-xunit",
-    "prompts:generate-custom-instructions-from-codebase",
-    "prompts:java-junit",
-    "prompts:javascript-typescript-jest"
-  ]
+  "items": {
+    "agents": [
+      "janitor",
+      "csharp-dotnet-janitor",
+      "dotnet-upgrade",
+      "expert-cpp-software-engineer"
+    ],
+    "instructions": [
+      "ansible",
+      "azure-devops-pipelines",
+      "devops-core-principles",
+      "power-bi-devops-alm-best-practices",
+      "terraform",
+      "github-actions-ci-cd-best-practices",
+      "ai-prompt-engineering-safety-best-practices",
+      "kubernetes-deployment-best-practices",
+      "azure-logic-apps-power-automate",
+      "containerization-docker-best-practices",
+      "devbox-image-definition",
+      "dotnet-maui-9-to-dotnet-maui-10-upgrade",
+      "instructions",
+      "power-apps-canvas-yaml"
+    ],
+    "prompts": [
+      "az-cost-optimize",
+      "copilot-instructions-blueprint-generator",
+      "project-workflow-analysis-blueprint-generator",
+      "csharp-mstest",
+      "csharp-nunit",
+      "csharp-tunit",
+      "csharp-xunit",
+      "generate-custom-instructions-from-codebase",
+      "java-junit",
+      "javascript-typescript-jest"
+    ]
+  }
 }

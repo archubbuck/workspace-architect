@@ -213,9 +213,12 @@ Create a JSON file in `assets/collections/`:
 }
 ```
 
+**Collection Format**: Collections use a nested object structure where items are grouped by type. Each type key contains an array of asset names (without the type prefix).
+
 ### Useful Scripts
 
 - `npm run generate-manifest` - Generate `assets-manifest.json` (required before PRs)
+- `npm run migrate-collections` - Migrate collections from old flat array format to new nested format
 - `npm run analyze` - Analyze collections with TF-IDF/Cosine Similarity
   - `npm run analyze -- --add` - Auto-add high-confidence matches
   - `npm run analyze -- --remove` - Remove low-confidence items

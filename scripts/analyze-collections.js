@@ -18,6 +18,59 @@ const DIRS = {
   prompts: path.join(ASSETS_DIR, 'prompts'),
 };
 
+/**
+ * Normalize collection items to flat array format for processing.
+ * Supports both old flat array format and new nested object format.
+ * 
+ * @param {Array|Object} items - Collection items in either format
+ * @returns {Array} Flat array of items in "type:name" format
+ */
+function normalizeCollectionItems(items) {
+  if (!items) return [];
+  
+  // If it's already an array (old format), return as-is
+  if (Array.isArray(items)) {
+    return items;
+  }
+  
+  // If it's an object (new format), convert to flat array
+  if (typeof items === 'object') {
+    const flatItems = [];
+    for (const [type, names] of Object.entries(items)) {
+      if (Array.isArray(names)) {
+        for (const name of names) {
+          flatItems.push(`${type}:${name}`);
+        }
+      }
+    }
+    return flatItems;
+  }
+  
+  return [];
+}
+
+/**
+ * Convert flat array format to nested object format.
+ * 
+ * @param {Array} items - Flat array of items in "type:name" format
+ * @returns {Object} Nested object with type keys
+ */
+function itemsToNestedFormat(items) {
+  const nested = {};
+  
+  for (const item of items) {
+    const [type, name] = item.split(':');
+    if (!type || !name) continue;
+    
+    if (!nested[type]) {
+      nested[type] = [];
+    }
+    nested[type].push(name);
+  }
+  
+  return nested;
+}
+
 // Expanded stop words
 const STOP_WORDS = new Set([
   'a', 'an', 'the', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were', 'be', 'been', 'this', 'that', 'it', 'as', 'from', 'mode', 'chat', 'prompt', 'instruction', 'file', 'use', 'using', 'create', 'make', 'expert', 'guide', 'help', 'code', 'generate', 'write', 'user', 'system', 'assistant', 'response', 'output', 'input', 'example', 'task', 'context', 'role', 'act', 'like', 'you', 'your', 'my', 'i', 'me', 'we', 'us', 'our', 'can', 'could', 'would', 'should', 'will', 'shall', 'may', 'might', 'must', 'do', 'does', 'did', 'done', 'doing', 'have', 'has', 'had', 'having', 'get', 'gets', 'got', 'getting', 'go', 'goes', 'went', 'gone', 'going', 'say', 'says', 'said', 'saying', 'tell', 'tells', 'told', 'telling', 'ask', 'asks', 'asked', 'asking', 'answer', 'answers', 'answered', 'answering', 'question', 'questions', 'questioning', 'problem', 'problems', 'issue', 'issues', 'solution', 'solutions', 'solve', 'solves', 'solved', 'solving', 'fix', 'fixes', 'fixed', 'fixing', 'bug', 'bugs', 'error', 'errors', 'warning', 'warnings', 'info', 'information', 'data', 'value', 'values', 'variable', 'variables', 'function', 'functions', 'method', 'methods', 'class', 'classes', 'object', 'objects', 'array', 'arrays', 'string', 'strings', 'number', 'numbers', 'boolean', 'booleans', 'true', 'false', 'null', 'undefined', 'nan', 'infinity'
@@ -229,7 +282,7 @@ function getCollectionProfileVector(collection, allAssetsMap, assetVectors, tfid
   }
 
   // Aggregate vectors of existing items
-  const existingItems = collection.data.items || [];
+  const existingItems = normalizeCollectionItems(collection.data.items || []);
   if (existingItems.length === 0) return baseVector;
 
   const combinedVector = { ...baseVector };
@@ -300,7 +353,8 @@ async function main() {
     console.log(chalk.dim(collection.data.description || 'No description'));
 
     // --- PRUNING PHASE ---
-    const existingItems = collection.data.items || [];
+    // Normalize to flat array for processing
+    const existingItems = normalizeCollectionItems(collection.data.items || []);
     const outliers = [];
 
     for (const itemKey of existingItems) {
@@ -333,7 +387,9 @@ async function main() {
 
       if (options.remove) {
         const keysToRemove = new Set(outliers.map(o => o.key));
-        collection.data.items = collection.data.items.filter(k => !keysToRemove.has(k));
+        const filteredItems = existingItems.filter(k => !keysToRemove.has(k));
+        // Convert back to nested format
+        collection.data.items = itemsToNestedFormat(filteredItems);
         console.log(chalk.red(`    -> Removed ${outliers.length} items`));
         isModified = true;
       }
@@ -341,10 +397,11 @@ async function main() {
 
     // --- SUGGESTION PHASE ---
     const suggestions = [];
+    const currentItems = normalizeCollectionItems(collection.data.items || []);
 
     for (const asset of allAssets) {
       // Skip if already in collection
-      if (collection.data.items && collection.data.items.includes(asset.key)) continue;
+      if (currentItems.includes(asset.key)) continue;
 
       const assetVector = assetVectors.get(asset.key);
       const score = cosineSimilarity(profileVector, assetVector);
@@ -366,9 +423,10 @@ async function main() {
       }
 
       if (options.add) {
-        if (!collection.data.items) collection.data.items = [];
-        collection.data.items.push(...newItems);
-        collection.data.items = [...new Set(collection.data.items)]; // Dedupe
+        // Combine existing and new items, dedupe, then convert to nested format
+        const allItems = [...currentItems, ...newItems];
+        const uniqueItems = [...new Set(allItems)];
+        collection.data.items = itemsToNestedFormat(uniqueItems);
         console.log(chalk.magenta(`    -> Added ${newItems.length} items`));
         isModified = true;
       }
