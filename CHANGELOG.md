@@ -1,5 +1,17 @@
 
 
+## [2.1.0](https://github.com/archubbuck/workspace-architect/compare/v2.0.5...v2.1.0) (2026-01-12)
+
+
+### Features
+
+* migrate collections to nested object format with backward compatibility ([8e72daa](https://github.com/archubbuck/workspace-architect/commit/8e72daa8b0beb4ff11abfddc2e5b24975591430d))
+
+
+### Bug Fixes
+
+* sync content from upstream resources ([6c9a0e4](https://github.com/archubbuck/workspace-architect/commit/6c9a0e4129c123e1bbb8f03be3809e71531c0b3b))
+
 ## [2.0.5](https://github.com/archubbuck/workspace-architect/compare/v2.0.4...v2.0.5) (2026-01-10)
 
 
