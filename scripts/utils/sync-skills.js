@@ -169,6 +169,8 @@ export async function syncSkillsFromGitHub(config) {
       localSkillDirs = await fs.readdir(localDir, { withFileTypes: true });
       
       for (const entry of localSkillDirs) {
+        // Note: entry.name !== '.upstream-sync.json' is defensive - the metadata file
+        // should be a file, not a directory, but we check explicitly to be safe
         if (entry.isDirectory() && entry.name !== '.upstream-sync.json') {
           const wasSynced = previouslySynced.has(entry.name);
           const existsUpstream = availableSkills.includes(entry.name);
@@ -206,6 +208,8 @@ export async function syncSkillsFromGitHub(config) {
       
       const currentSkills = new Set(
         localSkillDirs
+          // Note: entry.name !== '.upstream-sync.json' is defensive - the metadata file
+          // should be a file, not a directory, but we check explicitly to be safe
           .filter(entry => entry.isDirectory() && entry.name !== '.upstream-sync.json')
           .map(entry => entry.name)
       );
