@@ -138,6 +138,18 @@ async function syncAgents() {
   // Ensure local directory exists
   await fs.ensureDir(LOCAL_DIR);
   
+  // Load previously synced files metadata
+  const metadataPath = path.join(LOCAL_DIR, '.upstream-sync.json');
+  let previouslySynced = new Set();
+  if (await fs.pathExists(metadataPath)) {
+    try {
+      const metadata = await fs.readJson(metadataPath);
+      previouslySynced = new Set(metadata.files || []);
+    } catch (error) {
+      console.warn(chalk.yellow('Warning: Could not read sync metadata, will not delete any files'));
+    }
+  }
+  
   let successCount = 0;
   let failCount = 0;
   let deleteCount = 0;
@@ -163,12 +175,12 @@ async function syncAgents() {
       }
     }
     
-    // Delete local files that no longer exist upstream
+    // Delete local files that no longer exist upstream, but only if they were previously synced
     console.log(chalk.blue(`\nChecking for deleted files...`));
     const localFiles = await getLocalFiles(LOCAL_DIR);
     
     for (const localFile of localFiles) {
-      if (!remoteFilePaths.has(localFile)) {
+      if (!remoteFilePaths.has(localFile) && previouslySynced.has(localFile)) {
         const filePath = path.join(LOCAL_DIR, localFile);
         try {
           await fs.remove(filePath);
@@ -179,6 +191,13 @@ async function syncAgents() {
         }
       }
     }
+    
+    // Save metadata of currently synced files
+    await fs.writeJson(metadataPath, {
+      lastSync: new Date().toISOString(),
+      source: `${REPO_OWNER}/${REPO_NAME}/${REMOTE_DIR}`,
+      files: Array.from(remoteFilePaths)
+    }, { spaces: 2 });
   } catch (error) {
     console.error(chalk.red('Error fetching agents:'), error.message);
     failCount++;
