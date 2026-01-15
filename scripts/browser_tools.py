@@ -10,8 +10,13 @@ from contextlib import contextmanager
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
 
+# Timeout constants (in milliseconds)
+NAVIGATION_TIMEOUT = 30000
+ELEMENT_TIMEOUT = 10000
+
+
 @contextmanager
-def browser_page(url, timeout=30000):
+def browser_page(url, timeout=NAVIGATION_TIMEOUT):
     """Context manager for browser and page setup."""
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -44,7 +49,7 @@ def browser_click(args):
             else:
                 selector = args.selector
             
-            page.click(selector, timeout=10000)
+            page.click(selector, timeout=ELEMENT_TIMEOUT)
             print(f"Successfully clicked element: {selector}")
     except Exception as e:
         print(f"Error clicking element: {str(e)}", file=sys.stderr)
@@ -55,7 +60,7 @@ def browser_type(args):
     """Type text into an input field."""
     try:
         with browser_page(args.url) as page:
-            page.fill(args.selector, args.text, timeout=10000)
+            page.fill(args.selector, args.text, timeout=ELEMENT_TIMEOUT)
             print(f"Successfully typed text into: {args.selector}")
             
             if args.submit:
@@ -98,7 +103,7 @@ def browser_hover(args):
     """Hover over an element."""
     try:
         with browser_page(args.url) as page:
-            page.hover(args.selector, timeout=10000)
+            page.hover(args.selector, timeout=ELEMENT_TIMEOUT)
             print(f"Successfully hovered over: {args.selector}")
     except Exception as e:
         print(f"Error hovering over element: {str(e)}", file=sys.stderr)
