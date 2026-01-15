@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
-import { getLocalFiles } from './sync-utils.js';
+import { getLocalFiles, hasGitChanges } from './sync-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -171,15 +171,20 @@ async function syncInstructions() {
       }
     }
     
-    // Save metadata of currently synced files
-    try {
-      await fs.writeJson(metadataPath, {
-        lastSync: new Date().toISOString(),
-        source: `${REPO_OWNER}/${REPO_NAME}/${REMOTE_DIR}`,
-        files: Array.from(remoteFilePaths)
-      }, { spaces: 2 });
-    } catch (error) {
-      console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
+    // Save metadata of currently synced files only if there were actual content changes
+    if (hasGitChanges(LOCAL_DIR)) {
+      try {
+        await fs.writeJson(metadataPath, {
+          lastSync: new Date().toISOString(),
+          source: `${REPO_OWNER}/${REPO_NAME}/${REMOTE_DIR}`,
+          files: Array.from(remoteFilePaths)
+        }, { spaces: 2 });
+        console.log(chalk.dim('Metadata updated with new sync timestamp'));
+      } catch (error) {
+        console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
+      }
+    } else {
+      console.log(chalk.dim('No content changes detected, metadata not updated'));
     }
   } catch (error) {
     console.error(chalk.red('Error fetching instructions:'), error.message);

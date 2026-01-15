@@ -2,6 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
+import { hasGitChanges } from './sync-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -252,33 +253,38 @@ async function syncSkills() {
     console.error(chalk.red('Error checking for deleted skills:'), error.message);
   }
   
-  // Save metadata of currently synced skills - accumulate with previous metadata
-  try {
-    // Start with previously synced skills and add newly synced ones
-    const allSyncedSkills = new Set(previouslySynced);
-    syncedSkills.forEach(skill => allSyncedSkills.add(skill));
-    
-    // Reuse localSkillDirs if available, otherwise read directory
-    if (localSkillDirs.length === 0 && await fs.pathExists(LOCAL_SKILLS_DIR)) {
-      localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+  // Save metadata of currently synced skills - accumulate with previous metadata only if there were actual content changes
+  if (hasGitChanges(LOCAL_SKILLS_DIR)) {
+    try {
+      // Start with previously synced skills and add newly synced ones
+      const allSyncedSkills = new Set(previouslySynced);
+      syncedSkills.forEach(skill => allSyncedSkills.add(skill));
+      
+      // Reuse localSkillDirs if available, otherwise read directory
+      if (localSkillDirs.length === 0 && await fs.pathExists(LOCAL_SKILLS_DIR)) {
+        localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+      }
+      
+      const currentSkills = new Set(
+        localSkillDirs
+          .filter(entry => entry.isDirectory() && entry.name !== '.upstream-sync.json')
+          .map(entry => entry.name)
+      );
+      
+      // Only keep skills in metadata that still exist locally
+      const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill));
+      
+      await fs.writeJson(metadataPath, {
+        lastSync: new Date().toISOString(),
+        source: `${REPO_OWNER}/${REPO_NAME}/skills`,
+        files: finalSkills
+      }, { spaces: 2 });
+      console.log(chalk.dim('Metadata updated with new sync timestamp'));
+    } catch (error) {
+      console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
     }
-    
-    const currentSkills = new Set(
-      localSkillDirs
-        .filter(entry => entry.isDirectory() && entry.name !== '.upstream-sync.json')
-        .map(entry => entry.name)
-    );
-    
-    // Only keep skills in metadata that still exist locally
-    const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill));
-    
-    await fs.writeJson(metadataPath, {
-      lastSync: new Date().toISOString(),
-      source: `${REPO_OWNER}/${REPO_NAME}/skills`,
-      files: finalSkills
-    }, { spaces: 2 });
-  } catch (error) {
-    console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
+  } else {
+    console.log(chalk.dim('No content changes detected, metadata not updated'));
   }
   
   console.log(chalk.blue.bold('\n=== Sync Complete ==='));

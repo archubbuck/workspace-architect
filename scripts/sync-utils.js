@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
+import { execSync } from 'child_process';
 
 /**
  * Recursively get all files in a directory that match accepted extensions,
@@ -34,4 +35,25 @@ export async function getLocalFiles(directory, acceptedExtensions, baseDir = dir
   }
   
   return files;
+}
+
+/**
+ * Check if there are any git changes in the specified directory.
+ * Excludes the .upstream-sync.json metadata file.
+ * 
+ * @param {string} directory - The directory to check
+ * @returns {boolean} True if there are changes, false otherwise
+ */
+export function hasGitChanges(directory) {
+  try {
+    // Get git status for the directory, excluding .upstream-sync.json
+    const result = execSync(
+      `git status --porcelain "${directory}" | grep -v '.upstream-sync.json' || true`,
+      { encoding: 'utf-8', cwd: path.dirname(directory) }
+    );
+    return result.trim().length > 0;
+  } catch (error) {
+    // If git command fails, assume no changes
+    return false;
+  }
 }
