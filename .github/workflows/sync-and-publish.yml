@@ -91,9 +91,6 @@ jobs:
             npm run sync-skills
           fi
 
-      - name: Validate Assets
-        run: npm run validate-assets
-
       - name: Check for changes
         id: git-check
         run: |

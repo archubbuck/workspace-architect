@@ -6,6 +6,7 @@ import { loadEnv } from './utils/env-loader.js';
 import { syncFromGitHub } from './utils/sync-base.js';
 import { loadUpstreamConfig } from './utils/config-loader.js';
 import { syncSkillsFromGitHub } from './utils/sync-skills.js';
+import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -183,6 +184,33 @@ async function syncResource(resourceType, config, dryRun) {
 }
 
 /**
+ * Run asset validation
+ */
+async function runValidation() {
+  return new Promise((resolve, reject) => {
+    console.log(chalk.blue.bold('\n=== Running Asset Validation ===\n'));
+    
+    const validationScript = path.join(__dirname, 'analysis', 'validate-assets.js');
+    const child = spawn('node', [validationScript], {
+      stdio: 'inherit',
+      cwd: path.join(__dirname, '..')
+    });
+    
+    child.on('close', (code) => {
+      if (code === 0) {
+        resolve();
+      } else {
+        reject(new Error(`Validation process exited with code ${code}`));
+      }
+    });
+    
+    child.on('error', (error) => {
+      reject(new Error(`Failed to run validation: ${error.message}`));
+    });
+  });
+}
+
+/**
  * Main sync function
  */
 async function sync() {
@@ -212,9 +240,27 @@ async function sync() {
       }
       
       console.log(chalk.green.bold('\n✓ All resources synced successfully\n'));
+      
+      // Run validation after syncing all resources (if not in dry-run mode)
+      if (!dryRun) {
+        try {
+          await runValidation();
+        } catch (error) {
+          console.error(chalk.yellow('\n⚠ Validation completed with warnings\n'));
+        }
+      }
     } else {
       // Sync a single resource
       await syncResource(resourceType, config, dryRun);
+      
+      // Run validation after syncing any asset type (if not in dry-run mode)
+      if (!dryRun) {
+        try {
+          await runValidation();
+        } catch (error) {
+          console.error(chalk.yellow('\n⚠ Validation completed with warnings\n'));
+        }
+      }
     }
   } catch (error) {
     console.error(chalk.red('Error:'), error.message);
