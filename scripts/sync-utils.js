@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 
 /**
  * Recursively get all files in a directory that match accepted extensions,
@@ -46,16 +46,20 @@ export async function getLocalFiles(directory, acceptedExtensions, baseDir = dir
  */
 export function hasGitChanges(directory) {
   try {
-    // Get git status for the directory, excluding .upstream-sync.json
-    // Use spawn-style arguments to avoid shell injection
-    const result = execSync(
-      `git status --porcelain -- ${JSON.stringify(directory)}`,
-      { encoding: 'utf-8' }
-    );
-    // Filter out lines that end with .upstream-sync.json
-    const filteredLines = result
+    // Get git status for the directory, using spawn to avoid shell injection
+    const result = spawnSync('git', ['status', '--porcelain', '--', directory], {
+      encoding: 'utf-8'
+    });
+    
+    if (result.error || result.status !== 0) {
+      // If git command fails, assume no changes
+      return false;
+    }
+    
+    // Filter out lines that contain .upstream-sync.json
+    const filteredLines = result.stdout
       .split('\n')
-      .filter(line => line.trim() && !line.endsWith('.upstream-sync.json'));
+      .filter(line => line.trim() && !line.includes('.upstream-sync.json'));
     return filteredLines.length > 0;
   } catch (error) {
     // If git command fails, assume no changes
