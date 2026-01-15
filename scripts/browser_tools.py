@@ -7,7 +7,7 @@ Provides subcommands for common browser automation tasks.
 import argparse
 import sys
 from contextlib import contextmanager
-from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
+from playwright.sync_api import sync_playwright
 
 
 # Timeout constants (in milliseconds)
@@ -43,14 +43,20 @@ def browser_click(args):
     """Click an element on the page."""
     try:
         with browser_page(args.url) as page:
-            # Use text selector if provided, otherwise use the selector
+            # Prefer text-based selection when args.text is provided
             if args.text:
-                selector = f"text={args.text}"
+                if args.selector:
+                    locator = page.locator(args.selector).get_by_text(args.text)
+                    description = f"{args.selector} -> text={args.text}"
+                else:
+                    locator = page.get_by_text(args.text)
+                    description = f'text="{args.text}"'
             else:
-                selector = args.selector
-            
-            page.click(selector, timeout=ELEMENT_TIMEOUT)
-            print(f"Successfully clicked element: {selector}")
+                locator = page.locator(args.selector)
+                description = args.selector
+
+            locator.click(timeout=ELEMENT_TIMEOUT)
+            print(f"Successfully clicked element: {description}")
     except Exception as e:
         print(f"Error clicking element: {str(e)}", file=sys.stderr)
         sys.exit(1)
@@ -60,7 +66,7 @@ def browser_type(args):
     """Type text into an input field."""
     try:
         with browser_page(args.url) as page:
-            page.fill(args.selector, args.text, timeout=ELEMENT_TIMEOUT)
+            page.locator(args.selector).fill(args.text, timeout=ELEMENT_TIMEOUT)
             print(f"Successfully typed text into: {args.selector}")
             
             if args.submit:
@@ -89,9 +95,9 @@ def browser_get_content(args):
             selector = args.selector or 'body'
             
             if args.html:
-                content = page.locator(selector).inner_html()
+                content = page.locator(selector).inner_html(timeout=ELEMENT_TIMEOUT)
             else:
-                content = page.locator(selector).inner_text()
+                content = page.locator(selector).inner_text(timeout=ELEMENT_TIMEOUT)
             
             print(content)
     except Exception as e:
@@ -142,7 +148,7 @@ def main():
     # browser_click command
     click_parser = subparsers.add_parser('browser_click', help='Click an element')
     click_parser.add_argument('url', help='URL to navigate to')
-    click_parser.add_argument('selector', help='CSS selector for the element')
+    click_parser.add_argument('selector', help='CSS selector for the element (ignored if --text is provided)', nargs='?')
     click_parser.add_argument('--text', help='Text to match instead of selector', default=None)
     click_parser.set_defaults(func=browser_click)
     
