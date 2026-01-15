@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "generatedAt": "2026-01-15T20:31:07.932Z",
+  "generatedAt": "2026-01-15T21:39:11.763Z",
   "assets": {
     "agents": {
       "4.1-Beast": {
@@ -2577,13 +2577,6 @@
       }
     },
     "collections": {
-      ".upstream-sync": {
-        "path": "assets/collections/.upstream-sync.json",
-        "description": "",
-        "title": ".upstream-sync",
-        "type": "collections",
-        "items": []
-      },
       "ai-prompt-engineering": {
         "path": "assets/collections/ai-prompt-engineering.json",
         "description": "Resources for LLM prompts, Copilot instructions, and AI agent development.",
@@ -2702,6 +2695,20 @@
           "prompts:postgresql-code-review",
           "prompts:sql-code-review",
           "prompts:suggest-awesome-github-copilot-collections"
+        ]
+      },
+      "awesome-copilot": {
+        "path": "assets/collections/awesome-copilot.collection.yml",
+        "description": "Meta prompts that help you discover and generate curated GitHub Copilot chat modes, collections, instructions, prompts, and agents.",
+        "title": "Awesome Copilot",
+        "type": "collections",
+        "items": [
+          "prompts:suggest-awesome-github-copilot-chatmodes",
+          "prompts:suggest-awesome-github-copilot-collections",
+          "prompts:suggest-awesome-github-copilot-instructions",
+          "prompts:suggest-awesome-github-copilot-prompts",
+          "prompts:suggest-awesome-github-copilot-agents",
+          "agents:meta-agentic-project-scaffold"
         ]
       },
       "azure-cloud-architect": {
@@ -2857,6 +2864,32 @@
           "prompts:suggest-awesome-github-copilot-prompts"
         ]
       },
+      "azure-cloud-development": {
+        "path": "assets/collections/azure-cloud-development.collection.yml",
+        "description": "Comprehensive Azure cloud development tools including Infrastructure as Code, serverless functions, architecture patterns, and cost optimization for building scalable cloud applications.",
+        "title": "Azure & Cloud Development",
+        "type": "collections",
+        "items": [
+          "agents:azure-principal-architect",
+          "agents:azure-saas-architect",
+          "agents:azure-logic-apps-expert",
+          "agents:azure-verified-modules-bicep",
+          "agents:azure-verified-modules-terraform",
+          "agents:terraform-azure-planning",
+          "agents:terraform-azure-implement",
+          "instructions:bicep-code-best-practices",
+          "instructions:terraform",
+          "instructions:terraform-azure",
+          "instructions:azure-verified-modules-terraform",
+          "instructions:azure-functions-typescript",
+          "instructions:azure-logic-apps-power-automate",
+          "instructions:azure-devops-pipelines",
+          "instructions:containerization-docker-best-practices",
+          "instructions:kubernetes-deployment-best-practices",
+          "prompts:azure-resource-health-diagnose",
+          "prompts:az-cost-optimize"
+        ]
+      },
       "claude-skills-starter": {
         "path": "assets/collections/claude-skills-starter.json",
         "description": "Essential Claude Skills for software development, planning, and automation workflows.",
@@ -2866,12 +2899,50 @@
           "skills:example-planner"
         ]
       },
+      "clojure-interactive-programming": {
+        "path": "assets/collections/clojure-interactive-programming.collection.yml",
+        "description": "Tools for REPL-first Clojure workflows featuring Clojure instructions, the interactive programming chat mode and supporting guidance.",
+        "title": "Clojure Interactive Programming",
+        "type": "collections",
+        "items": [
+          "instructions:clojure",
+          "agents:clojure-interactive-programming",
+          "prompts:remember-interactive-programming"
+        ]
+      },
       "cpp-development": {
         "path": "assets/collections/cpp-development.json",
         "description": "C++ programming language resources.",
         "title": "cpp-development",
         "type": "collections",
         "items": []
+      },
+      "csharp-dotnet-development": {
+        "path": "assets/collections/csharp-dotnet-development.collection.yml",
+        "description": "Essential prompts, instructions, and chat modes for C# and .NET development including testing, documentation, and best practices.",
+        "title": "C# .NET Development",
+        "type": "collections",
+        "items": [
+          "prompts:csharp-async",
+          "prompts:aspnet-minimal-api-openapi",
+          "instructions:csharp",
+          "instructions:dotnet-architecture-good-practices",
+          "agents:expert-dotnet-software-engineer",
+          "prompts:csharp-xunit",
+          "prompts:dotnet-best-practices",
+          "prompts:dotnet-upgrade"
+        ]
+      },
+      "csharp-mcp-development": {
+        "path": "assets/collections/csharp-mcp-development.collection.yml",
+        "description": "Complete toolkit for building Model Context Protocol (MCP) servers in C# using the official SDK. Includes instructions for best practices, a prompt for generating servers, and an expert chat mode for guidance.",
+        "title": "C# MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:csharp-mcp-server",
+          "prompts:csharp-mcp-server-generator",
+          "agents:csharp-mcp-expert"
+        ]
       },
       "database-administration": {
         "path": "assets/collections/database-administration.json",
@@ -2887,6 +2958,60 @@
           "prompts:postgresql-code-review",
           "instructions:ms-sql-dba",
           "instructions:sql-sp-generation"
+        ]
+      },
+      "database-data-management": {
+        "path": "assets/collections/database-data-management.collection.yml",
+        "description": "Database administration, SQL optimization, and data management tools for PostgreSQL, SQL Server, and general database development best practices.",
+        "title": "Database & Data Management",
+        "type": "collections",
+        "items": [
+          "agents:postgresql-dba",
+          "agents:ms-sql-dba",
+          "instructions:ms-sql-dba",
+          "instructions:sql-sp-generation",
+          "prompts:sql-optimization",
+          "prompts:sql-code-review",
+          "prompts:postgresql-optimization",
+          "prompts:postgresql-code-review"
+        ]
+      },
+      "dataverse-sdk-for-python": {
+        "path": "assets/collections/dataverse-sdk-for-python.collection.yml",
+        "description": "Comprehensive collection for building production-ready Python integrations with Microsoft Dataverse. Includes official documentation, best practices, advanced features, file operations, and code generation prompts.",
+        "title": "Dataverse SDK for Python",
+        "type": "collections",
+        "items": [
+          "instructions:dataverse-python-sdk",
+          "instructions:dataverse-python-api-reference",
+          "instructions:dataverse-python-modules",
+          "instructions:dataverse-python-best-practices",
+          "instructions:dataverse-python-advanced-features",
+          "instructions:dataverse-python-agentic-workflows",
+          "instructions:dataverse-python-authentication-security",
+          "instructions:dataverse-python-error-handling",
+          "instructions:dataverse-python-file-operations",
+          "instructions:dataverse-python-pandas-integration",
+          "instructions:dataverse-python-performance-optimization",
+          "instructions:dataverse-python-real-world-usecases",
+          "instructions:dataverse-python-testing-debugging",
+          "prompts:dataverse-python-quickstart",
+          "prompts:dataverse-python-advanced-patterns",
+          "prompts:dataverse-python-production-code",
+          "prompts:dataverse-python-usecase-builder"
+        ]
+      },
+      "devops-oncall": {
+        "path": "assets/collections/devops-oncall.collection.yml",
+        "description": "A focused set of prompts, instructions, and a chat mode to help triage incidents and respond quickly with DevOps tools and Azure resources.",
+        "title": "DevOps On-Call",
+        "type": "collections",
+        "items": [
+          "prompts:azure-resource-health-diagnose",
+          "instructions:devops-core-principles",
+          "instructions:containerization-docker-best-practices",
+          "agents:azure-principal-architect",
+          "prompts:multi-stage-dockerfile"
         ]
       },
       "devops-sre": {
@@ -3042,6 +3167,36 @@
           "prompts:cosmosdb-datamodeling"
         ]
       },
+      "edge-ai-tasks": {
+        "path": "assets/collections/edge-ai-tasks.collection.yml",
+        "description": "Task Researcher and Task Planner for intermediate to expert users and large codebases - Brought to you by microsoft/edge-ai",
+        "title": "Tasks by microsoft/edge-ai",
+        "type": "collections",
+        "items": [
+          "agents:task-researcher",
+          "agents:task-planner",
+          "instructions:task-implementation"
+        ]
+      },
+      "frontend-web-dev": {
+        "path": "assets/collections/frontend-web-dev.collection.yml",
+        "description": "Essential prompts, instructions, and chat modes for modern frontend web development including React, Angular, Vue, TypeScript, and CSS frameworks.",
+        "title": "Frontend Web Development",
+        "type": "collections",
+        "items": [
+          "agents:expert-react-frontend-engineer",
+          "agents:electron-angular-native",
+          "instructions:reactjs",
+          "instructions:angular",
+          "instructions:vuejs3",
+          "instructions:nextjs",
+          "instructions:nextjs-tailwind",
+          "instructions:tanstack-start-shadcn-tailwind",
+          "instructions:nodejs-javascript-vitest",
+          "prompts:playwright-explore-website",
+          "prompts:playwright-generate-test"
+        ]
+      },
       "general-productivity": {
         "path": "assets/collections/general-productivity.json",
         "description": "General coding utilities, debugging, refactoring, and git resources.",
@@ -3092,6 +3247,48 @@
           "prompts:sql-code-review",
           "prompts:swift-mcp-server-generator",
           "prompts:technology-stack-blueprint-generator"
+        ]
+      },
+      "go-mcp-development": {
+        "path": "assets/collections/go-mcp-development.collection.yml",
+        "description": "Complete toolkit for building Model Context Protocol (MCP) servers in Go using the official github.com/modelcontextprotocol/go-sdk. Includes instructions for best practices, a prompt for generating servers, and an expert chat mode for guidance.",
+        "title": "Go MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:go-mcp-server",
+          "prompts:go-mcp-server-generator",
+          "agents:go-mcp-expert"
+        ]
+      },
+      "java-development": {
+        "path": "assets/collections/java-development.collection.yml",
+        "description": "Comprehensive collection of prompts and instructions for Java development including Spring Boot, Quarkus, testing, documentation, and best practices.",
+        "title": "Java Development",
+        "type": "collections",
+        "items": [
+          "instructions:java",
+          "instructions:springboot",
+          "instructions:quarkus",
+          "instructions:quarkus-mcp-server-sse",
+          "instructions:convert-jpa-to-spring-data-cosmos",
+          "instructions:java-11-to-java-17-upgrade",
+          "instructions:java-17-to-java-21-upgrade",
+          "instructions:java-21-to-java-25-upgrade",
+          "prompts:java-docs",
+          "prompts:java-junit",
+          "prompts:java-springboot",
+          "prompts:create-spring-boot-java-project"
+        ]
+      },
+      "java-mcp-development": {
+        "path": "assets/collections/java-mcp-development.collection.yml",
+        "description": "Complete toolkit for building Model Context Protocol servers in Java using the official MCP Java SDK with reactive streams and Spring Boot integration.",
+        "title": "Java MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:java-mcp-server",
+          "prompts:java-mcp-server-generator",
+          "agents:java-mcp-expert"
         ]
       },
       "java-spring-developer": {
@@ -3208,6 +3405,17 @@
           "prompts:power-apps-code-app-scaffold"
         ]
       },
+      "kotlin-mcp-development": {
+        "path": "assets/collections/kotlin-mcp-development.collection.yml",
+        "description": "Complete toolkit for building Model Context Protocol (MCP) servers in Kotlin using the official io.modelcontextprotocol:kotlin-sdk library. Includes instructions for best practices, a prompt for generating servers, and an expert chat mode for guidance.",
+        "title": "Kotlin MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:kotlin-mcp-server",
+          "prompts:kotlin-mcp-server-generator",
+          "agents:kotlin-mcp-expert"
+        ]
+      },
       "learning-mentoring": {
         "path": "assets/collections/learning-mentoring.json",
         "description": "Educational resources, tutorials, and study modes.",
@@ -3227,6 +3435,19 @@
         "type": "collections",
         "items": [
           "prompts:generate-custom-instructions-from-codebase"
+        ]
+      },
+      "mcp-m365-copilot": {
+        "path": "assets/collections/mcp-m365-copilot.collection.yml",
+        "description": "Comprehensive collection for building declarative agents with Model Context Protocol integration for Microsoft 365 Copilot",
+        "title": "MCP-based M365 Agents",
+        "type": "collections",
+        "items": [
+          "prompts:mcp-create-declarative-agent",
+          "prompts:mcp-create-adaptive-cards",
+          "prompts:mcp-deploy-manage-agents",
+          "instructions:mcp-m365-copilot",
+          "agents:mcp-m365-agent-expert"
         ]
       },
       "mcp-specialist": {
@@ -3339,6 +3560,59 @@
           "prompts:technology-stack-blueprint-generator"
         ]
       },
+      "partners": {
+        "path": "assets/collections/partners.collection.yml",
+        "description": "Custom agents that have been created by GitHub partners",
+        "title": "Partners",
+        "type": "collections",
+        "items": [
+          "agents:amplitude-experiment-implementation",
+          "agents:apify-integration-expert",
+          "agents:arm-migration",
+          "agents:diffblue-cover",
+          "agents:droid",
+          "agents:dynatrace-expert",
+          "agents:elasticsearch-observability",
+          "agents:jfrog-sec",
+          "agents:launchdarkly-flag-cleanup",
+          "agents:lingodotdev-i18n",
+          "agents:monday-bug-fixer",
+          "agents:mongodb-performance-advisor",
+          "agents:neo4j-docker-client-generator",
+          "agents:neon-migration-specialist",
+          "agents:neon-optimization-analyzer",
+          "agents:octopus-deploy-release-notes-mcp",
+          "agents:stackhawk-security-onboarding",
+          "agents:terraform",
+          "agents:pagerduty-incident-responder",
+          "agents:comet-opik"
+        ]
+      },
+      "pcf-development": {
+        "path": "assets/collections/pcf-development.collection.yml",
+        "description": "Complete toolkit for developing custom code components using Power Apps Component Framework for model-driven and canvas apps",
+        "title": "Power Apps Component Framework (PCF) Development",
+        "type": "collections",
+        "items": [
+          "instructions:pcf-overview",
+          "instructions:pcf-code-components",
+          "instructions:pcf-model-driven-apps",
+          "instructions:pcf-canvas-apps",
+          "instructions:pcf-power-pages",
+          "instructions:pcf-react-platform-libraries",
+          "instructions:pcf-fluent-modern-theming",
+          "instructions:pcf-dependent-libraries",
+          "instructions:pcf-events",
+          "instructions:pcf-tooling",
+          "instructions:pcf-limitations",
+          "instructions:pcf-alm",
+          "instructions:pcf-best-practices",
+          "instructions:pcf-sample-components",
+          "instructions:pcf-api-reference",
+          "instructions:pcf-manifest-schema",
+          "instructions:pcf-community-resources"
+        ]
+      },
       "php-cms-development": {
         "path": "assets/collections/php-cms-development.json",
         "description": "PHP development resources including Laravel, Symfony, Drupal, WordPress, and Pimcore.",
@@ -3408,6 +3682,62 @@
           "prompts:technology-stack-blueprint-generator",
           "prompts:declarative-agents",
           "prompts:mcp-copilot-studio-server-generator"
+        ]
+      },
+      "php-mcp-development": {
+        "path": "assets/collections/php-mcp-development.collection.yml",
+        "description": "Comprehensive resources for building Model Context Protocol servers using the official PHP SDK with attribute-based discovery, including best practices, project generation, and expert assistance",
+        "title": "PHP MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:php-mcp-server",
+          "prompts:php-mcp-server-generator",
+          "agents:php-mcp-expert"
+        ]
+      },
+      "power-apps-code-apps": {
+        "path": "assets/collections/power-apps-code-apps.collection.yml",
+        "description": "Complete toolkit for Power Apps Code Apps development including project scaffolding, development standards, and expert guidance for building code-first applications with Power Platform integration.",
+        "title": "Power Apps Code Apps Development",
+        "type": "collections",
+        "items": [
+          "prompts:power-apps-code-app-scaffold",
+          "instructions:power-apps-code-apps",
+          "agents:power-platform-expert"
+        ]
+      },
+      "power-bi-development": {
+        "path": "assets/collections/power-bi-development.collection.yml",
+        "description": "Comprehensive Power BI development resources including data modeling, DAX optimization, performance tuning, visualization design, security best practices, and DevOps/ALM guidance for building enterprise-grade Power BI solutions.",
+        "title": "Power BI Development",
+        "type": "collections",
+        "items": [
+          "agents:power-bi-data-modeling-expert",
+          "agents:power-bi-dax-expert",
+          "agents:power-bi-performance-expert",
+          "agents:power-bi-visualization-expert",
+          "instructions:power-bi-custom-visuals-development",
+          "instructions:power-bi-data-modeling-best-practices",
+          "instructions:power-bi-dax-best-practices",
+          "instructions:power-bi-devops-alm-best-practices",
+          "instructions:power-bi-report-design-best-practices",
+          "instructions:power-bi-security-rls-best-practices",
+          "prompts:power-bi-dax-optimization",
+          "prompts:power-bi-model-design-review",
+          "prompts:power-bi-performance-troubleshooting",
+          "prompts:power-bi-report-design-consultation"
+        ]
+      },
+      "power-platform-mcp-connector-development": {
+        "path": "assets/collections/power-platform-mcp-connector-development.collection.yml",
+        "description": "Complete toolkit for developing Power Platform custom connectors with Model Context Protocol integration for Microsoft Copilot Studio",
+        "title": "Power Platform MCP Connector Development",
+        "type": "collections",
+        "items": [
+          "instructions:power-platform-mcp-development",
+          "prompts:power-platform-mcp-connector-suite",
+          "prompts:mcp-copilot-studio-server-generator",
+          "agents:power-platform-mcp-integration-expert"
         ]
       },
       "power-platform-specialist": {
@@ -3594,6 +3924,31 @@
           "prompts:update-specification"
         ]
       },
+      "project-planning": {
+        "path": "assets/collections/project-planning.collection.yml",
+        "description": "Tools and guidance for software project planning, feature breakdown, epic management, implementation planning, and task organization for development teams.",
+        "title": "Project Planning & Management",
+        "type": "collections",
+        "items": [
+          "agents:task-planner",
+          "agents:task-researcher",
+          "agents:planner",
+          "agents:plan",
+          "agents:prd",
+          "agents:implementation-plan",
+          "agents:research-technical-spike",
+          "instructions:task-implementation",
+          "instructions:spec-driven-workflow-v1",
+          "prompts:breakdown-feature-implementation",
+          "prompts:breakdown-feature-prd",
+          "prompts:breakdown-epic-arch",
+          "prompts:breakdown-epic-pm",
+          "prompts:create-implementation-plan",
+          "prompts:update-implementation-plan",
+          "prompts:create-github-issues-feature-from-implementation-plan",
+          "prompts:create-technical-spike"
+        ]
+      },
       "python-development": {
         "path": "assets/collections/python-development.json",
         "description": "Resources for Python development including Django, Flask, FastAPI, and Data Science libraries.",
@@ -3661,6 +4016,17 @@
           "prompts:csharp-xunit",
           "prompts:java-junit",
           "prompts:mcp-copilot-studio-server-generator"
+        ]
+      },
+      "python-mcp-development": {
+        "path": "assets/collections/python-mcp-development.collection.yml",
+        "description": "Complete toolkit for building Model Context Protocol (MCP) servers in Python using the official SDK with FastMCP. Includes instructions for best practices, a prompt for generating servers, and an expert chat mode for guidance.",
+        "title": "Python MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:python-mcp-server",
+          "prompts:python-mcp-server-generator",
+          "agents:python-mcp-expert"
         ]
       },
       "quality-assurance": {
@@ -3768,6 +4134,17 @@
           "prompts:readme-blueprint-generator"
         ]
       },
+      "ruby-mcp-development": {
+        "path": "assets/collections/ruby-mcp-development.collection.yml",
+        "description": "Complete toolkit for building Model Context Protocol servers in Ruby using the official MCP Ruby SDK gem with Rails integration support.",
+        "title": "Ruby MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:ruby-mcp-server",
+          "prompts:ruby-mcp-server-generator",
+          "agents:ruby-mcp-expert"
+        ]
+      },
       "rust-development": {
         "path": "assets/collections/rust-development.json",
         "description": "Rust programming language resources and crates.",
@@ -3832,6 +4209,31 @@
           "prompts:architecture-blueprint-generator",
           "prompts:csharp-async",
           "prompts:readme-blueprint-generator"
+        ]
+      },
+      "rust-mcp-development": {
+        "path": "assets/collections/rust-mcp-development.collection.yml",
+        "description": "Build high-performance Model Context Protocol servers in Rust using the official rmcp SDK with async/await, procedural macros, and type-safe implementations.",
+        "title": "Rust MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:rust-mcp-server",
+          "prompts:rust-mcp-server-generator",
+          "agents:rust-mcp-expert"
+        ]
+      },
+      "security-best-practices": {
+        "path": "assets/collections/security-best-practices.collection.yml",
+        "description": "Security frameworks, accessibility guidelines, performance optimization, and code quality best practices for building secure, maintainable, and high-performance applications.",
+        "title": "Security & Code Quality",
+        "type": "collections",
+        "items": [
+          "instructions:security-and-owasp",
+          "instructions:a11y",
+          "instructions:performance-optimization",
+          "instructions:object-calisthenics",
+          "instructions:self-explanatory-code-commenting",
+          "prompts:ai-prompt-engineering-safety-review"
         ]
       },
       "security-specialist": {
@@ -3990,6 +4392,53 @@
           "prompts:update-llms"
         ]
       },
+      "software-engineering-team": {
+        "path": "assets/collections/software-engineering-team.collection.yml",
+        "description": "7 specialized agents covering the full software development lifecycle from UX design and architecture to security and DevOps.",
+        "title": "Software Engineering Team",
+        "type": "collections",
+        "items": [
+          "agents:se-ux-ui-designer",
+          "agents:se-technical-writer",
+          "agents:se-gitops-ci-specialist",
+          "agents:se-product-manager-advisor",
+          "agents:se-responsible-ai-code",
+          "agents:se-system-architecture-reviewer",
+          "agents:se-security-reviewer"
+        ]
+      },
+      "structured-autonomy-collection": {
+        "path": "assets/collections/structured-autonomy-collection.yml",
+        "description": "Premium planning, thrifty implementation",
+        "title": "Structured Autonomy",
+        "type": "collections",
+        "items": [
+          "prompts:structured-autonomy-plan",
+          "prompts:structured-autonomy-generate",
+          "prompts:structured-autonomy-implement"
+        ]
+      },
+      "swift-mcp-development": {
+        "path": "assets/collections/swift-mcp-development.collection.yml",
+        "description": "Comprehensive collection for building Model Context Protocol servers in Swift using the official MCP Swift SDK with modern concurrency features.",
+        "title": "Swift MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:swift-mcp-server",
+          "prompts:swift-mcp-server-generator",
+          "agents:swift-mcp-expert"
+        ]
+      },
+      "technical-spike": {
+        "path": "assets/collections/technical-spike.collection.yml",
+        "description": "Tools for creation, management and research of technical spikes to reduce unknowns and assumptions before proceeding to specification and implementation of solutions.",
+        "title": "Technical Spike",
+        "type": "collections",
+        "items": [
+          "agents:research-technical-spike",
+          "prompts:create-technical-spike"
+        ]
+      },
       "technical-writing": {
         "path": "assets/collections/technical-writing.json",
         "description": "Resources for technical documentation, Markdown, and diagrams.",
@@ -4014,6 +4463,48 @@
           "prompts:csharp-docs",
           "prompts:java-docs",
           "prompts:javascript-typescript-jest"
+        ]
+      },
+      "testing-automation": {
+        "path": "assets/collections/testing-automation.collection.yml",
+        "description": "Comprehensive collection for writing tests, test automation, and test-driven development including unit tests, integration tests, and end-to-end testing strategies.",
+        "title": "Testing & Test Automation",
+        "type": "collections",
+        "items": [
+          "agents:tdd-red",
+          "agents:tdd-green",
+          "agents:tdd-refactor",
+          "agents:playwright-tester",
+          "instructions:playwright-typescript",
+          "instructions:playwright-python",
+          "prompts:playwright-explore-website",
+          "prompts:playwright-generate-test",
+          "prompts:csharp-nunit",
+          "prompts:java-junit",
+          "prompts:ai-prompt-engineering-safety-review"
+        ]
+      },
+      "typescript-mcp-development": {
+        "path": "assets/collections/typescript-mcp-development.collection.yml",
+        "description": "Complete toolkit for building Model Context Protocol (MCP) servers in TypeScript/Node.js using the official SDK. Includes instructions for best practices, a prompt for generating servers, and an expert chat mode for guidance.",
+        "title": "TypeScript MCP Server Development",
+        "type": "collections",
+        "items": [
+          "instructions:typescript-mcp-server",
+          "prompts:typescript-mcp-server-generator",
+          "agents:typescript-mcp-expert"
+        ]
+      },
+      "typespec-m365-copilot": {
+        "path": "assets/collections/typespec-m365-copilot.collection.yml",
+        "description": "Comprehensive collection of prompts, instructions, and resources for building declarative agents and API plugins using TypeSpec for Microsoft 365 Copilot extensibility.",
+        "title": "TypeSpec for Microsoft 365 Copilot",
+        "type": "collections",
+        "items": [
+          "prompts:typespec-create-agent",
+          "prompts:typespec-create-api-plugin",
+          "prompts:typespec-api-operations",
+          "instructions:typespec-m365-copilot"
         ]
       },
       "web-frontend-development": {
@@ -4073,12 +4564,6 @@
       }
     },
     "skills": {
-      ".upstream-sync": {
-        "path": "assets/skills/.upstream-sync.json",
-        "description": "",
-        "title": "",
-        "type": "skills"
-      },
       "algorithmic-art": {
         "path": "assets/skills/algorithmic-art",
         "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
