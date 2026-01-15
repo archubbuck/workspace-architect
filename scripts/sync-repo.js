@@ -185,13 +185,15 @@ async function syncResource(resourceType, config, dryRun) {
 
 /**
  * Run asset validation
+ * @param {string|null} resourceType - The resource type to validate, or null to validate all
  */
-async function runValidation() {
+async function runValidation(resourceType = null) {
   return new Promise((resolve, reject) => {
     console.log(chalk.blue.bold('\n=== Running Asset Validation ===\n'));
     
     const validationScript = path.join(__dirname, 'analysis', 'validate-assets.js');
-    const child = spawn('node', [validationScript], {
+    const args = resourceType ? [validationScript, resourceType] : [validationScript];
+    const child = spawn('node', args, {
       stdio: 'inherit',
       cwd: path.join(__dirname, '..')
     });
@@ -242,9 +244,10 @@ async function sync() {
       console.log(chalk.green.bold('\n✓ All resources synced successfully\n'));
       
       // Run validation after syncing all resources (if not in dry-run mode)
+      // When syncing all, validate all asset types
       if (!dryRun) {
         try {
-          await runValidation();
+          await runValidation(null); // null means validate all
         } catch (error) {
           // Validation script exited with non-zero code (fatal error, not just warnings)
           console.error(chalk.red('\n✗ Validation failed with fatal error\n'));
@@ -256,9 +259,10 @@ async function sync() {
       await syncResource(resourceType, config, dryRun);
       
       // Run validation after syncing any asset type (if not in dry-run mode)
+      // Only validate the specific resource type that was synced
       if (!dryRun) {
         try {
-          await runValidation();
+          await runValidation(resourceType);
         } catch (error) {
           // Validation script exited with non-zero code (fatal error, not just warnings)
           console.error(chalk.red('\n✗ Validation failed with fatal error\n'));
