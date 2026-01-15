@@ -161,6 +161,18 @@ async function syncSkills() {
   // Ensure local skills directory exists
   await fs.ensureDir(LOCAL_SKILLS_DIR);
   
+  // Load previously synced skills metadata
+  const metadataPath = path.join(LOCAL_SKILLS_DIR, '.upstream-sync.json');
+  let previouslySynced = new Set();
+  if (await fs.pathExists(metadataPath)) {
+    try {
+      const metadata = await fs.readJson(metadataPath);
+      previouslySynced = new Set(metadata.skills || []);
+    } catch (error) {
+      console.warn(chalk.yellow('Warning: Could not read sync metadata, will not delete any skills'));
+    }
+  }
+  
   // Get available skills from repository
   const availableSkills = await getAvailableSkills();
   console.log(chalk.blue(`Found ${availableSkills.length} skills in repository\n`));
@@ -187,29 +199,31 @@ async function syncSkills() {
   let failCount = 0;
   let deleteCount = 0;
   
+  const syncedSkills = new Set();
   for (const skill of skillsToSync) {
     const success = await syncSkill(skill);
     if (success) {
       successCount++;
+      syncedSkills.add(skill);
     } else {
       failCount++;
     }
   }
   
-  // Delete local skills that no longer exist upstream
+  // Delete local skills that no longer exist upstream, but only if they were previously synced
   console.log(chalk.blue('\nChecking for deleted skills...'));
   try {
     const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
     
     for (const entry of localSkillDirs) {
       if (entry.isDirectory()) {
-        // When syncing all skills (SKILLS_TO_SYNC is null), delete skills not in availableSkills
-        // When syncing curated list, only delete skills that are in the curated list AND not available upstream
-        const shouldDelete = (SKILLS_TO_SYNC === null || !Array.isArray(SKILLS_TO_SYNC))
-          ? !availableSkills.includes(entry.name)  // Delete if not in upstream
-          : SKILLS_TO_SYNC.includes(entry.name) && !availableSkills.includes(entry.name);  // Delete if in curated list but not in upstream
+        // Only delete if:
+        // 1. The skill was previously synced from upstream (tracked in metadata)
+        // 2. AND it no longer exists in the upstream repository
+        const wasSynced = previouslySynced.has(entry.name);
+        const stillExists = availableSkills.includes(entry.name);
         
-        if (shouldDelete) {
+        if (wasSynced && !stillExists) {
           const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
           try {
             await fs.remove(skillPath);
@@ -224,6 +238,13 @@ async function syncSkills() {
   } catch (error) {
     console.error(chalk.red('Error checking for deleted skills:'), error.message);
   }
+  
+  // Save metadata of currently synced skills
+  await fs.writeJson(metadataPath, {
+    lastSync: new Date().toISOString(),
+    source: `${REPO_OWNER}/${REPO_NAME}/skills`,
+    skills: Array.from(syncedSkills)
+  }, { spaces: 2 });
   
   console.log(chalk.blue.bold('\n=== Sync Complete ==='));
   console.log(chalk.green(`✓ Successfully synced: ${successCount} skills`));
