@@ -9,12 +9,19 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = path.join(__dirname, '../../assets');
 
+function truncateDescription(description, maxLength = 60) {
+  if (!description) return '';
+  return description.length > maxLength 
+    ? description.substring(0, maxLength) + '...' 
+    : description;
+}
+
 function validateMetadata(parsed, assetName, assetType) {
   const errors = [];
   const warnings = [];
   
   // Check for description field (common across all asset types)
-  if (!parsed.data.description) {
+  if (!parsed.data.description || parsed.data.description.trim() === '') {
     errors.push('Missing required field: description');
   }
   
@@ -89,10 +96,7 @@ async function validateSkill(skillName) {
     
     console.log(chalk.green(`  ✓ Valid skill`));
     console.log(chalk.dim(`    Files: ${files.length}`));
-    const truncatedDesc = parsed.data.description.length > 60 
-      ? parsed.data.description.substring(0, 60) + '...' 
-      : parsed.data.description;
-    console.log(chalk.dim(`    Description: ${truncatedDesc}`));
+    console.log(chalk.dim(`    Description: ${truncateDescription(parsed.data.description)}`));
     
     return true;
   } catch (error) {
@@ -124,10 +128,7 @@ async function validateFileAsset(fileName, assetType) {
     }
     
     console.log(chalk.green(`  ✓ Valid ${assetType.slice(0, -1)}`));
-    const truncatedDesc = parsed.data.description.length > 60 
-      ? parsed.data.description.substring(0, 60) + '...' 
-      : parsed.data.description;
-    console.log(chalk.dim(`    Description: ${truncatedDesc}`));
+    console.log(chalk.dim(`    Description: ${truncateDescription(parsed.data.description)}`));
     
     return true;
   } catch (error) {
