@@ -208,10 +208,10 @@ async function syncSkills() {
     for (const entry of localSkillDirs) {
       if (entry.isDirectory()) {
         // When syncing all skills (SKILLS_TO_SYNC is null), delete skills not in availableSkills
-        // When syncing curated list, only delete skills that were attempted to sync but no longer exist
+        // When syncing curated list, only delete skills that are in the curated list AND not available upstream
         const shouldDelete = (SKILLS_TO_SYNC === null || !Array.isArray(SKILLS_TO_SYNC))
           ? !availableSkills.includes(entry.name)  // Delete if not in upstream
-          : skillsToSync.includes(entry.name) && !syncedSkills.has(entry.name);  // Delete if in curated list but failed to sync
+          : skillsToSync.includes(entry.name) && !availableSkills.includes(entry.name);  // Delete if in curated list but not in upstream
         
         if (shouldDelete) {
           const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
