@@ -51,9 +51,11 @@ def browser_click(args):
                 else:
                     locator = page.get_by_text(args.text)
                     description = f'text="{args.text}"'
-            else:
+            elif args.selector:
                 locator = page.locator(args.selector)
                 description = args.selector
+            else:
+                raise ValueError("Either 'selector' or '--text' must be provided")
 
             locator.click(timeout=ELEMENT_TIMEOUT)
             print(f"Successfully clicked element: {description}")
