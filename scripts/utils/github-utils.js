@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
+import { minimatch } from 'minimatch';
 
 /**
  * Fetch content from GitHub API
@@ -53,6 +54,23 @@ export async function downloadFile(url, destPath, token = null) {
 }
 
 /**
+ * Check if a file path matches any of the provided glob patterns
+ * @param {string} filePath - File path to check
+ * @param {string[]} patterns - Array of glob patterns
+ * @returns {boolean} True if file matches any pattern
+ */
+function matchesGlobPatterns(filePath, patterns) {
+  if (!patterns || patterns.length === 0) {
+    return true;
+  }
+  
+  // Normalize path separators for cross-platform compatibility
+  const normalizedPath = filePath.replace(/\\/g, '/');
+  
+  return patterns.some(pattern => minimatch(normalizedPath, pattern, { dot: true }));
+}
+
+/**
  * Recursively get all files from a GitHub directory
  * @param {string} owner - Repository owner
  * @param {string} repo - Repository name
@@ -60,9 +78,10 @@ export async function downloadFile(url, destPath, token = null) {
  * @param {string} subPath - Subdirectory path (for recursion)
  * @param {string[]} acceptedExtensions - Array of accepted file extensions
  * @param {string} token - GitHub token (optional)
+ * @param {string[]} syncPatterns - Optional glob patterns to filter files
  * @returns {Promise<Array<{path: string, download_url: string}>>}
  */
-export async function getFilesRecursively(owner, repo, remotePath, subPath = '', acceptedExtensions = [], token = null) {
+export async function getFilesRecursively(owner, repo, remotePath, subPath = '', acceptedExtensions = [], token = null, syncPatterns = null) {
   const fullPath = subPath ? path.join(remotePath, subPath) : remotePath;
   const contents = await fetchGitHubContent(owner, repo, fullPath, token);
   
@@ -70,17 +89,25 @@ export async function getFilesRecursively(owner, repo, remotePath, subPath = '',
   
   for (const item of contents) {
     if (item.type === 'file') {
+      const relativePath = subPath ? path.join(subPath, item.name) : item.name;
+      const fullRelativePath = path.join(remotePath, relativePath);
+      
       // Check if file matches accepted extensions (if any specified)
-      if (acceptedExtensions.length === 0 || acceptedExtensions.some(ext => item.name.endsWith(ext))) {
+      const extensionMatch = acceptedExtensions.length === 0 || acceptedExtensions.some(ext => item.name.endsWith(ext));
+      
+      // Check if file matches sync patterns (if any specified)
+      const patternMatch = matchesGlobPatterns(fullRelativePath, syncPatterns);
+      
+      if (extensionMatch && patternMatch) {
         files.push({
-          path: subPath ? path.join(subPath, item.name) : item.name,
+          path: relativePath,
           download_url: item.download_url
         });
       }
     } else if (item.type === 'dir') {
       // Recursively get files from subdirectories
       const newSubPath = subPath ? path.join(subPath, item.name) : item.name;
-      const subFiles = await getFilesRecursively(owner, repo, remotePath, newSubPath, acceptedExtensions, token);
+      const subFiles = await getFilesRecursively(owner, repo, remotePath, newSubPath, acceptedExtensions, token, syncPatterns);
       files.push(...subFiles);
     }
   }

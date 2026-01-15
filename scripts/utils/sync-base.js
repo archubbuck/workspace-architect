@@ -14,6 +14,7 @@ import { getLocalFiles } from './sync-utils.js';
  * @param {string[]} config.acceptedExtensions - Array of accepted file extensions
  * @param {string} config.resourceType - Type of resource being synced (for logging)
  * @param {string} config.token - GitHub token (optional)
+ * @param {string[]} config.syncPatterns - Optional glob patterns to filter files
  */
 export async function syncFromGitHub(config) {
   const {
@@ -23,7 +24,8 @@ export async function syncFromGitHub(config) {
     localDir,
     acceptedExtensions,
     resourceType,
-    token = null
+    token = null,
+    syncPatterns = null
   } = config;
 
   console.log(chalk.blue.bold(`\n=== Syncing ${resourceType} from ${repoOwner}/${repoName} ===\n`));
@@ -50,7 +52,10 @@ export async function syncFromGitHub(config) {
   
   try {
     console.log(chalk.blue(`Fetching ${resourceType} from ${remoteDir}...`));
-    const files = await getFilesRecursively(repoOwner, repoName, remoteDir, '', acceptedExtensions, token);
+    if (syncPatterns && syncPatterns.length > 0) {
+      console.log(chalk.dim(`  Using sync patterns: ${syncPatterns.join(', ')}`));
+    }
+    const files = await getFilesRecursively(repoOwner, repoName, remoteDir, '', acceptedExtensions, token, syncPatterns);
     
     console.log(chalk.blue(`Found ${files.length} ${resourceType} file(s)\n`));
     
