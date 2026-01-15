@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "generatedAt": "2026-01-15T05:23:28.081Z",
+  "generatedAt": "2026-01-15T05:44:26.924Z",
   "assets": {
     "agents": {
       "4.1-Beast": {
@@ -2577,6 +2577,13 @@
       }
     },
     "collections": {
+      ".upstream-sync": {
+        "path": "assets/collections/.upstream-sync.json",
+        "description": "",
+        "title": ".upstream-sync",
+        "type": "collections",
+        "items": []
+      },
       "ai-prompt-engineering": {
         "path": "assets/collections/ai-prompt-engineering.json",
         "description": "Resources for LLM prompts, Copilot instructions, and AI agent development.",
@@ -4066,6 +4073,12 @@
       }
     },
     "skills": {
+      ".upstream-sync": {
+        "path": "assets/skills/.upstream-sync.json",
+        "description": "",
+        "title": "",
+        "type": "skills"
+      },
       "algorithmic-art": {
         "path": "assets/skills/algorithmic-art",
         "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
