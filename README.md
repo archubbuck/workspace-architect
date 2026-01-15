@@ -228,7 +228,6 @@ Create a JSON file in `assets/collections/`:
   - `npm run sync-prompts` - Sync prompts from github/awesome-copilot
   - `npm run sync-collections` - Sync collections from github/awesome-copilot
   - `npm run sync-skills` - Sync skills from anthropics/skills
-  - `npm run fetch-upstream` - (Deprecated) Wrapper to run all awesome-copilot sync scripts
 - `npm run validate-skills` - Validate all synced skills
 
 ### Local Testing

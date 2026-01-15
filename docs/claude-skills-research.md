@@ -285,7 +285,7 @@ tools: ["codebase", "fetch", "githubRepo"]
 ### 5.4 Upstream Sync Integration
 
 **Current System:**
-- `scripts/fetch-upstream-assets.js` syncs from `github/awesome-copilot`
+- Individual sync scripts (`sync-agents.js`, `sync-instructions.js`, `sync-prompts.js`, `sync-collections.js`) sync from `github/awesome-copilot`
 
 **Skills Integration:**
 - Add sync from `anthropics/skills` repository
