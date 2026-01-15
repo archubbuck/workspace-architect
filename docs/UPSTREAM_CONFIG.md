@@ -8,7 +8,7 @@ The `upstream.config.json` file allows you to specify which GitHub repositories 
 
 ## Configuration File
 
-Create an `upstream.config.json` file in the project root directory. If the file doesn't exist, the sync scripts will fall back to their default behavior (syncing all files).
+Create an `upstream.config.json` file in the project root directory. **This file is required** - sync scripts will fail if the file doesn't exist or doesn't contain configuration for the repository being synced.
 
 ### Schema
 
@@ -106,7 +106,7 @@ Sync only documentation files:
 
 ### With Sync Scripts
 
-The sync scripts automatically check for `upstream.config.json` in the project root:
+The sync scripts require `upstream.config.json` in the project root:
 
 ```bash
 npm run sync-collections
@@ -115,13 +115,13 @@ npm run sync-instructions
 npm run sync-prompts
 ```
 
-If the config file exists and contains configuration for the repository being synced, the patterns will be applied. Otherwise, the default behavior is used.
+The config file must exist and contain configuration for the repository being synced. If the config file is missing or doesn't contain the repository configuration, the sync script will fail with an error.
 
 ### Behavior
 
-1. **Config File Exists**: Sync scripts load the config and apply patterns if a matching repository is found
-2. **No Config File**: Scripts use default behavior (sync all files matching accepted extensions)
-3. **No Matching Repo**: Scripts use default behavior for that specific repository
+1. **Config File Exists with Matching Repo**: Sync scripts load the config and apply the specified patterns
+2. **No Config File**: Scripts fail with an error message indicating the config file is required
+3. **No Matching Repo**: Scripts fail with an error indicating no configuration was found for the repository
 
 ### File Deletion
 
@@ -160,6 +160,14 @@ The configuration file is completely optional. All existing sync scripts continu
 5. **Validate Patterns**: Use minimatch documentation to validate complex patterns
 
 ## Troubleshooting
+
+### Config File Not Found
+
+If you see an error like `Upstream config file not found`, create an `upstream.config.json` file in the project root with the appropriate repository configuration.
+
+### Repository Not Configured
+
+If you see an error like `No configuration found for repository: owner/repo`, add the repository to your `upstream.config.json` file with the desired sync patterns.
 
 ### No Files Synced
 

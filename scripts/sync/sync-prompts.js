@@ -14,7 +14,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const LOCAL_DIR = path.join(__dirname, '../../assets/prompts');
 
 async function syncPrompts() {
-  // Load upstream config if available
+  // Load upstream config - required
   const config = await loadUpstreamConfig();
   const repoConfig = findRepoConfig(config, 'github', 'awesome-copilot');
   
@@ -26,7 +26,7 @@ async function syncPrompts() {
     acceptedExtensions: ['.prompt.md', '.md'],
     resourceType: 'prompts',
     token: GITHUB_TOKEN,
-    syncPatterns: repoConfig?.syncPatterns || null
+    syncPatterns: repoConfig.syncPatterns || null
   });
 }
 

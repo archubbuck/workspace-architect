@@ -232,7 +232,7 @@ Create a JSON file in `assets/collections/`:
 
 #### Upstream Configuration
 
-Sync scripts support optional JSON configuration for controlling which files are synced from upstream repositories using glob patterns. Create an `upstream.config.json` file in the project root:
+Sync scripts require a JSON configuration file for controlling which files are synced from upstream repositories using glob patterns. Create an `upstream.config.json` file in the project root:
 
 ```json
 {
@@ -248,6 +248,8 @@ Sync scripts support optional JSON configuration for controlling which files are
   ]
 }
 ```
+
+**Note**: The configuration file is required. Sync scripts will fail if the file doesn't exist or doesn't contain configuration for the repository being synced.
 
 See [Upstream Configuration Guide](docs/UPSTREAM_CONFIG.md) for detailed documentation, examples, and best practices.
 

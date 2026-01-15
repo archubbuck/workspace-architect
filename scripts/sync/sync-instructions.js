@@ -14,7 +14,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const LOCAL_DIR = path.join(__dirname, '../../assets/instructions');
 
 async function syncInstructions() {
-  // Load upstream config if available
+  // Load upstream config - required
   const config = await loadUpstreamConfig();
   const repoConfig = findRepoConfig(config, 'github', 'awesome-copilot');
   
@@ -26,7 +26,7 @@ async function syncInstructions() {
     acceptedExtensions: ['.instructions.md', '.md'],
     resourceType: 'instructions',
     token: GITHUB_TOKEN,
-    syncPatterns: repoConfig?.syncPatterns || null
+    syncPatterns: repoConfig.syncPatterns || null
   });
 }
 

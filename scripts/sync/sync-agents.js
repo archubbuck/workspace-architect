@@ -14,7 +14,7 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const LOCAL_DIR = path.join(__dirname, '../../assets/agents');
 
 async function syncAgents() {
-  // Load upstream config if available
+  // Load upstream config - required
   const config = await loadUpstreamConfig();
   const repoConfig = findRepoConfig(config, 'github', 'awesome-copilot');
   
@@ -26,7 +26,7 @@ async function syncAgents() {
     acceptedExtensions: ['.agent.md', '.md'],
     resourceType: 'agents',
     token: GITHUB_TOKEN,
-    syncPatterns: repoConfig?.syncPatterns || null
+    syncPatterns: repoConfig.syncPatterns || null
   });
 }
 
