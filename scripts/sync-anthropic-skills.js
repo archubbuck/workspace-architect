@@ -213,24 +213,28 @@ async function syncSkills() {
   // Delete local skills that no longer exist upstream, but only if they were previously synced
   console.log(chalk.blue('\nChecking for deleted skills...'));
   try {
-    const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
-    
-    for (const entry of localSkillDirs) {
-      if (entry.isDirectory()) {
-        // Only delete if:
-        // 1. The skill was previously synced from upstream (tracked in metadata)
-        // 2. AND it no longer exists in the upstream repository
-        const wasSynced = previouslySynced.has(entry.name);
-        const stillExists = availableSkills.includes(entry.name);
-        
-        if (wasSynced && !stillExists) {
-          const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
-          try {
-            await fs.remove(skillPath);
-            console.log(chalk.yellow(`  Deleted skill: ${entry.name}`));
-            deleteCount++;
-          } catch (error) {
-            console.error(chalk.red(`  ✗ Failed to delete skill ${entry.name}:`), error.message);
+    // Check if directory exists before reading
+    if (await fs.pathExists(LOCAL_SKILLS_DIR)) {
+      const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+      
+      for (const entry of localSkillDirs) {
+        // Skip metadata file and only process directories
+        if (entry.isDirectory() && entry.name !== '.upstream-sync.json') {
+          // Only delete if:
+          // 1. The skill was previously synced from upstream (tracked in metadata)
+          // 2. AND it no longer exists in the upstream repository
+          const wasSynced = previouslySynced.has(entry.name);
+          const stillExists = availableSkills.includes(entry.name);
+          
+          if (wasSynced && !stillExists) {
+            const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
+            try {
+              await fs.remove(skillPath);
+              console.log(chalk.yellow(`  Deleted skill: ${entry.name}`));
+              deleteCount++;
+            } catch (error) {
+              console.error(chalk.red(`  ✗ Failed to delete skill ${entry.name}:`), error.message);
+            }
           }
         }
       }
@@ -240,11 +244,15 @@ async function syncSkills() {
   }
   
   // Save metadata of currently synced skills
-  await fs.writeJson(metadataPath, {
-    lastSync: new Date().toISOString(),
-    source: `${REPO_OWNER}/${REPO_NAME}/skills`,
-    skills: Array.from(syncedSkills)
-  }, { spaces: 2 });
+  try {
+    await fs.writeJson(metadataPath, {
+      lastSync: new Date().toISOString(),
+      source: `${REPO_OWNER}/${REPO_NAME}/skills`,
+      skills: Array.from(syncedSkills)
+    }, { spaces: 2 });
+  } catch (error) {
+    console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
+  }
   
   console.log(chalk.blue.bold('\n=== Sync Complete ==='));
   console.log(chalk.green(`✓ Successfully synced: ${successCount} skills`));
