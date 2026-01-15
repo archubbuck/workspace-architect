@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "generatedAt": "2026-01-10T00:13:22.049Z",
+  "generatedAt": "2026-01-15T01:32:06.865Z",
   "assets": {
     "agents": {
       "4.1-Beast": {
@@ -91,6 +91,18 @@
         "path": "assets/agents/atlassian-requirements-to-jira.agent.md",
         "description": "Transform requirements documents into structured Jira epics and user stories with intelligent duplicate detection, change management, and user-approved creation workflow.",
         "title": "atlassian-requirements-to-jira",
+        "type": "agents"
+      },
+      "azure-iac-exporter": {
+        "path": "assets/agents/azure-iac-exporter.agent.md",
+        "description": "Export existing Azure resources to Infrastructure as Code templates via Azure Resource Graph analysis, Azure Resource Manager API calls, and azure-iac-generator integration. Use this skill when the user asks to export, convert, migrate, or extract existing Azure resources to IaC templates (Bicep, ARM Templates, Terraform, Pulumi).",
+        "title": "azure-iac-exporter",
+        "type": "agents"
+      },
+      "azure-iac-generator": {
+        "path": "assets/agents/azure-iac-generator.agent.md",
+        "description": "Central hub for generating Infrastructure as Code (Bicep, ARM, Terraform, Pulumi) with format-specific validation and best practices. Use this skill when the user asks to generate, create, write, or build infrastructure code, deployment code, or IaC templates in any format (Bicep, ARM Templates, Terraform, Pulumi).",
+        "title": "azure-iac-generator",
         "type": "agents"
       },
       "azure-logic-apps-expert": {
@@ -211,6 +223,12 @@
         "path": "assets/agents/demonstrate-understanding.agent.md",
         "description": "Validate user understanding of code, design patterns, and implementation details through guided questioning.",
         "title": "demonstrate-understanding",
+        "type": "agents"
+      },
+      "devils-advocate": {
+        "path": "assets/agents/devils-advocate.agent.md",
+        "description": "I play the devil's advocate to challenge and stress-test your ideas by finding flaws, risks, and edge cases",
+        "title": "devils-advocate",
         "type": "agents"
       },
       "devops-expert": {
@@ -809,6 +827,12 @@
         "title": "a11y",
         "type": "instructions"
       },
+      "agent-skills": {
+        "path": "assets/instructions/agent-skills.instructions.md",
+        "description": "Guidelines for creating high-quality Agent Skills for GitHub Copilot",
+        "title": "agent-skills",
+        "type": "instructions"
+      },
       "agents": {
         "path": "assets/instructions/agents.instructions.md",
         "description": "Guidelines for creating custom agent files for GitHub Copilot",
@@ -1163,6 +1187,12 @@
         "title": "go",
         "type": "instructions"
       },
+      "html-css-style-color-guide": {
+        "path": "assets/instructions/html-css-style-color-guide.instructions.md",
+        "description": "Color usage guidelines and styling rules for HTML elements to ensure accessible, professional designs.",
+        "title": "html-css-style-color-guide",
+        "type": "instructions"
+      },
       "instructions": {
         "path": "assets/instructions/instructions.instructions.md",
         "description": "Guidelines for creating high-quality custom instruction files for GitHub Copilot",
@@ -1297,7 +1327,7 @@
       },
       "nextjs": {
         "path": "assets/instructions/nextjs.instructions.md",
-        "description": "",
+        "description": "Best practices for building Next.js (App Router) apps with modern caching, tooling, and server/client boundaries (aligned with Next.js 16.1.1).",
         "title": "nextjs",
         "type": "instructions"
       },
@@ -2433,7 +2463,7 @@
       },
       "suggest-awesome-github-copilot-agents": {
         "path": "assets/prompts/suggest-awesome-github-copilot-agents.prompt.md",
-        "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository.",
+        "description": "Suggest relevant GitHub Copilot Custom Agents files from the awesome-copilot repository based on current repository context and chat history, avoiding duplicates with existing custom agents in this repository, and identifying outdated agents that need updates.",
         "title": "suggest-awesome-github-copilot-agents",
         "type": "prompts"
       },
