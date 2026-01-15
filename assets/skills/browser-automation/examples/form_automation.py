@@ -25,31 +25,31 @@ def main():
     
     # Fill in the name field
     run_command([
-        "python", "scripts/browser_tools.py", "browser_type",
+        "python", "../scripts/browser_tools.py", "browser_type",
         form_url, "#name", "John Doe"
     ])
     
     # Fill in the email field
     run_command([
-        "python", "scripts/browser_tools.py", "browser_type",
+        "python", "../scripts/browser_tools.py", "browser_type",
         form_url, "#email", "john.doe@example.com"
     ])
     
     # Fill in the message field
     run_command([
-        "python", "scripts/browser_tools.py", "browser_type",
+        "python", "../scripts/browser_tools.py", "browser_type",
         form_url, "#message", "This is a test message from automation"
     ])
     
     # Take a screenshot before submission
     run_command([
-        "python", "scripts/browser_tools.py", "browser_screenshot",
+        "python", "../scripts/browser_tools.py", "browser_screenshot",
         form_url, "/tmp/form-filled.png"
     ])
     
     # Click the submit button
     run_command([
-        "python", "scripts/browser_tools.py", "browser_click",
+        "python", "../scripts/browser_tools.py", "browser_click",
         form_url, "#submit"
     ])
     

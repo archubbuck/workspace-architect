@@ -24,35 +24,35 @@ def main():
     
     print("=== Extracting full page text ===")
     full_text = run_command([
-        "python", "scripts/browser_tools.py", "browser_get_content",
+        "python", "../scripts/browser_tools.py", "browser_get_content",
         page_url
     ])
     print(full_text[:200] + "...")  # Print first 200 characters
     
     print("\n=== Extracting article content ===")
     article_text = run_command([
-        "python", "scripts/browser_tools.py", "browser_get_content",
+        "python", "../scripts/browser_tools.py", "browser_get_content",
         page_url, "--selector", "article"
     ])
     print(article_text[:200] + "...")
     
     print("\n=== Extracting article HTML ===")
     article_html = run_command([
-        "python", "scripts/browser_tools.py", "browser_get_content",
+        "python", "../scripts/browser_tools.py", "browser_get_content",
         page_url, "--selector", "article", "--html"
     ])
     print(article_html[:200] + "...")
     
     print("\n=== Taking screenshot for reference ===")
     run_command([
-        "python", "scripts/browser_tools.py", "browser_screenshot",
+        "python", "../scripts/browser_tools.py", "browser_screenshot",
         page_url, "/tmp/article-page.png", "--full_page"
     ])
     print("Screenshot saved to /tmp/article-page.png")
     
     print("\n=== Getting metadata via JavaScript ===")
     title = run_command([
-        "python", "scripts/browser_tools.py", "browser_evaluate",
+        "python", "../scripts/browser_tools.py", "browser_evaluate",
         page_url, "document.title"
     ])
     print(f"Page title: {title.strip()}")

@@ -76,25 +76,25 @@ You can also run browser automation commands individually:
 
 ```bash
 # Navigate to a page
-python scripts/browser_tools.py browser_navigate https://example.com
+python ../scripts/browser_tools.py browser_navigate https://example.com
 
 # Click an element
-python scripts/browser_tools.py browser_click https://example.com "#button"
+python ../scripts/browser_tools.py browser_click https://example.com "#button"
 
 # Type into a field
-python scripts/browser_tools.py browser_type https://example.com "#input" "text"
+python ../scripts/browser_tools.py browser_type https://example.com "#input" "text"
 
 # Take a screenshot
-python scripts/browser_tools.py browser_screenshot https://example.com /tmp/page.png
+python ../scripts/browser_tools.py browser_screenshot https://example.com /tmp/page.png
 
 # Extract content
-python scripts/browser_tools.py browser_get_content https://example.com
+python ../scripts/browser_tools.py browser_get_content https://example.com
 
 # Hover over element
-python scripts/browser_tools.py browser_hover https://example.com ".menu"
+python ../scripts/browser_tools.py browser_hover https://example.com ".menu"
 
 # Execute JavaScript
-python scripts/browser_tools.py browser_evaluate https://example.com "document.title"
+python ../scripts/browser_tools.py browser_evaluate https://example.com "document.title"
 ```
 
 ## Best Practices
@@ -119,5 +119,5 @@ If examples don't work:
 ## More Information
 
 - Main skill documentation: `../SKILL.md`
-- Browser tools source: `scripts/browser_tools.py`
+- Browser tools source: `../scripts/browser_tools.py`
 - Playwright docs: https://playwright.dev/python/

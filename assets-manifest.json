@@ -1,6 +1,6 @@
 {
   "version": "2.0.0",
-  "generatedAt": "2026-01-15T05:06:05.328Z",
+  "generatedAt": "2026-01-15T05:23:28.081Z",
   "assets": {
     "agents": {
       "4.1-Beast": {
@@ -4105,7 +4105,8 @@
           "examples/README.md",
           "examples/content_extraction.py",
           "examples/form_automation.py",
-          "examples/interactive_testing.py"
+          "examples/interactive_testing.py",
+          "scripts/browser_tools.py"
         ],
         "metadata": {
           "license": "ISC"

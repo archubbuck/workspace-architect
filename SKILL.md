@@ -19,7 +19,7 @@ playwright install chromium
 
 ## Available Tools
 
-All tools are implemented as subcommands in `scripts/browser_tools.py`. Run any command with `--help` to see detailed usage.
+All tools are implemented as subcommands in `assets/skills/browser-automation/scripts/browser_tools.py`. Run any command with `--help` to see detailed usage.
 
 ### browser_navigate
 
@@ -27,12 +27,12 @@ Navigate to a URL and wait for the page to load.
 
 **Usage:**
 ```bash
-python scripts/browser_tools.py browser_navigate <url>
+python assets/skills/browser-automation/scripts/browser_tools.py browser_navigate <url>
 ```
 
 **Example:**
 ```bash
-python scripts/browser_tools.py browser_navigate https://example.com
+python assets/skills/browser-automation/scripts/browser_tools.py browser_navigate https://example.com
 ```
 
 ### browser_click
@@ -41,7 +41,7 @@ Click an element on a page using a CSS selector or text match.
 
 **Usage:**
 ```bash
-python scripts/browser_tools.py browser_click <url> <selector> [--text TEXT]
+python assets/skills/browser-automation/scripts/browser_tools.py browser_click <url> <selector> [--text TEXT]
 ```
 
 **Parameters:**
@@ -52,10 +52,10 @@ python scripts/browser_tools.py browser_click <url> <selector> [--text TEXT]
 **Examples:**
 ```bash
 # Click by selector
-python scripts/browser_tools.py browser_click https://example.com "#submit-button"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_click https://example.com "#submit-button"
 
 # Click by text
-python scripts/browser_tools.py browser_click https://example.com "button" --text "Submit"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_click https://example.com "button" --text "Submit"
 ```
 
 ### browser_type
@@ -64,7 +64,7 @@ Type text into an input field, with optional form submission.
 
 **Usage:**
 ```bash
-python scripts/browser_tools.py browser_type <url> <selector> <text> [--submit]
+python assets/skills/browser-automation/scripts/browser_tools.py browser_type <url> <selector> <text> [--submit]
 ```
 
 **Parameters:**
@@ -76,10 +76,10 @@ python scripts/browser_tools.py browser_type <url> <selector> <text> [--submit]
 **Examples:**
 ```bash
 # Type into field
-python scripts/browser_tools.py browser_type https://example.com "#email" "user@example.com"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_type https://example.com "#email" "user@example.com"
 
 # Type and submit
-python scripts/browser_tools.py browser_type https://example.com "#search" "query" --submit
+python assets/skills/browser-automation/scripts/browser_tools.py browser_type https://example.com "#search" "query" --submit
 ```
 
 ### browser_screenshot
@@ -88,7 +88,7 @@ Capture a screenshot of the current page.
 
 **Usage:**
 ```bash
-python scripts/browser_tools.py browser_screenshot <url> <path> [--full_page]
+python assets/skills/browser-automation/scripts/browser_tools.py browser_screenshot <url> <path> [--full_page]
 ```
 
 **Parameters:**
@@ -99,10 +99,10 @@ python scripts/browser_tools.py browser_screenshot <url> <path> [--full_page]
 **Examples:**
 ```bash
 # Viewport screenshot
-python scripts/browser_tools.py browser_screenshot https://example.com /tmp/screenshot.png
+python assets/skills/browser-automation/scripts/browser_tools.py browser_screenshot https://example.com /tmp/screenshot.png
 
 # Full page screenshot
-python scripts/browser_tools.py browser_screenshot https://example.com /tmp/full.png --full_page
+python assets/skills/browser-automation/scripts/browser_tools.py browser_screenshot https://example.com /tmp/full.png --full_page
 ```
 
 ### browser_get_content
@@ -111,7 +111,7 @@ Extract text or HTML content from the page or a specific element.
 
 **Usage:**
 ```bash
-python scripts/browser_tools.py browser_get_content <url> [--selector SELECTOR] [--html]
+python assets/skills/browser-automation/scripts/browser_tools.py browser_get_content <url> [--selector SELECTOR] [--html]
 ```
 
 **Parameters:**
@@ -122,13 +122,13 @@ python scripts/browser_tools.py browser_get_content <url> [--selector SELECTOR] 
 **Examples:**
 ```bash
 # Get all page text
-python scripts/browser_tools.py browser_get_content https://example.com
+python assets/skills/browser-automation/scripts/browser_tools.py browser_get_content https://example.com
 
 # Get specific element text
-python scripts/browser_tools.py browser_get_content https://example.com --selector "#main-content"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_get_content https://example.com --selector "#main-content"
 
 # Get HTML
-python scripts/browser_tools.py browser_get_content https://example.com --selector "article" --html
+python assets/skills/browser-automation/scripts/browser_tools.py browser_get_content https://example.com --selector "article" --html
 ```
 
 ### browser_hover
@@ -137,7 +137,7 @@ Hover over an element to trigger hover states or tooltips.
 
 **Usage:**
 ```bash
-python scripts/browser_tools.py browser_hover <url> <selector>
+python assets/skills/browser-automation/scripts/browser_tools.py browser_hover <url> <selector>
 ```
 
 **Parameters:**
@@ -146,7 +146,7 @@ python scripts/browser_tools.py browser_hover <url> <selector>
 
 **Example:**
 ```bash
-python scripts/browser_tools.py browser_hover https://example.com ".menu-item"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_hover https://example.com ".menu-item"
 ```
 
 ### browser_evaluate
@@ -155,7 +155,7 @@ Execute custom JavaScript code in the browser context.
 
 **Usage:**
 ```bash
-python scripts/browser_tools.py browser_evaluate <url> <script>
+python assets/skills/browser-automation/scripts/browser_tools.py browser_evaluate <url> <script>
 ```
 
 **Parameters:**
@@ -165,13 +165,13 @@ python scripts/browser_tools.py browser_evaluate <url> <script>
 **Examples:**
 ```bash
 # Get page title
-python scripts/browser_tools.py browser_evaluate https://example.com "document.title"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_evaluate https://example.com "document.title"
 
 # Get element count
-python scripts/browser_tools.py browser_evaluate https://example.com "document.querySelectorAll('button').length"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_evaluate https://example.com "document.querySelectorAll('button').length"
 
 # Manipulate DOM
-python scripts/browser_tools.py browser_evaluate https://example.com "document.body.style.backgroundColor = 'red'"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_evaluate https://example.com "document.body.style.backgroundColor = 'red'"
 ```
 
 ## Best Practices
@@ -187,9 +187,9 @@ python scripts/browser_tools.py browser_evaluate https://example.com "document.b
 ### Form Automation
 ```bash
 # Fill out a multi-field form
-python scripts/browser_tools.py browser_type https://example.com "#name" "John Doe"
-python scripts/browser_tools.py browser_type https://example.com "#email" "john@example.com"
-python scripts/browser_tools.py browser_click https://example.com "#submit"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_type https://example.com "#name" "John Doe"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_type https://example.com "#email" "john@example.com"
+python assets/skills/browser-automation/scripts/browser_tools.py browser_click https://example.com "#submit"
 ```
 
 ### Visual Testing
@@ -199,17 +199,17 @@ python scripts/browser_tools.py browser_click https://example.com "#submit"
 # For stateful testing, combine actions in a custom Playwright script.
 
 # Capture initial state
-python scripts/browser_tools.py browser_screenshot https://example.com /tmp/before.png
+python assets/skills/browser-automation/scripts/browser_tools.py browser_screenshot https://example.com /tmp/before.png
 
 # Compare different pages or states (each is independent)
-python scripts/browser_tools.py browser_screenshot https://example.com/page1 /tmp/page1.png
-python scripts/browser_tools.py browser_screenshot https://example.com/page2 /tmp/page2.png
+python assets/skills/browser-automation/scripts/browser_tools.py browser_screenshot https://example.com/page1 /tmp/page1.png
+python assets/skills/browser-automation/scripts/browser_tools.py browser_screenshot https://example.com/page2 /tmp/page2.png
 ```
 
 ### Content Extraction
 ```bash
 # Extract and process page content
-python scripts/browser_tools.py browser_get_content https://example.com --selector "article" > article.txt
+python assets/skills/browser-automation/scripts/browser_tools.py browser_get_content https://example.com --selector "article" > article.txt
 ```
 
 ## Architecture
