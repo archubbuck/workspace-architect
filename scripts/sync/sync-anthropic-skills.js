@@ -238,7 +238,7 @@ async function syncSkills() {
       // (and thus not to `allSyncedSkills` or `finalSkills`), so `finalSkills` may
       // differ from `previousFiles` even though some skills failed to sync. This is
       // intentional: the script still recomputes metadata here, but because it exits
-      // with a non-zero status when `failCount > 0` (line 244), callers/CI should
+      // with a non-zero status when `failCount > 0` (line 281), callers/CI should
       // treat such runs as failures and avoid committing the updated metadata.
       const filesChanged = finalSkills.length !== previousFiles.length ||
         finalSkills.some((file, index) => file !== previousFiles[index]);
