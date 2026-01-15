@@ -2,6 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
+import { getLocalFiles } from './sync-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -110,32 +111,6 @@ async function getFilesRecursively(remotePath, subPath = '') {
   return files;
 }
 
-async function getLocalFiles(directory, baseDir = directory) {
-  // Check if directory exists first
-  if (!await fs.pathExists(directory)) {
-    return [];
-  }
-  
-  const entries = await fs.readdir(directory, { withFileTypes: true });
-  let files = [];
-  
-  for (const entry of entries) {
-    const fullPath = path.join(directory, entry.name);
-    // Skip metadata file
-    if (entry.name === '.upstream-sync.json') {
-      continue;
-    }
-    if (entry.isDirectory()) {
-      const subFiles = await getLocalFiles(fullPath, baseDir);
-      files.push(...subFiles);
-    } else if (entry.isFile() && ACCEPTED_EXTENSIONS.some(ext => entry.name.endsWith(ext))) {
-      files.push(path.relative(baseDir, fullPath));
-    }
-  }
-  
-  return files;
-}
-
 async function syncAgents() {
   console.log(chalk.blue.bold(`\n=== Syncing Agents from ${REPO_OWNER}/${REPO_NAME} ===\n`));
   
@@ -181,7 +156,7 @@ async function syncAgents() {
     
     // Delete local files that no longer exist upstream, but only if they were previously synced
     console.log(chalk.blue(`\nChecking for deleted files...`));
-    const localFiles = await getLocalFiles(LOCAL_DIR);
+    const localFiles = await getLocalFiles(LOCAL_DIR, ACCEPTED_EXTENSIONS);
     
     for (const localFile of localFiles) {
       if (!remoteFilePaths.has(localFile) && previouslySynced.has(localFile)) {

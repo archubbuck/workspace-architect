@@ -210,23 +210,30 @@ async function syncSkills() {
     }
   }
   
-  // Delete local skills that no longer exist upstream, but only if they were previously synced
+  // Delete local skills that are no longer relevant, but only if they were previously synced:
+  // 1. If syncing all skills, delete ones that no longer exist upstream.
+  // 2. If in curated mode, also delete ones that are not in the current curated list.
   console.log(chalk.blue('\nChecking for deleted skills...'));
   try {
     // Check if directory exists before reading
     if (await fs.pathExists(LOCAL_SKILLS_DIR)) {
       const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
       
+      // Determine if we're in curated mode by comparing skills to sync vs available skills
+      const isCuratedMode = (SKILLS_TO_SYNC !== null && Array.isArray(SKILLS_TO_SYNC));
+      
       for (const entry of localSkillDirs) {
         // Skip metadata file and only process directories
         if (entry.isDirectory() && entry.name !== '.upstream-sync.json') {
           // Only delete if:
           // 1. The skill was previously synced from upstream (tracked in metadata)
-          // 2. AND it no longer exists in the upstream repository
+          // 2a. It no longer exists in the upstream repository, OR
+          // 2b. We're in curated mode and it's not in the current curated list
           const wasSynced = previouslySynced.has(entry.name);
-          const stillExists = availableSkills.includes(entry.name);
+          const existsUpstream = availableSkills.includes(entry.name);
+          const inCuratedList = skillsToSync.includes(entry.name);
           
-          if (wasSynced && !stillExists) {
+          if (wasSynced && (!existsUpstream || (isCuratedMode && !inCuratedList))) {
             const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
             try {
               await fs.remove(skillPath);
@@ -243,12 +250,27 @@ async function syncSkills() {
     console.error(chalk.red('Error checking for deleted skills:'), error.message);
   }
   
-  // Save metadata of currently synced skills
+  // Save metadata of currently synced skills - accumulate with previous metadata
   try {
+    // Start with previously synced skills and add newly synced ones
+    const allSyncedSkills = new Set(previouslySynced);
+    syncedSkills.forEach(skill => allSyncedSkills.add(skill));
+    
+    // Remove skills that were deleted in this run
+    const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+    const currentSkills = new Set(
+      localSkillDirs
+        .filter(entry => entry.isDirectory() && entry.name !== '.upstream-sync.json')
+        .map(entry => entry.name)
+    );
+    
+    // Only keep skills in metadata that still exist locally
+    const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill));
+    
     await fs.writeJson(metadataPath, {
       lastSync: new Date().toISOString(),
       source: `${REPO_OWNER}/${REPO_NAME}/skills`,
-      files: Array.from(syncedSkills)
+      files: finalSkills
     }, { spaces: 2 });
   } catch (error) {
     console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
