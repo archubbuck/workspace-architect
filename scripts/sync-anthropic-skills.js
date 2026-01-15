@@ -214,13 +214,15 @@ async function syncSkills() {
   // 1. If syncing all skills, delete ones that no longer exist upstream.
   // 2. If in curated mode, also delete ones that are not in the current curated list.
   console.log(chalk.blue('\nChecking for deleted skills...'));
+  
+  // Determine if we're in curated mode
+  const isCuratedMode = (SKILLS_TO_SYNC !== null && Array.isArray(SKILLS_TO_SYNC));
+  
+  let localSkillDirs = [];
   try {
     // Check if directory exists before reading
     if (await fs.pathExists(LOCAL_SKILLS_DIR)) {
-      const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
-      
-      // Determine if we're in curated mode by comparing skills to sync vs available skills
-      const isCuratedMode = (SKILLS_TO_SYNC !== null && Array.isArray(SKILLS_TO_SYNC));
+      localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
       
       for (const entry of localSkillDirs) {
         // Skip metadata file and only process directories
@@ -256,8 +258,11 @@ async function syncSkills() {
     const allSyncedSkills = new Set(previouslySynced);
     syncedSkills.forEach(skill => allSyncedSkills.add(skill));
     
-    // Remove skills that were deleted in this run
-    const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+    // Reuse localSkillDirs if available, otherwise read directory
+    if (localSkillDirs.length === 0 && await fs.pathExists(LOCAL_SKILLS_DIR)) {
+      localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+    }
+    
     const currentSkills = new Set(
       localSkillDirs
         .filter(entry => entry.isDirectory() && entry.name !== '.upstream-sync.json')
