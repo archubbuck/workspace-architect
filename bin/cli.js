@@ -61,6 +61,15 @@ function normalizeCollectionItems(items) {
 function convertYamlItemsToFlat(items) {
   if (!Array.isArray(items)) return [];
   
+  // Mapping of singular to plural forms for asset types
+  const pluralMap = {
+    'agent': 'agents',
+    'instruction': 'instructions',
+    'prompt': 'prompts',
+    'skill': 'skills',
+    'collection': 'collections'
+  };
+  
   const flatItems = [];
   for (const item of items) {
     if (!item.path || !item.kind) continue;
@@ -71,7 +80,7 @@ function convertYamlItemsToFlat(items) {
     if (pathParts.length < 2) continue;
     
     const fileName = pathParts[pathParts.length - 1];
-    const type = item.kind + 's'; // Convert "agent" to "agents", "prompt" to "prompts", etc.
+    const type = pluralMap[item.kind] || item.kind + 's'; // Use mapping or fallback to simple pluralization
     
     // Extract name by removing extension
     let name = fileName
@@ -206,16 +215,22 @@ async function listAssets(type) {
         // Ignore errors reading metadata
       }
 
-      const name = type === 'skills' && stat.isDirectory() ? file : 
-        (type === 'collections' ? 
-          file.replace('.collection.yml', '').replace('.collection.yaml', '').replace('.json', '').replace('.yml', '').replace('.yaml', '') : 
-          (type === 'instructions' ?
-            file.replace('.instructions.md', '') :
-            (type === 'prompts' ?
-              file.replace('.prompt.md', '') :
-              (type === 'agents' ?
-                file.replace('.agent.md', '') :
-                path.parse(file).name))));
+      // Extract clean name without extensions
+      let name;
+      if (type === 'skills' && stat.isDirectory()) {
+        name = file;
+      } else if (type === 'collections') {
+        name = file.replace(/\.(collection\.)?(yml|yaml|json)$/, '');
+      } else if (type === 'instructions') {
+        name = file.replace('.instructions.md', '');
+      } else if (type === 'prompts') {
+        name = file.replace('.prompt.md', '');
+      } else if (type === 'agents') {
+        name = file.replace('.agent.md', '');
+      } else {
+        name = path.parse(file).name;
+      }
+      
       console.log(`  - ${name}${description ? ` - ${description}` : ''}`);
     }
   } else {

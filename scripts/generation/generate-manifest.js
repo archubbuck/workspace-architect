@@ -56,6 +56,15 @@ function normalizeCollectionItems(items) {
 function convertYamlItemsToFlat(items) {
   if (!Array.isArray(items)) return [];
   
+  // Mapping of singular to plural forms for asset types
+  const pluralMap = {
+    'agent': 'agents',
+    'instruction': 'instructions',
+    'prompt': 'prompts',
+    'skill': 'skills',
+    'collection': 'collections'
+  };
+  
   const flatItems = [];
   for (const item of items) {
     if (!item.path || !item.kind) continue;
@@ -66,7 +75,7 @@ function convertYamlItemsToFlat(items) {
     if (pathParts.length < 2) continue;
     
     const fileName = pathParts[pathParts.length - 1];
-    const type = item.kind + 's'; // Convert "agent" to "agents", "prompt" to "prompts", etc.
+    const type = pluralMap[item.kind] || item.kind + 's'; // Use mapping or fallback to simple pluralization
     
     // Extract name by removing extension
     let name = fileName
@@ -168,12 +177,7 @@ async function generateManifest() {
         id = file.replace('.prompt.md', '');
       } else if (type === 'collections') {
         // Handle both .json and .yml/.yaml files, plus legacy .collection.yml/.yaml
-        id = file
-          .replace('.collection.yml', '')
-          .replace('.collection.yaml', '')
-          .replace('.json', '')
-          .replace('.yml', '')
-          .replace('.yaml', '');
+        id = file.replace(/\.(collection\.)?(yml|yaml|json)$/, '');
       } else {
         id = path.parse(file).name;
       }
