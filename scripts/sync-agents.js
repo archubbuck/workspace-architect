@@ -111,6 +111,11 @@ async function getFilesRecursively(remotePath, subPath = '') {
 }
 
 async function getLocalFiles(directory, baseDir = directory) {
+  // Check if directory exists first
+  if (!await fs.pathExists(directory)) {
+    return [];
+  }
+  
   const entries = await fs.readdir(directory, { withFileTypes: true });
   let files = [];
   
