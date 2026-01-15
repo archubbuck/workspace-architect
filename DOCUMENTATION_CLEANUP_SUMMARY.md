@@ -30,9 +30,24 @@ The following strategic recommendation documents were moved from the root to the
 
 **Rationale:** These files contain detailed recommendations and strategies for improving project visibility and adoption. While valuable, they are internal planning documents that fit better in the `docs/` directory alongside other project documentation.
 
-### 3. Updated References
+### 3. Files Removed (Temporary Implementation Documentation)
+
+**Date:** January 15, 2026
+
+The following temporary implementation and research documents were removed from the `docs/` directory:
+
+- **docs/README.md** - Summary document pointing to temporary implementation plans
+- **docs/claude-skills-implementation-plan.md** - Detailed implementation plan for Claude Skills (completed)
+- **docs/claude-skills-research.md** - Research findings for Claude Skills integration (completed)
+- **docs/collection-format-migration.md** - Migration guide for collection format changes (completed)
+
+**Rationale:** These documents were created for research and planning purposes during the implementation of specific features. Now that these features have been implemented and deployed, these files serve as historical artifacts rather than ongoing documentation. Keeping them creates confusion about what documentation is current and relevant. The essential information from these documents has been incorporated into the permanent documentation (skills-guide.md, skills-vs-agents.md, manifest-structure.md).
+
+### 4. Updated References
 
 - Updated internal reference in `docs/discoverability-recommendations.md` to point to the new location of `github-topics-recommendations.md`
+- Removed references to deleted implementation/research documents in `docs/skills-guide.md`
+- Removed references to deleted implementation/research documents in `docs/skills-vs-agents.md`
 
 ## Final Structure
 
@@ -48,18 +63,14 @@ The workspace root now contains only the core, essential documentation files:
 └── ROADMAP.md             # Future development plans
 ```
 
-### docs/ Directory (10 Files)
+### docs/ Directory (6 Files)
 
 The `docs/` directory contains detailed technical and planning documentation:
 
 ```
 docs/
-├── README.md                                # Documentation index
-├── claude-skills-implementation-plan.md     # Skills feature implementation plan
-├── claude-skills-research.md                # Skills research and analysis
-├── collection-format-migration.md           # Collection format migration guide
-├── discoverability-recommendations.md       # SEO and marketing strategies (relocated)
-├── github-topics-recommendations.md         # GitHub topics to improve discoverability (relocated)
+├── discoverability-recommendations.md       # SEO and marketing strategies
+├── github-topics-recommendations.md         # GitHub topics to improve discoverability
 ├── manifest-structure.md                    # Asset manifest documentation
 ├── release-workflows.md                     # Release and deployment workflows
 ├── skills-guide.md                          # User guide for Skills
@@ -94,14 +105,22 @@ docs/
 
 ## Statistics
 
+### Initial Cleanup (v2.0.0 deployment docs)
 - **Files Removed:** 4 obsolete deployment documentation files (~547 lines)
 - **Files Relocated:** 2 strategic recommendation files
 - **Root MD Files:** Reduced from 11 to 5 (54.5% reduction)
 - **Total MD Files:** Maintained at 15 files (5 in root + 10 in docs/)
 
+### Docs Directory Cleanup (temporary implementation docs)
+- **Files Removed:** 4 temporary implementation/research files (~1,200 lines)
+- **Root MD Files:** Unchanged at 5 files
+- **Docs MD Files:** Reduced from 10 to 6 files (40% reduction)
+- **Total MD Files:** Reduced from 15 to 11 files (5 in root + 6 in docs/)
+
 ## Commit History
 
 - **Commit:** f1c3603 - "Clean up obsolete v2.0.0 deployment files and reorganize recommendation docs"
+- **Current:** - "Remove temporary implementation and research documentation from docs/"
 
 ## Next Steps
 
