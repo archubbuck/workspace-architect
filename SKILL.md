@@ -194,10 +194,16 @@ python scripts/browser_tools.py browser_click https://example.com "#submit"
 
 ### Visual Testing
 ```bash
-# Capture before and after screenshots
+# Note: Each command runs in a separate browser instance (stateless).
+# The after screenshot won't show the toggled state from the click command.
+# For stateful testing, combine actions in a custom Playwright script.
+
+# Capture initial state
 python scripts/browser_tools.py browser_screenshot https://example.com /tmp/before.png
-python scripts/browser_tools.py browser_click https://example.com "#toggle"
-python scripts/browser_tools.py browser_screenshot https://example.com /tmp/after.png
+
+# Compare different pages or states (each is independent)
+python scripts/browser_tools.py browser_screenshot https://example.com/page1 /tmp/page1.png
+python scripts/browser_tools.py browser_screenshot https://example.com/page2 /tmp/page2.png
 ```
 
 ### Content Extraction
