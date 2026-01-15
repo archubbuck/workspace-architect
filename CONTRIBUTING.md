@@ -328,8 +328,11 @@ npm run sync-skills -- --dry-run
 
 The dry-run mode will:
 - ✅ Fetch remote file listings from GitHub
-- ✅ Show which files would be downloaded
-- ✅ Show which files would be deleted
+- ✅ Compare remote and local files to detect changes
+- ✅ Show which files would be created (new files)
+- ✅ Show which files would be updated (changed content)
+- ✅ Show which files would be deleted (removed from upstream)
+- ✅ Report "No changes needed" if everything is up to date
 - ✅ Log all simulated actions
 - ❌ Not download or write any files
 - ❌ Not delete any local files
