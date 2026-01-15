@@ -2,7 +2,13 @@
   "upstreamRepos": [
     {
       "repo": "github/awesome-copilot",
-      "syncPatterns": ["agents/**/*.md", "collections/**/*.yml", "collections/**/*.yaml"]
+      "syncPatterns": [
+        "agents/**/*.md",
+        "collections/**/*.yml",
+        "collections/**/*.yaml",
+        "instructions/**/*.md",
+        "prompts/**/*.md"
+      ]
     },
     {
       "repo": "anthropics/skills",
