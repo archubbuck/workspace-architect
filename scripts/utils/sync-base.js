@@ -34,10 +34,11 @@ export async function syncFromGitHub(config) {
   // Load previously synced files metadata
   const metadataPath = path.join(localDir, '.upstream-sync.json');
   let previouslySynced = new Set();
+  let previousMetadata = null;
   if (await fs.pathExists(metadataPath)) {
     try {
-      const metadata = await fs.readJson(metadataPath);
-      previouslySynced = new Set(metadata.files || []);
+      previousMetadata = await fs.readJson(metadataPath);
+      previouslySynced = new Set(previousMetadata.files || []);
     } catch (error) {
       console.warn(chalk.yellow('Warning: Could not read sync metadata, will not delete any files'));
     }
@@ -86,12 +87,22 @@ export async function syncFromGitHub(config) {
     }
     
     // Save metadata of currently synced files
+    // Only update lastSync if the file list has changed
     try {
-      await fs.writeJson(metadataPath, {
-        lastSync: new Date().toISOString(),
+      const currentFiles = Array.from(remoteFilePaths).sort();
+      const previousFiles = previousMetadata?.files ? [...previousMetadata.files].sort() : [];
+      
+      // Check if file lists are different
+      const filesChanged = currentFiles.length !== previousFiles.length ||
+        currentFiles.some((file, index) => file !== previousFiles[index]);
+      
+      const metadata = {
+        lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync || new Date().toISOString()),
         source: `${repoOwner}/${repoName}/${remoteDir}`,
-        files: Array.from(remoteFilePaths)
-      }, { spaces: 2 });
+        files: currentFiles
+      };
+      
+      await fs.writeJson(metadataPath, metadata, { spaces: 2 });
     } catch (error) {
       console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
     }

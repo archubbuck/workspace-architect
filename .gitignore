@@ -24,6 +24,3 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Sync metadata files (should not be tracked in git)
-.upstream-sync.json

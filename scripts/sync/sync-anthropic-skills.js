@@ -99,10 +99,11 @@ async function syncSkills() {
   // Load previously synced skills metadata
   const metadataPath = path.join(LOCAL_SKILLS_DIR, '.upstream-sync.json');
   let previouslySynced = new Set();
+  let previousMetadata = null;
   if (await fs.pathExists(metadataPath)) {
     try {
-      const metadata = await fs.readJson(metadataPath);
-      previouslySynced = new Set(metadata.files || []);
+      previousMetadata = await fs.readJson(metadataPath);
+      previouslySynced = new Set(previousMetadata.files || []);
     } catch (error) {
       console.warn(chalk.yellow('Warning: Could not read sync metadata, will not delete any skills'));
     }
@@ -188,6 +189,7 @@ async function syncSkills() {
   }
   
   // Save metadata of currently synced skills - accumulate with previous metadata
+  // Only update lastSync if the file list has changed
   try {
     // Start with previously synced skills and add newly synced ones
     const allSyncedSkills = new Set(previouslySynced);
@@ -205,13 +207,20 @@ async function syncSkills() {
     );
     
     // Only keep skills in metadata that still exist locally
-    const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill));
+    const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill)).sort();
+    const previousFiles = previousMetadata?.files ? [...previousMetadata.files].sort() : [];
     
-    await fs.writeJson(metadataPath, {
-      lastSync: new Date().toISOString(),
+    // Check if file lists are different
+    const filesChanged = finalSkills.length !== previousFiles.length ||
+      finalSkills.some((file, index) => file !== previousFiles[index]);
+    
+    const metadata = {
+      lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync || new Date().toISOString()),
       source: `${REPO_OWNER}/${REPO_NAME}/skills`,
       files: finalSkills
-    }, { spaces: 2 });
+    };
+    
+    await fs.writeJson(metadataPath, metadata, { spaces: 2 });
   } catch (error) {
     console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
   }
