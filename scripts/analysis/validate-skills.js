@@ -7,7 +7,7 @@ import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SKILLS_DIR = path.join(__dirname, '../assets/skills');
+const SKILLS_DIR = path.join(__dirname, '../../assets/skills');
 
 function validateSkillMetadata(parsed, skillName) {
   const errors = [];

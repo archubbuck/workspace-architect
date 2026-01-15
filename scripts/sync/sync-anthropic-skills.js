@@ -2,93 +2,28 @@ import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
+import { loadEnv } from '../utils/env-loader.js';
+import { fetchGitHubContent, downloadFile } from '../utils/github-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load .env manually with improved parsing
-const envPath = path.join(__dirname, '../.env');
-if (fs.existsSync(envPath)) {
-  const envConfig = fs.readFileSync(envPath, 'utf8');
-  envConfig.split('\n').forEach(line => {
-    // Skip empty lines and comments
-    const trimmedLine = line.trim();
-    if (!trimmedLine || trimmedLine.startsWith('#')) {
-      return;
-    }
-    
-    // Split only on the first '=' to handle values with '=' in them
-    const equalIndex = trimmedLine.indexOf('=');
-    if (equalIndex === -1) {
-      return;
-    }
-    
-    const key = trimmedLine.substring(0, equalIndex).trim();
-    let value = trimmedLine.substring(equalIndex + 1).trim();
-    
-    // Remove surrounding quotes if present
-    if ((value.startsWith('"') && value.endsWith('"')) || 
-        (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1);
-    }
-    
-    if (key) {
-      process.env[key] = value;
-    }
-  });
-}
+// Load environment variables
+loadEnv();
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = 'anthropics';
 const REPO_NAME = 'skills';
-const BASE_API_URL = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents`;
-const LOCAL_SKILLS_DIR = path.join(__dirname, '../assets/skills');
+const LOCAL_SKILLS_DIR = path.join(__dirname, '../../assets/skills');
 
 // Sync all available skills from the repository
 // Set to null to sync all skills, or provide an array to filter specific skills
 const SKILLS_TO_SYNC = null; // null means sync all available skills
 
-async function fetchGitHubContent(path) {
-  const url = `${BASE_API_URL}/${path}`;
-  const headers = {
-    'User-Agent': 'node.js',
-    'Accept': 'application/vnd.github.v3+json'
-  };
-  
-  if (GITHUB_TOKEN) {
-    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
-  }
-
-  const response = await fetch(url, { headers });
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
-  }
-  return response.json();
-}
-
-async function downloadFile(url, destPath) {
-  const headers = {
-    'User-Agent': 'node.js'
-  };
-  
-  if (GITHUB_TOKEN) {
-    headers['Authorization'] = `Bearer ${GITHUB_TOKEN}`;
-  }
-
-  const response = await fetch(url, { headers });
-  if (!response.ok) {
-    throw new Error(`Failed to download ${url}: ${response.statusText}`);
-  }
-  
-  const content = await response.text();
-  await fs.ensureDir(path.dirname(destPath));
-  await fs.writeFile(destPath, content);
-}
-
 async function getAvailableSkills() {
   try {
     console.log(chalk.blue('Fetching available skills from anthropics/skills...'));
-    const contents = await fetchGitHubContent('skills');
+    const contents = await fetchGitHubContent(REPO_OWNER, REPO_NAME, 'skills', GITHUB_TOKEN);
     
     // Filter to directories only (skills are directories)
     const skillDirs = contents.filter(item => item.type === 'dir');
@@ -97,6 +32,29 @@ async function getAvailableSkills() {
     console.error(chalk.red('Error fetching available skills:'), error.message);
     return [];
   }
+}
+
+async function getSkillFiles(skillName, subPath) {
+  const relativePath = subPath ? path.join(skillName, subPath) : skillName;
+  const fullPath = path.join('skills', relativePath);
+  const contents = await fetchGitHubContent(REPO_OWNER, REPO_NAME, fullPath, GITHUB_TOKEN);
+  
+  let files = [];
+  
+  for (const item of contents) {
+    if (item.type === 'file') {
+      files.push({
+        path: subPath ? path.join(subPath, item.name) : item.name,
+        download_url: item.download_url
+      });
+    } else if (item.type === 'dir') {
+      const newSubPath = subPath ? path.join(subPath, item.name) : item.name;
+      const subFiles = await getSkillFiles(skillName, newSubPath);
+      files.push(...subFiles);
+    }
+  }
+  
+  return files;
 }
 
 async function syncSkill(skillName) {
@@ -120,7 +78,7 @@ async function syncSkill(skillName) {
     // Download all files
     for (const file of files) {
       const destPath = path.join(LOCAL_SKILLS_DIR, skillName, file.path);
-      await downloadFile(file.download_url, destPath);
+      await downloadFile(file.download_url, destPath, GITHUB_TOKEN);
       console.log(chalk.dim(`  Downloaded: ${file.path}`));
     }
     
@@ -130,29 +88,6 @@ async function syncSkill(skillName) {
     console.error(chalk.red(`  ✗ Failed to sync ${skillName}:`), error.message);
     return false;
   }
-}
-
-async function getSkillFiles(skillName, subPath) {
-  const relativePath = subPath ? path.join(skillName, subPath) : skillName;
-  const fullPath = path.join('skills', relativePath);
-  const contents = await fetchGitHubContent(fullPath);
-  
-  let files = [];
-  
-  for (const item of contents) {
-    if (item.type === 'file') {
-      files.push({
-        path: subPath ? path.join(subPath, item.name) : item.name,
-        download_url: item.download_url
-      });
-    } else if (item.type === 'dir') {
-      const newSubPath = subPath ? path.join(subPath, item.name) : item.name;
-      const subFiles = await getSkillFiles(skillName, newSubPath);
-      files.push(...subFiles);
-    }
-  }
-  
-  return files;
 }
 
 async function syncSkills() {

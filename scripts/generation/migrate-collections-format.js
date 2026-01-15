@@ -6,7 +6,7 @@ import chalk from 'chalk';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.join(__dirname, '..');
+const ROOT_DIR = path.join(__dirname, '../..');
 const COLLECTIONS_DIR = path.join(ROOT_DIR, 'assets/collections');
 
 /**
