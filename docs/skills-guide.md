@@ -388,6 +388,8 @@ Yes! Skills follow the same structure as VS Code Agent Skills and work with GitH
 
 ## Resources
 
+- [Claude Skills Research Report](./claude-skills-research.md)
+- [Implementation Plan](./claude-skills-implementation-plan.md)
 - [Skills vs Agents Guide](./skills-vs-agents.md)
 - [Agent Skills Specification](https://agentskills.io/)
 - [Anthropic Skills Repository](https://github.com/anthropics/skills)
@@ -399,6 +401,7 @@ Yes! Skills follow the same structure as VS Code Agent Skills and work with GitH
 For issues, questions, or suggestions:
 - Open an issue on [GitHub](https://github.com/archubbuck/workspace-architect/issues)
 - Check existing documentation in the `docs/` directory
+- Review the [Implementation Plan](./claude-skills-implementation-plan.md)
 
 ---
 

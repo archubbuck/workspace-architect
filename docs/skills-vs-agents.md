@@ -343,7 +343,8 @@ When in doubt, start with an Agent and upgrade to a Skill if needed.
 
 ## Related Documentation
 
-- [Skills Guide](./skills-guide.md)
+- [Claude Skills Research Report](./claude-skills-research.md)
+- [Implementation Plan](./claude-skills-implementation-plan.md)
 - [Example Skill](../assets/skills/example-planner/SKILL.md)
 
 ---

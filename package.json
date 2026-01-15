@@ -13,7 +13,6 @@
     "generate-manifest": "node scripts/generate-manifest.js",
     "migrate-collections": "node scripts/migrate-collections-format.js",
     "prepublishOnly": "npm run generate-manifest",
-    "fetch-upstream": "node scripts/fetch-upstream-assets.js",
     "sync-agents": "node scripts/sync-agents.js",
     "sync-instructions": "node scripts/sync-instructions.js",
     "sync-prompts": "node scripts/sync-prompts.js",
