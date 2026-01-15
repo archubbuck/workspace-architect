@@ -58,6 +58,8 @@ export async function syncFromGitHub(config) {
   let successCount = 0;
   let failCount = 0;
   let deleteCount = 0;
+  let createCount = 0;
+  let updateCount = 0;
   
   try {
     console.log(chalk.blue(`Fetching ${resourceType} from ${remoteDir}...`));
@@ -74,11 +76,39 @@ export async function syncFromGitHub(config) {
     for (const file of files) {
       try {
         const destPath = path.join(localDir, file.path);
+        const fileExists = await fs.pathExists(destPath);
+        
         if (dryRun) {
-          console.log(chalk.dim(`  [DRY RUN] Would download: ${file.path}`));
+          // Fetch remote content to compare
+          const response = await fetch(file.download_url, token ? {
+            headers: { 'Authorization': `Bearer ${token}`, 'User-Agent': 'node.js' }
+          } : {
+            headers: { 'User-Agent': 'node.js' }
+          });
+          if (!response.ok) {
+            throw new Error(`Failed to fetch ${file.download_url}: ${response.statusText}`);
+          }
+          const remoteContent = await response.text();
+          
+          // Check if file exists and compare content
+          if (fileExists) {
+            const localContent = await fs.readFile(destPath, 'utf8');
+            if (localContent !== remoteContent) {
+              console.log(chalk.yellow(`  [DRY RUN] Would update: ${file.path}`));
+              updateCount++;
+            }
+            // If content is the same, don't log anything
+          } else {
+            console.log(chalk.green(`  [DRY RUN] Would create: ${file.path}`));
+            createCount++;
+          }
         } else {
           await downloadFile(file.download_url, destPath, token);
-          console.log(chalk.dim(`  Downloaded: ${file.path}`));
+          if (fileExists) {
+            console.log(chalk.dim(`  Updated: ${file.path}`));
+          } else {
+            console.log(chalk.dim(`  Created: ${file.path}`));
+          }
         }
         successCount++;
       } catch (error) {
@@ -142,9 +172,17 @@ export async function syncFromGitHub(config) {
   
   if (dryRun) {
     console.log(chalk.blue.bold('\n=== [DRY RUN] Sync Complete ==='));
-    console.log(chalk.green(`✓ Would sync: ${successCount} ${resourceType}`));
+    if (createCount > 0) {
+      console.log(chalk.green(`✓ Would create: ${createCount} ${resourceType}`));
+    }
+    if (updateCount > 0) {
+      console.log(chalk.yellow(`⚠ Would update: ${updateCount} ${resourceType}`));
+    }
     if (deleteCount > 0) {
       console.log(chalk.yellow(`⚠ Would delete: ${deleteCount} ${resourceType}`));
+    }
+    if (createCount === 0 && updateCount === 0 && deleteCount === 0) {
+      console.log(chalk.green(`✓ No changes needed - all ${resourceType} are up to date`));
     }
     if (failCount > 0) {
       console.log(chalk.red(`✗ Failed to sync: ${failCount} ${resourceType}`));
