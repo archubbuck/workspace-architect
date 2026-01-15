@@ -237,12 +237,25 @@ async function validateAssetType(assetType) {
 async function validateAllAssets(assetTypesToValidate = null) {
   // If no specific types provided, validate all
   const allAssetTypes = ['agents', 'instructions', 'prompts', 'skills'];
-  const assetTypes = assetTypesToValidate || allAssetTypes;
   
-  // Ensure assetTypes is an array
-  const typesToValidate = Array.isArray(assetTypes) ? assetTypes : [assetTypes];
+  // Determine which asset types to validate
+  let typesToValidate;
+  if (!assetTypesToValidate) {
+    // No parameter provided, validate all
+    typesToValidate = allAssetTypes;
+  } else if (Array.isArray(assetTypesToValidate)) {
+    // Array provided, use as-is
+    typesToValidate = assetTypesToValidate;
+  } else {
+    // Single type provided, convert to array
+    typesToValidate = [assetTypesToValidate];
+  }
   
-  if (typesToValidate.length === allAssetTypes.length) {
+  // Check if validating all asset types by comparing arrays
+  const isValidatingAll = typesToValidate.length === allAssetTypes.length &&
+    typesToValidate.every(type => allAssetTypes.includes(type));
+  
+  if (isValidatingAll) {
     console.log(chalk.blue.bold('=== Validating All Assets ===\n'));
   } else {
     console.log(chalk.blue.bold(`=== Validating ${typesToValidate.join(', ')} ===\n`));
