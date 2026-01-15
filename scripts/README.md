@@ -8,7 +8,7 @@ This directory contains all utility scripts for maintaining the workspace-archit
 scripts/
 ├── analysis/          # Scripts for analyzing and validating assets
 ├── generation/        # Scripts for generating manifests and migrations
-├── sync/             # Scripts for syncing assets from upstream sources
+├── sync-repo.js       # Generic script for syncing assets from upstream sources
 └── utils/            # Shared utility modules
 ```
 
@@ -41,56 +41,81 @@ Scripts for generating project artifacts and performing migrations.
   npm run migrate-collections
   ```
 
-### Sync (`sync/`)
-Scripts for synchronizing assets from upstream repositories.
+### Sync (`sync-repo.js`)
+Generic script for synchronizing assets from upstream repositories.
 
-All sync scripts follow the same pattern and support `.env` configuration for GitHub tokens:
+The **sync-repo.js** script is a unified tool that replaces all previous individual sync scripts. It supports syncing multiple resource types from configured upstream repositories with flexible glob pattern matching.
 
-- **sync-agents.js** - Syncs agents from github/awesome-copilot
-  ```bash
-  npm run sync-agents
-  ```
+**Usage:**
+```bash
+node scripts/sync-repo.js <resource-type> [options]
+```
 
-- **sync-collections.js** - Syncs collections from github/awesome-copilot
-  ```bash
-  npm run sync-collections
-  ```
+**Resource Types:**
+- `agents` - Sync agents from github/awesome-copilot
+- `instructions` - Sync instructions from github/awesome-copilot
+- `prompts` - Sync prompts from github/awesome-copilot
+- `collections` - Sync collections from github/awesome-copilot
+- `skills` - Sync Claude Skills from anthropics/skills
+- `all` - Sync all resources
 
-- **sync-instructions.js** - Syncs instructions from github/awesome-copilot
-  ```bash
-  npm run sync-instructions
-  ```
+**Options:**
+- `--dry-run` - Simulate sync without making changes
+- `--help, -h` - Display help message
 
-- **sync-prompts.js** - Syncs prompts from github/awesome-copilot
-  ```bash
-  npm run sync-prompts
-  ```
+**Examples:**
+```bash
+# Sync a specific resource type
+npm run sync-agents
+npm run sync-instructions
+npm run sync-prompts
+npm run sync-collections
+npm run sync-skills
 
-- **sync-anthropic-skills.js** - Syncs Claude Skills from anthropics/skills
-  ```bash
-  npm run sync-skills
-  ```
+# Sync all resources at once
+npm run sync-all
+
+# Use the script directly with dry-run
+node scripts/sync-repo.js agents --dry-run
+node scripts/sync-repo.js all --dry-run
+```
+
+**Configuration:**
+
+The sync script reads configuration from `upstream.config.json` which defines:
+- Repository information (owner/name)
+- Remote directory paths
+- Local directory paths
+- Accepted file extensions
+- Glob patterns for file filtering
+- Sync modes (file-based or directory-based)
+
+See `upstream.config.json.example` for a complete configuration reference.
 
 ### Utils (`utils/`)
 Shared utility modules used by other scripts.
 
 - **env-loader.js** - Loads and parses environment variables from `.env` file
 - **github-utils.js** - Common functions for GitHub API interactions (fetch, download, recursive file listing)
-- **sync-base.js** - Base sync functionality shared by all sync scripts
+- **sync-base.js** - Base sync functionality for file-based syncing
+- **sync-skills.js** - Specialized sync functionality for directory-based resources (like Claude Skills)
 - **sync-utils.js** - Utility functions for working with local files during sync operations
+- **config-loader.js** - Configuration loading and parsing utilities
 
 ## Code Reuse
 
 The refactored scripts significantly reduce code duplication:
 
-- **Before**: Each sync script contained ~200 lines with duplicated logic for env loading, GitHub API calls, and file management
-- **After**: Sync scripts are now ~30 lines each, leveraging shared utilities
+- **Before**: Five separate sync scripts with duplicated logic (~1000 lines total)
+- **After**: Single generic sync script (~150 lines) + reusable utilities (~250 lines)
 
 ### Key Improvements:
-1. **Single Source of Truth**: Common logic extracted to utility modules
-2. **DRY Principle**: Eliminated ~800 lines of duplicated code
-3. **Maintainability**: Changes to sync logic only need to be made once in `sync-base.js`
-4. **Consistency**: All sync scripts behave identically
+1. **Single Generic Tool**: One script to sync all resource types
+2. **Configuration-Driven**: Resource definitions in upstream.config.json instead of code
+3. **DRY Principle**: Eliminated ~600 lines of duplicated code
+4. **Maintainability**: Changes to sync logic only need to be made once
+5. **Consistency**: All sync operations behave identically
+6. **Extensibility**: Adding new resources requires only config changes
 
 ## Environment Configuration
 
@@ -110,5 +135,11 @@ When adding new scripts:
 1. Place them in the appropriate category folder
 2. Update `package.json` with a corresponding npm script
 3. Leverage existing utilities from `utils/` when possible
-4. Follow the established patterns (especially for sync scripts)
+4. Follow the established patterns
 5. Update this README with documentation for the new script
+
+When adding new sync resources:
+
+1. Add resource configuration to `upstream.config.json` under the `resources` section
+2. Add an npm script to `package.json` (e.g., `"sync-newtype": "node scripts/sync-repo.js newtype"`)
+3. No code changes needed unless a new sync mode is required
