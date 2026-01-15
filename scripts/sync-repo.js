@@ -246,7 +246,9 @@ async function sync() {
         try {
           await runValidation();
         } catch (error) {
-          console.error(chalk.yellow('\n⚠ Validation completed with warnings\n'));
+          // Validation script exited with non-zero code (fatal error, not just warnings)
+          console.error(chalk.red('\n✗ Validation failed with fatal error\n'));
+          throw error; // Re-throw to fail the sync process
         }
       }
     } else {
@@ -258,7 +260,9 @@ async function sync() {
         try {
           await runValidation();
         } catch (error) {
-          console.error(chalk.yellow('\n⚠ Validation completed with warnings\n'));
+          // Validation script exited with non-zero code (fatal error, not just warnings)
+          console.error(chalk.red('\n✗ Validation failed with fatal error\n'));
+          throw error; // Re-throw to fail the sync process
         }
       }
     }
