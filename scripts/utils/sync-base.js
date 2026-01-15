@@ -97,7 +97,7 @@ export async function syncFromGitHub(config) {
         currentFiles.some((file, index) => file !== previousFiles[index]);
       
       const metadata = {
-        lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync || new Date().toISOString()),
+        lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync ?? new Date().toISOString()),
         source: `${repoOwner}/${repoName}/${remoteDir}`,
         files: currentFiles
       };

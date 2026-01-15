@@ -215,7 +215,7 @@ async function syncSkills() {
       finalSkills.some((file, index) => file !== previousFiles[index]);
     
     const metadata = {
-      lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync || new Date().toISOString()),
+      lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync ?? new Date().toISOString()),
       source: `${REPO_OWNER}/${REPO_NAME}/skills`,
       files: finalSkills
     };
