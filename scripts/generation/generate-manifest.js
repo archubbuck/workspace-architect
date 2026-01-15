@@ -5,6 +5,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
+import YAML from 'yaml';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.join(__dirname, '../..');
@@ -42,6 +43,42 @@ function normalizeCollectionItems(items) {
   }
   
   return [];
+}
+
+/**
+ * Convert YAML collection items format to flat array format.
+ * YAML format: [{ path: "agents/foo.agent.md", kind: "agent" }, ...]
+ * Flat format: ["agents:foo", ...]
+ * 
+ * @param {Array} items - YAML collection items
+ * @returns {Array} Flat array of items in "type:name" format
+ */
+function convertYamlItemsToFlat(items) {
+  if (!Array.isArray(items)) return [];
+  
+  const flatItems = [];
+  for (const item of items) {
+    if (!item.path || !item.kind) continue;
+    
+    // Extract the type and name from the path
+    // Path format: "agents/foo.agent.md" or "instructions/bar.instructions.md"
+    const pathParts = item.path.split('/');
+    if (pathParts.length < 2) continue;
+    
+    const fileName = pathParts[pathParts.length - 1];
+    const type = item.kind + 's'; // Convert "agent" to "agents", "prompt" to "prompts", etc.
+    
+    // Extract name by removing extension
+    let name = fileName
+      .replace('.agent.md', '')
+      .replace('.instructions.md', '')
+      .replace('.prompt.md', '')
+      .replace('.md', '');
+    
+    flatItems.push(`${type}:${name}`);
+  }
+  
+  return flatItems;
 }
 
 // Helper function to recursively get all files in a directory
@@ -85,6 +122,9 @@ async function generateManifest() {
     const files = await fs.readdir(dirPath);
     
     for (const file of files) {
+      // Skip .upstream-sync.json files
+      if (file === '.upstream-sync.json') continue;
+      
       const filePath = path.join(dirPath, file);
       const stat = await fs.stat(filePath);
       
@@ -109,7 +149,7 @@ async function generateManifest() {
         console.warn(chalk.yellow(`Skipping unexpected file in prompts: ${file}`));
         continue;
       }
-      if (type === 'collections' && !file.endsWith('.json')) {
+      if (type === 'collections' && !(file.endsWith('.json') || file.endsWith('.yml') || file.endsWith('.yaml'))) {
         console.warn(chalk.yellow(`Skipping unexpected file in collections: ${file}`));
         continue;
       }
@@ -127,18 +167,35 @@ async function generateManifest() {
       } else if (type === 'prompts') {
         id = file.replace('.prompt.md', '');
       } else if (type === 'collections') {
-        id = file.replace('.json', '');
+        // Handle both .json and .yml/.yaml files, plus legacy .collection.yml/.yaml
+        id = file
+          .replace('.collection.yml', '')
+          .replace('.collection.yaml', '')
+          .replace('.json', '')
+          .replace('.yml', '')
+          .replace('.yaml', '');
       } else {
         id = path.parse(file).name;
       }
 
       try {
         if (type === 'collections') {
-          const content = await fs.readJson(filePath);
-          description = content.description || '';
-          title = content.name || id;
-          // Normalize items to flat array format for manifest
-          items = normalizeCollectionItems(content.items || []);
+          if (file.endsWith('.json')) {
+            // Handle JSON collections
+            const content = await fs.readJson(filePath);
+            description = content.description || '';
+            title = content.name || id;
+            // Normalize items to flat array format for manifest
+            items = normalizeCollectionItems(content.items || []);
+          } else if (file.endsWith('.yml') || file.endsWith('.yaml')) {
+            // Handle YAML collections
+            const content = await fs.readFile(filePath, 'utf8');
+            const parsed = YAML.parse(content);
+            description = parsed.description || '';
+            title = parsed.name || id;
+            // Convert YAML format items to flat array format
+            items = convertYamlItemsToFlat(parsed.items || []);
+          }
         } else if (file.endsWith('.md')) {
           const content = await fs.readFile(filePath, 'utf8');
           const parsed = matter(content);

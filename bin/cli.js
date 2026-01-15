@@ -50,6 +50,42 @@ function normalizeCollectionItems(items) {
   return [];
 }
 
+/**
+ * Convert YAML collection items format to flat array format.
+ * YAML format: [{ path: "agents/foo.agent.md", kind: "agent" }, ...]
+ * Flat format: ["agents:foo", ...]
+ * 
+ * @param {Array} items - YAML collection items
+ * @returns {Array} Flat array of items in "type:name" format
+ */
+function convertYamlItemsToFlat(items) {
+  if (!Array.isArray(items)) return [];
+  
+  const flatItems = [];
+  for (const item of items) {
+    if (!item.path || !item.kind) continue;
+    
+    // Extract the type and name from the path
+    // Path format: "agents/foo.agent.md" or "instructions/bar.instructions.md"
+    const pathParts = item.path.split('/');
+    if (pathParts.length < 2) continue;
+    
+    const fileName = pathParts[pathParts.length - 1];
+    const type = item.kind + 's'; // Convert "agent" to "agents", "prompt" to "prompts", etc.
+    
+    // Extract name by removing extension
+    let name = fileName
+      .replace('.agent.md', '')
+      .replace('.instructions.md', '')
+      .replace('.prompt.md', '')
+      .replace('.md', '');
+    
+    flatItems.push(`${type}:${name}`);
+  }
+  
+  return flatItems;
+}
+
 program
   .name('workspace-architect')
   .description('CLI to download GitHub Copilot instructions, prompts, and agents (alias: wsa)')
@@ -119,6 +155,7 @@ async function listAssets(type) {
   if (IS_LOCAL) {
     // Local Development Mode
     const matter = (await import('gray-matter')).default;
+    const YAML = (await import('yaml')).default;
     // All types use assets/<type> directory
     const dirPath = path.join(ASSETS_DIR, type);
     
@@ -135,6 +172,9 @@ async function listAssets(type) {
 
     console.log(chalk.blue.bold(`\nAvailable ${type}:`));
     for (const file of files) {
+      // Skip .upstream-sync.json files
+      if (file === '.upstream-sync.json') continue;
+      
       const filePath = path.join(dirPath, file);
       const stat = await fs.stat(filePath);
       let description = '';
@@ -149,8 +189,14 @@ async function listAssets(type) {
             description = parsed.data.description || '';
           }
         } else if (type === 'collections') {
-          const content = await fs.readJson(filePath);
-          description = content.description || '';
+          if (file.endsWith('.json')) {
+            const content = await fs.readJson(filePath);
+            description = content.description || '';
+          } else if (file.endsWith('.yml') || file.endsWith('.yaml')) {
+            const content = await fs.readFile(filePath, 'utf8');
+            const parsed = YAML.parse(content);
+            description = parsed.description || '';
+          }
         } else if (!stat.isDirectory()) {
           const content = await fs.readFile(filePath, 'utf8');
           const parsed = matter(content);
@@ -160,7 +206,16 @@ async function listAssets(type) {
         // Ignore errors reading metadata
       }
 
-      const name = type === 'skills' && stat.isDirectory() ? file : path.parse(file).name;
+      const name = type === 'skills' && stat.isDirectory() ? file : 
+        (type === 'collections' ? 
+          file.replace('.collection.yml', '').replace('.collection.yaml', '').replace('.json', '').replace('.yml', '').replace('.yaml', '') : 
+          (type === 'instructions' ?
+            file.replace('.instructions.md', '') :
+            (type === 'prompts' ?
+              file.replace('.prompt.md', '') :
+              (type === 'agents' ?
+                file.replace('.agent.md', '') :
+                path.parse(file).name))));
       console.log(`  - ${name}${description ? ` - ${description}` : ''}`);
     }
   } else {
@@ -203,17 +258,43 @@ async function downloadAsset(id, options) {
     let items = [];
     
     if (IS_LOCAL) {
-      let fileName = name;
-      if (!path.extname(name)) fileName += '.json';
-      const sourcePath = path.join(ASSETS_DIR, 'collections', fileName);
+      const YAML = (await import('yaml')).default;
       
-      if (!await fs.pathExists(sourcePath)) {
-        throw new Error(`Collection not found: ${type}/${fileName}`);
+      // Try to find the collection file with various extensions
+      const possibleFileNames = [
+        `${name}.json`,
+        `${name}.collection.yml`,
+        `${name}.collection.yaml`,
+        `${name}.yml`,
+        `${name}.yaml`
+      ];
+      
+      let sourcePath = null;
+      let isYaml = false;
+      
+      for (const fileName of possibleFileNames) {
+        const testPath = path.join(ASSETS_DIR, 'collections', fileName);
+        if (await fs.pathExists(testPath)) {
+          sourcePath = testPath;
+          isYaml = fileName.endsWith('.yml') || fileName.endsWith('.yaml');
+          break;
+        }
       }
       
-      const collectionContent = await fs.readJson(sourcePath);
-      const rawItems = collectionContent.items || (Array.isArray(collectionContent) ? collectionContent : []);
-      items = normalizeCollectionItems(rawItems);
+      if (!sourcePath) {
+        throw new Error(`Collection not found: ${type}/${name}`);
+      }
+      
+      if (isYaml) {
+        const content = await fs.readFile(sourcePath, 'utf8');
+        const parsed = YAML.parse(content);
+        // Convert YAML format items to flat array
+        items = convertYamlItemsToFlat(parsed.items || []);
+      } else {
+        const collectionContent = await fs.readJson(sourcePath);
+        const rawItems = collectionContent.items || (Array.isArray(collectionContent) ? collectionContent : []);
+        items = normalizeCollectionItems(rawItems);
+      }
     } else {
       const manifest = await getManifest();
       const asset = manifest.assets[type]?.[name];
