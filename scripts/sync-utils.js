@@ -73,13 +73,16 @@ export function hasGitChanges(directory) {
     }
     
     // Filter out lines that refer to .upstream-sync.json files
-    // Git status output format: "XY filename" where XY are status codes
+    // Git status output format: "XY filename" where XY are status codes (1-2 chars each)
     const filteredLines = result.stdout
       .split('\n')
       .filter(line => {
         if (!line.trim()) return false;
-        // Extract filename from git status line (skip the first 3 characters which are status codes)
-        const filename = line.substring(3);
+        // Extract filename from git status line
+        // Format is typically " M filename" or "?? filename" (space + status + space + filename)
+        const match = line.match(/^.{1,3}\s+(.+)$/);
+        if (!match) return false;
+        const filename = match[1];
         const basename = path.basename(filename);
         return basename !== METADATA_FILENAME;
       });
