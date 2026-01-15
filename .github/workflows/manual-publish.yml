@@ -3,6 +3,11 @@ name: Manual Publish
 on:
   workflow_dispatch:
     inputs:
+      dry_run:
+        description: 'Dry-run mode: simulate release without making changes'
+        required: false
+        type: boolean
+        default: false
       force:
         description: 'Force release even if no changes detected (emergency use only)'
         required: false
@@ -43,7 +48,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ inputs.force }}" = "true" ]; then
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "⚠️ Dry-run mode enabled - simulating release"
+            npm run release -- --dry-run --ci
+          elif [ "${{ inputs.force }}" = "true" ]; then
             echo "🚨 Force mode enabled - bypassing change detection"
             npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push --no-increment
           else

@@ -13,6 +13,9 @@ loadEnv();
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const LOCAL_DIR = path.join(__dirname, '../../assets/collections');
 
+// Parse command-line arguments for --dry-run flag
+const dryRun = process.argv.includes('--dry-run');
+
 async function syncCollections() {
   // Load upstream config - required
   const config = await loadUpstreamConfig();
@@ -26,7 +29,8 @@ async function syncCollections() {
     acceptedExtensions: ['.json', '.yml', '.yaml'],
     resourceType: 'collections',
     token: GITHUB_TOKEN,
-    syncPatterns: repoConfig.syncPatterns || null
+    syncPatterns: repoConfig.syncPatterns || null,
+    dryRun
   });
 }
 

@@ -20,6 +20,9 @@ const LOCAL_SKILLS_DIR = path.join(__dirname, '../../assets/skills');
 // Set to null to sync all skills, or provide an array to filter specific skills
 const SKILLS_TO_SYNC = null; // null means sync all available skills
 
+// Parse command-line arguments for --dry-run flag
+const dryRun = process.argv.includes('--dry-run');
+
 async function getAvailableSkills() {
   try {
     console.log(chalk.blue('Fetching available skills from anthropics/skills...'));
@@ -78,11 +81,19 @@ async function syncSkill(skillName) {
     // Download all files
     for (const file of files) {
       const destPath = path.join(LOCAL_SKILLS_DIR, skillName, file.path);
-      await downloadFile(file.download_url, destPath, GITHUB_TOKEN);
-      console.log(chalk.dim(`  Downloaded: ${file.path}`));
+      if (dryRun) {
+        console.log(chalk.dim(`  [DRY RUN] Would download: ${file.path}`));
+      } else {
+        await downloadFile(file.download_url, destPath, GITHUB_TOKEN);
+        console.log(chalk.dim(`  Downloaded: ${file.path}`));
+      }
     }
     
-    console.log(chalk.green(`  ✓ Successfully synced ${skillName} (${files.length} files)`));
+    if (dryRun) {
+      console.log(chalk.green(`  ✓ [DRY RUN] Would sync ${skillName} (${files.length} files)`));
+    } else {
+      console.log(chalk.green(`  ✓ Successfully synced ${skillName} (${files.length} files)`));
+    }
     return true;
   } catch (error) {
     console.error(chalk.red(`  ✗ Failed to sync ${skillName}:`), error.message);
@@ -91,10 +102,17 @@ async function syncSkill(skillName) {
 }
 
 async function syncSkills() {
-  console.log(chalk.blue.bold('\n=== Syncing Claude Skills from anthropics/skills ===\n'));
+  if (dryRun) {
+    console.log(chalk.blue.bold('\n=== [DRY RUN] Syncing Claude Skills from anthropics/skills ===\n'));
+    console.log(chalk.yellow('⚠ Dry-run mode: No files will be modified\n'));
+  } else {
+    console.log(chalk.blue.bold('\n=== Syncing Claude Skills from anthropics/skills ===\n'));
+  }
   
   // Ensure local skills directory exists
-  await fs.ensureDir(LOCAL_SKILLS_DIR);
+  if (!dryRun) {
+    await fs.ensureDir(LOCAL_SKILLS_DIR);
+  }
   
   // Load previously synced skills metadata
   const metadataPath = path.join(LOCAL_SKILLS_DIR, '.upstream-sync.json');
@@ -174,8 +192,12 @@ async function syncSkills() {
           if (wasSynced && (!existsUpstream || (isCuratedMode && !inCuratedList))) {
             const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
             try {
-              await fs.remove(skillPath);
-              console.log(chalk.yellow(`  Deleted skill: ${entry.name}`));
+              if (dryRun) {
+                console.log(chalk.yellow(`  [DRY RUN] Would delete skill: ${entry.name}`));
+              } else {
+                await fs.remove(skillPath);
+                console.log(chalk.yellow(`  Deleted skill: ${entry.name}`));
+              }
               deleteCount++;
             } catch (error) {
               console.error(chalk.red(`  ✗ Failed to delete skill ${entry.name}:`), error.message);
@@ -190,54 +212,69 @@ async function syncSkills() {
   
   // Save metadata of currently synced skills - accumulate with previous metadata
   // Only update lastSync if the file list has changed
-  try {
-    // Start with previously synced skills and add newly synced ones
-    const allSyncedSkills = new Set(previouslySynced);
-    syncedSkills.forEach(skill => allSyncedSkills.add(skill));
-    
-    // Reuse localSkillDirs if available, otherwise read directory
-    if (localSkillDirs.length === 0 && await fs.pathExists(LOCAL_SKILLS_DIR)) {
-      localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+  if (!dryRun) {
+    try {
+      // Start with previously synced skills and add newly synced ones
+      const allSyncedSkills = new Set(previouslySynced);
+      syncedSkills.forEach(skill => allSyncedSkills.add(skill));
+      
+      // Reuse localSkillDirs if available, otherwise read directory
+      if (localSkillDirs.length === 0 && await fs.pathExists(LOCAL_SKILLS_DIR)) {
+        localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+      }
+      
+      const currentSkills = new Set(
+        localSkillDirs
+          .filter(entry => entry.isDirectory() && entry.name !== '.upstream-sync.json')
+          .map(entry => entry.name)
+      );
+      
+      // Only keep skills in metadata that still exist locally
+      const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill)).sort();
+      const previousFiles = previousMetadata?.files ? [...previousMetadata.files].sort() : [];
+      
+      // Check if file lists are different.
+      // Note: On partial sync failures, failed skills are not added to `syncedSkills`
+      // (and thus not to `allSyncedSkills` or `finalSkills`), so `finalSkills` may
+      // differ from `previousFiles` even though some skills failed to sync. This is
+      // intentional: the script still recomputes metadata here, but because it exits
+      // with a non-zero status when `failCount > 0` (line 244), callers/CI should
+      // treat such runs as failures and avoid committing the updated metadata.
+      const filesChanged = finalSkills.length !== previousFiles.length ||
+        finalSkills.some((file, index) => file !== previousFiles[index]);
+      
+      const metadata = {
+        lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync ?? new Date().toISOString()),
+        source: `${REPO_OWNER}/${REPO_NAME}/skills`,
+        files: finalSkills
+      };
+      
+      await fs.writeJson(metadataPath, metadata, { spaces: 2 });
+    } catch (error) {
+      console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
     }
-    
-    const currentSkills = new Set(
-      localSkillDirs
-        .filter(entry => entry.isDirectory() && entry.name !== '.upstream-sync.json')
-        .map(entry => entry.name)
-    );
-    
-    // Only keep skills in metadata that still exist locally
-    const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill)).sort();
-    const previousFiles = previousMetadata?.files ? [...previousMetadata.files].sort() : [];
-    
-    // Check if file lists are different.
-    // Note: On partial sync failures, failed skills are not added to `syncedSkills`
-    // (and thus not to `allSyncedSkills` or `finalSkills`), so `finalSkills` may
-    // differ from `previousFiles` even though some skills failed to sync. This is
-    // intentional: the script still recomputes metadata here, but because it exits
-    // with a non-zero status when `failCount > 0` (line 244), callers/CI should
-    // treat such runs as failures and avoid committing the updated metadata.
-    const filesChanged = finalSkills.length !== previousFiles.length ||
-      finalSkills.some((file, index) => file !== previousFiles[index]);
-    
-    const metadata = {
-      lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync ?? new Date().toISOString()),
-      source: `${REPO_OWNER}/${REPO_NAME}/skills`,
-      files: finalSkills
-    };
-    
-    await fs.writeJson(metadataPath, metadata, { spaces: 2 });
-  } catch (error) {
-    console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
+  } else {
+    console.log(chalk.dim('\n[DRY RUN] Would update sync metadata'));
   }
   
-  console.log(chalk.blue.bold('\n=== Sync Complete ==='));
-  console.log(chalk.green(`✓ Successfully synced: ${successCount} skills`));
-  if (deleteCount > 0) {
-    console.log(chalk.yellow(`⚠ Deleted: ${deleteCount} skills`));
-  }
-  if (failCount > 0) {
-    console.log(chalk.red(`✗ Failed to sync: ${failCount} skills`));
+  if (dryRun) {
+    console.log(chalk.blue.bold('\n=== [DRY RUN] Sync Complete ==='));
+    console.log(chalk.green(`✓ Would sync: ${successCount} skills`));
+    if (deleteCount > 0) {
+      console.log(chalk.yellow(`⚠ Would delete: ${deleteCount} skills`));
+    }
+    if (failCount > 0) {
+      console.log(chalk.red(`✗ Failed to sync: ${failCount} skills`));
+    }
+  } else {
+    console.log(chalk.blue.bold('\n=== Sync Complete ==='));
+    console.log(chalk.green(`✓ Successfully synced: ${successCount} skills`));
+    if (deleteCount > 0) {
+      console.log(chalk.yellow(`⚠ Deleted: ${deleteCount} skills`));
+    }
+    if (failCount > 0) {
+      console.log(chalk.red(`✗ Failed to sync: ${failCount} skills`));
+    }
   }
   
   if (failCount > 0) {
