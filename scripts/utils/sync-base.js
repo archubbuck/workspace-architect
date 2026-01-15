@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
-import { fetchGitHubContent, downloadFile, getFilesRecursively } from './github-utils.js';
+import { downloadFile, getFilesRecursively } from './github-utils.js';
 import { getLocalFiles } from './sync-utils.js';
 
 /**
