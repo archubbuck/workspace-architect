@@ -310,6 +310,45 @@ npm run validate-skills
 
 **Note**: Don't manually add content that should come from upstream. Instead, contribute to the source repositories and let the sync process handle it.
 
+### Dry-Run Mode
+
+All sync scripts support a `--dry-run` flag to simulate actions without making any changes. This is useful for:
+- Validating what would be synced before running an actual sync
+- Understanding the impact of configuration changes
+- Troubleshooting sync issues
+
+```bash
+# Preview what would be synced without making changes
+npm run sync-agents -- --dry-run
+npm run sync-instructions -- --dry-run
+npm run sync-prompts -- --dry-run
+npm run sync-collections -- --dry-run
+npm run sync-skills -- --dry-run
+```
+
+The dry-run mode will:
+- ✅ Fetch remote file listings from GitHub
+- ✅ Show which files would be downloaded
+- ✅ Show which files would be deleted
+- ✅ Log all simulated actions
+- ❌ Not download or write any files
+- ❌ Not delete any local files
+- ❌ Not update sync metadata
+
+### Release Dry-Run
+
+The release process also supports dry-run mode:
+
+```bash
+# Preview what would happen during a release
+npm run release -- --dry-run
+```
+
+This is useful for:
+- Verifying version bumps and changelog generation
+- Understanding what would be published to npm
+- Testing release configurations
+
 ## Getting Help
 
 - 💬 [GitHub Discussions](https://github.com/archubbuck/workspace-architect/discussions) - Ask questions, share ideas
