@@ -187,14 +187,10 @@ async function syncSkills() {
   let failCount = 0;
   let deleteCount = 0;
   
-  // Track which skills were synced from upstream
-  const syncedSkills = new Set();
-  
   for (const skill of skillsToSync) {
     const success = await syncSkill(skill);
     if (success) {
       successCount++;
-      syncedSkills.add(skill);
     } else {
       failCount++;
     }
@@ -211,7 +207,7 @@ async function syncSkills() {
         // When syncing curated list, only delete skills that are in the curated list AND not available upstream
         const shouldDelete = (SKILLS_TO_SYNC === null || !Array.isArray(SKILLS_TO_SYNC))
           ? !availableSkills.includes(entry.name)  // Delete if not in upstream
-          : skillsToSync.includes(entry.name) && !availableSkills.includes(entry.name);  // Delete if in curated list but not in upstream
+          : SKILLS_TO_SYNC.includes(entry.name) && !availableSkills.includes(entry.name);  // Delete if in curated list but not in upstream
         
         if (shouldDelete) {
           const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
