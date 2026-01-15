@@ -1,6 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
+import crypto from 'crypto';
 import { downloadFile, getFilesRecursively } from './github-utils.js';
 import { getLocalFiles } from './sync-utils.js';
 
@@ -86,10 +87,11 @@ export async function syncFromGitHub(config) {
           // large repositories, consider using Git tree comparisons or caching.
           if (fileExists) {
             // Calculate SHA of local file to compare with remote SHA
-            const crypto = await import('crypto');
-            const localContent = await fs.readFile(destPath, 'utf8');
+            // Read as buffer to handle both text and binary files correctly
+            const localContent = await fs.readFile(destPath);
             const localSha = crypto.createHash('sha1')
-              .update('blob ' + Buffer.byteLength(localContent) + '\0' + localContent)
+              .update('blob ' + localContent.length + '\0')
+              .update(localContent)
               .digest('hex');
             
             if (localSha !== file.sha) {
