@@ -122,8 +122,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ "${{ steps.git-check.outputs.force }}" = "true" ]; then
-            echo "🚨 Force mode enabled - bypassing change detection"
-            npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push --no-increment
-          else
-            npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
+            echo "🚨 Force mode enabled - creating new patch version"
           fi
+          npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
