@@ -51,18 +51,32 @@ export function hasGitChanges(directory) {
       encoding: 'utf-8'
     });
     
-    if (result.error || result.status !== 0) {
-      // If git command fails, assume no changes
+    if (result.error) {
+      console.error('Git command error:', result.error.message);
       return false;
     }
     
-    // Filter out lines that contain .upstream-sync.json
+    if (result.status !== 0) {
+      if (result.stderr) {
+        console.error('Git status failed:', result.stderr);
+      }
+      return false;
+    }
+    
+    // Filter out lines that refer to .upstream-sync.json files
+    // Git status output format: "XY filename" where XY are status codes
     const filteredLines = result.stdout
       .split('\n')
-      .filter(line => line.trim() && !line.includes('.upstream-sync.json'));
+      .filter(line => {
+        if (!line.trim()) return false;
+        // Extract filename from git status line (skip the first 3 characters which are status codes)
+        const filename = line.substring(3);
+        const basename = path.basename(filename);
+        return basename !== '.upstream-sync.json';
+      });
     return filteredLines.length > 0;
   } catch (error) {
-    // If git command fails, assume no changes
+    console.error('Error checking git changes:', error.message);
     return false;
   }
 }
