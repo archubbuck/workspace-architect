@@ -121,6 +121,10 @@ async function getLocalFiles(directory, baseDir = directory) {
   
   for (const entry of entries) {
     const fullPath = path.join(directory, entry.name);
+    // Skip metadata file
+    if (entry.name === '.upstream-sync.json') {
+      continue;
+    }
     if (entry.isDirectory()) {
       const subFiles = await getLocalFiles(fullPath, baseDir);
       files.push(...subFiles);
