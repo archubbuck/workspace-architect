@@ -167,7 +167,7 @@ async function syncSkills() {
   if (await fs.pathExists(metadataPath)) {
     try {
       const metadata = await fs.readJson(metadataPath);
-      previouslySynced = new Set(metadata.skills || []);
+      previouslySynced = new Set(metadata.files || []);
     } catch (error) {
       console.warn(chalk.yellow('Warning: Could not read sync metadata, will not delete any skills'));
     }
@@ -248,7 +248,7 @@ async function syncSkills() {
     await fs.writeJson(metadataPath, {
       lastSync: new Date().toISOString(),
       source: `${REPO_OWNER}/${REPO_NAME}/skills`,
-      skills: Array.from(syncedSkills)
+      files: Array.from(syncedSkills)
     }, { spaces: 2 });
   } catch (error) {
     console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
