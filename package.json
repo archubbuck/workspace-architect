@@ -21,6 +21,7 @@
     "sync-skills": "node scripts/sync-repo.js skills",
     "sync-all": "node scripts/sync-repo.js all",
     "validate-skills": "node scripts/analysis/validate-skills.js",
+    "validate-assets": "node scripts/analysis/validate-assets.js",
     "release": "release-it",
     "publish:local": "npm run release && npm publish --registry http://localhost:4873"
   },
