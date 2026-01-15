@@ -206,6 +206,23 @@ async function validateAssetType(assetType) {
         invalidCount++;
       }
     }
+  } else if (assetType === 'collections') {
+    // Collections are JSON or YAML files
+    const collectionFiles = items.filter(item => 
+      (item.endsWith('.json') || item.endsWith('.yml') || item.endsWith('.yaml')) && 
+      !item.startsWith('.')
+    );
+    
+    if (collectionFiles.length === 0) {
+      console.log(chalk.yellow(`No ${assetType} found`));
+      return { valid: 0, invalid: 0 };
+    }
+    
+    console.log(chalk.blue(`Found ${collectionFiles.length} ${assetType}\n`));
+    
+    // For collections, we just count them as valid since they have different structure
+    // They don't have frontmatter like markdown files
+    validCount = collectionFiles.length;
   } else {
     // Agents, instructions, prompts are individual markdown files
     const suffix = assetType === 'agents' ? '.agent.md' : 
@@ -236,7 +253,7 @@ async function validateAssetType(assetType) {
 
 async function validateAllAssets(assetTypesToValidate = null) {
   // If no specific types provided, validate all
-  const allAssetTypes = ['agents', 'instructions', 'prompts', 'skills'];
+  const allAssetTypes = ['agents', 'instructions', 'prompts', 'skills', 'collections'];
   
   // Determine which asset types to validate
   let typesToValidate;
