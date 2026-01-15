@@ -18,3 +18,9 @@ verdaccio/storage/
 
 # Environment variables
 .env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
