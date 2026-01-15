@@ -93,6 +93,9 @@ export async function syncFromGitHub(config) {
       const previousFiles = previousMetadata?.files ? [...previousMetadata.files].sort() : [];
       
       // Check if file lists are different
+      // Note: If files fail to download, they won't be in remoteFilePaths, so the comparison
+      // may show files changed. However, the script exits with code 1 on failures (line 121),
+      // preventing the metadata from being committed by CI/workflows.
       const filesChanged = currentFiles.length !== previousFiles.length ||
         currentFiles.some((file, index) => file !== previousFiles[index]);
       

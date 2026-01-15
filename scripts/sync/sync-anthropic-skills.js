@@ -210,7 +210,13 @@ async function syncSkills() {
     const finalSkills = Array.from(allSyncedSkills).filter(skill => currentSkills.has(skill)).sort();
     const previousFiles = previousMetadata?.files ? [...previousMetadata.files].sort() : [];
     
-    // Check if file lists are different
+    // Check if file lists are different.
+    // Note: On partial sync failures, failed skills are not added to `syncedSkills`
+    // (and thus not to `allSyncedSkills` or `finalSkills`), so `finalSkills` may
+    // differ from `previousFiles` even though some skills failed to sync. This is
+    // intentional: the script still recomputes metadata here, but because it exits
+    // with a non-zero status when `failCount > 0` (see below), callers/CI should
+    // treat such runs as failures and avoid committing the updated metadata.
     const filesChanged = finalSkills.length !== previousFiles.length ||
       finalSkills.some((file, index) => file !== previousFiles[index]);
     
