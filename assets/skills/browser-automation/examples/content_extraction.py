@@ -55,7 +55,7 @@ def main():
         "python", "scripts/browser_tools.py", "browser_evaluate",
         page_url, "document.title"
     ])
-    print(f"Page title: {title}")
+    print(f"Page title: {title.strip()}")
     
     print("\nContent extraction completed successfully!")
 

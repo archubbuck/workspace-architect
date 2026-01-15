@@ -8,7 +8,6 @@ like hover states, dropdowns, and dynamic content.
 
 import subprocess
 import sys
-import time
 
 def run_command(cmd):
     """Run a command and print output."""
