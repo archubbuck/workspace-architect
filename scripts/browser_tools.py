@@ -6,19 +6,29 @@ Provides subcommands for common browser automation tasks.
 
 import argparse
 import sys
+from contextlib import contextmanager
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
+
+
+@contextmanager
+def browser_page(url, timeout=30000):
+    """Context manager for browser and page setup."""
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+        page.goto(url, timeout=timeout)
+        page.wait_for_load_state('networkidle', timeout=timeout)
+        try:
+            yield page
+        finally:
+            browser.close()
 
 
 def browser_navigate(args):
     """Navigate to a URL."""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(args.url, timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=30000)
+        with browser_page(args.url) as page:
             print(f"Successfully navigated to: {args.url}")
-            browser.close()
     except Exception as e:
         print(f"Error navigating to {args.url}: {str(e)}", file=sys.stderr)
         sys.exit(1)
@@ -27,12 +37,7 @@ def browser_navigate(args):
 def browser_click(args):
     """Click an element on the page."""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(args.url, timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=30000)
-            
+        with browser_page(args.url) as page:
             # Use text selector if provided, otherwise use the selector
             if args.text:
                 selector = f"text={args.text}"
@@ -41,7 +46,6 @@ def browser_click(args):
             
             page.click(selector, timeout=10000)
             print(f"Successfully clicked element: {selector}")
-            browser.close()
     except Exception as e:
         print(f"Error clicking element: {str(e)}", file=sys.stderr)
         sys.exit(1)
@@ -50,20 +54,13 @@ def browser_click(args):
 def browser_type(args):
     """Type text into an input field."""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(args.url, timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=30000)
-            
+        with browser_page(args.url) as page:
             page.fill(args.selector, args.text, timeout=10000)
             print(f"Successfully typed text into: {args.selector}")
             
             if args.submit:
                 page.keyboard.press('Enter')
                 print("Submitted form with Enter key")
-            
-            browser.close()
     except Exception as e:
         print(f"Error typing into element: {str(e)}", file=sys.stderr)
         sys.exit(1)
@@ -72,15 +69,9 @@ def browser_type(args):
 def browser_screenshot(args):
     """Take a screenshot of the page."""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(args.url, timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=30000)
-            
+        with browser_page(args.url) as page:
             page.screenshot(path=args.path, full_page=args.full_page)
             print(f"Screenshot saved to: {args.path}")
-            browser.close()
     except Exception as e:
         print(f"Error taking screenshot: {str(e)}", file=sys.stderr)
         sys.exit(1)
@@ -89,13 +80,8 @@ def browser_screenshot(args):
 def browser_get_content(args):
     """Extract text or HTML content from the page."""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(args.url, timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=30000)
-            
-            selector = args.selector if args.selector else 'body'
+        with browser_page(args.url) as page:
+            selector = args.selector or 'body'
             
             if args.html:
                 content = page.locator(selector).inner_html()
@@ -103,7 +89,6 @@ def browser_get_content(args):
                 content = page.locator(selector).inner_text()
             
             print(content)
-            browser.close()
     except Exception as e:
         print(f"Error getting content: {str(e)}", file=sys.stderr)
         sys.exit(1)
@@ -112,15 +97,9 @@ def browser_get_content(args):
 def browser_hover(args):
     """Hover over an element."""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(args.url, timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=30000)
-            
+        with browser_page(args.url) as page:
             page.hover(args.selector, timeout=10000)
             print(f"Successfully hovered over: {args.selector}")
-            browser.close()
     except Exception as e:
         print(f"Error hovering over element: {str(e)}", file=sys.stderr)
         sys.exit(1)
@@ -129,18 +108,12 @@ def browser_hover(args):
 def browser_evaluate(args):
     """Execute JavaScript in the browser context."""
     try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page()
-            page.goto(args.url, timeout=30000)
-            page.wait_for_load_state('networkidle', timeout=30000)
-            
+        with browser_page(args.url) as page:
             result = page.evaluate(args.script)
             if result is not None:
                 print(result)
             else:
                 print("Script executed successfully (no return value)")
-            browser.close()
     except Exception as e:
         print(f"Error evaluating script: {str(e)}", file=sys.stderr)
         sys.exit(1)
