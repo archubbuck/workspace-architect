@@ -13,6 +13,9 @@ loadEnv();
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const LOCAL_DIR = path.join(__dirname, '../../assets/instructions');
 
+// Parse command-line arguments for --dry-run flag
+const dryRun = process.argv.includes('--dry-run');
+
 async function syncInstructions() {
   // Load upstream config - required
   const config = await loadUpstreamConfig();
@@ -26,7 +29,8 @@ async function syncInstructions() {
     acceptedExtensions: ['.instructions.md', '.md'],
     resourceType: 'instructions',
     token: GITHUB_TOKEN,
-    syncPatterns: repoConfig.syncPatterns || null
+    syncPatterns: repoConfig.syncPatterns || null,
+    dryRun
   });
 }
 

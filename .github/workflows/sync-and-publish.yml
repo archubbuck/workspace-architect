@@ -5,6 +5,11 @@ on:
     - cron: '0 * * * *' # Runs every hour
   workflow_dispatch:
     inputs:
+      dry_run:
+        description: 'Dry-run mode: simulate actions without making changes'
+        required: false
+        type: boolean
+        default: false
       force:
         description: 'Force release even if no changes detected (emergency use only)'
         required: false
@@ -39,27 +44,52 @@ jobs:
       - name: Sync Agents
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run sync-agents
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm run sync-agents -- --dry-run
+          else
+            npm run sync-agents
+          fi
 
       - name: Sync Instructions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run sync-instructions
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm run sync-instructions -- --dry-run
+          else
+            npm run sync-instructions
+          fi
 
       - name: Sync Prompts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run sync-prompts
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm run sync-prompts -- --dry-run
+          else
+            npm run sync-prompts
+          fi
 
       - name: Sync Collections
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run sync-collections
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm run sync-collections -- --dry-run
+          else
+            npm run sync-collections
+          fi
 
       - name: Sync Skills
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run sync-skills
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm run sync-skills -- --dry-run
+          else
+            npm run sync-skills
+          fi
 
       - name: Validate Skills
         run: npm run validate-skills
@@ -67,7 +97,10 @@ jobs:
       - name: Check for changes
         id: git-check
         run: |
-          if [[ -n $(git status --porcelain) ]]; then
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "⚠️ Dry-run mode - skipping change detection and release"
+            echo "changes=false" >> $GITHUB_OUTPUT
+          elif [[ -n $(git status --porcelain) ]]; then
             echo "changes=true" >> $GITHUB_OUTPUT
           elif [ "${{ inputs.force }}" = "true" ]; then
             # Force mode: Set changes=true to trigger release, and force=true to skip commit
