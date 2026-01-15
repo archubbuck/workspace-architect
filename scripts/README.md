@@ -82,13 +82,32 @@ node scripts/sync-repo.js all --dry-run
 
 **Configuration:**
 
-The sync script reads configuration from `upstream.config.json` which defines:
-- Repository information (owner/name)
-- Remote directory paths
-- Local directory paths
-- Accepted file extensions
-- Glob patterns for file filtering
-- Sync modes (file-based or directory-based)
+The sync script reads configuration from `upstream.config.json` which uses a simple, intuitive schema:
+
+```json
+{
+  "repos": [
+    {
+      "name": "github/awesome-copilot",
+      "branch": "main",
+      "assets": {
+        "agents": {
+          "from": "agents",
+          "to": "assets/agents"
+        }
+      }
+    }
+  ]
+}
+```
+
+Where:
+- `repos` - Array of upstream repositories to sync from
+- `name` - Repository in format `owner/repo-name`
+- `branch` - Git branch to sync from (defaults to "main")
+- `assets` - Object mapping resource types to their sync configuration
+- `from` - Path/glob pattern in the upstream repository
+- `to` - Local destination path where files should be saved
 
 See `upstream.config.json.example` for a complete configuration reference.
 
@@ -140,6 +159,22 @@ When adding new scripts:
 
 When adding new sync resources:
 
-1. Add resource configuration to `upstream.config.json` under the `resources` section
-2. Add an npm script to `package.json` (e.g., `"sync-newtype": "node scripts/sync-repo.js newtype"`)
-3. No code changes needed unless a new sync mode is required
+1. Add the resource to `upstream.config.json` under the appropriate repo's `assets` section:
+   ```json
+   {
+     "repos": [
+       {
+         "name": "owner/repo-name",
+         "branch": "main",
+         "assets": {
+           "new-resource": {
+             "from": "path/in/repo",
+             "to": "assets/new-resource"
+           }
+         }
+       }
+     ]
+   }
+   ```
+2. Add an npm script to `package.json` (e.g., `"sync-new-resource": "node scripts/sync-repo.js new-resource"`)
+3. No code changes needed - the script automatically handles the new resource!

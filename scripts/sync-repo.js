@@ -55,37 +55,113 @@ function parseArguments() {
 }
 
 /**
+ * Find resource configuration by searching through all repos
+ */
+function findResourceConfig(config, resourceType) {
+  if (!config.repos || !Array.isArray(config.repos)) {
+    throw new Error('Configuration does not contain a "repos" array. Please update upstream.config.json');
+  }
+  
+  for (const repo of config.repos) {
+    if (repo.assets && repo.assets[resourceType]) {
+      return {
+        repoName: repo.name,
+        branch: repo.branch || 'main',
+        asset: repo.assets[resourceType],
+        resourceType
+      };
+    }
+  }
+  
+  // If not found, list available resources
+  const availableResources = [];
+  for (const repo of config.repos) {
+    if (repo.assets) {
+      availableResources.push(...Object.keys(repo.assets));
+    }
+  }
+  
+  throw new Error(`Unknown resource type: ${resourceType}. Valid types are: ${availableResources.join(', ')}`);
+}
+
+/**
+ * Get all available resource types from config
+ */
+function getAllResourceTypes(config) {
+  const resourceTypes = new Set();
+  
+  if (config.repos && Array.isArray(config.repos)) {
+    for (const repo of config.repos) {
+      if (repo.assets) {
+        Object.keys(repo.assets).forEach(type => resourceTypes.add(type));
+      }
+    }
+  }
+  
+  return Array.from(resourceTypes);
+}
+
+/**
+ * Determine accepted extensions based on resource type
+ */
+function getAcceptedExtensions(resourceType) {
+  const extensionMap = {
+    'agents': ['.agent.md', '.md'],
+    'instructions': ['.instructions.md', '.md'],
+    'prompts': ['.prompt.md', '.md'],
+    'collections': ['.json', '.yml', '.yaml'],
+    'skills': [] // Skills use directory-based sync
+  };
+  
+  return extensionMap[resourceType] || [];
+}
+
+/**
+ * Determine sync patterns based on resource type and from path
+ */
+function getSyncPatterns(resourceType, fromPath) {
+  const patternMap = {
+    'agents': [`${fromPath}/**/*.md`],
+    'instructions': [`${fromPath}/**/*.md`],
+    'prompts': [`${fromPath}/**/*.md`],
+    'collections': [`${fromPath}/**/*.yml`, `${fromPath}/**/*.yaml`],
+    'skills': [`${fromPath}/**/SKILL.md`, `${fromPath}/**/*.py`]
+  };
+  
+  return patternMap[resourceType] || [`${fromPath}/**/*`];
+}
+
+/**
  * Sync a single resource based on configuration
  */
 async function syncResource(resourceType, config, dryRun) {
-  const resourceConfig = config.resources[resourceType];
-  
-  if (!resourceConfig) {
-    throw new Error(`Unknown resource type: ${resourceType}. Valid types are: ${Object.keys(config.resources).join(', ')}`);
-  }
+  const resourceConfig = findResourceConfig(config, resourceType);
   
   // Validate repo format
-  if (!resourceConfig.repo || !resourceConfig.repo.includes('/')) {
-    throw new Error(`Invalid repo format for ${resourceType}: ${resourceConfig.repo}. Expected format: owner/name`);
+  if (!resourceConfig.repoName || !resourceConfig.repoName.includes('/')) {
+    throw new Error(`Invalid repo format for ${resourceType}: ${resourceConfig.repoName}. Expected format: owner/name`);
   }
   
-  const repoParts = resourceConfig.repo.split('/');
+  const repoParts = resourceConfig.repoName.split('/');
   if (repoParts.length !== 2 || !repoParts[0] || !repoParts[1]) {
-    throw new Error(`Invalid repo format for ${resourceType}: ${resourceConfig.repo}. Expected format: owner/name`);
+    throw new Error(`Invalid repo format for ${resourceType}: ${resourceConfig.repoName}. Expected format: owner/name`);
   }
   
   const [repoOwner, repoName] = repoParts;
-  const localDir = path.join(__dirname, '..', resourceConfig.localDir);
+  const remoteDir = resourceConfig.asset.from;
+  const localDir = path.join(__dirname, '..', resourceConfig.asset.to);
   
-  // Check if this is a special directory-based sync (like skills)
-  if (resourceConfig.syncMode === 'directory') {
+  // Determine if this is a directory-based sync (like skills)
+  const isDirectorySync = resourceType === 'skills';
+  
+  if (isDirectorySync) {
     await syncSkillsFromGitHub({
       repoOwner,
       repoName,
-      remoteDir: resourceConfig.remoteDir,
+      remoteDir,
       localDir,
       token: GITHUB_TOKEN,
-      syncPatterns: resourceConfig.syncPatterns || null,
+      syncPatterns: getSyncPatterns(resourceType, remoteDir),
       dryRun
     });
   } else {
@@ -93,12 +169,12 @@ async function syncResource(resourceType, config, dryRun) {
     await syncFromGitHub({
       repoOwner,
       repoName,
-      remoteDir: resourceConfig.remoteDir,
+      remoteDir,
       localDir,
-      acceptedExtensions: resourceConfig.acceptedExtensions || [],
+      acceptedExtensions: getAcceptedExtensions(resourceType),
       resourceType,
       token: GITHUB_TOKEN,
-      syncPatterns: resourceConfig.syncPatterns || null,
+      syncPatterns: getSyncPatterns(resourceType, remoteDir),
       dryRun
     });
   }
@@ -114,14 +190,14 @@ async function sync() {
     // Load configuration
     const config = await loadUpstreamConfig();
     
-    if (!config.resources) {
-      throw new Error('Configuration does not contain a "resources" section. Please update upstream.config.json');
+    if (!config.repos) {
+      throw new Error('Configuration does not contain a "repos" section. Please update upstream.config.json');
     }
     
     if (resourceType === 'all') {
       // Sync all resources
       console.log(chalk.blue.bold('\n=== Syncing All Resources ===\n'));
-      const resourceTypes = Object.keys(config.resources);
+      const resourceTypes = getAllResourceTypes(config);
       
       for (const type of resourceTypes) {
         try {
