@@ -64,7 +64,17 @@ async function syncResource(resourceType, config, dryRun) {
     throw new Error(`Unknown resource type: ${resourceType}. Valid types are: ${Object.keys(config.resources).join(', ')}`);
   }
   
-  const [repoOwner, repoName] = resourceConfig.repo.split('/');
+  // Validate repo format
+  if (!resourceConfig.repo || !resourceConfig.repo.includes('/')) {
+    throw new Error(`Invalid repo format for ${resourceType}: ${resourceConfig.repo}. Expected format: owner/name`);
+  }
+  
+  const repoParts = resourceConfig.repo.split('/');
+  if (repoParts.length !== 2 || !repoParts[0] || !repoParts[1]) {
+    throw new Error(`Invalid repo format for ${resourceType}: ${resourceConfig.repo}. Expected format: owner/name`);
+  }
+  
+  const [repoOwner, repoName] = repoParts;
   const localDir = path.join(__dirname, '..', resourceConfig.localDir);
   
   // Check if this is a special directory-based sync (like skills)
