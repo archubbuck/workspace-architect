@@ -111,7 +111,7 @@ def browser_hover(args):
     """Hover over an element."""
     try:
         with browser_page(args.url) as page:
-            page.hover(args.selector, timeout=ELEMENT_TIMEOUT)
+            page.locator(args.selector).hover(timeout=ELEMENT_TIMEOUT)
             print(f"Successfully hovered over: {args.selector}")
     except Exception as e:
         print(f"Error hovering over element: {str(e)}", file=sys.stderr)
