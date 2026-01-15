@@ -2,6 +2,9 @@ import fs from 'fs-extra';
 import path from 'path';
 import { spawnSync } from 'child_process';
 
+// Metadata file name used for tracking sync state
+const METADATA_FILENAME = '.upstream-sync.json';
+
 /**
  * Recursively get all files in a directory that match accepted extensions,
  * excluding the metadata file.
@@ -23,7 +26,7 @@ export async function getLocalFiles(directory, acceptedExtensions, baseDir = dir
   for (const entry of entries) {
     const fullPath = path.join(directory, entry.name);
     // Skip metadata file
-    if (entry.name === '.upstream-sync.json') {
+    if (entry.name === METADATA_FILENAME) {
       continue;
     }
     if (entry.isDirectory()) {
@@ -41,11 +44,17 @@ export async function getLocalFiles(directory, acceptedExtensions, baseDir = dir
  * Check if there are any git changes in the specified directory.
  * Excludes the .upstream-sync.json metadata file.
  * 
- * @param {string} directory - The directory to check
+ * @param {string} directory - The directory to check (must be an absolute path)
  * @returns {boolean} True if there are changes, false otherwise
  */
 export function hasGitChanges(directory) {
   try {
+    // Validate that directory is an absolute path to prevent path traversal
+    if (!path.isAbsolute(directory)) {
+      console.error('Directory must be an absolute path:', directory);
+      return false;
+    }
+    
     // Get git status for the directory, using spawn to avoid shell injection
     const result = spawnSync('git', ['status', '--porcelain', '--', directory], {
       encoding: 'utf-8'
@@ -72,7 +81,7 @@ export function hasGitChanges(directory) {
         // Extract filename from git status line (skip the first 3 characters which are status codes)
         const filename = line.substring(3);
         const basename = path.basename(filename);
-        return basename !== '.upstream-sync.json';
+        return basename !== METADATA_FILENAME;
       });
     return filteredLines.length > 0;
   } catch (error) {
