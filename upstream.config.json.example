@@ -1,55 +1,36 @@
 {
-  "upstreamRepos": [
+  "repos": [
     {
-      "repo": "github/awesome-copilot",
-      "syncPatterns": [
-        "agents/**/*.md",
-        "collections/**/*.yml",
-        "collections/**/*.yaml",
-        "instructions/**/*.md",
-        "prompts/**/*.md"
-      ]
+      "name": "github/awesome-copilot",
+      "branch": "main",
+      "assets": {
+        "agents": {
+          "from": "agents",
+          "to": "assets/agents"
+        },
+        "collections": {
+          "from": "collections",
+          "to": "assets/collections"
+        },
+        "instructions": {
+          "from": "instructions",
+          "to": "assets/instructions"
+        },
+        "prompts": {
+          "from": "prompts",
+          "to": "assets/prompts"
+        }
+      }
     },
     {
-      "repo": "anthropics/skills",
-      "syncPatterns": ["skills/**/SKILL.md", "skills/**/*.py"]
+      "name": "anthropics/skills",
+      "branch": "main",
+      "assets": {
+        "skills": {
+          "from": "skills",
+          "to": "assets/skills"
+        }
+      }
     }
-  ],
-  "resources": {
-    "agents": {
-      "repo": "github/awesome-copilot",
-      "remoteDir": "agents",
-      "localDir": "assets/agents",
-      "acceptedExtensions": [".agent.md", ".md"],
-      "syncPatterns": ["agents/**/*.md"]
-    },
-    "instructions": {
-      "repo": "github/awesome-copilot",
-      "remoteDir": "instructions",
-      "localDir": "assets/instructions",
-      "acceptedExtensions": [".instructions.md", ".md"],
-      "syncPatterns": ["instructions/**/*.md"]
-    },
-    "prompts": {
-      "repo": "github/awesome-copilot",
-      "remoteDir": "prompts",
-      "localDir": "assets/prompts",
-      "acceptedExtensions": [".prompt.md", ".md"],
-      "syncPatterns": ["prompts/**/*.md"]
-    },
-    "collections": {
-      "repo": "github/awesome-copilot",
-      "remoteDir": "collections",
-      "localDir": "assets/collections",
-      "acceptedExtensions": [".json", ".yml", ".yaml"],
-      "syncPatterns": ["collections/**/*.yml", "collections/**/*.yaml"]
-    },
-    "skills": {
-      "repo": "anthropics/skills",
-      "remoteDir": "skills",
-      "localDir": "assets/skills",
-      "syncMode": "directory",
-      "syncPatterns": ["skills/**/SKILL.md", "skills/**/*.py"]
-    }
-  }
+  ]
 }
