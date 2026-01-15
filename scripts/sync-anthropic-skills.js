@@ -185,18 +185,47 @@ async function syncSkills() {
   
   let successCount = 0;
   let failCount = 0;
+  let deleteCount = 0;
+  
+  // Track which skills were synced from upstream
+  const syncedSkills = new Set();
   
   for (const skill of skillsToSync) {
     const success = await syncSkill(skill);
     if (success) {
       successCount++;
+      syncedSkills.add(skill);
     } else {
       failCount++;
     }
   }
   
+  // Delete local skills that no longer exist upstream
+  console.log(chalk.blue('\nChecking for deleted skills...'));
+  try {
+    const localSkillDirs = await fs.readdir(LOCAL_SKILLS_DIR, { withFileTypes: true });
+    
+    for (const entry of localSkillDirs) {
+      if (entry.isDirectory() && !syncedSkills.has(entry.name)) {
+        const skillPath = path.join(LOCAL_SKILLS_DIR, entry.name);
+        try {
+          await fs.remove(skillPath);
+          console.log(chalk.yellow(`  Deleted skill: ${entry.name}`));
+          deleteCount++;
+        } catch (error) {
+          console.error(chalk.red(`  ✗ Failed to delete skill ${entry.name}:`), error.message);
+        }
+      }
+    }
+  } catch (error) {
+    console.error(chalk.red('Error checking for deleted skills:'), error.message);
+  }
+  
   console.log(chalk.blue.bold('\n=== Sync Complete ==='));
   console.log(chalk.green(`✓ Successfully synced: ${successCount} skills`));
+  if (deleteCount > 0) {
+    console.log(chalk.yellow(`⚠ Deleted: ${deleteCount} skills`));
+  }
   if (failCount > 0) {
     console.log(chalk.red(`✗ Failed to sync: ${failCount} skills`));
   }

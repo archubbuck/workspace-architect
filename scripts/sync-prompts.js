@@ -110,6 +110,23 @@ async function getFilesRecursively(remotePath, subPath = '') {
   return files;
 }
 
+async function getLocalFiles(directory, baseDir = directory) {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  let files = [];
+  
+  for (const entry of entries) {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      const subFiles = await getLocalFiles(fullPath, baseDir);
+      files.push(...subFiles);
+    } else if (entry.isFile() && ACCEPTED_EXTENSIONS.some(ext => entry.name.endsWith(ext))) {
+      files.push(path.relative(baseDir, fullPath));
+    }
+  }
+  
+  return files;
+}
+
 async function syncPrompts() {
   console.log(chalk.blue.bold(`\n=== Syncing Prompts from ${REPO_OWNER}/${REPO_NAME} ===\n`));
   
@@ -118,12 +135,16 @@ async function syncPrompts() {
   
   let successCount = 0;
   let failCount = 0;
+  let deleteCount = 0;
   
   try {
     console.log(chalk.blue(`Fetching prompts from ${REMOTE_DIR}...`));
     const files = await getFilesRecursively(REMOTE_DIR);
     
     console.log(chalk.blue(`Found ${files.length} prompt file(s)\n`));
+    
+    // Track remote file paths
+    const remoteFilePaths = new Set(files.map(f => f.path));
     
     for (const file of files) {
       try {
@@ -136,6 +157,23 @@ async function syncPrompts() {
         failCount++;
       }
     }
+    
+    // Delete local files that no longer exist upstream
+    console.log(chalk.blue(`\nChecking for deleted files...`));
+    const localFiles = await getLocalFiles(LOCAL_DIR);
+    
+    for (const localFile of localFiles) {
+      if (!remoteFilePaths.has(localFile)) {
+        const filePath = path.join(LOCAL_DIR, localFile);
+        try {
+          await fs.remove(filePath);
+          console.log(chalk.yellow(`  Deleted: ${localFile}`));
+          deleteCount++;
+        } catch (error) {
+          console.error(chalk.red(`  ✗ Failed to delete ${localFile}:`), error.message);
+        }
+      }
+    }
   } catch (error) {
     console.error(chalk.red('Error fetching prompts:'), error.message);
     failCount++;
@@ -143,6 +181,9 @@ async function syncPrompts() {
   
   console.log(chalk.blue.bold('\n=== Sync Complete ==='));
   console.log(chalk.green(`✓ Successfully synced: ${successCount} prompts`));
+  if (deleteCount > 0) {
+    console.log(chalk.yellow(`⚠ Deleted: ${deleteCount} prompts`));
+  }
   if (failCount > 0) {
     console.log(chalk.red(`✗ Failed to sync: ${failCount} prompts`));
     process.exit(1);
