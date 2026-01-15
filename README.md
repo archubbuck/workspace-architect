@@ -230,6 +230,27 @@ Create a JSON file in `assets/collections/`:
   - `npm run sync-skills` - Sync skills from anthropics/skills
 - `npm run validate-skills` - Validate all synced skills
 
+#### Upstream Configuration
+
+Sync scripts support optional JSON configuration for controlling which files are synced from upstream repositories using glob patterns. Create an `upstream.config.json` file in the project root:
+
+```json
+{
+  "upstreamRepos": [
+    {
+      "repo": "github/awesome-copilot",
+      "syncPatterns": ["agents/**/*.md", "collections/**/*.yml"]
+    },
+    {
+      "repo": "anthropics/skills",
+      "syncPatterns": ["skills/**/SKILL.md"]
+    }
+  ]
+}
+```
+
+See [Upstream Configuration Guide](docs/UPSTREAM_CONFIG.md) for detailed documentation, examples, and best practices.
+
 ### Local Testing
 
 Use Verdaccio for end-to-end testing:
