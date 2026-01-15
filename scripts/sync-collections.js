@@ -197,11 +197,15 @@ async function syncCollections() {
     }
     
     // Save metadata of currently synced files
-    await fs.writeJson(metadataPath, {
-      lastSync: new Date().toISOString(),
-      source: `${REPO_OWNER}/${REPO_NAME}/${REMOTE_DIR}`,
-      files: Array.from(remoteFilePaths)
-    }, { spaces: 2 });
+    try {
+      await fs.writeJson(metadataPath, {
+        lastSync: new Date().toISOString(),
+        source: `${REPO_OWNER}/${REPO_NAME}/${REMOTE_DIR}`,
+        files: Array.from(remoteFilePaths)
+      }, { spaces: 2 });
+    } catch (error) {
+      console.error(chalk.red('Warning: Failed to save sync metadata:'), error.message);
+    }
   } catch (error) {
     console.error(chalk.red('Error fetching collections:'), error.message);
     failCount++;
