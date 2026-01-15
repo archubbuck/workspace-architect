@@ -21,7 +21,7 @@ function validateMetadata(parsed, assetName, assetType) {
   const warnings = [];
   
   // Check for description field (common across all asset types)
-  if (!parsed.data.description || parsed.data.description.trim() === '') {
+  if (!parsed.data.description || parsed.data.description?.trim() === '') {
     errors.push('Missing required field: description');
   }
   
@@ -48,7 +48,11 @@ function validateMetadata(parsed, assetName, assetType) {
       warnings.push('Agent has neither model nor tools specified');
     }
   } else if (assetType === 'prompts') {
-    // Prompts may have agent, tools, etc.
+    // Prompts may have agent, tools, etc. However, some prompts are intentionally
+    // authored as standalone content without being bound to a specific agent or
+    // tool configuration. For those cases, omitting both `agent` and `tools`
+    // metadata is an accepted pattern. As a result, this condition is treated
+    // as a warning (for visibility) rather than a hard error.
     if (!parsed.data.agent && !parsed.data.tools) {
       warnings.push('Prompt has neither agent nor tools specified');
     }
