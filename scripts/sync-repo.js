@@ -150,6 +150,8 @@ async function syncResource(resourceType, config, dryRun) {
   const [repoOwner, repoName] = repoParts;
   const remoteDir = resourceConfig.asset.from;
   const localDir = path.join(__dirname, '..', resourceConfig.asset.to);
+  const branch = resourceConfig.branch; // Note: Currently not used - GitHub API defaults to main branch
+  // TODO: Add branch support to github-utils.js functions to use ?ref=${branch} parameter
   
   // Determine if this is a directory-based sync (like skills)
   const isDirectorySync = resourceType === 'skills';
