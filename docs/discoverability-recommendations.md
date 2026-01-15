@@ -90,7 +90,7 @@ nodejs, markdown, automation
 **How to add**: 
 1. Go to https://github.com/archubbuck/workspace-architect
 2. Click ⚙️ next to "About"
-3. Paste topics from GITHUB_TOPICS_RECOMMENDATIONS.md
+3. Paste topics from [github-topics-recommendations.md](github-topics-recommendations.md)
 4. Save
 
 **Impact**: Topics dramatically improve GitHub search discoverability and appear in GitHub's topic explore pages.
