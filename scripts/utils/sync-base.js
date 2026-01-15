@@ -76,10 +76,14 @@ export async function syncFromGitHub(config) {
     for (const file of files) {
       try {
         const destPath = path.join(localDir, file.path);
+        // Check file existence upfront - needed for both modes to determine create vs update
         const fileExists = await fs.pathExists(destPath);
         
         if (dryRun) {
           // Fetch remote content to compare
+          // Note: We download full content for comparison as GitHub API doesn't provide
+          // checksums in directory listings. For large repositories, consider using
+          // Git tree comparisons or implementing a caching mechanism.
           const response = await fetch(file.download_url, token ? {
             headers: { 'Authorization': `Bearer ${token}`, 'User-Agent': 'node.js' }
           } : {
@@ -96,11 +100,13 @@ export async function syncFromGitHub(config) {
             if (localContent !== remoteContent) {
               console.log(chalk.yellow(`  [DRY RUN] Would update: ${file.path}`));
               updateCount++;
+              successCount++;
             }
-            // If content is the same, don't log anything
+            // If content is the same, don't log anything and don't count as success
           } else {
             console.log(chalk.green(`  [DRY RUN] Would create: ${file.path}`));
             createCount++;
+            successCount++;
           }
         } else {
           await downloadFile(file.download_url, destPath, token);
@@ -109,8 +115,8 @@ export async function syncFromGitHub(config) {
           } else {
             console.log(chalk.dim(`  Created: ${file.path}`));
           }
+          successCount++;
         }
-        successCount++;
       } catch (error) {
         console.error(chalk.red(`  ✗ Failed to download ${file.path}:`), error.message);
         failCount++;
