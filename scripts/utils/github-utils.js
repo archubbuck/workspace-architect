@@ -101,7 +101,8 @@ export async function getFilesRecursively(owner, repo, remotePath, subPath = '',
       if (extensionMatch && patternMatch) {
         files.push({
           path: relativePath,
-          download_url: item.download_url
+          download_url: item.download_url,
+          sha: item.sha
         });
       }
     } else if (item.type === 'dir') {

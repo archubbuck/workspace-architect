@@ -80,29 +80,24 @@ export async function syncFromGitHub(config) {
         const fileExists = await fs.pathExists(destPath);
         
         if (dryRun) {
-          // Fetch remote content to compare
-          // Note: We download full content for comparison as GitHub API doesn't provide
-          // checksums in directory listings. For large repositories, consider using
-          // Git tree comparisons or implementing a caching mechanism.
-          const response = await fetch(file.download_url, token ? {
-            headers: { 'Authorization': `Bearer ${token}`, 'User-Agent': 'node.js' }
-          } : {
-            headers: { 'User-Agent': 'node.js' }
-          });
-          if (!response.ok) {
-            throw new Error(`Failed to fetch ${file.download_url}: ${response.statusText}`);
-          }
-          const remoteContent = await response.text();
-          
-          // Check if file exists and compare content
+          // Use SHA comparison for efficiency instead of downloading full content
+          // Note: We use the SHA field from the GitHub Contents API to detect changes
+          // without downloading full file content. For even better performance with
+          // large repositories, consider using Git tree comparisons or caching.
           if (fileExists) {
+            // Calculate SHA of local file to compare with remote SHA
+            const crypto = await import('crypto');
             const localContent = await fs.readFile(destPath, 'utf8');
-            if (localContent !== remoteContent) {
+            const localSha = crypto.createHash('sha1')
+              .update('blob ' + Buffer.byteLength(localContent) + '\0' + localContent)
+              .digest('hex');
+            
+            if (localSha !== file.sha) {
               console.log(chalk.yellow(`  [DRY RUN] Would update: ${file.path}`));
               updateCount++;
               successCount++;
             }
-            // If content is the same, don't log anything and don't count as success
+            // If SHA is the same, don't log anything and don't count as success
           } else {
             console.log(chalk.green(`  [DRY RUN] Would create: ${file.path}`));
             createCount++;
@@ -112,8 +107,10 @@ export async function syncFromGitHub(config) {
           await downloadFile(file.download_url, destPath, token);
           if (fileExists) {
             console.log(chalk.dim(`  Updated: ${file.path}`));
+            updateCount++;
           } else {
             console.log(chalk.dim(`  Created: ${file.path}`));
+            createCount++;
           }
           successCount++;
         }
@@ -196,10 +193,16 @@ export async function syncFromGitHub(config) {
     }
   } else {
     console.log(chalk.blue.bold('\n=== Sync Complete ==='));
-    console.log(chalk.green(`✓ Successfully synced: ${successCount} ${resourceType}`));
+    if (createCount > 0) {
+      console.log(chalk.green(`✓ Created: ${createCount} ${resourceType}`));
+    }
+    if (updateCount > 0) {
+      console.log(chalk.green(`✓ Updated: ${updateCount} ${resourceType}`));
+    }
     if (deleteCount > 0) {
       console.log(chalk.yellow(`⚠ Deleted: ${deleteCount} ${resourceType}`));
     }
+    console.log(chalk.green(`✓ Total synced: ${successCount} ${resourceType}`));
     if (failCount > 0) {
       console.log(chalk.red(`✗ Failed to sync: ${failCount} ${resourceType}`));
       process.exit(1);
