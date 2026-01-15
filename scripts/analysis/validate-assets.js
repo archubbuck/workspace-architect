@@ -234,15 +234,25 @@ async function validateAssetType(assetType) {
   return { valid: validCount, invalid: invalidCount };
 }
 
-async function validateAllAssets() {
-  console.log(chalk.blue.bold('=== Validating All Assets ===\n'));
+async function validateAllAssets(assetTypesToValidate = null) {
+  // If no specific types provided, validate all
+  const allAssetTypes = ['agents', 'instructions', 'prompts', 'skills'];
+  const assetTypes = assetTypesToValidate || allAssetTypes;
   
-  const assetTypes = ['agents', 'instructions', 'prompts', 'skills'];
+  // Ensure assetTypes is an array
+  const typesToValidate = Array.isArray(assetTypes) ? assetTypes : [assetTypes];
+  
+  if (typesToValidate.length === allAssetTypes.length) {
+    console.log(chalk.blue.bold('=== Validating All Assets ===\n'));
+  } else {
+    console.log(chalk.blue.bold(`=== Validating ${typesToValidate.join(', ')} ===\n`));
+  }
+  
   let totalValid = 0;
   let totalInvalid = 0;
   const results = {};
   
-  for (const assetType of assetTypes) {
+  for (const assetType of typesToValidate) {
     console.log(chalk.cyan.bold(`\n--- Validating ${assetType.toUpperCase()} ---`));
     const { valid, invalid } = await validateAssetType(assetType);
     results[assetType] = { valid, invalid };
@@ -270,7 +280,11 @@ async function validateAllAssets() {
   }
 }
 
-validateAllAssets().catch(error => {
+// Support command-line usage
+const args = process.argv.slice(2);
+const assetTypeArg = args[0] || null;
+
+validateAllAssets(assetTypeArg).catch(error => {
   console.error(chalk.red('Fatal error:'), error);
   process.exit(1);
 });
