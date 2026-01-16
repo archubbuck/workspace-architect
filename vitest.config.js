@@ -28,6 +28,10 @@ export default defineConfig({
       // 
       // Thresholds reflect testable code (helper functions, validation, parsing)
       // while accepting that I/O-heavy paths are validated through integration tests
+      // 
+      // After review feedback: Increased from initial 10-13% to be more stringent
+      // Current achievable coverage with integration testing approach: ~13% lines, 20% functions
+      // Thresholds set slightly below to allow for minor fluctuations while enforcing quality
       thresholds: {
         lines: 12,
         functions: 20,
