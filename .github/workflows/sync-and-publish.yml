@@ -121,7 +121,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ "${{ steps.git-check.outputs.force }}" = "true" ]; then
-            echo "🚨 Force mode enabled - creating new patch version"
-          fi
+          # Both normal and force modes increment version to avoid duplicate publishing
           npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
