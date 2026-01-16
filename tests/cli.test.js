@@ -189,8 +189,8 @@ describe('CLI - download command with collections', () => {
       cwd: os.tmpdir(),
     });
     
-    // Collections may download multiple assets
-    expect(result.stdout).toContain('collection') || expect(result.exitCode).toBeLessThan(2);
+    // Collections may download multiple assets - should succeed with exit code 0
+    expect(result.exitCode).toBe(0);
   });
 });
 
@@ -200,8 +200,8 @@ describe('CLI - download command with skills', () => {
       cwd: os.tmpdir(),
     });
     
-    // Skills are multi-file assets
-    expect(result.stdout).toContain('[Dry Run]') || expect(result.stdout).toContain('skill');
+    // Skills are multi-file assets - should show dry run message
+    expect(result.stdout).toContain('[Dry Run]');
   });
 });
 
