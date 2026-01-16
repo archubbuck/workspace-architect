@@ -71,7 +71,7 @@ function getAssetUrl(assetPath) {
     if (process.env.VERBOSE === 'true' || process.env.VERBOSE === '1') {
       console.warn(
         chalk.yellow(
-          `Git repository detection failed in getAssetUrl; falling back to local paths. Reason: ${error && error.message ? error.message : error}`
+          `Git repository detection failed in getAssetUrl; falling back to local paths. Reason: ${error?.message || error}`
         )
       );
     }
