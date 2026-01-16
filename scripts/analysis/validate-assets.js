@@ -27,10 +27,14 @@ function getAssetUrl(assetPath) {
   
   // Try to get info from git
   try {
+    // Find git root directory more robustly
     const repoRoot = path.join(__dirname, '../..');
+    
+    // Validate that we're in a git repository
     const gitRemote = execSync('git config --get remote.origin.url', { 
       cwd: repoRoot, 
-      encoding: 'utf8' 
+      encoding: 'utf8',
+      stdio: ['pipe', 'pipe', 'pipe'] // Suppress stderr
     }).trim();
     
     // Extract owner/repo from git URL
@@ -42,15 +46,18 @@ function getAssetUrl(assetPath) {
       try {
         branch = execSync('git rev-parse --abbrev-ref HEAD', {
           cwd: repoRoot,
-          encoding: 'utf8'
+          encoding: 'utf8',
+          stdio: ['pipe', 'pipe', 'pipe'] // Suppress stderr
         }).trim();
-      } catch {
+      } catch (branchError) {
+        // If we can't get the branch, default to main
         branch = 'main';
       }
       return `https://github.com/${ownerRepo}/blob/${branch}/${assetPath}`;
     }
   } catch (error) {
-    // Git commands failed, fallback to local path
+    // Git commands failed (not in a git repo or git not available)
+    // This is expected in some environments, so we just fall through
   }
   
   // Fallback to local file path for development
