@@ -24,3 +24,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Test coverage
+coverage/
+.vitest

@@ -8,7 +8,12 @@
   },
   "scripts": {
     "start:registry": "verdaccio --config verdaccio/config.yaml",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "test:local": "node bin/cli.js list && node bin/cli.js download instructions a11y --dry-run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "analyze": "node scripts/analysis/analyze-collections.js",
     "generate-manifest": "node scripts/generation/generate-manifest.js",
     "migrate-collections": "node scripts/generation/migrate-collections-format.js",
@@ -78,10 +83,16 @@
     "yaml": "^2.8.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@release-it/conventional-changelog": "^8.0.2",
+    "@vitest/coverage-v8": "^4.0.17",
     "conventional-changelog-conventionalcommits": "^7.0.2",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0",
+    "memfs": "^4.52.0",
     "release-it": "^17.11.0",
-    "verdaccio": "^5.29.0"
+    "verdaccio": "^5.29.0",
+    "vitest": "^4.0.17"
   },
   "type": "module"
 }

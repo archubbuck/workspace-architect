@@ -187,15 +187,61 @@ Skills are folder-based assets compatible with Claude and other AI platforms.
 
 ### Testing Your Changes
 
-Before submitting a PR:
+Before submitting a PR, you must run and pass all tests and linting checks. Our CI/CD pipeline will automatically run these checks, and PRs cannot be merged if they fail.
 
-1. **Test locally:**
+#### Running Tests
+
+We use [Vitest](https://vitest.dev/) for testing. Tests are located in the `tests/` directory.
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode (for development)
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+**Test Coverage Requirements:**
+- All tests must pass before merging
+- Code coverage reports are generated for all PRs
+- Write tests for new features and bug fixes
+- Integration tests validate CLI behavior end-to-end
+- Unit tests validate helper functions and logic
+
+**Test Structure:**
+- `tests/cli.test.js` - Integration tests for CLI commands
+- `tests/helpers.test.js` - Unit tests for helper functions
+- `tests/unit.test.js` - Additional unit tests for utilities
+
+#### Running Linting
+
+We use [ESLint](https://eslint.org/) to maintain code quality.
+
+```bash
+# Run linter
+npm run lint
+
+# Automatically fix linting issues
+npm run lint:fix
+```
+
+**Linting Rules:**
+- All code must pass ESLint checks before merging
+- Follow the configured ESLint rules in `eslint.config.js`
+- Fix any linting errors before submitting your PR
+
+#### Local Testing
+
+1. **Test CLI commands locally:**
    ```bash
    node bin/cli.js list
    node bin/cli.js download <type> <name> --dry-run
    ```
 
-2. **Generate manifest:**
+2. **Generate manifest (required if you add/modify assets):**
    ```bash
    npm run generate-manifest
    ```
@@ -209,6 +255,16 @@ Before submitting a PR:
    npm run publish:local
    npx --registry http://localhost:4873 workspace-architect list
    ```
+
+### CI/CD Pipeline
+
+All pull requests must pass our CI/CD checks before merging:
+
+- ✅ **Tests**: All tests must pass on Node.js 18.x, 20.x, and 22.x
+- ✅ **Linting**: Code must pass ESLint checks
+- ✅ **Coverage**: Coverage reports are generated (though not strictly enforced)
+
+The CI workflow runs automatically on every push to a PR. Check the "Actions" tab in GitHub to see the status of your checks.
 
 ### Commit Message Guidelines
 
