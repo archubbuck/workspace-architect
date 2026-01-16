@@ -121,5 +121,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Both normal and force modes increment version to avoid duplicate publishing
+          # Version is always incremented to avoid duplicate publishing errors
           npm run release -- --ci --npm.publishArgs="--provenance --access public" --git.push
