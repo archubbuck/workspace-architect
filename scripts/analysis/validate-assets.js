@@ -132,11 +132,12 @@ async function validateSkill(skillName) {
     
     const { errors, warnings } = validateMetadata(parsed, skillName, 'skills');
     
+    const assetPath = `assets/skills/${skillName}/SKILL.md`;
+    const assetUrl = getAssetUrl(assetPath);
+    
     if (errors.length > 0) {
       console.log(chalk.red('  ✗ Validation failed:'));
       errors.forEach(err => console.log(chalk.red(`    - ${err}`)));
-      const assetPath = `assets/skills/${skillName}/SKILL.md`;
-      const assetUrl = getAssetUrl(assetPath);
       console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
       return false;
     }
@@ -144,8 +145,6 @@ async function validateSkill(skillName) {
     if (warnings.length > 0) {
       console.log(chalk.yellow('  ⚠ Warnings:'));
       warnings.forEach(warn => console.log(chalk.yellow(`    - ${warn}`)));
-      const assetPath = `assets/skills/${skillName}/SKILL.md`;
-      const assetUrl = getAssetUrl(assetPath);
       console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
     }
     
@@ -174,11 +173,12 @@ async function validateFileAsset(fileName, assetType) {
     
     const { errors, warnings } = validateMetadata(parsed, fileName, assetType);
     
+    const assetPath = `assets/${assetType}/${fileName}`;
+    const assetUrl = getAssetUrl(assetPath);
+    
     if (errors.length > 0) {
       console.log(chalk.red('  ✗ Validation failed:'));
       errors.forEach(err => console.log(chalk.red(`    - ${err}`)));
-      const assetPath = `assets/${assetType}/${fileName}`;
-      const assetUrl = getAssetUrl(assetPath);
       console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
       return false;
     }
@@ -186,8 +186,6 @@ async function validateFileAsset(fileName, assetType) {
     if (warnings.length > 0) {
       console.log(chalk.yellow('  ⚠ Warnings:'));
       warnings.forEach(warn => console.log(chalk.yellow(`    - ${warn}`)));
-      const assetPath = `assets/${assetType}/${fileName}`;
-      const assetUrl = getAssetUrl(assetPath);
       console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
     }
     
