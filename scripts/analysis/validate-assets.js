@@ -11,9 +11,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = path.join(__dirname, '../../assets');
 
 /**
- * Constructs a GitHub URL for the asset file
+ * Constructs a GitHub URL for the asset file, or a local filesystem path as a fallback.
  * @param {string} assetPath - Relative path from repository root (e.g., 'assets/agents/my-agent.agent.md')
- * @returns {string} GitHub URL or local path if not in a GitHub context
+ * @returns {string} GitHub URL when repository/branch information is available; otherwise, a local path
+ *   constructed relative to the repository root based on script location.
  */
 function getAssetUrl(assetPath) {
   // Get repository information from environment or git
@@ -22,7 +23,10 @@ function getAssetUrl(assetPath) {
   if (githubRepo) {
     // In CI/GitHub Actions context
     const branch = process.env.GITHUB_REF_NAME || 'main';
-    return `https://github.com/${githubRepo}/blob/${branch}/${assetPath}`;
+    // URL encode branch and path components
+    const encodedBranch = encodeURIComponent(branch);
+    const encodedPath = assetPath.split('/').map(encodeURIComponent).join('/');
+    return `https://github.com/${githubRepo}/blob/${encodedBranch}/${encodedPath}`;
   }
   
   // Try to get info from git
@@ -34,11 +38,12 @@ function getAssetUrl(assetPath) {
     const gitRemote = execSync('git config --get remote.origin.url', { 
       cwd: repoRoot, 
       encoding: 'utf8',
+      timeout: 5000, // 5 second timeout to prevent hanging
       stdio: ['pipe', 'pipe', 'pipe'] // Suppress stderr
     }).trim();
     
-    // Extract owner/repo from git URL
-    const match = gitRemote.match(/github\.com[:/](.+?)(?:\.git)?$/);
+    // Extract owner/repo from git URL with more robust pattern
+    const match = gitRemote.match(/github\.com[:/]([^\/]+\/[^\/\.]+?)(?:\.git)?\/?$/);
     if (match) {
       const ownerRepo = match[1];
       // Get current branch
@@ -47,21 +52,34 @@ function getAssetUrl(assetPath) {
         branch = execSync('git rev-parse --abbrev-ref HEAD', {
           cwd: repoRoot,
           encoding: 'utf8',
+          timeout: 5000, // 5 second timeout to prevent hanging
           stdio: ['pipe', 'pipe', 'pipe'] // Suppress stderr
         }).trim();
       } catch (branchError) {
         // If we can't get the branch, default to main
         branch = 'main';
       }
-      return `https://github.com/${ownerRepo}/blob/${branch}/${assetPath}`;
+      // URL encode branch and path components
+      const encodedBranch = encodeURIComponent(branch);
+      const encodedPath = assetPath.split('/').map(encodeURIComponent).join('/');
+      return `https://github.com/${ownerRepo}/blob/${encodedBranch}/${encodedPath}`;
     }
   } catch (error) {
     // Git commands failed (not in a git repo or git not available)
     // This is expected in some environments, so we just fall through
+    // In verbose mode, log a warning to aid debugging
+    if (process.env.VERBOSE === 'true' || process.env.VERBOSE === '1') {
+      console.warn(
+        chalk.yellow(
+          `Git repository detection failed in getAssetUrl; falling back to local paths. Reason: ${error && error.message ? error.message : error}`
+        )
+      );
+    }
   }
   
-  // Fallback to local file path for development
-  return path.join(process.cwd(), assetPath);
+  // Fallback to local file path relative to repository root
+  const repoRoot = path.join(__dirname, '../..');
+  return path.join(repoRoot, assetPath);
 }
 
 function truncateDescription(description, maxLength = 60) {
