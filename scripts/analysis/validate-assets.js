@@ -5,9 +5,57 @@ import path from 'path';
 import matter from 'gray-matter';
 import chalk from 'chalk';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ASSETS_DIR = path.join(__dirname, '../../assets');
+
+/**
+ * Constructs a GitHub URL for the asset file
+ * @param {string} assetPath - Relative path from repository root (e.g., 'assets/agents/my-agent.agent.md')
+ * @returns {string} GitHub URL or local path if not in a GitHub context
+ */
+function getAssetUrl(assetPath) {
+  // Get repository information from environment or git
+  const githubRepo = process.env.GITHUB_REPOSITORY;
+  
+  if (githubRepo) {
+    // In CI/GitHub Actions context
+    const branch = process.env.GITHUB_REF_NAME || 'main';
+    return `https://github.com/${githubRepo}/blob/${branch}/${assetPath}`;
+  }
+  
+  // Try to get info from git
+  try {
+    const repoRoot = path.join(__dirname, '../..');
+    const gitRemote = execSync('git config --get remote.origin.url', { 
+      cwd: repoRoot, 
+      encoding: 'utf8' 
+    }).trim();
+    
+    // Extract owner/repo from git URL
+    const match = gitRemote.match(/github\.com[:/](.+?)(?:\.git)?$/);
+    if (match) {
+      const ownerRepo = match[1];
+      // Get current branch
+      let branch;
+      try {
+        branch = execSync('git rev-parse --abbrev-ref HEAD', {
+          cwd: repoRoot,
+          encoding: 'utf8'
+        }).trim();
+      } catch {
+        branch = 'main';
+      }
+      return `https://github.com/${ownerRepo}/blob/${branch}/${assetPath}`;
+    }
+  } catch (error) {
+    // Git commands failed, fallback to local path
+  }
+  
+  // Fallback to local file path for development
+  return path.join(process.cwd(), assetPath);
+}
 
 function truncateDescription(description, maxLength = 60) {
   if (!description) return '';
@@ -87,12 +135,18 @@ async function validateSkill(skillName) {
     if (errors.length > 0) {
       console.log(chalk.red('  ✗ Validation failed:'));
       errors.forEach(err => console.log(chalk.red(`    - ${err}`)));
+      const assetPath = `assets/skills/${skillName}/SKILL.md`;
+      const assetUrl = getAssetUrl(assetPath);
+      console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
       return false;
     }
     
     if (warnings.length > 0) {
       console.log(chalk.yellow('  ⚠ Warnings:'));
       warnings.forEach(warn => console.log(chalk.yellow(`    - ${warn}`)));
+      const assetPath = `assets/skills/${skillName}/SKILL.md`;
+      const assetUrl = getAssetUrl(assetPath);
+      console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
     }
     
     // Count files
@@ -123,12 +177,18 @@ async function validateFileAsset(fileName, assetType) {
     if (errors.length > 0) {
       console.log(chalk.red('  ✗ Validation failed:'));
       errors.forEach(err => console.log(chalk.red(`    - ${err}`)));
+      const assetPath = `assets/${assetType}/${fileName}`;
+      const assetUrl = getAssetUrl(assetPath);
+      console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
       return false;
     }
     
     if (warnings.length > 0) {
       console.log(chalk.yellow('  ⚠ Warnings:'));
       warnings.forEach(warn => console.log(chalk.yellow(`    - ${warn}`)));
+      const assetPath = `assets/${assetType}/${fileName}`;
+      const assetUrl = getAssetUrl(assetPath);
+      console.log(chalk.cyan(`    - View asset: ${chalk.underline(assetUrl)}`));
     }
     
     console.log(chalk.green(`  ✓ Valid ${assetType.slice(0, -1)}`));
