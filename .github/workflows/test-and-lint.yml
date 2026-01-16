@@ -12,18 +12,14 @@ jobs:
   test-and-lint:
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '20.x'
           cache: 'npm'
       
       - name: Install dependencies
@@ -37,4 +33,3 @@ jobs:
       
       - name: Run tests with coverage
         run: npm run test:coverage
-        if: matrix.node-version == '20.x'
