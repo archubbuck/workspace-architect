@@ -159,7 +159,7 @@ export async function listAssets(type) {
           const parsed = matter(content);
           description = parsed.data.description || '';
         }
-      } catch (_e) {
+      } catch (_error) {
         // Ignore errors reading metadata
       }
 
