@@ -1,33 +1,13 @@
 import { describe, it, expect } from 'vitest';
+import {
+  normalizeCollectionItems,
+  convertYamlItemsToFlat,
+} from '../bin/cli-functions.js';
 
-// Unit tests for helper function logic
-// These tests verify the expected behavior of normalizeCollectionItems and convertYamlItemsToFlat
+// Additional unit tests for helper function logic
+// These tests complement helpers.test.js with more edge cases
 
-describe('normalizeCollectionItems logic', () => {
-  function normalizeCollectionItems(items) {
-    if (!items) return [];
-    
-    // If it's already an array (old format), return as-is
-    if (Array.isArray(items)) {
-      return items;
-    }
-    
-    // If it's an object (new format), convert to flat array
-    if (typeof items === 'object') {
-      const flatItems = [];
-      for (const [type, names] of Object.entries(items)) {
-        if (Array.isArray(names)) {
-          for (const name of names) {
-            flatItems.push(`${type}:${name}`);
-          }
-        }
-      }
-      return flatItems;
-    }
-    
-    return [];
-  }
-
+describe('normalizeCollectionItems - additional edge cases', () => {
   it('should return empty array for null', () => {
     expect(normalizeCollectionItems(null)).toEqual([]);
   });
@@ -88,40 +68,7 @@ describe('normalizeCollectionItems logic', () => {
   });
 });
 
-describe('convertYamlItemsToFlat logic', () => {
-  function convertYamlItemsToFlat(items) {
-    if (!Array.isArray(items)) return [];
-    
-    const pluralMap = {
-      'agent': 'agents',
-      'instruction': 'instructions',
-      'prompt': 'prompts',
-      'skill': 'skills',
-      'collection': 'collections'
-    };
-    
-    const flatItems = [];
-    for (const item of items) {
-      if (!item.path || !item.kind) continue;
-      
-      const pathParts = item.path.split('/');
-      if (pathParts.length < 2) continue;
-      
-      const fileName = pathParts[pathParts.length - 1];
-      const type = pluralMap[item.kind] || item.kind + 's';
-      
-      let name = fileName
-        .replace('.agent.md', '')
-        .replace('.instructions.md', '')
-        .replace('.prompt.md', '')
-        .replace('.md', '');
-      
-      flatItems.push(`${type}:${name}`);
-    }
-    
-    return flatItems;
-  }
-
+describe('convertYamlItemsToFlat - additional edge cases', () => {
   it('should return empty array for non-array input', () => {
     expect(convertYamlItemsToFlat(null)).toEqual([]);
     expect(convertYamlItemsToFlat(undefined)).toEqual([]);
