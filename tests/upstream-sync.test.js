@@ -1,10 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import fs from 'fs-extra';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { describe, it, expect } from 'vitest';
 
 // Helper functions to simulate metadata operations
 function createOldFormatMetadata(source, files, lastSync = new Date().toISOString()) {

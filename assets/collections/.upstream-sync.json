@@ -2,11 +2,13 @@
   "sources": [
     {
       "source": "github/awesome-copilot/collections",
-      "lastSync": "2026-01-15T17:24:03.528Z",
+      "lastSync": "2026-01-22T22:13:04.679Z",
       "files": [
         "awesome-copilot.collection.yml",
         "azure-cloud-development.collection.yml",
+        "cast-imaging.collection.yml",
         "clojure-interactive-programming.collection.yml",
+        "copilot-sdk.collection.yml",
         "csharp-dotnet-development.collection.yml",
         "csharp-mcp-development.collection.yml",
         "database-data-management.collection.yml",
@@ -19,6 +21,11 @@
         "java-mcp-development.collection.yml",
         "kotlin-mcp-development.collection.yml",
         "mcp-m365-copilot.collection.yml",
+        "openapi-to-application-csharp-dotnet.collection.yml",
+        "openapi-to-application-go.collection.yml",
+        "openapi-to-application-java-spring-boot.collection.yml",
+        "openapi-to-application-nodejs-nestjs.collection.yml",
+        "openapi-to-application-python-fastapi.collection.yml",
         "partners.collection.yml",
         "pcf-development.collection.yml",
         "php-mcp-development.collection.yml",

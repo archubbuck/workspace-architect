@@ -2,10 +2,11 @@
   "sources": [
     {
       "source": "github/awesome-copilot/prompts",
-      "lastSync": "2026-01-15T16:14:20.718Z",
+      "lastSync": "2026-01-22T22:13:18.942Z",
       "files": [
         "add-educational-comments.prompt.md",
         "ai-prompt-engineering-safety-review.prompt.md",
+        "apple-appstore-reviewer.prompt.md",
         "architecture-blueprint-generator.prompt.md",
         "aspnet-minimal-api-openapi.prompt.md",
         "az-cost-optimize.prompt.md",
@@ -89,6 +90,7 @@
         "my-issues.prompt.md",
         "my-pull-requests.prompt.md",
         "next-intl-add-language.prompt.md",
+        "openapi-to-application-code.prompt.md",
         "php-mcp-server-generator.prompt.md",
         "playwright-automation-fill-in-form.prompt.md",
         "playwright-explore-website.prompt.md",

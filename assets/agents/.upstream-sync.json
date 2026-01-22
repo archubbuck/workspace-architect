@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-01-15T16:13:28.498Z",
+      "lastSync": "2026-01-22T22:13:03.207Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -30,6 +30,9 @@
         "bicep-plan.agent.md",
         "blueprint-mode-codex.agent.md",
         "blueprint-mode.agent.md",
+        "cast-imaging-impact-analysis.agent.md",
+        "cast-imaging-software-discovery.agent.md",
+        "cast-imaging-structural-quality-advisor.agent.md",
         "clojure-interactive-programming.agent.md",
         "code-tour.agent.md",
         "comet-opik.agent.md",
@@ -84,6 +87,7 @@
         "neon-migration-specialist.agent.md",
         "neon-optimization-analyzer.agent.md",
         "octopus-deploy-release-notes-mcp.agent.md",
+        "openapi-to-application.agent.md",
         "pagerduty-incident-responder.agent.md",
         "php-mcp-expert.agent.md",
         "pimcore-expert.agent.md",
