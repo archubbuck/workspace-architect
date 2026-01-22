@@ -47,10 +47,25 @@ export async function syncFromGitHub(config) {
   const metadataPath = path.join(localDir, '.upstream-sync.json');
   let previouslySynced = new Set();
   let previousMetadata = null;
+  let currentSource = `${repoOwner}/${repoName}/${remoteDir}`;
+  
   if (await fs.pathExists(metadataPath)) {
     try {
       previousMetadata = await fs.readJson(metadataPath);
-      previouslySynced = new Set(previousMetadata.files || []);
+      
+      // Support both old format (single source) and new format (multiple sources)
+      if (previousMetadata.sources && Array.isArray(previousMetadata.sources)) {
+        // New format: find files from the current source
+        const sourceEntry = previousMetadata.sources.find(s => s.source === currentSource);
+        if (sourceEntry) {
+          previouslySynced = new Set(sourceEntry.files || []);
+        }
+      } else if (previousMetadata.source && previousMetadata.files) {
+        // Old format: migrate to new format if source matches
+        if (previousMetadata.source === currentSource) {
+          previouslySynced = new Set(previousMetadata.files || []);
+        }
+      }
     } catch (error) {
       console.warn(chalk.yellow('Warning: Could not read sync metadata, will not delete any files'));
     }
@@ -148,7 +163,30 @@ export async function syncFromGitHub(config) {
     if (!dryRun) {
       try {
         const currentFiles = Array.from(remoteFilePaths).sort();
-        const previousFiles = previousMetadata?.files ? [...previousMetadata.files].sort() : [];
+        
+        // Prepare sources array - migrate old format or update existing new format
+        let sources = [];
+        
+        // Load existing sources from new format or convert from old format
+        if (previousMetadata) {
+          if (previousMetadata.sources && Array.isArray(previousMetadata.sources)) {
+            // New format: copy existing sources
+            sources = [...previousMetadata.sources];
+          } else if (previousMetadata.source && previousMetadata.files) {
+            // Old format: convert to new format
+            sources = [{
+              source: previousMetadata.source,
+              lastSync: previousMetadata.lastSync,
+              files: previousMetadata.files
+            }];
+          }
+        }
+        
+        // Find or create entry for current source
+        const existingSourceIndex = sources.findIndex(s => s.source === currentSource);
+        const previousFiles = existingSourceIndex >= 0 
+          ? [...sources[existingSourceIndex].files].sort()
+          : [];
         
         // Check if file lists are different
         // Note: If files fail to download, they won't be in remoteFilePaths, so the comparison
@@ -157,11 +195,23 @@ export async function syncFromGitHub(config) {
         const filesChanged = currentFiles.length !== previousFiles.length ||
           currentFiles.some((file, index) => file !== previousFiles[index]);
         
-        const metadata = {
-          lastSync: filesChanged ? new Date().toISOString() : (previousMetadata?.lastSync ?? new Date().toISOString()),
-          source: `${repoOwner}/${repoName}/${remoteDir}`,
+        const sourceEntry = {
+          source: currentSource,
+          lastSync: filesChanged 
+            ? new Date().toISOString() 
+            : (existingSourceIndex >= 0 ? sources[existingSourceIndex].lastSync : new Date().toISOString()),
           files: currentFiles
         };
+        
+        // Update or add the source entry
+        if (existingSourceIndex >= 0) {
+          sources[existingSourceIndex] = sourceEntry;
+        } else {
+          sources.push(sourceEntry);
+        }
+        
+        // Create new metadata structure
+        const metadata = { sources };
         
         await fs.writeJson(metadataPath, metadata, { spaces: 2 });
       } catch (error) {
