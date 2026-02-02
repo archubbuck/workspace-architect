@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-01-22T22:13:03.207Z",
+      "lastSync": "2026-02-02T01:39:23.600Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -16,6 +16,7 @@
         "amplitude-experiment-implementation.agent.md",
         "api-architect.agent.md",
         "apify-integration-expert.agent.md",
+        "arch-linux-expert.agent.md",
         "arch.agent.md",
         "arm-migration.agent.md",
         "atlassian-requirements-to-jira.agent.md",
@@ -33,6 +34,7 @@
         "cast-imaging-impact-analysis.agent.md",
         "cast-imaging-software-discovery.agent.md",
         "cast-imaging-structural-quality-advisor.agent.md",
+        "centos-linux-expert.agent.md",
         "clojure-interactive-programming.agent.md",
         "code-tour.agent.md",
         "comet-opik.agent.md",
@@ -41,6 +43,7 @@
         "csharp-dotnet-janitor.agent.md",
         "csharp-mcp-expert.agent.md",
         "custom-agent-foundry.agent.md",
+        "debian-linux-expert.agent.md",
         "debug.agent.md",
         "declarative-agents-architect.agent.md",
         "demonstrate-understanding.agent.md",
@@ -58,6 +61,7 @@
         "expert-dotnet-software-engineer.agent.md",
         "expert-nextjs-developer.agent.md",
         "expert-react-frontend-engineer.agent.md",
+        "fedora-linux-expert.agent.md",
         "gilfoyle.agent.md",
         "github-actions-expert.agent.md",
         "go-mcp-expert.agent.md",
@@ -108,6 +112,7 @@
         "prompt-engineer.agent.md",
         "python-mcp-expert.agent.md",
         "refine-issue.agent.md",
+        "repo-architect.agent.md",
         "research-technical-spike.agent.md",
         "ruby-mcp-expert.agent.md",
         "rust-gpt-4.1-beast-mode.agent.md",

@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-01-22T22:13:12.228Z",
+      "lastSync": "2026-02-02T01:39:47.612Z",
       "files": [
         "a11y.instructions.md",
         "agent-skills.instructions.md",
@@ -11,6 +11,7 @@
         "angular.instructions.md",
         "ansible.instructions.md",
         "apex.instructions.md",
+        "arch-linux.instructions.md",
         "aspnet-rest-apis.instructions.md",
         "astro.instructions.md",
         "azure-devops-pipelines.instructions.md",
@@ -20,6 +21,7 @@
         "azure-verified-modules-terraform.instructions.md",
         "bicep-code-best-practices.instructions.md",
         "blazor.instructions.md",
+        "centos-linux.instructions.md",
         "clojure.instructions.md",
         "cmake-vcpkg.instructions.md",
         "code-review-generic.instructions.md",
@@ -54,6 +56,7 @@
         "dataverse-python-sdk.instructions.md",
         "dataverse-python-testing-debugging.instructions.md",
         "dataverse-python.instructions.md",
+        "debian-linux.instructions.md",
         "declarative-agents-microsoft365.instructions.md",
         "devbox-image-definition.instructions.md",
         "devops-core-principles.instructions.md",
@@ -63,6 +66,7 @@
         "dotnet-maui.instructions.md",
         "dotnet-upgrade.instructions.md",
         "dotnet-wpf.instructions.md",
+        "fedora-linux.instructions.md",
         "genaiscript.instructions.md",
         "generate-modern-terraform-code-for-azure.instructions.md",
         "gilfoyle-code-review.instructions.md",

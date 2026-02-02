@@ -2,11 +2,12 @@
   "sources": [
     {
       "source": "github/awesome-copilot/prompts",
-      "lastSync": "2026-01-23T00:30:52.714Z",
+      "lastSync": "2026-02-02T01:40:07.465Z",
       "files": [
         "add-educational-comments.prompt.md",
         "ai-prompt-engineering-safety-review.prompt.md",
         "apple-appstore-reviewer.prompt.md",
+        "arch-linux-triage.prompt.md",
         "architecture-blueprint-generator.prompt.md",
         "aspnet-minimal-api-openapi.prompt.md",
         "az-cost-optimize.prompt.md",
@@ -18,6 +19,7 @@
         "breakdown-feature-prd.prompt.md",
         "breakdown-plan.prompt.md",
         "breakdown-test.prompt.md",
+        "centos-linux-triage.prompt.md",
         "code-exemplars-blueprint-generator.prompt.md",
         "comment-code-generate-a-tutorial.prompt.md",
         "containerize-aspnet-framework.prompt.md",
@@ -53,6 +55,7 @@
         "dataverse-python-production-code.prompt.md",
         "dataverse-python-quickstart.prompt.md",
         "dataverse-python-usecase-builder.prompt.md",
+        "debian-linux-triage.prompt.md",
         "declarative-agents.prompt.md",
         "devops-rollout-plan.prompt.md",
         "documentation-writer.prompt.md",
@@ -61,6 +64,7 @@
         "dotnet-upgrade.prompt.md",
         "editorconfig.prompt.md",
         "ef-core.prompt.md",
+        "fedora-linux-triage.prompt.md",
         "finalize-agent-prompt.prompt.md",
         "first-ask.prompt.md",
         "folder-structure-blueprint-generator.prompt.md",
