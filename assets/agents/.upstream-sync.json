@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-02-11T00:40:52.223Z",
+      "lastSync": "2026-02-11T23:12:40.962Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -113,6 +113,7 @@
         "prompt-builder.agent.md",
         "prompt-engineer.agent.md",
         "python-mcp-expert.agent.md",
+        "reepl-linkedin.agent.md",
         "refine-issue.agent.md",
         "repo-architect.agent.md",
         "research-technical-spike.agent.md",
