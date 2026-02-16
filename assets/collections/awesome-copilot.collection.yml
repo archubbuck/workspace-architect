@@ -11,6 +11,8 @@ items:
     kind: prompt
   - path: prompts/suggest-awesome-github-copilot-agents.prompt.md
     kind: prompt
+  - path: prompts/suggest-awesome-github-copilot-skills.prompt.md
+    kind: prompt
   - path: agents/meta-agentic-project-scaffold.agent.md
     kind: agent
 display:

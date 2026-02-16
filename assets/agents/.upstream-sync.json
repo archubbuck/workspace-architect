@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-02-12T23:10:47.671Z",
+      "lastSync": "2026-02-16T00:36:54.237Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -121,11 +121,13 @@
         "prompt-builder.agent.md",
         "prompt-engineer.agent.md",
         "python-mcp-expert.agent.md",
+        "qa-subagent.agent.md",
         "reepl-linkedin.agent.md",
         "refine-issue.agent.md",
         "repo-architect.agent.md",
         "research-technical-spike.agent.md",
         "ruby-mcp-expert.agent.md",
+        "rug-orchestrator.agent.md",
         "rust-gpt-4.1-beast-mode.agent.md",
         "rust-mcp-expert.agent.md",
         "salesforce-expert.agent.md",
@@ -144,6 +146,7 @@
         "software-engineer-agent-v1.agent.md",
         "specification.agent.md",
         "stackhawk-security-onboarding.agent.md",
+        "swe-subagent.agent.md",
         "swift-mcp-expert.agent.md",
         "task-planner.agent.md",
         "task-researcher.agent.md",

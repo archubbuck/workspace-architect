@@ -1,0 +1,31 @@
+id: rug-agentic-workflow
+name: RUG Agentic Workflow
+description: Three-agent workflow for orchestrated software delivery with an orchestrator plus implementation and QA subagents.
+tags: [agentic-workflow, orchestration, subagents, software-engineering, qa]
+items:
+  - path: agents/rug-orchestrator.agent.md
+    kind: agent
+    usage: |
+      recommended
+
+      This workflow is designed as a coordinated trio:
+      - `RUG` orchestrates decomposition, delegation, and validation loops.
+      - `SWE` executes implementation tasks.
+      - `QA` validates requirements, edge cases, and regressions.
+
+      Typical usage:
+      1. Start with `RUG` for multi-step tasks.
+      2. Let `RUG` delegate coding to `SWE`.
+      3. Let `RUG` delegate verification to `QA`.
+
+      Best results:
+      - Keep each delegated task narrowly scoped.
+      - Require explicit acceptance criteria per task.
+      - Run a final cross-task validation pass before completion.
+  - path: agents/swe-subagent.agent.md
+    kind: agent
+  - path: agents/qa-subagent.agent.md
+    kind: agent
+display:
+  ordering: manual
+  show_badge: false

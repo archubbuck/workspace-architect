@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/collections",
-      "lastSync": "2026-02-13T03:09:17.118Z",
+      "lastSync": "2026-02-16T00:37:35.585Z",
       "files": [
         "awesome-copilot.collection.yml",
         "azure-cloud-development.collection.yml",
@@ -38,6 +38,7 @@
         "project-planning.collection.yml",
         "python-mcp-development.collection.yml",
         "ruby-mcp-development.collection.yml",
+        "rug-agentic-workflow.collection.yml",
         "rust-mcp-development.collection.yml",
         "security-best-practices.collection.yml",
         "software-engineering-team.collection.yml",
