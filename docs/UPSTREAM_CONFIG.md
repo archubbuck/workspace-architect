@@ -109,7 +109,6 @@ Sync only documentation files:
 The sync scripts require `upstream.config.json` in the project root:
 
 ```bash
-npm run sync-collections
 npm run sync-agents
 npm run sync-instructions
 npm run sync-prompts
@@ -137,7 +136,7 @@ This ensures that manually created local files are never accidentally deleted.
 To test your configuration:
 
 1. Create `upstream.config.json` with your desired patterns
-2. Run the relevant sync script (e.g., `npm run sync-collections`)
+2. Run the relevant sync script (e.g., `npm run sync-agents`)
 3. Check the output to see which files were synced
 4. Review the local directory to confirm the results
 

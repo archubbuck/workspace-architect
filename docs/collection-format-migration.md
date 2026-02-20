@@ -157,13 +157,9 @@ npm run analyze -- --remove
 
 ### Syncing Collections
 
-When syncing collections from upstream:
+> **Note**: Collections are no longer synced from upstream repositories as the collections directory was removed from github/awesome-copilot. Existing collections in this repository are maintained locally.
 
-```bash
-npm run sync-collections
-```
-
-This downloads collections in whatever format they use upstream. After syncing:
+If you need to migrate existing collections to the new format:
 
 1. Run the migration script to normalize format:
    ```bash
