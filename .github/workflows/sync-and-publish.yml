@@ -71,16 +71,6 @@ jobs:
             npm run sync-prompts
           fi
 
-      - name: Sync Collections
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ "${{ inputs.dry_run }}" = "true" ]; then
-            npm run sync-collections -- --dry-run
-          else
-            npm run sync-collections
-          fi
-
       - name: Sync Skills
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

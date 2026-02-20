@@ -8,10 +8,6 @@
           "from": "agents",
           "to": "assets/agents"
         },
-        "collections": {
-          "from": "collections",
-          "to": "assets/collections"
-        },
         "instructions": {
           "from": "instructions",
           "to": "assets/instructions"
