@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Complete module reference and package hierarchy for PowerPlatform.Dataverse Python SDK'
 ---
 # Dataverse SDK for Python — Complete Module Reference
 

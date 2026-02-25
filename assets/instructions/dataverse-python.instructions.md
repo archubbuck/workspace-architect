@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Getting started guide for Dataverse SDK for Python with basic authentication and CRUD operations'
 ---
 # Dataverse SDK for Python — Getting Started
 

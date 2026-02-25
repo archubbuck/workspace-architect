@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Testing strategies and debugging techniques for Dataverse SDK for Python development'
 ---
 
 # Dataverse SDK for Python — Testing & Debugging Strategies

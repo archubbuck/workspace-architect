@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Error handling strategies and debugging techniques for Dataverse SDK for Python'
 ---
 
 # Dataverse SDK for Python — Error Handling & Troubleshooting Guide

@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Official quickstart guide for Dataverse SDK for Python with installation and connection examples'
 ---
 # Dataverse SDK for Python — Official Quickstart
 

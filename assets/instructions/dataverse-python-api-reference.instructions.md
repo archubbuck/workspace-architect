@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Complete API reference for Dataverse SDK for Python modules, classes, and methods'
 ---
 # Dataverse SDK for Python — API Reference Guide
 

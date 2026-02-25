@@ -1,3 +1,7 @@
+---
+applyTo: '**'
+description: 'Guide for file upload/download operations and practical examples with Dataverse SDK for Python'
+---
 # Dataverse SDK for Python - File Operations & Practical Examples
 
 ## Overview

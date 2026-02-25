@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Memory Bank system for maintaining project context and documentation across AI agent sessions'
 ---
 Coding standards, domain knowledge, and preferences that AI should follow.
 

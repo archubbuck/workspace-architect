@@ -1,4 +1,3 @@
-````prompt
 ---
 mode: 'agent'
 tools: ['changes', 'search/codebase', 'edit/editFiles', 'problems']
@@ -307,4 +306,3 @@ Then generate:
 - Verify response_semantics extract correct data
 - Test with more specific queries
 
-````

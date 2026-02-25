@@ -1,5 +1,6 @@
 ---
 applyTo: '**'
+description: 'Performance optimization techniques and patterns for Dataverse SDK for Python applications'
 ---
 
 # Dataverse SDK for Python — Performance & Optimization Guide

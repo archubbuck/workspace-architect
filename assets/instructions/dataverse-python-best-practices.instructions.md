@@ -1,3 +1,7 @@
+---
+applyTo: '**'
+description: 'Production-ready patterns and best practices for Dataverse SDK for Python from official Microsoft repository'
+---
 # Dataverse SDK for Python - Best Practices Guide
 
 ## Overview

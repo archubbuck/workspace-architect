@@ -1,4 +1,3 @@
-````prompt
 ---
 mode: 'agent'
 tools: ['changes', 'search/codebase', 'edit/editFiles', 'problems']
@@ -524,4 +523,3 @@ Then generate:
 }
 ```
 
-````

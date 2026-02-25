@@ -1,3 +1,7 @@
+---
+applyTo: '**'
+description: 'Guide for building autonomous, intelligent agentic workflows with Dataverse SDK for Python (preview feature)'
+---
 # Dataverse SDK for Python - Agentic Workflows Guide
 
 ## ⚠️ PREVIEW FEATURE NOTICE

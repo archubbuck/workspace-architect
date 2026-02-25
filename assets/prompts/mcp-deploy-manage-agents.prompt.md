@@ -1,4 +1,3 @@
-````prompt
 ---
 mode: 'agent'
 tools: ['changes', 'search/codebase', 'edit/editFiles', 'problems']
@@ -333,4 +332,3 @@ Then provide:
 - Governance and compliance checklist
 - Monitoring and reporting plan
 
-````

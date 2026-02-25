@@ -1,3 +1,7 @@
+---
+applyTo: '**'
+description: 'Integration guide for using pandas DataFrames with Dataverse SDK for Python data operations'
+---
 # Dataverse SDK for Python - Pandas Integration Guide
 
 ## Overview
