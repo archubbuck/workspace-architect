@@ -268,15 +268,15 @@ export async function syncSkillsFromGitHub(config) {
         ? [...sources[existingSourceIndex].files].sort()
         : [];
       
-      const filesChanged = finalSkills.length !== previousFiles.length ||
-        finalSkills.some((file, index) => file !== previousFiles[index]);
+      const filesChanged = finalAssets.length !== previousFiles.length ||
+        finalAssets.some((file, index) => file !== previousFiles[index]);
       
       const sourceEntry = {
         source: currentSource,
         lastSync: filesChanged 
           ? new Date().toISOString() 
           : (existingSourceIndex >= 0 ? sources[existingSourceIndex].lastSync : new Date().toISOString()),
-        files: finalSkills
+        files: finalAssets
       };
       
       // Update or add the source entry
