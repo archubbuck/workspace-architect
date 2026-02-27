@@ -25,10 +25,9 @@ function displayUsage() {
   console.log('Resource Types:');
   console.log('  agents        - Sync agents from upstream repository');
   console.log('  instructions  - Sync instructions from upstream repository');
-  console.log('  prompts       - Sync prompts from upstream repository');
-  console.log('  collections   - Sync collections from upstream repository');
   console.log('  skills        - Sync Claude skills from upstream repository');
   console.log('  all           - Sync all resources\n');
+  console.log('Note: Prompts are maintained locally and not synced from upstream.\n');
   console.log('Options:');
   console.log('  --dry-run     - Simulate sync without making changes');
   console.log('  --help, -h    - Display this help message\n');

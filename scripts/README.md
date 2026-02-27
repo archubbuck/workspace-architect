@@ -68,7 +68,6 @@ node scripts/sync-repo.js <resource-type> [options]
 # Sync a specific resource type
 npm run sync-agents
 npm run sync-instructions
-npm run sync-prompts
 npm run sync-skills
 
 # Sync all resources at once
@@ -78,6 +77,8 @@ npm run sync-all
 node scripts/sync-repo.js agents --dry-run
 node scripts/sync-repo.js all --dry-run
 ```
+
+**Note**: Prompts are maintained locally and are not synced from upstream sources.
 
 **Configuration:**
 

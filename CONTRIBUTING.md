@@ -354,7 +354,6 @@ We sync content from upstream repositories to keep our assets current:
 # Sync from github/awesome-copilot (run individual scripts as needed)
 npm run sync-agents          # Sync agents
 npm run sync-instructions    # Sync instructions
-npm run sync-prompts         # Sync prompts
 
 # Sync skills from anthropics/skills
 npm run sync-skills
@@ -364,6 +363,8 @@ npm run validate-skills
 ```
 
 **Note**: Don't manually add content that should come from upstream. Instead, contribute to the source repositories and let the sync process handle it.
+
+**Prompts**: Prompts are maintained locally in this repository and are not synced from upstream sources. To add or modify prompts, edit files in `assets/prompts/` directly.
 
 ### Dry-Run Mode
 
@@ -376,7 +377,6 @@ All sync scripts support a `--dry-run` flag to simulate actions without making a
 # Preview what would be synced without making changes
 npm run sync-agents -- --dry-run
 npm run sync-instructions -- --dry-run
-npm run sync-prompts -- --dry-run
 npm run sync-skills -- --dry-run
 ```
 

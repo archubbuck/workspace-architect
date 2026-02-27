@@ -111,8 +111,9 @@ The sync scripts require `upstream.config.json` in the project root:
 ```bash
 npm run sync-agents
 npm run sync-instructions
-npm run sync-prompts
 ```
+
+**Note**: As of the latest version, prompts are maintained locally in this repository and are not synced from upstream sources.
 
 The config file must exist and contain configuration for the repository being synced. If the config file is missing or doesn't contain the repository configuration, the sync script will fail with an error.
 
