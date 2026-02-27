@@ -87,6 +87,9 @@ npx wsa list
 npx workspace-architect list instructions
 npx wsa list agents
 npx wsa list prompts
+npx wsa list skills
+npx wsa list hooks
+npx wsa list plugins
 npx wsa list collections
 ```
 
@@ -109,6 +112,15 @@ npx wsa download instructions reactjs
 # Download an agent
 npx wsa download agents planner
 
+# Download a skill
+npx wsa download skills example-planner
+
+# Download a hook
+npx wsa download hooks governance-audit
+
+# Download a plugin
+npx wsa download plugins awesome-copilot
+
 # Download a complete collection
 npx wsa download collections devops-essentials
 ```
@@ -121,7 +133,7 @@ npx wsa download collections devops-essentials
 
 ## Asset Types
 
-Workspace Architect provides five types of assets:
+Workspace Architect provides seven types of assets:
 
 | Type | Description | Location |
 |------|-------------|----------|
@@ -129,6 +141,8 @@ Workspace Architect provides five types of assets:
 | **Prompts** | Reusable templates for specific tasks | `.github/prompts/` |
 | **Agents** | Specialized personas defining Copilot behavior | `.github/agents/` |
 | **Skills** | Claude Skills with templates, scripts, and resources | `.github/skills/` |
+| **Hooks** | Event-driven scripts that run during Copilot sessions | `.github/hooks/` |
+| **Plugins** | Bundled collections of agents, skills, and commands | `.github/plugins/` |
 | **Collections** | Bundled assets for specific domains or workflows | Multiple locations |
 
 ### What are Skills?
@@ -152,6 +166,58 @@ npx workspace-architect list skills
 ```
 
 For more information, see [Skills User Guide](docs/skills-guide.md) and [Skills vs Agents](docs/skills-vs-agents.md).
+
+### What are Hooks?
+
+**Hooks** are event-driven scripts that execute automatically during GitHub Copilot coding agent sessions. They enable:
+
+- **Session Management**: Run scripts when sessions start or end
+- **Prompt Monitoring**: Execute logic when users submit prompts
+- **Governance & Auditing**: Track and control agent behavior
+- **Custom Workflows**: Integrate with external tools and systems
+
+Hooks are directory-based assets containing:
+- **README.md**: Documentation with metadata (name, description, tags)
+- **hooks.json**: Hook configuration defining event triggers
+- **Shell scripts**: Executable scripts for each hook event
+
+**Example:**
+```bash
+# Download a Hook
+npx workspace-architect download hooks governance-audit
+
+# List all Hooks
+npx workspace-architect list hooks
+```
+
+**Available Hook Events:**
+- `sessionStart` - Triggered when a coding session begins
+- `sessionEnd` - Triggered when a coding session ends
+- `userPromptSubmitted` - Triggered when a user submits a prompt
+
+### What are Plugins?
+
+**Plugins** are bundled packages that extend GitHub Copilot with curated collections of agents, skills, and commands for specific domains or workflows. Each plugin provides:
+
+- **Agents**: Custom agents for specialized tasks
+- **Skills**: Meta-prompts and slash commands
+- **Commands**: Interactive workflows
+- **Documentation**: Setup and usage guides
+
+Plugins are directory-based assets containing:
+- **README.md**: Documentation with metadata
+- **agents/**: Agent definitions
+- **skills/**: Skill definitions
+- **.github/plugin/**: Plugin configuration
+
+**Example:**
+```bash
+# Download a Plugin
+npx workspace-architect download plugins awesome-copilot
+
+# List all Plugins
+npx workspace-architect list plugins
+```
 
 ## Roadmap
 
@@ -227,6 +293,8 @@ Create a JSON file in `assets/collections/`:
   - `npm run sync-instructions` - Sync instructions from github/awesome-copilot
   - `npm run sync-prompts` - Sync prompts from github/awesome-copilot
   - `npm run sync-skills` - Sync skills from anthropics/skills
+  - `npm run sync-hooks` - Sync hooks from github/awesome-copilot
+  - `npm run sync-plugins` - Sync plugins from github/awesome-copilot
 - `npm run validate-skills` - Validate all synced skills
 
 #### Upstream Configuration
