@@ -35,6 +35,8 @@ describe('CLI - list command', () => {
     expect(result.stdout).toContain('prompts');
     expect(result.stdout).toContain('agents');
     expect(result.stdout).toContain('skills');
+    expect(result.stdout).toContain('hooks');
+    expect(result.stdout).toContain('plugins');
     expect(result.stdout).toContain('collections');
   });
 
@@ -71,6 +73,20 @@ describe('CLI - list command', () => {
     
     expect(result.exitCode).toBe(0);
     expect(result.stdout).toContain('collections');
+  });
+
+  it('should list only hooks when type is hooks', () => {
+    const result = execCLI('list hooks');
+    
+    expect(result.exitCode).toBe(0);
+    expect(result.stdout).toContain('hooks');
+  });
+
+  it('should list only plugins when type is plugins', () => {
+    const result = execCLI('list plugins');
+    
+    expect(result.exitCode).toBe(0);
+    expect(result.stdout).toContain('plugins');
   });
 
   it('should handle invalid asset type gracefully', () => {

@@ -28,6 +28,8 @@ function displayUsage() {
   console.log('  prompts       - Sync prompts from upstream repository');
   console.log('  collections   - Sync collections from upstream repository');
   console.log('  skills        - Sync Claude skills from upstream repository');
+  console.log('  hooks         - Sync hooks from upstream repository');
+  console.log('  plugins       - Sync plugins from upstream repository');
   console.log('  all           - Sync all resources\n');
   console.log('Options:');
   console.log('  --dry-run     - Simulate sync without making changes');
@@ -111,7 +113,9 @@ function getAcceptedExtensions(resourceType) {
     'instructions': ['.instructions.md', '.md'],
     'prompts': ['.prompt.md', '.md'],
     'collections': ['.json', '.yml', '.yaml'],
-    'skills': [] // Skills use directory-based sync
+    'skills': [], // Skills use directory-based sync
+    'hooks': [], // Hooks use directory-based sync
+    'plugins': [] // Plugins use directory-based sync
   };
   
   return extensionMap[resourceType] || [];
@@ -126,7 +130,9 @@ function getSyncPatterns(resourceType, fromPath) {
     'instructions': [`${fromPath}/**/*.md`],
     'prompts': [`${fromPath}/**/*.md`],
     'collections': [`${fromPath}/**/*.yml`, `${fromPath}/**/*.yaml`],
-    'skills': [`${fromPath}/**/SKILL.md`, `${fromPath}/**/*.py`]
+    'skills': [`${fromPath}/**/SKILL.md`, `${fromPath}/**/*.py`],
+    'hooks': [`${fromPath}/**/README.md`, `${fromPath}/**/hooks.json`, `${fromPath}/**/*.sh`],
+    'plugins': [`${fromPath}/**/README.md`]
   };
   
   return patternMap[resourceType] || [`${fromPath}/**/*`];
@@ -154,8 +160,8 @@ async function syncResource(resourceType, config, dryRun) {
   const branch = resourceConfig.branch; // Note: Currently not used - GitHub API defaults to main branch
   // TODO: Add branch support to github-utils.js functions to use ?ref=${branch} parameter
   
-  // Determine if this is a directory-based sync (like skills)
-  const isDirectorySync = resourceType === 'skills';
+  // Determine if this is a directory-based sync (like skills, hooks, plugins)
+  const isDirectorySync = ['skills', 'hooks', 'plugins'].includes(resourceType);
   
   if (isDirectorySync) {
     await syncSkillsFromGitHub({
@@ -163,6 +169,7 @@ async function syncResource(resourceType, config, dryRun) {
       repoName,
       remoteDir,
       localDir,
+      resourceType,
       token: GITHUB_TOKEN,
       syncPatterns: getSyncPatterns(resourceType, remoteDir),
       dryRun

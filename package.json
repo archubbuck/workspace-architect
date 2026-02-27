@@ -24,6 +24,8 @@
     "sync-prompts": "node scripts/sync-repo.js prompts",
     "sync-collections": "node scripts/sync-repo.js collections",
     "sync-skills": "node scripts/sync-repo.js skills",
+    "sync-hooks": "node scripts/sync-repo.js hooks",
+    "sync-plugins": "node scripts/sync-repo.js plugins",
     "sync-all": "node scripts/sync-repo.js all",
     "validate-skills": "node scripts/analysis/validate-skills.js",
     "validate-assets": "node scripts/analysis/validate-assets.js",
