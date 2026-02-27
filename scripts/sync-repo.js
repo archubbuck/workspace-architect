@@ -40,7 +40,7 @@ function displayUsage(config = null) {
     
     // Display each resource type with its source
     for (const type of resourceTypes.sort()) {
-      const repoName = repoMap[type] || 'unknown';
+      const repoName = repoMap[type];
       console.log(`  ${type.padEnd(14)} - Sync ${type} from ${repoName}`);
     }
     console.log(`  all           - Sync all configured resources`);
@@ -63,6 +63,7 @@ function displayUsage(config = null) {
 
 /**
  * Parse command-line arguments
+ * This function is async to support loading the config file for help text display
  */
 async function parseArguments() {
   const args = process.argv.slice(2);
