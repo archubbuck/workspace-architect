@@ -28,3 +28,6 @@ __pycache__/
 # Test coverage
 coverage/
 .vitest
+
+# local backup artifacts
+*.bak_*

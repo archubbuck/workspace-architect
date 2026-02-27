@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+// Swallow EPIPE when piping to head/grep/etc (normal unix behavior)
+process.stdout.on("error", (err) => { if (err && err.code === "EPIPE") process.exit(0); });
+process.stderr.on("error", (err) => { if (err && err.code === "EPIPE") process.exit(0); });
+
 import { program } from 'commander';
 import chalk from 'chalk';
 import {
