@@ -73,7 +73,9 @@ export function convertYamlItemsToFlat(items) {
     'instruction': 'instructions',
     'prompt': 'prompts',
     'skill': 'skills',
-    'collection': 'collections'
+    'collection': 'collections',
+    'hook': 'hooks',
+    'plugin': 'plugins'
   };
   
   const flatItems = [];
@@ -137,11 +139,17 @@ export async function listAssets(type) {
       let description = '';
 
       try {
-        if (type === 'skills' && stat.isDirectory()) {
-          // For Skills, read SKILL.md from directory
-          const skillMdPath = path.join(filePath, 'SKILL.md');
-          if (await fs.pathExists(skillMdPath)) {
-            const content = await fs.readFile(skillMdPath, 'utf8');
+        if ((type === 'skills' || type === 'hooks' || type === 'plugins') && stat.isDirectory()) {
+          // For Skills, Hooks, and Plugins, read README.md from directory
+          let readmePath;
+          if (type === 'skills') {
+            readmePath = path.join(filePath, 'SKILL.md');
+          } else {
+            readmePath = path.join(filePath, 'README.md');
+          }
+          
+          if (await fs.pathExists(readmePath)) {
+            const content = await fs.readFile(readmePath, 'utf8');
             const parsed = matter(content);
             description = parsed.data.description || '';
           }
@@ -165,7 +173,7 @@ export async function listAssets(type) {
 
       // Extract clean name without extensions
       let name;
-      if (type === 'skills' && stat.isDirectory()) {
+      if ((type === 'skills' || type === 'hooks' || type === 'plugins') && stat.isDirectory()) {
         name = file;
       } else if (type === 'collections') {
         name = file.replace(/\.(collection\.)?(yml|yaml|json)$/, '');
@@ -317,6 +325,119 @@ export async function downloadSkill(name, options) {
   console.log(chalk.green(`Successfully downloaded skill ${skillName} to ${destDir} (${skillFiles.length} files)`));
 }
 
+export async function downloadDirectoryAsset(type, name, options) {
+  const assetName = name;
+  let assetFiles = [];
+  let assetPath = '';
+
+  if (IS_LOCAL) {
+    // Local mode: copy from assets/<type>
+    assetPath = path.join(ASSETS_DIR, type, assetName);
+    
+    if (!await fs.pathExists(assetPath)) {
+      throw new Error(`${type} not found: ${type}/${assetName}`);
+    }
+    
+    // Get all files in the asset directory
+    const getAllFiles = async (dir, baseDir = dir) => {
+      const files = [];
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+      
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          const subFiles = await getAllFiles(fullPath, baseDir);
+          files.push(...subFiles);
+        } else {
+          const relativePath = path.relative(baseDir, fullPath);
+          files.push({ relative: relativePath, full: fullPath });
+        }
+      }
+      return files;
+    };
+    
+    assetFiles = await getAllFiles(assetPath);
+  } else {
+    // Production mode: fetch from manifest and download from GitHub
+    const manifest = await getManifest();
+    const asset = manifest.assets[type]?.[assetName];
+    
+    if (!asset) {
+      throw new Error(`${type} not found: ${assetName}`);
+    }
+    
+    assetPath = asset.path;
+    assetFiles = asset.files.map(file => ({
+      relative: file,
+      url: `https://raw.githubusercontent.com/archubbuck/workspace-architect/main/${asset.path}/${file}`
+    }));
+  }
+
+  // Determine destination
+  let destDir;
+  if (options.output) {
+    destDir = path.resolve(process.cwd(), options.output);
+  } else {
+    destDir = path.join(process.cwd(), '.github', type, assetName);
+  }
+
+  if (options.dryRun) {
+    console.log(chalk.cyan(`[Dry Run] Would create ${type.slice(0, -1)} directory at ${destDir}`));
+    for (const file of assetFiles) {
+      console.log(chalk.cyan(`  Would copy: ${file.relative}`));
+    }
+    return;
+  }
+
+  // Check if asset already exists
+  if (await fs.pathExists(destDir) && !options.force) {
+    const inquirer = (await import('inquirer')).default;
+    const { overwrite } = await inquirer.prompt([
+      {
+        type: 'confirm',
+        name: 'overwrite',
+        message: `${type.charAt(0).toUpperCase() + type.slice(1, -1)} ${assetName} already exists in ${destDir}. Overwrite?`,
+        default: false
+      }
+    ]);
+
+    if (!overwrite) {
+      console.log(chalk.yellow('Operation cancelled.'));
+      return;
+    }
+  }
+
+  console.log(chalk.blue(`Downloading ${type.slice(0, -1)}: ${assetName}`));
+  
+  // Create asset directory
+  await fs.ensureDir(destDir);
+
+  // Download/copy all files
+  for (const file of assetFiles) {
+    const destPath = path.join(destDir, file.relative);
+    const destFileDir = path.dirname(destPath);
+    await fs.ensureDir(destFileDir);
+
+    if (IS_LOCAL) {
+      // Copy from local assets
+      await fs.copyFile(file.full, destPath);
+    } else {
+      // Download from GitHub
+      const response = await fetch(file.url);
+      if (!response.ok) {
+        console.warn(chalk.yellow(`Warning: Failed to download ${file.relative}`));
+        continue;
+      }
+      const content = await response.text();
+      await fs.writeFile(destPath, content);
+    }
+    
+    console.log(chalk.dim(`  Downloaded: ${file.relative}`));
+  }
+
+  console.log(chalk.green(`Successfully downloaded ${type.slice(0, -1)} ${assetName} to ${destDir} (${assetFiles.length} files)`));
+}
+
 export async function downloadAsset(id, options) {
   const [type, name] = id.split(':');
 
@@ -324,7 +445,7 @@ export async function downloadAsset(id, options) {
     throw new Error('Invalid ID format. Use type:name (e.g., instructions:basic-setup)');
   }
 
-  const validTypes = ['instructions', 'prompts', 'agents', 'skills', 'collections'];
+  const validTypes = ['instructions', 'prompts', 'agents', 'skills', 'hooks', 'plugins', 'collections'];
   if (!validTypes.includes(type)) {
     throw new Error(`Invalid type: ${type}. Valid types are: ${validTypes.join(', ')}`);
   }
@@ -396,6 +517,12 @@ export async function downloadAsset(id, options) {
   // Handle Skills (multi-file folder-based assets)
   if (type === 'skills') {
     await downloadSkill(name, options);
+    return;
+  }
+
+  // Handle Hooks and Plugins (multi-file folder-based assets)
+  if (type === 'hooks' || type === 'plugins') {
+    await downloadDirectoryAsset(type, name, options);
     return;
   }
 

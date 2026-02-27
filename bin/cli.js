@@ -13,18 +13,18 @@ import {
 
 program
   .name('workspace-architect')
-  .description('CLI to download GitHub Copilot instructions, prompts, and agents (alias: wsa)')
+  .description('CLI to download GitHub Copilot instructions, prompts, agents, hooks, plugins, and skills (alias: wsa)')
   .version('1.0.0');
 
 program
   .command('list [type]')
-  .description('List available assets (instructions, prompts, agents, skills, collections)')
+  .description('List available assets (instructions, prompts, agents, skills, hooks, plugins, collections)')
   .action(async (type) => {
     try {
       if (type) {
         await listAssets(type);
       } else {
-        const types = ['instructions', 'prompts', 'agents', 'skills', 'collections'];
+        const types = ['instructions', 'prompts', 'agents', 'skills', 'hooks', 'plugins', 'collections'];
         for (const t of types) {
           await listAssets(t);
         }

@@ -15,6 +15,14 @@
         "prompts": {
           "from": "prompts",
           "to": "assets/prompts"
+        },
+        "hooks": {
+          "from": "hooks",
+          "to": "assets/hooks"
+        },
+        "plugins": {
+          "from": "plugins",
+          "to": "assets/plugins"
         }
       }
     },
