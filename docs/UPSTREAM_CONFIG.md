@@ -14,10 +14,16 @@ Create an `upstream.config.json` file in the project root directory. **This file
 
 ```json
 {
-  "upstreamRepos": [
+  "repos": [
     {
-      "repo": "owner/repository-name",
-      "syncPatterns": ["pattern1", "pattern2", "..."]
+      "name": "owner/repository-name",
+      "branch": "main",
+      "assets": {
+        "resourceType": {
+          "from": "source-path",
+          "to": "local-path"
+        }
+      }
     }
   ]
 }
@@ -25,13 +31,19 @@ Create an `upstream.config.json` file in the project root directory. **This file
 
 ### Fields
 
-- **`upstreamRepos`** (array): List of upstream repository configurations
-  - **`repo`** (string): Repository identifier in format `owner/repository-name`
-  - **`syncPatterns`** (array of strings): Glob patterns to match files for synchronization
+- **`repos`** (array): List of upstream repository configurations
+  - **`name`** (string): Repository identifier in format `owner/repository-name`
+  - **`branch`** (string): Git branch to sync from (typically "main")
+  - **`assets`** (object): Map of resource types to sync configurations
+    - **`resourceType`** (object): Configuration for a specific asset type (e.g., "agents", "instructions", "skills")
+      - **`from`** (string): Source directory path in the upstream repository
+      - **`to`** (string): Target directory path in this repository
 
 ## Glob Patterns
 
-Glob patterns follow standard glob syntax supported by the [minimatch](https://github.com/isaacs/minimatch) library:
+**Note**: Glob patterns are used internally by the sync scripts to match files within each resource type directory. The patterns are defined within the sync script logic based on the resource type (e.g., agents sync uses `agents/**/*.md`).
+
+Standard glob syntax is supported via the [minimatch](https://github.com/isaacs/minimatch) library:
 
 - `*` - Matches any characters except `/` (within a path segment)
 - `**` - Matches any characters including `/` (across path segments)
@@ -50,53 +62,65 @@ Glob patterns follow standard glob syntax supported by the [minimatch](https://g
 
 ## Example Configurations
 
-### Example 1: Basic Configuration
+### Example 1: Current Configuration
 
-Sync only specific file types from each repository:
+The actual configuration used by workspace-architect:
 
 ```json
 {
-  "upstreamRepos": [
+  "repos": [
     {
-      "repo": "github/awesome-copilot",
-      "syncPatterns": ["agents/**/*.md", "collections/**/*.yml"]
+      "name": "github/awesome-copilot",
+      "branch": "main",
+      "assets": {
+        "agents": {
+          "from": "agents",
+          "to": "assets/agents"
+        },
+        "instructions": {
+          "from": "instructions",
+          "to": "assets/instructions"
+        }
+      }
     },
     {
-      "repo": "anthropics/skills",
-      "syncPatterns": ["skills/**/SKILL.md", "skills/**/*.py"]
+      "name": "anthropics/skills",
+      "branch": "main",
+      "assets": {
+        "skills": {
+          "from": "skills",
+          "to": "assets/skills"
+        }
+      }
     }
   ]
 }
 ```
 
-### Example 2: Selective Sync
+### Example 2: Multiple Asset Types
 
-Sync only Azure and MCP-related collections:
-
-```json
-{
-  "upstreamRepos": [
-    {
-      "repo": "github/awesome-copilot",
-      "syncPatterns": [
-        "collections/azure-*.yml",
-        "collections/*mcp*.yml"
-      ]
-    }
-  ]
-}
-```
-
-### Example 3: Documentation Only
-
-Sync only documentation files:
+Sync multiple asset types from a single repository:
 
 ```json
 {
-  "upstreamRepos": [
+  "repos": [
     {
-      "repo": "github/awesome-copilot",
-      "syncPatterns": ["**/*.md", "**/README*"]
+      "name": "github/awesome-copilot",
+      "branch": "main",
+      "assets": {
+        "agents": {
+          "from": "agents",
+          "to": "assets/agents"
+        },
+        "instructions": {
+          "from": "instructions",
+          "to": "assets/instructions"
+        },
+        "skills": {
+          "from": "skills",
+          "to": "assets/skills"
+        }
+      }
     }
   ]
 }
@@ -119,9 +143,9 @@ The config file must exist and contain configuration for the repository being sy
 
 ### Behavior
 
-1. **Config File Exists with Matching Repo**: Sync scripts load the config and apply the specified patterns
-2. **No Config File**: Scripts fail with an error message indicating the config file is required
-3. **No Matching Repo**: Scripts fail with an error indicating no configuration was found for the repository
+1. **Config File Exists with Matching Repo**: Sync scripts load the config and sync the specified asset types
+2. **Config File Missing**: Scripts fail with an error message indicating the config file is required
+3. **No Matching Asset**: Scripts fail with an error indicating no configuration was found for the resource type
 
 ### File Deletion
 
@@ -136,14 +160,14 @@ This ensures that manually created local files are never accidentally deleted.
 
 To test your configuration:
 
-1. Create `upstream.config.json` with your desired patterns
+1. Create or modify `upstream.config.json` with your desired asset types
 2. Run the relevant sync script (e.g., `npm run sync-agents`)
 3. Check the output to see which files were synced
 4. Review the local directory to confirm the results
 
 The sync output will show:
 - Which config file was loaded
-- Which patterns are being used
+- Which repository and asset type is being synced
 - Which files were downloaded
 - Which files were deleted
 
@@ -153,73 +177,76 @@ The configuration file is completely optional. All existing sync scripts continu
 
 ## Best Practices
 
-1. **Start Broad**: Begin with inclusive patterns and narrow them down as needed
-2. **Test First**: Test patterns with a single sync script before applying broadly
-3. **Version Control**: Commit `upstream.config.json` to share patterns with your team
-4. **Use Comments**: While JSON doesn't support comments, use the example file for documentation
-5. **Validate Patterns**: Use minimatch documentation to validate complex patterns
+1. **Match Upstream Structure**: Ensure `from` paths match the actual directory structure in upstream repositories
+2. **Test First**: Test sync scripts with a single asset type before syncing all
+3. **Version Control**: Commit `upstream.config.json` to share configuration with your team
+4. **Validate Structure**: Ensure the JSON structure matches the schema exactly
 
 ## Troubleshooting
 
 ### Config File Not Found
 
-If you see an error like `Upstream config file not found`, create an `upstream.config.json` file in the project root with the appropriate repository configuration.
+If you see an error like `Upstream config file not found`, create an `upstream.config.json` file in the project root with the appropriate repository and asset configuration.
 
-### Repository Not Configured
+### Resource Type Not Configured
 
-If you see an error like `No configuration found for repository: owner/repo`, add the repository to your `upstream.config.json` file with the desired sync patterns.
+If you see an error like `Unknown resource type: <type>`, add the resource type to your `upstream.config.json` file under the appropriate repository's `assets` object.
 
 ### No Files Synced
 
-- Check that patterns match the actual file paths in the upstream repository
-- Patterns are relative to the `remoteDir` specified in the sync script
-- Use `**` for recursive matching across directories
+- Check that the `from` path matches the actual directory path in the upstream repository
+- Verify that the upstream repository contains files in the specified directory
+- Check that files have the expected extensions for that resource type
 
 ### Unexpected Deletions
 
 - Files are only deleted if they were previously synced (tracked in `.upstream-sync.json`)
 - Manual local files are never deleted
-- Review patterns to ensure they match your intended files
-
-### Pattern Not Working
-
-- Test patterns using the [minimatch tester](https://github.com/isaacs/minimatch)
-- Ensure forward slashes (`/`) are used, even on Windows
-- Remember that patterns are case-sensitive by default
+- Review the asset configuration to ensure it matches your intended sync setup
 
 ## Advanced Usage
 
 ### Multiple Repositories
 
-Configure different patterns for different repositories:
+Configure different asset types from different repositories:
 
 ```json
 {
-  "upstreamRepos": [
+  "repos": [
     {
-      "repo": "github/awesome-copilot",
-      "syncPatterns": ["agents/**/*.md"]
+      "name": "github/awesome-copilot",
+      "branch": "main",
+      "assets": {
+        "agents": {
+          "from": "agents",
+          "to": "assets/agents"
+        },
+        "instructions": {
+          "from": "instructions",
+          "to": "assets/instructions"
+        }
+      }
     },
     {
-      "repo": "anthropics/skills",
-      "syncPatterns": ["skills/**/SKILL.md"]
-    },
-    {
-      "repo": "openai/examples",
-      "syncPatterns": ["**/*.py", "**/*.md"]
+      "name": "anthropics/skills",
+      "branch": "main",
+      "assets": {
+        "skills": {
+          "from": "skills",
+          "to": "assets/skills"
+        }
+      }
     }
   ]
 }
 ```
 
-### Combining with Extension Filters
+### Asset Type Extensions
 
-Sync patterns work in combination with the `acceptedExtensions` defined in each sync script. Both conditions must be met:
-
-1. File must match an accepted extension (e.g., `.md`, `.yml`)
-2. File path must match a sync pattern (if configured)
-
-This allows for flexible filtering at both the extension and path level.
+Each asset type has specific accepted file extensions:
+- **agents**: `.agent.md`, `.md`
+- **instructions**: `.instructions.md`, `.md`
+- **skills**: Directory-based sync with `SKILL.md` and `.py` files
 
 ## Related Files
 

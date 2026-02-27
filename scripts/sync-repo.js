@@ -18,17 +18,41 @@ const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 /**
  * Display usage information
+ * @param {Object} config - Optional upstream config to show available resource types
  */
-function displayUsage() {
+function displayUsage(config = null) {
   console.log(chalk.blue.bold('\nGeneric Repository Sync Tool\n'));
   console.log('Usage: node scripts/sync-repo.js <resource-type> [options]\n');
-  console.log('Resource Types:');
-  console.log('  agents        - Sync agents from upstream repository');
-  console.log('  instructions  - Sync instructions from upstream repository');
-  console.log('  skills        - Sync Claude skills from upstream repository');
-  console.log('  all           - Sync all resources\n');
-  console.log('Note: Prompts are maintained locally and not synced from upstream.\n');
-  console.log('Options:');
+  
+  if (config && config.repos) {
+    console.log('Available Resource Types:');
+    const resourceTypes = getAllResourceTypes(config);
+    const repoMap = {};
+    
+    // Build a map of resource types to their source repositories
+    for (const repo of config.repos) {
+      if (repo.assets) {
+        for (const type of Object.keys(repo.assets)) {
+          repoMap[type] = repo.name;
+        }
+      }
+    }
+    
+    // Display each resource type with its source
+    for (const type of resourceTypes.sort()) {
+      const repoName = repoMap[type] || 'unknown';
+      console.log(`  ${type.padEnd(14)} - Sync ${type} from ${repoName}`);
+    }
+    console.log(`  all           - Sync all configured resources`);
+  } else {
+    console.log('Resource Types:');
+    console.log('  agents        - Sync agents from upstream repository');
+    console.log('  instructions  - Sync instructions from upstream repository');
+    console.log('  skills        - Sync skills from upstream repository');
+    console.log('  all           - Sync all configured resources');
+  }
+  
+  console.log('\nOptions:');
   console.log('  --dry-run     - Simulate sync without making changes');
   console.log('  --help, -h    - Display this help message\n');
   console.log('Examples:');
@@ -40,11 +64,18 @@ function displayUsage() {
 /**
  * Parse command-line arguments
  */
-function parseArguments() {
+async function parseArguments() {
   const args = process.argv.slice(2);
   
   if (args.length === 0 || args.includes('--help') || args.includes('-h')) {
-    displayUsage();
+    // Try to load config to show available resource types
+    try {
+      const config = await loadUpstreamConfig();
+      displayUsage(config);
+    } catch (error) {
+      // If config loading fails, show basic usage
+      displayUsage();
+    }
     process.exit(0);
   }
   
@@ -216,7 +247,7 @@ async function runValidation(resourceType = null) {
  */
 async function sync() {
   try {
-    const { resourceType, dryRun } = parseArguments();
+    const { resourceType, dryRun } = await parseArguments();
     
     // Load configuration
     const config = await loadUpstreamConfig();
