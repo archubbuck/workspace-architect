@@ -69,7 +69,6 @@ node scripts/sync-repo.js <resource-type> [options]
 npm run sync-agents
 npm run sync-instructions
 npm run sync-prompts
-npm run sync-collections
 npm run sync-skills
 
 # Sync all resources at once

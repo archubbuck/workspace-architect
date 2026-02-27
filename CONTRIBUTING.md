@@ -355,7 +355,6 @@ We sync content from upstream repositories to keep our assets current:
 npm run sync-agents          # Sync agents
 npm run sync-instructions    # Sync instructions
 npm run sync-prompts         # Sync prompts
-npm run sync-collections     # Sync collections
 
 # Sync skills from anthropics/skills
 npm run sync-skills
@@ -378,7 +377,6 @@ All sync scripts support a `--dry-run` flag to simulate actions without making a
 npm run sync-agents -- --dry-run
 npm run sync-instructions -- --dry-run
 npm run sync-prompts -- --dry-run
-npm run sync-collections -- --dry-run
 npm run sync-skills -- --dry-run
 ```
 

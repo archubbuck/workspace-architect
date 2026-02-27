@@ -226,7 +226,6 @@ Create a JSON file in `assets/collections/`:
   - `npm run sync-agents` - Sync agents from github/awesome-copilot
   - `npm run sync-instructions` - Sync instructions from github/awesome-copilot
   - `npm run sync-prompts` - Sync prompts from github/awesome-copilot
-  - `npm run sync-collections` - Sync collections from github/awesome-copilot
   - `npm run sync-skills` - Sync skills from anthropics/skills
 - `npm run validate-skills` - Validate all synced skills
 
