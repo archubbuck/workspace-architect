@@ -121,6 +121,24 @@ describe('CLI - download command with --dry-run', () => {
     
     expect(result.stdout).toContain('Would write to');
   });
+
+  it('should simulate download of hooks with --dry-run', () => {
+    const result = execCLI('download hooks governance-audit --dry-run', {
+      cwd: os.tmpdir(),
+    });
+    
+    expect(result.stdout).toContain('[Dry Run]');
+    expect(result.stdout).toContain('Would create hook directory');
+  });
+
+  it('should simulate download of plugins with --dry-run', () => {
+    const result = execCLI('download plugins awesome-copilot --dry-run', {
+      cwd: os.tmpdir(),
+    });
+    
+    expect(result.stdout).toContain('[Dry Run]');
+    expect(result.stdout).toContain('Would create plugin directory');
+  });
 });
 
 describe('CLI - download command error handling', () => {

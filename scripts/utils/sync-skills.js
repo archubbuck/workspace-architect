@@ -107,7 +107,6 @@ async function syncSkill(repoOwner, repoName, remoteDir, skillName, localDir, to
  * @param {string} config.localDir - Local directory to sync to
  * @param {string} config.resourceType - Type of resource (skills, hooks, plugins)
  * @param {string} config.token - GitHub token (optional)
- * @param {string[]} config.syncPatterns - Optional glob patterns to filter files
  * @param {boolean} config.dryRun - If true, simulate actions without making changes (default: false)
  */
 export async function syncSkillsFromGitHub(config) {
@@ -118,7 +117,6 @@ export async function syncSkillsFromGitHub(config) {
     localDir,
     resourceType = 'skills', // Default to 'skills' for backward compatibility
     token = null,
-    syncPatterns = null,
     dryRun = false
   } = config;
 

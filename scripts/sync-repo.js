@@ -171,7 +171,6 @@ async function syncResource(resourceType, config, dryRun) {
       localDir,
       resourceType,
       token: GITHUB_TOKEN,
-      syncPatterns: getSyncPatterns(resourceType, remoteDir),
       dryRun
     });
   } else {
