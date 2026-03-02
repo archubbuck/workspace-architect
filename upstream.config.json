@@ -12,10 +12,6 @@
           "from": "instructions",
           "to": "assets/instructions"
         },
-        "prompts": {
-          "from": "prompts",
-          "to": "assets/prompts"
-        },
         "hooks": {
           "from": "hooks",
           "to": "assets/hooks"

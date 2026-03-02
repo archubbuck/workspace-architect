@@ -54,10 +54,10 @@ node scripts/sync-repo.js <resource-type> [options]
 **Resource Types:**
 - `agents` - Sync agents from github/awesome-copilot
 - `instructions` - Sync instructions from github/awesome-copilot
-- `prompts` - Sync prompts from github/awesome-copilot
-- `collections` - Sync collections from github/awesome-copilot
 - `skills` - Sync Claude Skills from anthropics/skills
-- `all` - Sync all resources
+- `all` - Sync all configured resources
+
+**Note**: Prompts and collections are maintained locally in this repository and are not synced from upstream sources.
 
 **Options:**
 - `--dry-run` - Simulate sync without making changes
@@ -68,7 +68,6 @@ node scripts/sync-repo.js <resource-type> [options]
 # Sync a specific resource type
 npm run sync-agents
 npm run sync-instructions
-npm run sync-prompts
 npm run sync-skills
 
 # Sync all resources at once

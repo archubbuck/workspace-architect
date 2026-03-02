@@ -1,5 +1,27 @@
 
 
+## [2.2.27](https://github.com/archubbuck/workspace-architect/compare/v2.2.26...v2.2.27) (2026-03-02)
+
+
+### Bug Fixes
+
+* sync content from upstream resources ([b013ebc](https://github.com/archubbuck/workspace-architect/commit/b013ebcf5a9f12bb32e6183e87e54939fa167503))
+
+## [2.2.26](https://github.com/archubbuck/workspace-architect/compare/v2.2.25...v2.2.26) (2026-03-02)
+
+
+### Bug Fixes
+
+* sync content from upstream resources ([f977a14](https://github.com/archubbuck/workspace-architect/commit/f977a14428fcfa53ea44dfc2c5161e54ca42de3a))
+
+## [2.2.25](https://github.com/archubbuck/workspace-architect/compare/v2.2.24...v2.2.25) (2026-02-27)
+
+
+### Bug Fixes
+
+* **cli:** swallow EPIPE when piping output ([1297f8d](https://github.com/archubbuck/workspace-architect/commit/1297f8d4fa64fac2a970a73e12eb915ad6f39b57))
+* sync content from upstream resources ([4df4a16](https://github.com/archubbuck/workspace-architect/commit/4df4a161a2f9923590c44eca3b73125a56cb0424))
+
 ## [2.2.24](https://github.com/archubbuck/workspace-architect/compare/v2.2.23...v2.2.24) (2026-02-16)
 
 

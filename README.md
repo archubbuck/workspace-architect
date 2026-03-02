@@ -291,10 +291,10 @@ Create a JSON file in `assets/collections/`:
 - Sync scripts for upstream resources:
   - `npm run sync-agents` - Sync agents from github/awesome-copilot
   - `npm run sync-instructions` - Sync instructions from github/awesome-copilot
-  - `npm run sync-prompts` - Sync prompts from github/awesome-copilot
   - `npm run sync-skills` - Sync skills from anthropics/skills
   - `npm run sync-hooks` - Sync hooks from github/awesome-copilot
   - `npm run sync-plugins` - Sync plugins from github/awesome-copilot
+  - Note: Prompts are maintained locally and not synced from upstream
 - `npm run validate-skills` - Validate all synced skills
 
 #### Upstream Configuration
