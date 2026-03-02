@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-02-27T22:10:29.063Z",
+      "lastSync": "2026-03-02T00:35:35.364Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -170,6 +170,7 @@
         "terraform-azure-planning.agent.md",
         "terraform-iac-reviewer.agent.md",
         "terraform.agent.md",
+        "terratest-module-testing.agent.md",
         "typescript-mcp-expert.agent.md",
         "voidbeast-gpt41enhanced.agent.md",
         "vuejs-expert.agent.md",
