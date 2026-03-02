@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-02T00:35:35.364Z",
+      "lastSync": "2026-03-02T23:11:58.235Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -90,6 +90,7 @@
         "markdown-accessibility-assistant.agent.md",
         "mcp-m365-agent-expert.agent.md",
         "mentor.agent.md",
+        "mentoring-juniors.agent.md",
         "meta-agentic-project-scaffold.agent.md",
         "microsoft-agent-framework-dotnet.agent.md",
         "microsoft-agent-framework-python.agent.md",
