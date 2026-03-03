@@ -143,6 +143,7 @@
         "rust-gpt-4.1-beast-mode.agent.md",
         "rust-mcp-expert.agent.md",
         "salesforce-expert.agent.md",
+        "scientific-paper-research.agent.md",
         "se-gitops-ci-specialist.agent.md",
         "se-product-manager-advisor.agent.md",
         "se-responsible-ai-code.agent.md",
