@@ -12,7 +12,7 @@ const ROOT_DIR = path.join(__dirname, '../..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
 const MANIFEST_PATH = path.join(ROOT_DIR, 'assets-manifest.json');
 
-const TYPES = ['agents', 'instructions', 'prompts', 'collections', 'skills'];
+const TYPES = ['agents', 'instructions', 'prompts', 'collections', 'skills', 'hooks', 'plugins'];
 
 /**
  * Normalize collection items to flat array format for manifest storage.
@@ -62,7 +62,9 @@ function convertYamlItemsToFlat(items) {
     'instruction': 'instructions',
     'prompt': 'prompts',
     'skill': 'skills',
-    'collection': 'collections'
+    'collection': 'collections',
+    'hook': 'hooks',
+    'plugin': 'plugins'
   };
   
   const flatItems = [];
@@ -119,7 +121,9 @@ async function generateManifest() {
       instructions: {},
       prompts: {},
       collections: {},
-      skills: {}
+      skills: {},
+      hooks: {},
+      plugins: {}
     }
   };
 
@@ -137,9 +141,9 @@ async function generateManifest() {
       const filePath = path.join(dirPath, file);
       const stat = await fs.stat(filePath);
       
-      // Handle Skills as directories
-      if (type === 'skills' && stat.isDirectory()) {
-        await processSkill(file, filePath, manifest);
+      // Handle Skills, Hooks, and Plugins as directories
+      if ((type === 'skills' || type === 'hooks' || type === 'plugins') && stat.isDirectory()) {
+        await processDirectoryAsset(type, file, filePath, manifest);
         continue;
       }
       
@@ -227,28 +231,39 @@ async function generateManifest() {
   console.log(chalk.blue(`Manifest generated at ${MANIFEST_PATH} with ${chalk.green(totalAssets)} assets.`));
 }
 
-// Process a Skill directory
-async function processSkill(skillName, skillPath, manifest) {
-  const skillMdPath = path.join(skillPath, 'SKILL.md');
+// Process a directory-based asset (Skill, Hook, or Plugin)
+async function processDirectoryAsset(assetType, assetName, assetPath, manifest) {
+  // Determine the key file to read for metadata
+  let metadataFile;
+  if (assetType === 'skills') {
+    metadataFile = 'SKILL.md';
+  } else if (assetType === 'hooks' || assetType === 'plugins') {
+    metadataFile = 'README.md';
+  } else {
+    console.warn(chalk.yellow(`Unknown directory asset type: ${assetType}`));
+    return;
+  }
   
-  if (!await fs.pathExists(skillMdPath)) {
-    console.warn(chalk.yellow(`Skipping ${skillName}: No SKILL.md found`));
+  const metadataPath = path.join(assetPath, metadataFile);
+  
+  if (!await fs.pathExists(metadataPath)) {
+    console.warn(chalk.yellow(`Skipping ${assetName}: No ${metadataFile} found`));
     return;
   }
   
   try {
-    const content = await fs.readFile(skillMdPath, 'utf8');
+    const content = await fs.readFile(metadataPath, 'utf8');
     const parsed = matter(content);
     
-    // Get all files in the Skill directory
-    const files = await getFilesRecursive(skillPath);
+    // Get all files in the asset directory
+    const files = await getFilesRecursive(assetPath);
     
     // Store in nested structure
-    manifest.assets.skills[skillName] = {
-      path: `assets/skills/${skillName}`,
+    manifest.assets[assetType][assetName] = {
+      path: `assets/${assetType}/${assetName}`,
       description: parsed.data.description || '',
-      title: parsed.data.name || skillName,
-      type: 'skills',
+      title: parsed.data.name || assetName,
+      type: assetType,
       files: files,
       metadata: {
         ...(parsed.data.metadata || {}),
@@ -257,10 +272,16 @@ async function processSkill(skillName, skillPath, manifest) {
       }
     };
     
-    console.log(chalk.green(`  Processed skill: ${skillName} (${files.length} files)`));
+    console.log(chalk.green(`  Processed ${assetType.slice(0, -1)}: ${assetName} (${files.length} files)`));
   } catch (e) {
-    console.warn(chalk.yellow(`Warning: Could not process skill ${skillName}: ${e.message}`));
+    console.warn(chalk.yellow(`Warning: Could not process ${assetType.slice(0, -1)} ${assetName}: ${e.message}`));
   }
+}
+
+// Deprecated: Use processDirectoryAsset instead
+// Kept for backwards compatibility if needed
+async function processSkill(skillName, skillPath, manifest) {
+  return processDirectoryAsset('skills', skillName, skillPath, manifest);
 }
 
 generateManifest().catch(console.error);

@@ -1,26 +1,5 @@
 
 
-## [2.2.30](https://github.com/archubbuck/workspace-architect/compare/v2.2.29...v2.2.30) (2026-03-03)
-
-
-### Bug Fixes
-
-* sync content from upstream resources ([6a3dee1](https://github.com/archubbuck/workspace-architect/commit/6a3dee14fece10c78bf18c062b26202d6b8878c3))
-
-## [2.2.29](https://github.com/archubbuck/workspace-architect/compare/v2.2.28...v2.2.29) (2026-03-03)
-
-
-### Bug Fixes
-
-* sync content from upstream resources ([56a5dc6](https://github.com/archubbuck/workspace-architect/commit/56a5dc6a2ade2628b5b813606ca8a073a768daee))
-
-## [2.2.28](https://github.com/archubbuck/workspace-architect/compare/v2.2.27...v2.2.28) (2026-03-02)
-
-
-### Bug Fixes
-
-* sync content from upstream resources ([5b9c938](https://github.com/archubbuck/workspace-architect/commit/5b9c9380adee21a77b02303524230a486381cee7))
-
 ## [2.2.27](https://github.com/archubbuck/workspace-architect/compare/v2.2.26...v2.2.27) (2026-03-02)
 
 

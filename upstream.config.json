@@ -11,6 +11,14 @@
         "instructions": {
           "from": "instructions",
           "to": "assets/instructions"
+        },
+        "hooks": {
+          "from": "hooks",
+          "to": "assets/hooks"
+        },
+        "plugins": {
+          "from": "plugins",
+          "to": "assets/plugins"
         }
       }
     },
