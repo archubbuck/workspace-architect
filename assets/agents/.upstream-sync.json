@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-12T01:38:42.812Z",
+      "lastSync": "2026-03-16T00:41:00.875Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -30,7 +30,6 @@
         "azure-verified-modules-terraform.agent.md",
         "bicep-implement.agent.md",
         "bicep-plan.agent.md",
-        "blueprint-mode-codex.agent.md",
         "blueprint-mode.agent.md",
         "cast-imaging-impact-analysis.agent.md",
         "cast-imaging-software-discovery.agent.md",
@@ -93,8 +92,6 @@
         "mentor.agent.md",
         "mentoring-juniors.agent.md",
         "meta-agentic-project-scaffold.agent.md",
-        "microsoft-agent-framework-dotnet.agent.md",
-        "microsoft-agent-framework-python.agent.md",
         "microsoft-study-mode.agent.md",
         "microsoft_learn_contributor.agent.md",
         "modernization.agent.md",
@@ -155,8 +152,6 @@
         "se-technical-writer.agent.md",
         "se-ux-ui-designer.agent.md",
         "search-ai-optimization-expert.agent.md",
-        "semantic-kernel-dotnet.agent.md",
-        "semantic-kernel-python.agent.md",
         "shopify-expert.agent.md",
         "simple-app-idea-generator.agent.md",
         "software-engineer-agent-v1.agent.md",
