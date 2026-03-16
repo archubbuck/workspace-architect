@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-16T00:41:00.875Z",
+      "lastSync": "2026-03-16T22:13:59.080Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -47,6 +47,7 @@
         "debian-linux-expert.agent.md",
         "debug.agent.md",
         "declarative-agents-architect.agent.md",
+        "defender-scout-kql.agent.md",
         "demonstrate-understanding.agent.md",
         "devils-advocate.agent.md",
         "devops-expert.agent.md",
