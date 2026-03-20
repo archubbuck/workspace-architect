@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-16T22:13:59.080Z",
+      "lastSync": "2026-03-20T00:35:59.747Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -104,6 +104,7 @@
         "neon-optimization-analyzer.agent.md",
         "nuxt-expert.agent.md",
         "octopus-deploy-release-notes-mcp.agent.md",
+        "one-shot-feature-issue-planner.agent.md",
         "openapi-to-application.agent.md",
         "oracle-to-postgres-migration-expert.agent.md",
         "pagerduty-incident-responder.agent.md",
