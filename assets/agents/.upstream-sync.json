@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-20T00:35:59.747Z",
+      "lastSync": "2026-03-20T04:38:34.074Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -144,7 +144,11 @@
         "rug-orchestrator.agent.md",
         "rust-gpt-4.1-beast-mode.agent.md",
         "rust-mcp-expert.agent.md",
+        "salesforce-apex-triggers.agent.md",
+        "salesforce-aura-lwc.agent.md",
         "salesforce-expert.agent.md",
+        "salesforce-flow.agent.md",
+        "salesforce-visualforce.agent.md",
         "scientific-paper-research.agent.md",
         "se-gitops-ci-specialist.agent.md",
         "se-product-manager-advisor.agent.md",
