@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-03-16T00:41:27.483Z",
+      "lastSync": "2026-03-23T23:13:09.495Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -92,6 +92,8 @@
         "lwc.instructions.md",
         "makefile.instructions.md",
         "markdown-accessibility.instructions.md",
+        "markdown-content-creation.instructions.md",
+        "markdown-gfm.instructions.md",
         "markdown.instructions.md",
         "mcp-m365-copilot.instructions.md",
         "memory-bank.instructions.md",
