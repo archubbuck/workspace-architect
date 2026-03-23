@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-23T03:10:13.198Z",
+      "lastSync": "2026-03-23T04:49:28.834Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -54,6 +54,7 @@
         "devops-expert.agent.md",
         "diffblue-cover.agent.md",
         "dotnet-maui.agent.md",
+        "dotnet-self-learning-architect.agent.md",
         "dotnet-upgrade.agent.md",
         "doublecheck.agent.md",
         "droid.agent.md",
