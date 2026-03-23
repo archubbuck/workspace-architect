@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-23T00:39:51.051Z",
+      "lastSync": "2026-03-23T03:10:13.198Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -76,6 +76,7 @@
         "gem-reviewer.agent.md",
         "gilfoyle.agent.md",
         "github-actions-expert.agent.md",
+        "github-actions-node-upgrade.agent.md",
         "go-mcp-expert.agent.md",
         "gpt-5-beast-mode.agent.md",
         "hlbpa.agent.md",
