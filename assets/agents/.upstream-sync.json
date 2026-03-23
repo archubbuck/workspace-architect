@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-20T04:38:34.074Z",
+      "lastSync": "2026-03-23T00:39:51.051Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -24,6 +24,7 @@
         "azure-iac-exporter.agent.md",
         "azure-iac-generator.agent.md",
         "azure-logic-apps-expert.agent.md",
+        "azure-policy-analyzer.agent.md",
         "azure-principal-architect.agent.md",
         "azure-saas-architect.agent.md",
         "azure-verified-modules-bicep.agent.md",
