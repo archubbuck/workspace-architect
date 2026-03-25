@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-23T04:49:28.834Z",
+      "lastSync": "2026-03-25T23:14:36.106Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -170,6 +170,7 @@
         "swift-mcp-expert.agent.md",
         "task-planner.agent.md",
         "task-researcher.agent.md",
+        "taxcore-technical-writer.agent.md",
         "tdd-green.agent.md",
         "tdd-red.agent.md",
         "tdd-refactor.agent.md",
