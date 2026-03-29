@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-03-27T00:40:55.439Z",
+      "lastSync": "2026-03-29T21:12:51.909Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -175,6 +175,7 @@
         "typespec-m365-copilot.instructions.md",
         "update-code-from-shorthand.instructions.md",
         "update-docs-on-code-change.instructions.md",
+        "use-cliche-data-in-docs.instructions.md",
         "vsixtoolkit.instructions.md",
         "winui3.instructions.md",
         "wordpress.instructions.md"
