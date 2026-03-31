@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-25T23:14:36.106Z",
+      "lastSync": "2026-03-31T00:39:54.852Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -68,6 +68,10 @@
         "expert-react-frontend-engineer.agent.md",
         "fedora-linux-expert.agent.md",
         "gem-browser-tester.agent.md",
+        "gem-code-simplifier.agent.md",
+        "gem-critic.agent.md",
+        "gem-debugger.agent.md",
+        "gem-designer.agent.md",
         "gem-devops.agent.md",
         "gem-documentation-writer.agent.md",
         "gem-implementer.agent.md",
