@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-03-31T00:39:54.852Z",
+      "lastSync": "2026-04-08T00:41:28.526Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -62,6 +62,7 @@
         "dynatrace-expert.agent.md",
         "elasticsearch-observability.agent.md",
         "electron-angular-native.agent.md",
+        "ember.agent.md",
         "expert-cpp-software-engineer.agent.md",
         "expert-dotnet-software-engineer.agent.md",
         "expert-nextjs-developer.agent.md",
