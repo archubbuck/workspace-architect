@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-09T03:09:39.665Z",
+      "lastSync": "2026-04-09T05:39:50.079Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -147,6 +147,17 @@
         "python-mcp-expert.agent.md",
         "python-notebook-sample-builder.agent.md",
         "qa-subagent.agent.md",
+        "react18-auditor.agent.md",
+        "react18-batching-fixer.agent.md",
+        "react18-class-surgeon.agent.md",
+        "react18-commander.agent.md",
+        "react18-dep-surgeon.agent.md",
+        "react18-test-guardian.agent.md",
+        "react19-auditor.agent.md",
+        "react19-commander.agent.md",
+        "react19-dep-surgeon.agent.md",
+        "react19-migrator.agent.md",
+        "react19-test-guardian.agent.md",
         "reepl-linkedin.agent.md",
         "refine-issue.agent.md",
         "repo-architect.agent.md",
