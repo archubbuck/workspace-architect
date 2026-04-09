@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-08T00:41:28.526Z",
+      "lastSync": "2026-04-09T03:09:39.665Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
@@ -72,10 +72,13 @@
         "gem-code-simplifier.agent.md",
         "gem-critic.agent.md",
         "gem-debugger.agent.md",
+        "gem-designer-mobile.agent.md",
         "gem-designer.agent.md",
         "gem-devops.agent.md",
         "gem-documentation-writer.agent.md",
+        "gem-implementer-mobile.agent.md",
         "gem-implementer.agent.md",
+        "gem-mobile-tester.agent.md",
         "gem-orchestrator.agent.md",
         "gem-planner.agent.md",
         "gem-researcher.agent.md",
