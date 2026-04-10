@@ -2,9 +2,8 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-10T00:40:55.230Z",
+      "lastSync": "2026-04-10T01:39:36.152Z",
       "files": [
-        "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
         "Ultimate-Transparent-Thinking-Beast-Mode.agent.md",
@@ -90,7 +89,6 @@
         "github-actions-expert.agent.md",
         "github-actions-node-upgrade.agent.md",
         "go-mcp-expert.agent.md",
-        "gpt-5-beast-mode.agent.md",
         "hlbpa.agent.md",
         "implementation-plan.agent.md",
         "insiders-a11y-tracker.agent.md",
@@ -167,7 +165,6 @@
         "research-technical-spike.agent.md",
         "ruby-mcp-expert.agent.md",
         "rug-orchestrator.agent.md",
-        "rust-gpt-4.1-beast-mode.agent.md",
         "rust-mcp-expert.agent.md",
         "salesforce-apex-triggers.agent.md",
         "salesforce-aura-lwc.agent.md",
@@ -186,6 +183,7 @@
         "shopify-expert.agent.md",
         "simple-app-idea-generator.agent.md",
         "software-engineer-agent-v1.agent.md",
+        "spark-performance.agent.md",
         "specification.agent.md",
         "stackhawk-security-onboarding.agent.md",
         "swe-subagent.agent.md",
@@ -204,7 +202,6 @@
         "terraform.agent.md",
         "terratest-module-testing.agent.md",
         "typescript-mcp-expert.agent.md",
-        "voidbeast-gpt41enhanced.agent.md",
         "vuejs-expert.agent.md",
         "wg-code-alchemist.agent.md",
         "wg-code-sentinel.agent.md",
