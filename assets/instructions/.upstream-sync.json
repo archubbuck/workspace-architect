@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-03-29T21:12:51.909Z",
+      "lastSync": "2026-04-10T05:03:06.634Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -16,6 +16,8 @@
         "astro.instructions.md",
         "aws-appsync.instructions.md",
         "azure-devops-pipelines.instructions.md",
+        "azure-durable-functions-csharp.instructions.md",
+        "azure-functions-csharp.instructions.md",
         "azure-functions-typescript.instructions.md",
         "azure-logic-apps-power-automate.instructions.md",
         "azure-verified-modules-bicep.instructions.md",
