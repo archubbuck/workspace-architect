@@ -2,13 +2,14 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-09T05:39:50.079Z",
+      "lastSync": "2026-04-10T00:40:55.230Z",
       "files": [
         "4.1-Beast.agent.md",
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
         "Ultimate-Transparent-Thinking-Beast-Mode.agent.md",
         "WinFormsExpert.agent.md",
+        "accessibility-runtime-tester.agent.md",
         "accessibility.agent.md",
         "address-comments.agent.md",
         "adr-generator.agent.md",
@@ -52,6 +53,7 @@
         "demonstrate-understanding.agent.md",
         "devils-advocate.agent.md",
         "devops-expert.agent.md",
+        "devtools-regression-investigator.agent.md",
         "diffblue-cover.agent.md",
         "dotnet-maui.agent.md",
         "dotnet-self-learning-architect.agent.md",
@@ -68,6 +70,7 @@
         "expert-nextjs-developer.agent.md",
         "expert-react-frontend-engineer.agent.md",
         "fedora-linux-expert.agent.md",
+        "frontend-performance-investigator.agent.md",
         "gem-browser-tester.agent.md",
         "gem-code-simplifier.agent.md",
         "gem-critic.agent.md",
