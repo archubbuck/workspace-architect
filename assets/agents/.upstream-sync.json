@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-10T01:39:36.152Z",
+      "lastSync": "2026-04-14T00:46:01.752Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -143,6 +143,7 @@
         "power-platform-mcp-integration-expert.agent.md",
         "prd.agent.md",
         "principal-software-engineer.agent.md",
+        "project-architecture-planner.agent.md",
         "prompt-builder.agent.md",
         "prompt-engineer.agent.md",
         "python-mcp-expert.agent.md",
