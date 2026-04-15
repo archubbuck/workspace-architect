@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-14T00:46:01.752Z",
+      "lastSync": "2026-04-15T23:20:44.450Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -100,6 +100,7 @@
         "laravel-expert-agent.agent.md",
         "launchdarkly-flag-cleanup.agent.md",
         "lingodotdev-i18n.agent.md",
+        "linkedin-post-writer.agent.md",
         "markdown-accessibility-assistant.agent.md",
         "mcp-m365-agent-expert.agent.md",
         "mentor.agent.md",
