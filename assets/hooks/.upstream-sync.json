@@ -1,0 +1,13 @@
+{
+  "sources": [
+    {
+      "source": "github/awesome-copilot/hooks",
+      "lastSync": "2026-02-27T18:03:52.988Z",
+      "files": [
+        "governance-audit",
+        "session-auto-commit",
+        "session-logger"
+      ]
+    }
+  ]
+}

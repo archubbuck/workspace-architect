@@ -35,6 +35,8 @@ describe('CLI - list command', () => {
     expect(result.stdout).toContain('prompts');
     expect(result.stdout).toContain('agents');
     expect(result.stdout).toContain('skills');
+    expect(result.stdout).toContain('hooks');
+    expect(result.stdout).toContain('plugins');
     expect(result.stdout).toContain('collections');
   });
 
@@ -73,6 +75,20 @@ describe('CLI - list command', () => {
     expect(result.stdout).toContain('collections');
   });
 
+  it('should list only hooks when type is hooks', () => {
+    const result = execCLI('list hooks');
+    
+    expect(result.exitCode).toBe(0);
+    expect(result.stdout).toContain('hooks');
+  });
+
+  it('should list only plugins when type is plugins', () => {
+    const result = execCLI('list plugins');
+    
+    expect(result.exitCode).toBe(0);
+    expect(result.stdout).toContain('plugins');
+  });
+
   it('should handle invalid asset type gracefully', () => {
     const result = execCLI('list invalid-type');
     
@@ -104,6 +120,24 @@ describe('CLI - download command with --dry-run', () => {
     });
     
     expect(result.stdout).toContain('Would write to');
+  });
+
+  it('should simulate download of hooks with --dry-run', () => {
+    const result = execCLI('download hooks governance-audit --dry-run', {
+      cwd: os.tmpdir(),
+    });
+    
+    expect(result.stdout).toContain('[Dry Run]');
+    expect(result.stdout).toContain('Would create hook directory');
+  });
+
+  it('should simulate download of plugins with --dry-run', () => {
+    const result = execCLI('download plugins awesome-copilot --dry-run', {
+      cwd: os.tmpdir(),
+    });
+    
+    expect(result.stdout).toContain('[Dry Run]');
+    expect(result.stdout).toContain('Would create plugin directory');
   });
 });
 
