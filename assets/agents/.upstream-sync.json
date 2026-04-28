@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-28T05:13:10.197Z",
+      "lastSync": "2026-04-28T07:02:32.699Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -110,6 +110,7 @@
         "microsoft-study-mode.agent.md",
         "microsoft_learn_contributor.agent.md",
         "modernization.agent.md",
+        "modernize-java.agent.md",
         "monday-bug-fixer.agent.md",
         "mongodb-performance-advisor.agent.md",
         "ms-sql-dba.agent.md",

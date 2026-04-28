@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-04-28T05:13:35.086Z",
+      "lastSync": "2026-04-28T07:02:58.524Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -46,6 +46,7 @@
         "csharp-ja.instructions.md",
         "csharp-ko.instructions.md",
         "csharp-mcp-server.instructions.md",
+        "csharp-razorpages.instructions.md",
         "csharp.instructions.md",
         "dart-n-flutter.instructions.md",
         "dataverse-python-advanced-features.instructions.md",
