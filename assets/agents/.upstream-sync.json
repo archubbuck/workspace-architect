@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-28T03:13:05.639Z",
+      "lastSync": "2026-04-28T05:13:10.197Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -35,6 +35,7 @@
         "cast-imaging-impact-analysis.agent.md",
         "cast-imaging-software-discovery.agent.md",
         "cast-imaging-structural-quality-advisor.agent.md",
+        "caveman-mode.agent.md",
         "centos-linux-expert.agent.md",
         "clojure-interactive-programming.agent.md",
         "code-tour.agent.md",
@@ -199,6 +200,7 @@
         "tdd-refactor.agent.md",
         "tech-debt-remediation-plan.agent.md",
         "technical-content-evaluator.agent.md",
+        "terminal-helper.agent.md",
         "terraform-azure-implement.agent.md",
         "terraform-azure-planning.agent.md",
         "terraform-iac-reviewer.agent.md",
