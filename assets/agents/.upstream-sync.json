@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-15T23:20:44.450Z",
+      "lastSync": "2026-04-28T03:13:05.639Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -173,6 +173,7 @@
         "salesforce-expert.agent.md",
         "salesforce-flow.agent.md",
         "salesforce-visualforce.agent.md",
+        "sast-sca-security-analyzer.agent.md",
         "scientific-paper-research.agent.md",
         "se-gitops-ci-specialist.agent.md",
         "se-product-manager-advisor.agent.md",
