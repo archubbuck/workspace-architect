@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-29T01:40:56.882Z",
+      "lastSync": "2026-04-29T03:13:03.985Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -24,6 +24,7 @@
         "arch.agent.md",
         "arm-migration.agent.md",
         "atlassian-requirements-to-jira.agent.md",
+        "aws-cloud-expert.agent.md",
         "azure-iac-exporter.agent.md",
         "azure-iac-generator.agent.md",
         "azure-logic-apps-expert.agent.md",
