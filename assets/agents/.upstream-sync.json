@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-28T08:56:08.699Z",
+      "lastSync": "2026-04-29T01:40:56.882Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -30,6 +30,7 @@
         "azure-policy-analyzer.agent.md",
         "azure-principal-architect.agent.md",
         "azure-saas-architect.agent.md",
+        "azure-smart-city-iot-architect.agent.md",
         "azure-verified-modules-bicep.agent.md",
         "azure-verified-modules-terraform.agent.md",
         "bicep-implement.agent.md",
