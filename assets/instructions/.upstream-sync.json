@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-04-29T01:41:16.393Z",
+      "lastSync": "2026-04-30T00:51:45.461Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -82,6 +82,7 @@
         "github-actions-ci-cd-best-practices.instructions.md",
         "go-mcp-server.instructions.md",
         "go.instructions.md",
+        "hooks.instructions.md",
         "html-css-style-color-guide.instructions.md",
         "instructions.instructions.md",
         "java-11-to-java-17-upgrade.instructions.md",

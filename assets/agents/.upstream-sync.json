@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-04-29T03:13:03.985Z",
+      "lastSync": "2026-04-30T00:51:32.831Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -102,6 +102,7 @@
         "java-mcp-expert.agent.md",
         "jfrog-sec.agent.md",
         "kotlin-mcp-expert.agent.md",
+        "kubestellar-console.agent.md",
         "kusto-assistant.agent.md",
         "laravel-expert-agent.agent.md",
         "launchdarkly-flag-cleanup.agent.md",
@@ -122,6 +123,7 @@
         "neo4j-docker-client-generator.agent.md",
         "neon-migration-specialist.agent.md",
         "neon-optimization-analyzer.agent.md",
+        "new-relic-incident-response.agent.md",
         "nuxt-expert.agent.md",
         "octopus-deploy-release-notes-mcp.agent.md",
         "one-shot-feature-issue-planner.agent.md",
