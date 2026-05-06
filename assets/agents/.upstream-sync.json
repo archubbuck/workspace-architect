@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-05-04T05:14:46.672Z",
+      "lastSync": "2026-05-06T00:47:38.722Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -61,6 +61,7 @@
         "devops-expert.agent.md",
         "devtools-regression-investigator.agent.md",
         "diffblue-cover.agent.md",
+        "dotnet-fullstack-mentor.agent.md",
         "dotnet-maui.agent.md",
         "dotnet-self-learning-architect.agent.md",
         "dotnet-upgrade.agent.md",
