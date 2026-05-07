@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-04-30T00:51:45.461Z",
+      "lastSync": "2026-05-07T00:51:59.155Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -21,6 +21,7 @@
         "azure-functions-typescript.instructions.md",
         "azure-iot-edge-architecture.instructions.md",
         "azure-logic-apps-power-automate.instructions.md",
+        "azure-naming.instructions.md",
         "azure-verified-modules-bicep.instructions.md",
         "azure-verified-modules-terraform.instructions.md",
         "bicep-code-best-practices.instructions.md",
