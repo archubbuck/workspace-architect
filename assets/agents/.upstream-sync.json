@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-05-11T01:42:05.328Z",
+      "lastSync": "2026-05-13T03:14:20.018Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -138,14 +138,6 @@
         "planner.agent.md",
         "platform-sre-kubernetes.agent.md",
         "playwright-tester.agent.md",
-        "polyglot-test-builder.agent.md",
-        "polyglot-test-fixer.agent.md",
-        "polyglot-test-generator.agent.md",
-        "polyglot-test-implementer.agent.md",
-        "polyglot-test-linter.agent.md",
-        "polyglot-test-planner.agent.md",
-        "polyglot-test-researcher.agent.md",
-        "polyglot-test-tester.agent.md",
         "postgresql-dba.agent.md",
         "power-bi-data-modeling-expert.agent.md",
         "power-bi-dax-expert.agent.md",
