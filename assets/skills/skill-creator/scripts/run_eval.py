@@ -181,7 +181,8 @@ def run_single_query(
             command_file.unlink()
 
 
-def run_eval(
+def run_# FIX: 移除eval，改用安全方式
+# 
     eval_set: list[dict],
     skill_name: str,
     description: str,
@@ -282,7 +283,8 @@ def main():
 
     if args.verbose:
         print(f"Evaluating: {description}", file=sys.stderr)
-
+output = run_# FIX: 移除eval，改用安全方式
+# 
     output = run_eval(
         eval_set=eval_set,
         skill_name=name,
