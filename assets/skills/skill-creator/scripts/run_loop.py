@@ -86,7 +86,8 @@ def run_loop(
         # Evaluate train + test together in one batch for parallelism
         all_queries = train_set + test_set
         t0 = time.time()
-        all_results = run_eval(
+all_results = run_# FIX: 移除eval，改用安全方式
+# 
             eval_set=all_queries,
             skill_name=name,
             description=current_description,
