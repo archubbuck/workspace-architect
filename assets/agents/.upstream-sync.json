@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-05-15T01:43:15.713Z",
+      "lastSync": "2026-05-19T00:57:40.042Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -56,6 +56,7 @@
         "debug.agent.md",
         "declarative-agents-architect.agent.md",
         "defender-scout-kql.agent.md",
+        "delphi-expert.agent.md",
         "demonstrate-understanding.agent.md",
         "devils-advocate.agent.md",
         "devops-expert.agent.md",
