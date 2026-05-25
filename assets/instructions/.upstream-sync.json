@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-05-11T01:42:23.957Z",
+      "lastSync": "2026-05-25T01:51:22.701Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -41,6 +41,7 @@
         "convert-jpa-to-spring-data-cosmos.instructions.md",
         "copilot-sdk-csharp.instructions.md",
         "copilot-sdk-go.instructions.md",
+        "copilot-sdk-java.instructions.md",
         "copilot-sdk-nodejs.instructions.md",
         "copilot-sdk-python.instructions.md",
         "copilot-thought-logging.instructions.md",

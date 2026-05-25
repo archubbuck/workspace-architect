@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-05-20T00:59:42.395Z",
+      "lastSync": "2026-05-25T01:51:09.841Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -95,6 +95,7 @@
         "gem-planner.agent.md",
         "gem-researcher.agent.md",
         "gem-reviewer.agent.md",
+        "gem-skill-creator.agent.md",
         "gilfoyle.agent.md",
         "github-actions-expert.agent.md",
         "github-actions-node-upgrade.agent.md",
