@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-05-25T01:51:09.841Z",
+      "lastSync": "2026-05-27T00:59:01.859Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -76,6 +76,7 @@
         "ember.agent.md",
         "expert-cpp-software-engineer.agent.md",
         "expert-dotnet-software-engineer.agent.md",
+        "expert-embedded-c-engineer.agent.md",
         "expert-nextjs-developer.agent.md",
         "expert-react-frontend-engineer.agent.md",
         "fedora-linux-expert.agent.md",

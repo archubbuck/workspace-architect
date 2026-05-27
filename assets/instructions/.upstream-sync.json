@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-05-25T01:51:22.701Z",
+      "lastSync": "2026-05-27T00:59:15.055Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -77,6 +77,7 @@
         "dotnet-upgrade.instructions.md",
         "dotnet-wpf.instructions.md",
         "draw-io.instructions.md",
+        "exclude-prompt-data.instructions.md",
         "fedora-linux.instructions.md",
         "genaiscript.instructions.md",
         "generate-modern-terraform-code-for-azure.instructions.md",
