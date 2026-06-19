@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-06-15T03:18:17.568Z",
+      "lastSync": "2026-06-19T01:11:47.013Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -106,6 +106,7 @@
         "hlbpa.agent.md",
         "implementation-plan.agent.md",
         "insiders-a11y-tracker.agent.md",
+        "interview-prep.agent.md",
         "janitor.agent.md",
         "java-mcp-expert.agent.md",
         "jfrog-sec.agent.md",
