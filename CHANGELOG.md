@@ -1,5 +1,12 @@
 
 
+## [2.2.123](https://github.com/archubbuck/workspace-architect/compare/v2.2.122...v2.2.123) (2026-07-01)
+
+
+### Bug Fixes
+
+* sync content from upstream resources ([b6d7e09](https://github.com/archubbuck/workspace-architect/commit/b6d7e0992e5421aa4f0b86c3512d112c5abbf6c1))
+
 ## [2.2.122](https://github.com/archubbuck/workspace-architect/compare/v2.2.121...v2.2.122) (2026-06-30)
 
 
