@@ -43,14 +43,35 @@ export async function downloadFile(url, destPath, token = null) {
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const response = await fetch(url, { headers });
-  if (!response.ok) {
-    throw new Error(`Failed to download ${url}: ${response.statusText}`);
+  const maxAttempts = 3;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      const response = await fetch(url, { headers });
+      if (!response.ok) {
+        const error = new Error(`Failed to download ${url}: ${response.statusText}`);
+        error.status = response.status;
+        throw error;
+      }
+      
+      const content = await response.text();
+      await fs.ensureDir(path.dirname(destPath));
+      await fs.writeFile(destPath, content);
+      return;
+    } catch (error) {
+      const message = error?.message || '';
+      const status = error?.status;
+      const isTransient = status === 408 || status === 429 || (typeof status === 'number' && status >= 500) ||
+        message.includes('timeout') || message.includes('ECONNRESET') || message.includes('ENOTFOUND') || message.includes('EAI_AGAIN');
+
+      if (!isTransient || attempt === maxAttempts) {
+        throw error;
+      }
+
+      const waitMs = 300 * attempt;
+      await new Promise(resolve => setTimeout(resolve, waitMs));
+    }
   }
-  
-  const content = await response.text();
-  await fs.ensureDir(path.dirname(destPath));
-  await fs.writeFile(destPath, content);
 }
 
 /**
