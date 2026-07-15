@@ -59,11 +59,18 @@ export async function downloadFile(url, destPath, token = null) {
       await fs.writeFile(destPath, content);
       return;
     } catch (error) {
-      const message = error?.message || '';
+      const message = (error?.message || '').toLowerCase();
       const status = error?.status;
-      const isTransient = status === 408 || status === 429 || (typeof status === 'number' && status >= 500) ||
-        message.includes('timeout') || message.includes('ECONNRESET') || message.includes('ENOTFOUND') || message.includes('EAI_AGAIN');
-
+      const code = error?.code || error?.cause?.code;
+      const isTransient =
+        status === 408 ||
+        status === 429 ||
+        (typeof status === 'number' && status >= 500) ||
+        message.includes('timeout') ||
+        code === 'ECONNRESET' ||
+        code === 'ENOTFOUND' ||
+        code === 'EAI_AGAIN' ||
+        code === 'ETIMEDOUT';
       if (!isTransient || attempt === maxAttempts) {
         throw error;
       }
