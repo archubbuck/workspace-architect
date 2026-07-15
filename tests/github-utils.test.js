@@ -6,6 +6,8 @@ import { downloadFile } from '../scripts/utils/github-utils.js';
 
 describe('downloadFile', () => {
   afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.useRealTimers();
     vi.restoreAllMocks();
   });
 
