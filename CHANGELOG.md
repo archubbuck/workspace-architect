@@ -1,5 +1,13 @@
 
 
+## [2.2.126](https://github.com/archubbuck/workspace-architect/compare/v2.2.125...v2.2.126) (2026-07-15)
+
+
+### Bug Fixes
+
+* sync content from upstream resources ([b1dc4d0](https://github.com/archubbuck/workspace-architect/commit/b1dc4d08f9f0a24948ebf7a57a07583c366d752a))
+* update Node.js to v22 in publish workflows ([#93](https://github.com/archubbuck/workspace-architect/issues/93)) ([d1d459e](https://github.com/archubbuck/workspace-architect/commit/d1d459e80ad5cd023b0688c4d3ad4ced8972e331))
+
 ## [2.2.125](https://github.com/archubbuck/workspace-architect/compare/v2.2.124...v2.2.125) (2026-07-08)
 
 
