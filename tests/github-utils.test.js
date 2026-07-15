@@ -12,6 +12,8 @@ describe('downloadFile', () => {
   });
 
   it('retries transient timeout errors and eventually succeeds', async () => {
+    vi.useFakeTimers();
+
     const fetchMock = vi.fn()
       .mockRejectedValueOnce(new Error('first byte timeout'))
       .mockResolvedValueOnce({
@@ -23,7 +25,9 @@ describe('downloadFile', () => {
     const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'download-file-test-'));
     const destPath = path.join(tempDir, 'nested', 'file.txt');
 
-    await downloadFile('https://example.com/file.txt', destPath);
+    const promise = downloadFile('https://example.com/file.txt', destPath);
+    await vi.runAllTimersAsync();
+    await promise;
 
     expect(fetchMock).toHaveBeenCalledTimes(2);
     await expect(fs.readFile(destPath, 'utf8')).resolves.toBe('synced-content');
