@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-09-17T02:20:32.423Z",
+      "lastSync": "2026-10-15T23:11:32.011Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -92,11 +92,9 @@
         "html-css-style-color-guide.instructions.md",
         "instructions.instructions.md",
         "intellij-java-kotlin.instructions.md",
-        "java-11-to-java-17-upgrade.instructions.md",
-        "java-17-to-java-21-upgrade.instructions.md",
-        "java-21-to-java-25-upgrade.instructions.md",
         "java-junit5-assertions.instructions.md",
         "java-mcp-server.instructions.md",
+        "java-upgrade.instructions.md",
         "joyride-user-project.instructions.md",
         "joyride-workspace-automation.instructions.md",
         "kotlin-mcp-server.instructions.md",
