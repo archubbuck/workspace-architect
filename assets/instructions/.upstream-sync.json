@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-10-15T23:11:32.011Z",
+      "lastSync": "2026-10-26T00:39:10.984Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -176,6 +176,7 @@
         "spec-driven-workflow-v1.instructions.md",
         "springboot-4-migration.instructions.md",
         "springboot.instructions.md",
+        "sql-server-safe-tsql.instructions.md",
         "sql-sp-generation.instructions.md",
         "svelte.instructions.md",
         "swift-mcp-server.instructions.md",
