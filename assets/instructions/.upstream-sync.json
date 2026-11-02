@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-10-26T00:39:10.984Z",
+      "lastSync": "2026-11-02T00:26:30.172Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -28,6 +28,7 @@
         "azure-verified-modules-terraform.instructions.md",
         "bicep-code-best-practices.instructions.md",
         "blazor.instructions.md",
+        "bulma-v1.instructions.md",
         "caveman-mode.instructions.md",
         "centos-linux.instructions.md",
         "clojure.instructions.md",
