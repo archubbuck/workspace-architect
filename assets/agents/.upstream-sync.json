@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-08-31T03:18:40.765Z",
+      "lastSync": "2026-11-02T01:10:38.947Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -135,6 +135,7 @@
         "nuxt-expert.agent.md",
         "octopus-deploy-release-notes-mcp.agent.md",
         "one-shot-feature-issue-planner.agent.md",
+        "openapi-to-application-java-spring-boot.agent.md",
         "openapi-to-application.agent.md",
         "oracle-to-postgres-migration-expert.agent.md",
         "pagerduty-incident-responder.agent.md",

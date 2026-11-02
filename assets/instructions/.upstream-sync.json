@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/instructions",
-      "lastSync": "2026-11-02T00:26:30.172Z",
+      "lastSync": "2026-11-02T01:11:13.075Z",
       "files": [
         "a11y.instructions.md",
         "agent-safety.instructions.md",
@@ -89,6 +89,7 @@
         "github-actions-ci-cd-best-practices.instructions.md",
         "go-mcp-server.instructions.md",
         "go.instructions.md",
+        "godot-4-gdscript.instructions.md",
         "hooks.instructions.md",
         "html-css-style-color-guide.instructions.md",
         "instructions.instructions.md",
