@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-11-02T01:10:38.947Z",
+      "lastSync": "2026-11-04T05:09:34.341Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -11,6 +11,7 @@
         "accessibility-runtime-tester.agent.md",
         "accessibility.agent.md",
         "address-comments.agent.md",
+        "adobe-creative-cloud.agent.md",
         "adr-generator.agent.md",
         "aem-frontend-specialist.agent.md",
         "agent-governance-reviewer.agent.md",
