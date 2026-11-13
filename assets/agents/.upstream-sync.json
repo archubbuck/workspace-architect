@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-11-13T01:09:16.826Z",
+      "lastSync": "2026-11-13T03:10:43.909Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -138,6 +138,8 @@
         "new-relic-kubernetes.agent.md",
         "nuxt-expert.agent.md",
         "octopus-deploy-release-notes-mcp.agent.md",
+        "on-device-offload.agent.md",
+        "on-device-worker.agent.md",
         "one-shot-feature-issue-planner.agent.md",
         "openapi-to-application-java-spring-boot.agent.md",
         "openapi-to-application.agent.md",
