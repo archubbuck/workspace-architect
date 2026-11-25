@@ -2,7 +2,7 @@
   "sources": [
     {
       "source": "github/awesome-copilot/agents",
-      "lastSync": "2026-11-16T01:12:22.975Z",
+      "lastSync": "2026-11-25T00:24:36.155Z",
       "files": [
         "CSharpExpert.agent.md",
         "Thinking-Beast-Mode.agent.md",
@@ -16,9 +16,6 @@
         "aem-frontend-specialist.agent.md",
         "agent-governance-reviewer.agent.md",
         "ai-readiness-reporter.agent.md",
-        "ai-team-dev.agent.md",
-        "ai-team-producer.agent.md",
-        "ai-team-qa.agent.md",
         "amplitude-experiment-implementation.agent.md",
         "api-architect.agent.md",
         "apify-integration-expert.agent.md",
